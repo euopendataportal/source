@@ -1,0 +1,346 @@
+{
+    "accessRights_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "accessURL_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "accrualPeriodicity_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "algorithm_spdx": {
+        "class": "",
+        "type": "uri"
+    },
+    "alternative_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "applicationUsingDataset_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "attribute_stat": {
+        "class": "",
+        "type": "uri"
+    },
+    "byteSize_dcat": {
+        "class": "",
+        "type": "literal"
+    },
+    "checksumValue_spdx": {
+        "class": "",
+        "type": "literal"
+    },
+    "checksum_spdx": {
+        "class": "",
+        "type": "uri"
+    },
+    "ckanName_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "ckanRevisionId_revision": {
+        "class": "",
+        "type": "literal"
+    },
+    "conformsTo_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "contactPoint_dcat": {
+        "class": "http://www.w3.org/2006/vcard/ns#Kind",
+        "type": "uri"
+    },
+    "contributor_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "countryDASHname_vcard": {
+        "class": "",
+        "type": "literal"
+    },
+    "creator_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "dataExtensionLiteral_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "dataExtensionValue_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "datasetGroup_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "dataset_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "description_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "dimension_stat": {
+        "class": "",
+        "type": "uri"
+    },
+    "distribution_dcat": {
+        "class": "http://www.w3.org/ns/dcat#Distribution",
+        "type": "uri"
+    },
+    "downloadURL_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "endDate_schema": {
+        "class": "",
+        "type": "literal"
+    },
+    "extensionLiteral_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "extensionValue_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "format_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasAddress_vcard": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasEmail_vcard": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasPart_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasQualityAnnotation_dqv": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasTelephone_vcard": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasValue_vcard": {
+        "class": "",
+        "type": "uri"
+    },
+    "hasVersion_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "homePage_foaf": {
+        "class": "",
+        "type": "uri"
+    },
+    "homepage_foaf": {
+        "class": "",
+        "type": "uri"
+    },
+    "identifier_adms": {
+        "class": "http://www.w3.org/ns/adms#Identifier",
+        "type": "uri"
+    },
+    "identifier_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "iframe_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "isPartOfCatalog_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "isPartOf_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "isVersionOf_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "issued_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "keyword_dcat": {
+        "class": "",
+        "type": "literal"
+    },
+    "landingPage_dcat": {
+        "class": "http://xmlns.com/foaf/0.1/Document",
+        "type": "uri"
+    },
+    "language_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "license_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "locality_vcard": {
+        "class": "",
+        "type": "literal"
+    },
+    "mediaType_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "modified_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "name_foaf": {
+        "class": "",
+        "type": "literal"
+    },
+    "notation_skos": {
+        "class": "",
+        "type": "literal"
+    },
+    "numSeries_stat": {
+        "class": "",
+        "type": "literal"
+    },
+    "numberOfDownloads_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "numberOfViews_dcatapop": {
+        "class": "",
+        "type": "literal"
+    },
+    "organisationDASHname_vcard": {
+        "class": "",
+        "type": "literal"
+    },
+    "page_foaf": {
+        "class": "http://xmlns.com/foaf/0.1/Document",
+        "type": "uri"
+    },
+    "postalDASHcode_vcard": {
+        "class": "",
+        "type": "literal"
+    },
+    "prefLabel_skos": {
+        "class": "",
+        "type": "literal"
+    },
+    "primaryTopic_foaf": {
+        "class": "",
+        "type": "uri"
+    },
+    "provenance_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "publisher_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "record_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "relation_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "rights_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "sample_adms": {
+        "class": "",
+        "type": "uri"
+    },
+    "schemeAgency_adms": {
+        "class": "",
+        "type": "literal"
+    },
+    "source_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "spatial_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "startDate_schema": {
+        "class": "",
+        "type": "literal"
+    },
+    "statMeasure_stat": {
+        "class": "",
+        "type": "uri"
+    },
+    "status_adms": {
+        "class": "",
+        "type": "uri"
+    },
+    "streetDASHaddress_vcard": {
+        "class": "",
+        "type": "literal"
+    },
+    "subject_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "temporalGranularity_dcatapop": {
+        "class": "",
+        "type": "uri"
+    },
+    "temporal_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "themeTaxonomy_dcat": {
+        "class": "",
+        "type": "literal"
+    },
+    "theme_dcat": {
+        "class": "",
+        "type": "uri"
+    },
+    "title_dcterms": {
+        "class": "",
+        "type": "literal"
+    },
+    "topic_foaf": {
+        "class": "",
+        "type": "uri"
+    },
+    "type_dcterms": {
+        "class": "",
+        "type": "uri"
+    },
+    "url_schema": {
+        "class": "",
+        "type": "literal"
+    },
+    "versionInfo_owl": {
+        "class": "",
+        "type": "literal"
+    },
+    "versionNotes_adms": {
+        "class": "",
+        "type": "literal"
+    }
+}

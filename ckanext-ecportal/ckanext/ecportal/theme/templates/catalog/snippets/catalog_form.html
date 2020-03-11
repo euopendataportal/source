@@ -1,0 +1,437 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+{% set langs =  h.get_available_locales() %}
+<form class="ckan-form-catalog ckan-form-group-organization" method="post" data-module="basic-form" enctype="multipart/form-data">
+    {% block error_summary %}
+        {{ form.errors(error_summary) }}
+    {% endblock %}
+
+    {% block basic_fields %}
+        {% include '/snippets/language_bar.html' %}
+        {% set attrs = {'data-module': 'slug-preview-target'} %}
+
+        {# Perhaps these should be moved into the controller? #}
+        {% set domain = c.domain %}
+        {% set domain = domain|replace("http://", "")|replace("https://", "") %}
+
+        {#Title#}
+        <div class="control-group title-field">
+
+            <label class="control-label" for="{{ dataset_id }}title">
+                <span class="field_required">&#9733;</span>
+                {%- trans %}ecodp.common.title{%- endtrans %}
+            </label>
+
+            <div class="controls">
+                <input id="title" class="js-title translatable-field" name="title"
+                       type="text"
+                       value="{{ c.catalog_dict.get('title','') }}"
+                       placeholder="{% trans %}catalog.catalog_form.title.placeholder{% endtrans %}"
+                       data-module="custom_slug-preview-target"/>
+
+                {% for locale in langs %}
+                    {% if c.catalog_dict.get(['title-',locale]|join, '') %}
+                        <input id="title-{{ locale }}" class="js-title translatable-field"
+                               name="title-{{ locale }}" type="text"
+                               value="{{ c.catalog_dict.get(['title-',locale]|join, '') }}"
+                               placeholder="{% trans %}catalog.catalog_form.title.placeholder{% endtrans %}"
+                               data-module="custom_slug-preview-target" style="display: none"/>
+                    {% endif %}
+                {% endfor %}
+
+                {% if errors.title %}
+                    <p class="field_error">Error: {{ errors.title }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+   <div class="control-group control-full">
+{#        <label class="control-label" for="field-name">{% trans %}catalog.catalog_form.title{% endtrans %}</label>#}
+{#        <div class="controls ">#}
+{##}
+{#        <input id="field-name" type="text" name="title" value="{{ c.catalogtitle }}" placeholder="{{ _('catalog.catalog_form.title.placeholder')}}" data-module="custom_slug-preview-target">#}
+        <div class="slug-preview">
+            <strong><span title="This field is required" class="control-required">*</span>{% trans %}catalog.catalog_form.uri{% endtrans %}</strong>
+            {% if not c.name %}
+            <span class="slug-preview-prefix">data.europa.eu/88u/catalog/</span>
+            <input style="font-size: 14px; width: 25.7em" maxlength="100" name="uri"
+                           id="name" type="text" class="js-url-input disabled" value=""
+                           data-module="custom_slug-preview-slug" data-module-placeholder="<dataset>" readonly/>
+            {% else %}
+                <span class="slug-preview-prefix">{{ c.uri }}</span>
+            {% endif %}
+        </div>
+{##}
+{##}
+{##}
+{#        </div>#}
+   </div>
+
+{# Description #}
+    <div class="control-group description-field">
+
+        <label class="control-label" for="description"><span class="field_required">&#9733;</span>
+            {% trans %}catalog.catalog_form.description{% endtrans %}</label>
+
+        <div class="controls">
+            <span class="hints-right">{% trans %}ecodp.rdft.dataset_edit.usage{% endtrans %}<a
+                    href="http://daringfireball.net/projects/markdown/syntax"
+                    target="_blank">{% trans %}ecodp.rdft.dataset_edit.formatting{% endtrans %}</a>
+            </span>
+
+            <div class="markdown-editor" style="width: 880px">
+                <br/>
+
+
+                <textarea class="js-description markdown-input translatable-field" style="resize: vertical; margin: -15px 0 5px 15px;"
+                          name="description"
+                          id="description"
+                          placeholder="{% trans %}catalog.form_basic_information.description.placeholder{% endtrans %}">{{ c.catalog_dict.get('description','') }}</textarea>
+
+
+
+                {% for locale in langs %}
+                        {% if c.catalog_dict.get(['description-',locale]|join, []) %}
+                            <textarea class="js-description markdown-input translatable-field"
+                                      style="resize: vertical; display:none"
+                                      name="description-{{ locale }}"
+                                      id="description-{{ locale }}"
+                                      placeholder="{% trans %}catalog.form_basic_information.description.placeholder{% endtrans %}">{{ c.catalog_dict.get(['description-',locale]|join, '') }}</textarea>
+                        {% endif %}
+                {% endfor %}
+
+
+                <div class="markdow n-preview" style="display: none;"></div>
+
+
+            </div>
+
+            {% if errors.description %}
+                <p class="field_error">Error: {{ errors.description }}</p>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+{#   <div class="control-catalog control-full">#}
+{#        <label class="control-label" for="field-description">{% trans %}catalog.catalog_form.description{% endtrans %}</label>#}
+{##}
+{#        <div class="markdown-editor">#}
+{##}
+{#            <textarea id="field-description" name="description" cols="20" rows="5"#}
+{#                      placeholder="A little information about the catalog...">{{ c.description }}</textarea>#}
+{#            <span class="editor-info-block">You can use <a#}
+{#                    href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown#}
+{#                formatting</a> here</span>#}
+{##}
+{##}
+{#        </div>#}
+{#   </div>#}
+
+
+    {# Publisher #}
+    <div class="control-group publisher-field">
+        <label class="control-label" for="owner_org">{% trans %}ecodp.rdft.dataset_edit.publisher{% endtrans %}</label>
+        <div class="controls">
+            <select id="owner_org" name="owner_org" class="chzn-select">
+                {% for publisher in c.publishers %}
+                    <option value="{{ publisher.id }}"
+                            {% if c.catalog_dict.get('organization',{}).get('name','') and
+                            publisher['name'] == c.catalog_dict.get('organization',{}).get('name','') or
+                            publisher.name == c.new_group %}selected="selected"{% endif %}>{{ publisher.display_name }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+    </div>
+
+
+            {# Home page #}
+    <div class="control-group homepage-field">
+        <label class="control-label" for="url">{% trans %}ecodp.rdft.catalog_edit.home_page{% endtrans %}</label>
+        {% set home_page =  c.catalog_dict.get('home_page','') %}
+
+        <div class="controls">
+            <span class="hints-right">e.g. <a href="{% trans %}ecodp.hint.url{% endtrans %}">{% trans %}ecodp.hint.url{% endtrans %}</a></span>
+            <input id="home_page" name="home_page" type="text"
+                   value="{{ home_page }}"/>
+
+        </div>
+    </div>
+
+                          {# Licence #}
+    <div class="control-group">
+        <label for="licence" class="control-label" property="rdfs:label">{% trans %}ecodp.common.licence{% endtrans %}</label>
+
+        <div class="controls">
+            <select name="licence" class="long js-resource-edit-licence">
+                {% for licence in c.licences %}
+                    {% if licence.get('uri') in c.catalog_dict.get('licence',[]) %}
+                        <option value="{{ licence.get('uri') }}" selected="selected">{{ licence.get('label') }}</option>
+                    {% else %}
+                        <option value="{{ licence.get('uri') }}">{{ licence.get('label') }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+
+         {# Languages #}
+    <div class="control-group">
+        <label class="control-label" for="language">
+            {% trans %}ecodp.rdft.dataset_edit.language{% endtrans %}
+        </label>
+        <div class="controls">
+            <select id="language" class="chzn-select" name="language"
+                    multiple="multiple">
+                {% for tag_name in c.languages %}
+                    {% if tag_name.get('uri') in c.catalog_dict.get('language', []) %}
+                        <option selected="selected"
+                                value="{{ tag_name.get('uri') }}">{{ tag_name.get('label') }}</option>
+                    {% else %}
+                        <option value="{{ tag_name.get('uri') }}">{{ tag_name.get('label') }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+        </div>
+    </div>
+
+        {# Release/Modified date #}
+    <div class="control-group">
+        <div class="grouped-labels">
+            <label class="control-label grouped-label" for="{{ dataset_id }}release_date">
+                {% trans %}ecodp.rdft.dataset_edit.release_date{% endtrans %}
+            </label>
+            <label class="control-label grouped-label" for="{{ dataset_id }}modified_date">
+                {% trans %}ecodp.rdft.dataset_edit.modified_date{% endtrans %}
+            </label>
+        </div>
+        <div class="controls">
+            <input id="release_date" class="half-input image-input image-calendar"
+                   name="release_date" type="text"
+                   value="{{ c.catalog_dict.get('release_date','') }}"
+                   placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"/>
+            <input id="modified_date" class="half-input image-input image-calendar"
+                   name="modified_date" type="text"
+                   value="{{ c.catalog_dict.get('modified_date','') }}"
+                   placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+            />
+        </div>
+
+    </div>
+
+         {# Theme #}
+    {% set group_names_list = h.names_from_tags(data.get('theme', [])) %}
+    <div class="control-group">
+        <label class="control-label" for="theme">{% trans %}ecodp.rdft.dataset_edit.theme_taxonomy{% endtrans %}</label>
+        <div class="controls">
+            <select id="theme" class="chzn-select"
+                    name="theme"
+                    multiple="multiple" style="width: 880px;">
+                <option selected="selected" value='http://publications.europa.eu/resource/authority/data-theme'>Dataset themes Named Authority List</option>
+                    {#{% for domain in c.domains_eurovoc %}
+                        {% set domain_uri = domain.uri %}
+                        {% set domain_value = domain.label %}
+
+                        {% if domain_uri in group_names_list or domain_uri in c.catalog_dict.get('theme',[])%}
+                            <option selected="selected" value="{{ domain_uri }}">{{ domain_value }}</option>
+                        {% else %}
+                            <option value="{{ domain_uri }}">{{ domain_value }}</option>
+                        {% endif %}
+                    {% endfor %}#}
+
+            </select>
+
+        </div>
+    </div>
+
+               {# has_part #}
+    <div class="control-group">
+        <label class="control-label" for="catalog_has_part">
+            {% trans %}ecodp.rdft.dataset_edit.has_part{% endtrans %}
+        </label>
+        <div class="controls">
+            <input id="catalog_has_part" name="has_part" value ="{{ c.catalog_dict.get('has_part',[])|join(" ") }}"/>
+{#            <span class="searchHelp-green gradient input-helper"#}
+{#                  title="{% trans %}ecodp.rdft.dataset_edit.tip.has_part{% endtrans %}">?</span>#}
+{#            {% if bulk_edition %}#}
+{#                {% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}#}
+{#            {% if errors.has_part %}#}
+{#                <p class="field_error">{{ errors.has_part }}</p>#}
+{#            {% endif %}#}
+        </div>
+    </div>
+
+
+                       {# is_part_of #}
+        <div class="control-group">
+        <label class="control-label" for="catalog_is_part_of">
+            {% trans %}ecodp.rdft.dataset_edit.is_part_of{% endtrans %}
+        </label>
+        <div class="controls">
+            <input id="catalog_is_part_of" name="is_part_of" value="{{ c.catalog_dict.get('is_part_of','') }}"/>
+{#            <span class="searchHelp-green gradient input-helper"#}
+{#                  title="{% trans %}ecodp.rdft.dataset_edit.tip.is_part_of{% endtrans %}">?</span>#}
+        </div>
+    </div>
+
+
+
+         {# Geographical coverage #}
+        <div class="control-group">
+            <label class="control-label" for="catalog_geographical_coverage">
+                {% trans %}ecodp.rdft.dataset_edit.geographical_coverage{% endtrans %}
+            </label>
+            <div class="controls">
+                <select id="catalog_geographical_coverage" class="chzn-select2"
+                        name="catalog_geographical_coverage"
+                        multiple="multiple" style="width: 30em;">
+                    {% for geographical_coverage in c.geographical_coverage %}
+                        {% set geographical_coverage_uri = geographical_coverage.get('uri') %}
+                        {% set geographical_coverage_value = geographical_coverage.get('label') %}
+                        {% set geografical_coverage_list =  data.get('geographical_coverage', []) or [] %}
+                        {% if geographical_coverage_uri in geografical_coverage_list %}
+                            <option selected="selected"
+                                    value="{{ geographical_coverage_uri }}">{{ geographical_coverage_value }}</option>
+                        {% else %}
+                            <option value="{{ geographical_coverage_uri }}">{{ geographical_coverage_value }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+{#                <span class="searchHelp-green gradient input-helper"#}
+{#                      title=" {% trans %}ecodp.rdft.dataset_edit.tip.geographical_coverage{% endtrans %}">?</span>#}
+
+                {% if errors.geographical_coverage %}
+                    <p class="field_error">{{ errors.geographical_coverage }}</p>
+                {% endif %}
+
+                <input id="catalog_clear-geographical-coverage" class="btn btn-country"
+                       name="catalog_clear-geographical-coverage" type="button"
+                       value="{{ _('ecodp.common.clear') }}">
+                <input id="catalog_select-28-countries" class="btn btn-country"
+                       name="catalog_select-28-countries" type="button"
+                       value="{{ _('ecodp.common.28.countries') }}">
+                <input id="catalog_select-27-countries" class="btn btn btn-country"
+                       name="catalog_select-27-countries" type="button"
+                       value="{{ _('ecodp.common.27.countries') }}">
+            </div>
+        </div>
+
+                {# Rights #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.rights{% endtrans %}</label>
+        {% set rights_label =  c.catalog_dict.get('rights','') %}
+        <div class="controls">
+            <input id="rights" type="text" name="rights" value="{{ rights_label }}"/>
+        </div>
+    </div>
+
+
+    {# DOI #}
+    <div class="control-group">
+        <label class="control-label" for="doi">{% trans %}ecodp.rdft.dataset_edit.doi{% endtrans %}</label>
+        {% set doi =  c.catalog_dict.get('doi','') %}
+
+        <div class="controls">
+              <input id="doi" name="doi" readonly class="disabled" style="width:62%;text-align: center;font-weight: bold;"
+                   type="text" value="{{ doi }}"/>
+            <div id="div-doi-saved" style="display:none"></div>
+
+             <input type="button" value="{% trans %}ecodp.rdft.dataset_edit.button.assign_doi{% endtrans %}"
+                   class="btn btn-primary assign-doi-line-button" id="assign-doi" style="width:31%"
+                   name="assign-doi"
+                    {% if not doi %}
+                    data-action="{{ h.url_for(controller="ckanext.ecportal.controllers.catalog:ECPORTALCatalogController", action='generate_doi' ) }}"
+                    data-uri="{{ c.uri }}"
+                    {% else %}
+                    disabled="disabled"
+                    {% endif %}>
+
+            {% if errors.doi %}
+                <p class="field_error">Error: {{ errors.doi }}}</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+
+    {% endblock %}
+
+    {#% block custom_fields %}
+    {% for extra in data.extras %}
+      {% set prefix = 'extras__%d__' % loop.index0 %}
+      {{ form.custom(
+        names=(prefix ~ 'key', prefix ~ 'value', prefix ~ 'deleted'),
+        id='field-extras-%d' % loop.index,
+        label=_('ecodp.common.custom_field'),
+        values=(extra.key, extra.value, extra.deleted),
+        error=errors[prefix ~ 'key'] or errors[prefix ~ 'value']
+      ) }}
+    {% endfor %#}
+
+    {# Add a max if 3 empty columns #}
+    {#% for extra in range(data.extras|count, 3) %}
+      {% set index = (loop.index0 + data.extras|count) %}
+      {% set prefix = 'extras__%d__' % index %}
+      {{ form.custom(
+        names=(prefix ~ 'key', prefix ~ 'value', prefix ~ 'deleted'),
+        id='field-extras-%d' % index,
+        label=_('ecodp.common.custom_field'),
+        values=(extra.key, extra.value, extra.deleted),
+        error=errors[prefix ~ 'key'] or errors[prefix ~ 'value']
+      ) }}
+    {% endfor %}
+  {% endblock %#}
+
+    {#  {{ form.required_message() }} #}
+
+    {{ form.required_message() }}
+    {# Do not update datasets here
+  {% block dataset_fields %}
+    {% if data.packages %}
+      <div class="control-group">
+        <label class="control-label">{{ _('ecodp.common.datasets') }}</label>
+        <div class="controls">
+          {% for dataset in data.packages %}
+            <label class="checkbox" for="field-dataset-{{ loop.index0 }}">
+              <input id="field-dataset-{{ loop.index0 }}" type="checkbox" name="packages__{{ loop.index0 }}__name" value="{{ dataset.name }}" checked="checked" />
+              {{ dataset.title }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% set dataset_name = 'packages__%s__name' % data.packages|length %}
+    {% set dataset_attrs = {'data-module': 'autocomplete', 'data-module-source': '/dataset/autocomplete?q=?'} %}
+    {{ form.input(dataset_name, label=_('ecodp.common.datasets.add'), id="field-dataset", value=data[dataset_name], classes=['control-medium'], attrs=dataset_attrs) }}
+  {% endblock %}
+  #}
+
+
+    <div class="ckan-form-actions">
+        <button class="btn btn-primary" name="save" type="submit">
+            {% block save_text %}{{ _('catalog.catalog_form.button.save') }}{% endblock %}</button>
+    </div>
+</form>

@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://publications.europa.eu/resource/authority/distribution-type/"
+         xmlns:adms="http://www.w3.org/ns/adms#"
+         xmlns:core="http://www.w3.org/2004/02/skos/core#"
+         xmlns:cdm="http://publications.europa.eu/ontology/cdm#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:euvoc="http://publications.europa.eu/ontology/euvoc#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:geowgs84="http://www.w3.org/2003/01/geo/wgs84_pos#"
+         xmlns:isothes="http://purl.org/iso25964/skos-thes#"
+         xmlns:lemon="http://lemon-model.net/lemon#"
+         xmlns:lexinfo="http://www.lexinfo.net/ontology/2.0/lexinfo#"
+         xmlns:lexvo="http://lexvo.org/ontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:org="http://www.w3.org/ns/org#"
+         xmlns:prov="http://www.w3.org/ns/prov#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:skos-xl="http://www.w3.org/2008/05/skos-xl#"
+         xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+         xmlns:void="http://rdfs.org/ns/void#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:cc="http://creativecommons.org/ns#"
+         xmlns:time="http://www.w3.org/2006/time#"
+         xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+         xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+         xmlns:eli-o="http://data.europa.eu/eli/ontology#"
+         xmlns:sf="http://www.opengis.net/ont/sf#"
+         xmlns:locn="http://www.w3.org/ns/locn#"
+         xmlns:at="http://publications.europa.eu/ontology/authority/"
+         xmlns:atold="http://publications.europa.eu/resource/authority/"
+         xml:base="http://publications.europa.eu/resource/authority/distribution-type">
+   <owl:Ontology rdf:about="http://publications.europa.eu/resource/authority/distribution-type">
+      <owl:imports rdf:resource="http://publications.europa.eu/ontology/euvoc"/>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <owl:versionIRI rdf:resource="http://publications.europa.eu/resource/authority/distribution-type/20181212-0"/>
+      <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Distribution type</rdfs:comment>
+   </owl:Ontology>
+   <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/distribution-type"
+                       at:table.id="distribution-type"
+                       at:table.version.number="20181212-0">
+      <rdfs:label xml:lang="en">Distribution type</rdfs:label>
+      <skos:prefLabel xml:lang="en">Distribution type</skos:prefLabel>
+      <at:prefLabel xml:lang="en">Distribution type</at:prefLabel>
+      <dct:identifier>http://publications.europa.eu/resource/authority/distribution-type</dct:identifier>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Distribution type</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Distribution type</rdfs:label>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+   </skos:ConceptScheme>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/distribution-type/DOWNLOADABLE_FILE"
+                 at:deprecated="false">
+      <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionType"/>
+      <dc:identifier>DOWNLOADABLE_FILE</dc:identifier>
+      <at:authority-code>DOWNLOADABLE_FILE</at:authority-code>
+      <at:op-code>DOWNLOADABLE_FILE</at:op-code>
+      <atold:op-code>DOWNLOADABLE_FILE</atold:op-code>
+      <at:start.use>2013-01-01</at:start.use>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <dct:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dct:dateAccepted>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+      <dct:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dct:dateSubmitted>
+      <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+      <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+      <!--in template name="specific-part-temporary"-->
+      <skos:prefLabel xml:lang="bg">Файл за сваляне</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="bg">Файл за сваляне</skos-xl:literalForm>
+            <rdfs:label xml:lang="bg">Файл за сваляне</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="cs">Soubor, který lze stáhnout</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="cs">Soubor, který lze stáhnout</skos-xl:literalForm>
+            <rdfs:label xml:lang="cs">Soubor, který lze stáhnout</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="da">Fil, som kan downloades</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="da">Fil, som kan downloades</skos-xl:literalForm>
+            <rdfs:label xml:lang="da">Fil, som kan downloades</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="de">Herunterladbare Datei</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="de">Herunterladbare Datei</skos-xl:literalForm>
+            <rdfs:label xml:lang="de">Herunterladbare Datei</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="el">Μεταφορτώσιμο αρχείο</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="el">Μεταφορτώσιμο αρχείο</skos-xl:literalForm>
+            <rdfs:label xml:lang="el">Μεταφορτώσιμο αρχείο</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="en">Downloadable file</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Downloadable file</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Downloadable file</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="et">Allalaetav fail</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="et">Allalaetav fail</skos-xl:literalForm>
+            <rdfs:label xml:lang="et">Allalaetav fail</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fi">Ladattavissa oleva tiedosto</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fi">Ladattavissa oleva tiedosto</skos-xl:literalForm>
+            <rdfs:label xml:lang="fi">Ladattavissa oleva tiedosto</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fr">Fichier téléchargeable</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fr">Fichier téléchargeable</skos-xl:literalForm>
+            <rdfs:label xml:lang="fr">Fichier téléchargeable</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hr">Datoteka za preuzimanje</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hr">Datoteka za preuzimanje</skos-xl:literalForm>
+            <rdfs:label xml:lang="hr">Datoteka za preuzimanje</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hu">Letölthető fájl</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hu">Letölthető fájl</skos-xl:literalForm>
+            <rdfs:label xml:lang="hu">Letölthető fájl</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="it">File scaricabile</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="it">File scaricabile</skos-xl:literalForm>
+            <rdfs:label xml:lang="it">File scaricabile</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lv">Lejupielādējama datne</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lv">Lejupielādējama datne</skos-xl:literalForm>
+            <rdfs:label xml:lang="lv">Lejupielādējama datne</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lt">Rinkmena, kurią galima parsisiųsti</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lt">Rinkmena, kurią galima parsisiųsti</skos-xl:literalForm>
+            <rdfs:label xml:lang="lt">Rinkmena, kurią galima parsisiųsti</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="mt">Fajl li jista' jiġi ddawnlowdjat</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="mt">Fajl li jista' jiġi ddawnlowdjat</skos-xl:literalForm>
+            <rdfs:label xml:lang="mt">Fajl li jista' jiġi ddawnlowdjat</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="nl">Downloadbaar bestand</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="nl">Downloadbaar bestand</skos-xl:literalForm>
+            <rdfs:label xml:lang="nl">Downloadbaar bestand</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="no">Nedlastbar fil</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="no">Nedlastbar fil</skos-xl:literalForm>
+            <rdfs:label xml:lang="no">Nedlastbar fil</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pl">Plik do pobrania</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pl">Plik do pobrania</skos-xl:literalForm>
+            <rdfs:label xml:lang="pl">Plik do pobrania</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pt">Ficheiro descarregável</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pt">Ficheiro descarregável</skos-xl:literalForm>
+            <rdfs:label xml:lang="pt">Ficheiro descarregável</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="ro">Fișier descărcabil</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ro">Fișier descărcabil</skos-xl:literalForm>
+            <rdfs:label xml:lang="ro">Fișier descărcabil</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sk">Prevzateľný súbor</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sk">Prevzateľný súbor</skos-xl:literalForm>
+            <rdfs:label xml:lang="sk">Prevzateľný súbor</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sl">Prenosljiva datoteka</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sl">Prenosljiva datoteka</skos-xl:literalForm>
+            <rdfs:label xml:lang="sl">Prenosljiva datoteka</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="es">Archivo descargable</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="es">Archivo descargable</skos-xl:literalForm>
+            <rdfs:label xml:lang="es">Archivo descargable</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sv">Nedladdningsbar fil</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sv">Nedladdningsbar fil</skos-xl:literalForm>
+            <rdfs:label xml:lang="sv">Nedladdningsbar fil</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:definition xml:lang="en">A downloadable file for the dataset.</skos:definition>
+      <euvoc:xlDefinition>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-15</euvoc:startDate>
+            <euvoc:xlNote xml:lang="en">A downloadable file for the dataset.</euvoc:xlNote>
+            <dct:source xml:lang="en">ODP</dct:source>
+         </rdf:Description>
+      </euvoc:xlDefinition>
+      <!--in template name="specific-part-invariant"-->
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP"/>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/distribution-type/FEED_INFO"
+                 at:deprecated="false">
+      <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionType"/>
+      <dc:identifier>FEED_INFO</dc:identifier>
+      <at:authority-code>FEED_INFO</at:authority-code>
+      <at:op-code>FEED_INFO</at:op-code>
+      <atold:op-code>FEED_INFO</atold:op-code>
+      <at:start.use>2013-01-01</at:start.use>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <dct:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dct:dateAccepted>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+      <dct:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dct:dateSubmitted>
+      <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+      <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+      <!--in template name="specific-part-temporary"-->
+      <skos:prefLabel xml:lang="bg">Информационен канал</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="bg">Информационен канал</skos-xl:literalForm>
+            <rdfs:label xml:lang="bg">Информационен канал</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="cs">Informační kanál</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="cs">Informační kanál</skos-xl:literalForm>
+            <rdfs:label xml:lang="cs">Informační kanál</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="da">Informationsfeed</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="da">Informationsfeed</skos-xl:literalForm>
+            <rdfs:label xml:lang="da">Informationsfeed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="de">Informations-Feed</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="de">Informations-Feed</skos-xl:literalForm>
+            <rdfs:label xml:lang="de">Informations-Feed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="el">Ροή πληροφοριών</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="el">Ροή πληροφοριών</skos-xl:literalForm>
+            <rdfs:label xml:lang="el">Ροή πληροφοριών</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="en">Information feed</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Information feed</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Information feed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="et">Infovoog</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="et">Infovoog</skos-xl:literalForm>
+            <rdfs:label xml:lang="et">Infovoog</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fi">Tietosyöte</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fi">Tietosyöte</skos-xl:literalForm>
+            <rdfs:label xml:lang="fi">Tietosyöte</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fr">Fil d'information</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fr">Fil d'information</skos-xl:literalForm>
+            <rdfs:label xml:lang="fr">Fil d'information</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hr">Izvor informacija</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hr">Izvor informacija</skos-xl:literalForm>
+            <rdfs:label xml:lang="hr">Izvor informacija</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hu">Információs csatorna</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hu">Információs csatorna</skos-xl:literalForm>
+            <rdfs:label xml:lang="hu">Információs csatorna</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="it">Feed di informazioni</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="it">Feed di informazioni</skos-xl:literalForm>
+            <rdfs:label xml:lang="it">Feed di informazioni</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lv">Informācijas plūsma</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lv">Informācijas plūsma</skos-xl:literalForm>
+            <rdfs:label xml:lang="lv">Informācijas plūsma</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lt">Informacijos sklaidos kanalas</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lt">Informacijos sklaidos kanalas</skos-xl:literalForm>
+            <rdfs:label xml:lang="lt">Informacijos sklaidos kanalas</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="mt">Sors ta' informazzjoni</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="mt">Sors ta' informazzjoni</skos-xl:literalForm>
+            <rdfs:label xml:lang="mt">Sors ta' informazzjoni</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="nl">Informatiefeed</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="nl">Informatiefeed</skos-xl:literalForm>
+            <rdfs:label xml:lang="nl">Informatiefeed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="no">Informasjonsfeed</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="no">Informasjonsfeed</skos-xl:literalForm>
+            <rdfs:label xml:lang="no">Informasjonsfeed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pl">Kanał informacyjny</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pl">Kanał informacyjny</skos-xl:literalForm>
+            <rdfs:label xml:lang="pl">Kanał informacyjny</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pt">Fluxo de informação</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pt">Fluxo de informação</skos-xl:literalForm>
+            <rdfs:label xml:lang="pt">Fluxo de informação</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="ro">Flux de informații</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ro">Flux de informații</skos-xl:literalForm>
+            <rdfs:label xml:lang="ro">Flux de informații</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sk">Informačný kanál</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sk">Informačný kanál</skos-xl:literalForm>
+            <rdfs:label xml:lang="sk">Informačný kanál</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sl">Informacijski kanal</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sl">Informacijski kanal</skos-xl:literalForm>
+            <rdfs:label xml:lang="sl">Informacijski kanal</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="es">Flujo de información</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="es">Flujo de información</skos-xl:literalForm>
+            <rdfs:label xml:lang="es">Flujo de información</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sv">Informationsflöde</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sv">Informationsflöde</skos-xl:literalForm>
+            <rdfs:label xml:lang="sv">Informationsflöde</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:definition xml:lang="en">A resource that provides an information feed, e.g. RSS feed.</skos:definition>
+      <euvoc:xlDefinition>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-15</euvoc:startDate>
+            <euvoc:xlNote xml:lang="en">A resource that provides an information feed, e.g. RSS feed.</euvoc:xlNote>
+            <dct:source xml:lang="en">ODP</dct:source>
+         </rdf:Description>
+      </euvoc:xlDefinition>
+      <!--in template name="specific-part-invariant"-->
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP"/>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/distribution-type/VISUALIZATION"
+                 at:deprecated="false">
+      <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionType"/>
+      <dc:identifier>VISUALIZATION</dc:identifier>
+      <at:authority-code>VISUALIZATION</at:authority-code>
+      <at:op-code>VISUALIZATION</at:op-code>
+      <atold:op-code>VISUALIZATION</atold:op-code>
+      <at:start.use>2013-01-01</at:start.use>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <dct:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-09-09</dct:dateAccepted>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+      <dct:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-22</dct:dateSubmitted>
+      <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+      <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+      <!--in template name="specific-part-temporary"-->
+      <skos:prefLabel xml:lang="bg">Визуализация</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="bg">Визуализация</skos-xl:literalForm>
+            <rdfs:label xml:lang="bg">Визуализация</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="cs">Vizualizace</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="cs">Vizualizace</skos-xl:literalForm>
+            <rdfs:label xml:lang="cs">Vizualizace</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="da">Visualisering</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="da">Visualisering</skos-xl:literalForm>
+            <rdfs:label xml:lang="da">Visualisering</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="de">Visualisierung</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="de">Visualisierung</skos-xl:literalForm>
+            <rdfs:label xml:lang="de">Visualisierung</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="el">Οπτική εμφάνιση</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="el">Οπτική εμφάνιση</skos-xl:literalForm>
+            <rdfs:label xml:lang="el">Οπτική εμφάνιση</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="en">Visualization</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Visualization</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Visualization</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="et">Visuaalne kuju</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="et">Visuaalne kuju</skos-xl:literalForm>
+            <rdfs:label xml:lang="et">Visuaalne kuju</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fi">Visualisointi</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fi">Visualisointi</skos-xl:literalForm>
+            <rdfs:label xml:lang="fi">Visualisointi</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="fr">Visualisation</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fr">Visualisation</skos-xl:literalForm>
+            <rdfs:label xml:lang="fr">Visualisation</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hr">Vizualizacija</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hr">Vizualizacija</skos-xl:literalForm>
+            <rdfs:label xml:lang="hr">Vizualizacija</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="hu">Megjelenítés</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hu">Megjelenítés</skos-xl:literalForm>
+            <rdfs:label xml:lang="hu">Megjelenítés</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="it">Visualizzazione</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="it">Visualizzazione</skos-xl:literalForm>
+            <rdfs:label xml:lang="it">Visualizzazione</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lv">Vizualizācija</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lv">Vizualizācija</skos-xl:literalForm>
+            <rdfs:label xml:lang="lv">Vizualizācija</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="lt">Vizualizacija</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lt">Vizualizacija</skos-xl:literalForm>
+            <rdfs:label xml:lang="lt">Vizualizacija</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="mt">Viżwalizzazzjoni</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="mt">Viżwalizzazzjoni</skos-xl:literalForm>
+            <rdfs:label xml:lang="mt">Viżwalizzazzjoni</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="nl">Visualisatie</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="nl">Visualisatie</skos-xl:literalForm>
+            <rdfs:label xml:lang="nl">Visualisatie</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="no">Visualisering</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="no">Visualisering</skos-xl:literalForm>
+            <rdfs:label xml:lang="no">Visualisering</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pl">Wizualizacja</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pl">Wizualizacja</skos-xl:literalForm>
+            <rdfs:label xml:lang="pl">Wizualizacja</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="pt">Visualização</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pt">Visualização</skos-xl:literalForm>
+            <rdfs:label xml:lang="pt">Visualização</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="ro">Vizualizare</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ro">Vizualizare</skos-xl:literalForm>
+            <rdfs:label xml:lang="ro">Vizualizare</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sk">Vizualizácia</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sk">Vizualizácia</skos-xl:literalForm>
+            <rdfs:label xml:lang="sk">Vizualizácia</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sl">Vizualizacija</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sl">Vizualizacija</skos-xl:literalForm>
+            <rdfs:label xml:lang="sl">Vizualizacija</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="es">Visualización</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="es">Visualización</skos-xl:literalForm>
+            <rdfs:label xml:lang="es">Visualización</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:prefLabel xml:lang="sv">Visualisering</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-06</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sv">Visualisering</skos-xl:literalForm>
+            <rdfs:label xml:lang="sv">Visualisering</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:historyNote xml:lang="en">ODP needed this concept as a distribution type instead of a documentation type.</skos:historyNote>
+      <euvoc:xlHistoryNote>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:xlNote xml:lang="en">ODP needed this concept as a distribution type instead of a documentation type.</euvoc:xlNote>
+         </rdf:Description>
+      </euvoc:xlHistoryNote>
+      <skos:definition xml:lang="en">A visualization of the dataset.</skos:definition>
+      <euvoc:xlDefinition>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-15</euvoc:startDate>
+            <euvoc:xlNote xml:lang="en">A visualization of the dataset.</euvoc:xlNote>
+            <dct:source xml:lang="en">ODP</dct:source>
+         </rdf:Description>
+      </euvoc:xlDefinition>
+      <!--in template name="specific-part-invariant"-->
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP"/>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/distribution-type/WEB_SERVICE"
+                 at:deprecated="false">
+      <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionType"/>
+      <dc:identifier>WEB_SERVICE</dc:identifier>
+      <at:authority-code>WEB_SERVICE</at:authority-code>
+      <at:op-code>WEB_SERVICE</at:op-code>
+      <atold:op-code>WEB_SERVICE</atold:op-code>
+      <at:start.use>2013-01-01</at:start.use>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <dct:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-28</dct:dateAccepted>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-10-04</dct:created>
+      <dct:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-11-14</dct:dateSubmitted>
+      <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+      <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+      <!--in template name="specific-part-temporary"-->
+      <skos:prefLabel xml:lang="en">Web service/API</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-10-04</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Web service/API</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Web service/API</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos:definition xml:lang="en">A resource that holds a web service to the dataset.</skos:definition>
+      <euvoc:xlDefinition>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-15</euvoc:startDate>
+            <euvoc:xlNote xml:lang="en">A resource that holds a web service to the dataset.</euvoc:xlNote>
+            <dct:source xml:lang="en">ODP</dct:source>
+         </rdf:Description>
+      </euvoc:xlDefinition>
+      <!--in template name="specific-part-temporary"-->
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="bg">Уеб услуга</skos-xl:literalForm>
+            <rdfs:label xml:lang="bg">Уеб услуга</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="cs">Webová služba</skos-xl:literalForm>
+            <rdfs:label xml:lang="cs">Webová služba</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="da">Webtjeneste</skos-xl:literalForm>
+            <rdfs:label xml:lang="da">Webtjeneste</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="de">Web-Service</skos-xl:literalForm>
+            <rdfs:label xml:lang="de">Web-Service</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="el">Διαδικτυακή υπηρεσία</skos-xl:literalForm>
+            <rdfs:label xml:lang="el">Διαδικτυακή υπηρεσία</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Web service</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Web service</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="et">Veebiteenus</skos-xl:literalForm>
+            <rdfs:label xml:lang="et">Veebiteenus</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fi">Verkkopalvelu</skos-xl:literalForm>
+            <rdfs:label xml:lang="fi">Verkkopalvelu</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fr">Service web</skos-xl:literalForm>
+            <rdfs:label xml:lang="fr">Service web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hr">Web-usluga</skos-xl:literalForm>
+            <rdfs:label xml:lang="hr">Web-usluga</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hu">Webszolgáltatás</skos-xl:literalForm>
+            <rdfs:label xml:lang="hu">Webszolgáltatás</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="it">Servizio web</skos-xl:literalForm>
+            <rdfs:label xml:lang="it">Servizio web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lv">Tīmekļa pakalpojums</skos-xl:literalForm>
+            <rdfs:label xml:lang="lv">Tīmekļa pakalpojums</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lt">Saityno paslauga</skos-xl:literalForm>
+            <rdfs:label xml:lang="lt">Saityno paslauga</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="mt">Servizz tal-Web</skos-xl:literalForm>
+            <rdfs:label xml:lang="mt">Servizz tal-Web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="nl">Webservice</skos-xl:literalForm>
+            <rdfs:label xml:lang="nl">Webservice</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="no">Webservice</skos-xl:literalForm>
+            <rdfs:label xml:lang="no">Webservice</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pl">Usługa sieciowa</skos-xl:literalForm>
+            <rdfs:label xml:lang="pl">Usługa sieciowa</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pt">Serviço web</skos-xl:literalForm>
+            <rdfs:label xml:lang="pt">Serviço web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ro">Serviciu web</skos-xl:literalForm>
+            <rdfs:label xml:lang="ro">Serviciu web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sk">Webová služba</skos-xl:literalForm>
+            <rdfs:label xml:lang="sk">Webová služba</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sl">Spletna storitev</skos-xl:literalForm>
+            <rdfs:label xml:lang="sl">Spletna storitev</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="es">Servicio web</skos-xl:literalForm>
+            <rdfs:label xml:lang="es">Servicio web</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <skos-xl:altLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</euvoc:startDate>
+            <euvoc:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-02</euvoc:endDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/DEPRECATED"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sv">Webbtjänstgränssnitt</skos-xl:literalForm>
+            <rdfs:label xml:lang="sv">Webbtjänstgränssnitt</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:altLabel>
+      <euvoc:xlDefinition>
+         <rdf:Description>
+            <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#XlNote"/>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-04-15</euvoc:startDate>
+            <euvoc:xlNote xml:lang="en">A resource that holds a web service to the dataset.</euvoc:xlNote>
+            <dct:source xml:lang="en">ODP</dct:source>
+         </rdf:Description>
+      </euvoc:xlDefinition>
+      <!--in template name="specific-part-invariant"-->
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC"/>
+      <lemon:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP"/>
+   </skos:Concept>
+   <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/distribution-type/OP_DATPRO">
+      <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+      <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionType"/>
+      <at:op-code>OP_DATPRO</at:op-code>
+      <atold:op-code>OP_DATPRO</atold:op-code>
+      <dc:identifier>OP_DATPRO</dc:identifier>
+      <owl:versionInfo>20181212-0</owl:versionInfo>
+      <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+      <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+      <skos:prefLabel xml:lang="bg">НЕОКОНЧАТЕЛНИ ДАННИ</skos:prefLabel>
+      <skos:prefLabel xml:lang="cs">Předběžné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="da">Midlertidige data</skos:prefLabel>
+      <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+      <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+      <skos:prefLabel xml:lang="el">Προσωρινά δεδομένα</skos:prefLabel>
+      <skos:prefLabel xml:lang="es">Datos provisionales</skos:prefLabel>
+      <skos:prefLabel xml:lang="et">Esialgsed andmed</skos:prefLabel>
+      <skos:prefLabel xml:lang="fi">Alustavat tiedot</skos:prefLabel>
+      <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+      <skos:prefLabel xml:lang="ga">Sonraí sealadacha</skos:prefLabel>
+      <skos:prefLabel xml:lang="hr">Privremeni podaci</skos:prefLabel>
+      <skos:prefLabel xml:lang="hu">Ideiglenes adatok</skos:prefLabel>
+      <skos:prefLabel xml:lang="it">Dati provvisori</skos:prefLabel>
+      <skos:prefLabel xml:lang="lt">Laikinieji duomenys</skos:prefLabel>
+      <skos:prefLabel xml:lang="lv">Provizoriski dati</skos:prefLabel>
+      <skos:prefLabel xml:lang="mt">Dejta provviżorja</skos:prefLabel>
+      <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+      <skos:prefLabel xml:lang="pl">Dane tymczasowe</skos:prefLabel>
+      <skos:prefLabel xml:lang="pt">Dados provisórios</skos:prefLabel>
+      <skos:prefLabel xml:lang="ro">Date provizorii</skos:prefLabel>
+      <skos:prefLabel xml:lang="sk">Predbežné údaje</skos:prefLabel>
+      <skos:prefLabel xml:lang="sl">Začasni podatki</skos:prefLabel>
+      <skos:prefLabel xml:lang="sv">Tillfälliga uppgifter</skos:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="bg">НЕОКОНЧАТЕЛНИ ДАННИ</skos-xl:literalForm>
+            <rdfs:label xml:lang="bg">НЕОКОНЧАТЕЛНИ ДАННИ</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="cs">Předběžné údaje</skos-xl:literalForm>
+            <rdfs:label xml:lang="cs">Předběžné údaje</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="da">Midlertidige data</skos-xl:literalForm>
+            <rdfs:label xml:lang="da">Midlertidige data</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="de">Vorläufige Daten</skos-xl:literalForm>
+            <rdfs:label xml:lang="de">Vorläufige Daten</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="en">Provisional data</skos-xl:literalForm>
+            <rdfs:label xml:lang="en">Provisional data</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="el">Προσωρινά δεδομένα</skos-xl:literalForm>
+            <rdfs:label xml:lang="el">Προσωρινά δεδομένα</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="es">Datos provisionales</skos-xl:literalForm>
+            <rdfs:label xml:lang="es">Datos provisionales</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="et">Esialgsed andmed</skos-xl:literalForm>
+            <rdfs:label xml:lang="et">Esialgsed andmed</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fi">Alustavat tiedot</skos-xl:literalForm>
+            <rdfs:label xml:lang="fi">Alustavat tiedot</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="fr">Données provisoires</skos-xl:literalForm>
+            <rdfs:label xml:lang="fr">Données provisoires</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ga">Sonraí sealadacha</skos-xl:literalForm>
+            <rdfs:label xml:lang="ga">Sonraí sealadacha</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hr">Privremeni podaci</skos-xl:literalForm>
+            <rdfs:label xml:lang="hr">Privremeni podaci</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="hu">Ideiglenes adatok</skos-xl:literalForm>
+            <rdfs:label xml:lang="hu">Ideiglenes adatok</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="it">Dati provvisori</skos-xl:literalForm>
+            <rdfs:label xml:lang="it">Dati provvisori</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lt">Laikinieji duomenys</skos-xl:literalForm>
+            <rdfs:label xml:lang="lt">Laikinieji duomenys</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="lv">Provizoriski dati</skos-xl:literalForm>
+            <rdfs:label xml:lang="lv">Provizoriski dati</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="mt">Dejta provviżorja</skos-xl:literalForm>
+            <rdfs:label xml:lang="mt">Dejta provviżorja</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="nl">Voorlopige gegevens</skos-xl:literalForm>
+            <rdfs:label xml:lang="nl">Voorlopige gegevens</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pl">Dane tymczasowe</skos-xl:literalForm>
+            <rdfs:label xml:lang="pl">Dane tymczasowe</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="pt">Dados provisórios</skos-xl:literalForm>
+            <rdfs:label xml:lang="pt">Dados provisórios</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="ro">Date provizorii</skos-xl:literalForm>
+            <rdfs:label xml:lang="ro">Date provizorii</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sk">Predbežné údaje</skos-xl:literalForm>
+            <rdfs:label xml:lang="sk">Predbežné údaje</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sl">Začasni podatki</skos-xl:literalForm>
+            <rdfs:label xml:lang="sl">Začasni podatki</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+      <skos-xl:prefLabel>
+         <skos-xl:Label>
+            <rdf:type rdf:resource="http://www.w3.org/2008/05/skos-xl#Label"/>
+            <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</dct:created>
+            <euvoc:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-17</euvoc:startDate>
+            <euvoc:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT"/>
+            <dct:type rdf:resource="http://publications.europa.eu/resource/authority/label-type/STANDARDLABEL"/>
+            <skos-xl:literalForm xml:lang="sv">Tillfälliga uppgifter</skos-xl:literalForm>
+            <rdfs:label xml:lang="sv">Tillfälliga uppgifter</rdfs:label>
+         </skos-xl:Label>
+      </skos-xl:prefLabel>
+   </skos:Concept>
+</rdf:RDF>

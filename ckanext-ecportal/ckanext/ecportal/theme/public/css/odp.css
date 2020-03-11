@@ -1,0 +1,139 @@
+/** */
+.op-top-links .region{
+  display: inline-block;
+  max-height: 25px;
+  padding-top: 3px;
+}
+.op-top-links *{vertical-align:top;}
+
+.op-top-links li{
+  float: none;
+  margin: 3px 0 0 0 !important;
+}
+
+.op-header {
+    padding:31px 5px 15px;
+}
+.op-breadcrumb{
+  border-top: 0;
+  padding: 4px 8px;
+}
+.op-breadcrumb li{
+  color: #444 !important;
+}
+.op-breadcrumb a{
+  color: #666 !important;
+}
+.op-breadcrumb a:hover, .op-breadcrumb a:focus{
+  text-decoration: underline;
+}
+.op-breadcrumb a:after{
+  content: url(../images/bread-crumb-separator.png)!important;
+  display: inline-block;
+  margin: 0 4px;
+  vertical-align: text-bottom;
+}
+.op-breadcrumb .breadcrumb{
+  margin: 0;
+  padding: 0 5px;
+}
+.op-h-nav .menu{ padding-left: 0px; margin-bottom: 0;}
+.op-h-nav .menu .menu{ display: none;}
+.opendata .op-h-nav li{
+  margin: 0; padding: 0;
+}
+
+.opendata .op-h-nav li.expanded a{
+  background-color: #FFF;
+  color: #C53864;
+  font-weight: bold;
+}
+
+.opendata .mobile-menu{
+  background-color: #C53864;
+  color: #FFF;
+  border-radius: 5px 5px 0 0;
+  padding: 3px 10px;
+  font-size: 0.85em;
+  display: inline-block;
+
+
+}
+/*.op-h-nav .region{
+  display: inline-block;
+}*/
+
+#op-footer-full .region h2{
+  font-size: 1.1em;
+    font-weight: bold;
+    color: #003399;
+    margin-top: 5px;
+}
+
+#op-footer-full .region ul, #op-footer-full .region li{
+  margin: 0; padding: 0; list-style: none;
+}
+
+.op-breadcrumb a:last-child:after{ display: none;}
+
+.op-h-nav .account a {
+    color: #FFF;
+}
+.op-h-nav .account {
+    position: absolute;
+    top: 11px;
+    right: 121px;
+}
+
+.expanded-menu {
+    background-color: #EEE;
+    border-bottom: 1px solid #E29BB1;
+    height: 2.2em;
+    padding-top: 0.2em;
+    position: absolute;
+    width: 988px;
+    z-index: 20;
+    display: none;
+}
+
+span.sub-menu {
+    margin: 1em 0.6em 1em 0.6em;
+}
+
+span.sub-menu > a {
+    text-align: center;
+    vertical-align: sub;
+    color: #B5355E;
+    text-decoration: none;
+}
+
+a.arrow-right:after {
+    content: ' ▸' !important;
+}
+
+a.arrow-down:after {
+    content: ' ▾' !important;
+}
+
+span.sub-menu > a.active:before {
+    content: '▸ ';
+}
+
+span.sub-menu > a.active:after {
+    content: ' ◂';
+}
+
+
+a#catalogLogin {
+    font-weight: bold;
+}
+
+a#dataproviderArea:after, a#catalogLogin:after {
+    content: url(/euodp/sites/all/themes/openDataPortalTheme/images/OP-icons_0000s_0325_Group_-2-objects.png) !important;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+#op-footer-full a {
+    font-size: 0.9em;
+}

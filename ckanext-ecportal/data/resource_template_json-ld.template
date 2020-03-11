@@ -1,0 +1,14 @@
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Dataset",
+  "name" : "{{ pkg.title }}",
+  "description" : "{{ pkg.description | replace('\"', '\\\"')}}",
+  "distribution" : {
+    "encodingFormat" : "{{ pkg.format }}",
+    "contentUrl" : "{{ pkg.access_url | join(' ') }}"
+  },
+  "datePublished" : "{{ pkg.created }}",
+  "dateModified" : "{{ pkg.last_modified }}"
+}
+</script>

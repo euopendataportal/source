@@ -1,0 +1,125 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+<form class="ckan-form-group-organization" method="post" data-module="basic-form" enctype="multipart/form-data">
+    {% block error_summary %}
+        {{ form.errors(error_summary) }}
+    {% endblock %}
+
+    {% block basic_fields %}
+        {% set attrs = {'data-module': 'slug-preview-target', 'maxlength': 100} %}
+        {{ form.input('title', label=_('ecodp.common.tile.lable.name'), id='field-name', placeholder=_('group.group_form.name.placeholder'), value=data.title, error=errors.title, classes=['control-full'], attrs=attrs, is_required=true) }}
+
+        {# Perhaps these should be moved into the controller? #}
+        {% set prefix = h.url_for(controller='group', action='read', id='') %}
+        {% set domain = h.url_for(controller='group', action='read', id='', qualified=true) %}
+        {% set domain = domain|replace("http://", "")|replace("https://", "") %}
+        {% set attrs = {'data-module': 'slug-preview-slug', 'data-module-prefix': domain, 'data-module-placeholder': '<group>', 'maxlength': 100} %}
+
+        {{ form.prepend('name', label=_('ecodp.common.url'), prepend=prefix, id='field-url', placeholder=_('group.group_form.url.placeholder'), value=data.name, error=errors.name, attrs=attrs, is_required=true) }}
+
+        <div class="control-group control-full">
+            <label class="control-label" for="field-description">Description</label>
+
+            <div class="markdown-editor">
+
+                <textarea id="field-description" name="description" cols="20" rows="5"
+                          placeholder="A little information about the group...">{{ data.get('description','') }}</textarea>
+                <span class="editor-info-block">You can use <a
+                        href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown
+                    formatting</a> here</span>
+
+
+            </div>
+        </div>
+
+
+
+        {% set is_upload = data.image_url and not data.image_url.startswith('http') %}
+        {% set is_url = data.image_url and data.image_url.startswith('http') %}
+
+        {{ form.image_upload(data, errors, is_upload_enabled=h.uploads_enabled(), is_url=is_url, is_upload=is_upload) }}
+
+    {% endblock %}
+
+    {#% block custom_fields %}
+    {% for extra in data.extras %}
+      {% set prefix = 'extras__%d__' % loop.index0 %}
+      {{ form.custom(
+        names=(prefix ~ 'key', prefix ~ 'value', prefix ~ 'deleted'),
+        id='field-extras-%d' % loop.index,
+        label=_('ecodp.common.custom_field'),
+        values=(extra.key, extra.value, extra.deleted),
+        error=errors[prefix ~ 'key'] or errors[prefix ~ 'value']
+      ) }}
+    {% endfor %#}
+
+    {# Add a max if 3 empty columns #}
+    {#% for extra in range(data.extras|count, 3) %}
+      {% set index = (loop.index0 + data.extras|count) %}
+      {% set prefix = 'extras__%d__' % index %}
+      {{ form.custom(
+        names=(prefix ~ 'key', prefix ~ 'value', prefix ~ 'deleted'),
+        id='field-extras-%d' % index,
+        label=_('ecodp.common.custom_field'),
+        values=(extra.key, extra.value, extra.deleted),
+        error=errors[prefix ~ 'key'] or errors[prefix ~ 'value']
+      ) }}
+    {% endfor %}
+  {% endblock %#}
+
+    {#  {{ form.required_message() }} #}
+
+    {{ form.required_message() }}
+    {# Do not update datasets here
+  {% block dataset_fields %}
+    {% if data.packages %}
+      <div class="control-group">
+        <label class="control-label">{{ _('ecodp.common.datasets') }}</label>
+        <div class="controls">
+          {% for dataset in data.packages %}
+            <label class="checkbox" for="field-dataset-{{ loop.index0 }}">
+              <input id="field-dataset-{{ loop.index0 }}" type="checkbox" name="packages__{{ loop.index0 }}__name" value="{{ dataset.name }}" checked="checked" />
+              {{ dataset.title }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    {% set dataset_name = 'packages__%s__name' % data.packages|length %}
+    {% set dataset_attrs = {'data-module': 'autocomplete', 'data-module-source': '/dataset/autocomplete?q=?'} %}
+    {{ form.input(dataset_name, label=_('ecodp.common.datasets.add'), id="field-dataset", value=data[dataset_name], classes=['control-medium'], attrs=dataset_attrs) }}
+  {% endblock %}
+  #}
+
+
+    <div class="ckan-form-actions">
+        {% block delete_button %}
+            {% if h.check_access('group_delete', {'id': data.id}) %}
+                {% set locale = h.dump_json({'content': _('group.group_form.delete.confirmation')}) %}
+                <a class="btn btn-danger pull-left"
+                   href="{% url_for controller='group', action='delete', id=data.id %}"
+                   data-module="confirm-action" data-module-i18n="{{ locale }}">
+                    {% block delete_button_text %}{{ _('ecodp.common.button.delete') }}{% endblock %}</a>
+            {% endif %}
+        {% endblock %}
+        <button class="btn btn-primary" name="save" type="submit">
+            {% block save_text %}{{ _('group.group_form.button.save') }}{% endblock %}</button>
+    </div>
+</form>

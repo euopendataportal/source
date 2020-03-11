@@ -1,0 +1,80 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "organization/read_base.html" %}
+
+{%- block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/rdft_ecportal' %}
+{% endblock %}
+
+{% set locale = h.current_locale()|string %}
+{% set organization = c.group_dict %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block page_search %}
+    {% set placeholder_text = [_('organization.read.search.placeholder'), organization.display_name ] %}
+
+    {% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, content_heading=organization.display_name, placeholder=placeholder_text|join(' '),
+	name=organization.display_name, picture_url=organization.image_display_url %}
+
+{% endblock %}
+
+
+{% block page_search_right %}
+    {% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+
+{% block primary_content_inner %}
+    <img class="ckan-publisher-picture"
+         src="{{ organization.image_display_url or h.url_for_static('images/placeholder-organization.png')}}"
+         alt="{{ name }}" class="media-image">
+    <h1>{{ organization.display_name }}</h1>
+
+    {#  check if the url of the image is sent otherwise, use the defaukt one #}
+
+    {% snippet 'snippets/filter_box.html', fields=c.fields, facet_titles=c.facet_titles, label_source=c.search_facets, dataset_count=c.page.item_count, sort_by_selected=c.sort_by_selected, remove_field=c.remove_field %}
+
+    {% if c.query_error %}
+        <p i18n:msg="item_count"><strong>There was an error while searching.</strong> Please try again.</p>
+    {% endif %}
+
+    {% block packages_list %}
+        {% if c.page.items %}
+            {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+        {% endif %}
+    {% endblock %}
+
+    {% block page_pagination %}
+        {{ c.page.pager(q=c.q) }}
+    {% endblock %}
+
+    {% snippet "snippets/survey.html" %}
+
+{% endblock %}
+
+{% block secondary_content_inner %}
+
+    {% for facet in c.facet_titles %}
+        {% if c.facet_titles[facet] != 'Publishers' %}
+            {% snippet 'snippets/facet_list.html', title=c.facet_titles[facet], name=facet, extras={'id':organization.get('id')} %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

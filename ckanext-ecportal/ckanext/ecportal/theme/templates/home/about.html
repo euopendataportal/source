@@ -1,0 +1,29 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends 'page.html' %}
+
+{% block subtitle %}
+	About
+{% endblock %}
+
+{% block primary_content_inner %}
+	<h2>About {{g.site_title}}</h2>
+	<p>Most of the data indexed at {{g.site_title}} is openly licensed, meaning anyone is free to use or re-use it however they like. You can read more about open data in the <a href="http://opendatamanual.org/introduction/index.html" >Open Data Manual</a>.</p>
+	<p i18n:msg="">The <a href="http://okfn.org">Open Knowledge Foundation</a> is a non-profit organisation <a href="http://okfn.org/about/vision/">promoting</a> open knowledge.</p>
+{% endblock %}

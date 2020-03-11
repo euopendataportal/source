@@ -1,0 +1,150 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set user = c.user_dict %}
+
+
+<ul class="nav nav-pills">
+    {% if c.is_myself %}
+        {#			<li class="{{'active' if c.action=='read' else ''}}"><a href="{{h.url_for(controller='user', action='read', id=c.user)}}">{% trans %}menu.link.profile{% endtrans %}</a></li>#}
+        <li class="{{ 'active' if c.action=='edit' else '' }}"><a class="btn lable-btn"
+                href="{{ h.url_for(controller='user', action='edit', id=c.user_dict.name) }}">
+            {% trans %}user.base.breadcrump.navigation.edit{% endtrans %}</a></li>
+        {#			<li><a href="{{h.url_for(controller='user',action='logout')}}">{% trans %}user.base.breadcrump.navigation.logout{% endtrans %}</a></li>#}
+    {% else %}
+        {% if c.id %}
+            <li class="{{ 'active' if c.action=='read' else '' }}">
+                <a class="btn lable-btn" href="{{ h.url_for(controller='user', action='read', id=c.user_dict.name) }}">{% trans %}
+                    user.base.breadcrump.navigation.profile{% endtrans %}</a>
+            </li>
+        {% endif %}
+        {% if not c.id and not c.user %}
+            <li class="{{ 'active' if c.action=='login' else '' }}">
+                <a class="btn lable-btn" href="{{ h.url_for(controller='user', action='login') }}">{% trans %}user.login.subtitel.login{% endtrans %}
+                    }</a>
+            </li>
+        {% endif %}
+    {% endif %}
+</ul>
+
+<div class="summary >
+    <dl class="vcard">
+        <dt>Name</dt>
+        <dd>{{ user.fullname or 'No name provided' }}</dd>
+        <dt>Member since</dt>
+        <dd>{{ h.render_datetime(user.created) }}</dd>
+        {% if c.about_formatted %}
+            <dt>About</dt>
+            <dd>{{ c.about_formatted }}</dd>
+        {% endif %}
+        {% if c.is_myself %}
+            <dt>Email</dt>
+            <dd>
+                {% if user.email %}
+                    {{ h.mail_to(user.email, encode='javascript') }}
+                {% else %}
+                    No email
+                {% endif %}
+            </dd>
+            <dt>API Key</dt>
+            <dd>
+                {{ user.apikey }}
+                <br/>
+                <em>&ndash; Note: your API key is visible only to you!</em>
+            </dd>
+        {% endif %}
+    </dl>
+
+    <ul class="stats">
+        <li>
+            <strong>{{ user.number_administered_packages }}</strong>
+            <span>Datasets</span>
+        </li>
+        <li>
+            <strong>{{ user.number_of_edits }}</strong>
+            <span>Edits</span>
+        </li>
+        {#<li>
+						<a href="{{h.url_for(controller='user', action='followers',
+						id=user.name)}}">
+							{% if c.num_followers %}
+								<strong>{{c.num_followers}}</strong>
+								<span>Followers</span>
+							{% else %}
+								<strong>0</strong>
+								<span>Follower</span>
+							{% endif %}
+						</a>
+					</li>}#}
+    </ul>
+
+
+</div>
+
+<div class="rule"></div>
+
+{#<div class="listing">
+		<div class="row">
+			<div class="span6">
+				<div class="datasets">
+					<h2>{% trans %}ecodp.common.datasets{% endtrans %}</h2>
+					{% if user.datasets %}
+						{% snippet 'snippets/package_list.html', packages=user.datasets %}
+					{% else %}
+						{% if c.is_myself %}
+							<p class="empty">
+								{{ _('user.read.no_datasets') }}
+								{% if h.check_access('package_create') %}
+									{% link_for _('user.read.creat_now'), controller='package', action='new' %}
+								{% endif %}
+							</p>
+						{% else %}
+							<p class="empty">
+							{{ _('user.read.user_no_datasets') }}
+							</p>
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+			<div class="span6">
+				<div class="">
+					<h2>Publishers</h2>
+					<ul>
+						{% set organizations = h.organizations_available(c.user, 'organization') %}
+						{% for organization in h.sort_array(organizations, 'display_name') %}
+							<li>
+								<a href="{{h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=organization.name)}}">
+									{{organization.display_name}}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="span6">
+				<div class="changes">
+					<h2>Public Activity</h2>
+					<div class="activity-stream">
+						{{c.user_activity_stream}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>#}
+
+

@@ -1,0 +1,74 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{# Parameters:
+    - type {distribution, documentation, visualisation}
+    - data
+    - index (optional, should only be for ingestion packages)
+#}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dash_index = '_'+index|string %}
+
+    {% if type == 'distribution' %}
+        {% set resource_id = 'dataset-'+index|string+'-distribution-' %}
+    {% elif type == 'documentation' %}
+        {% set resource_id = 'dataset-'+index|string+'-documentation-' %}
+    {% elif type == 'visualization' %}
+        {% set resource_id = 'dataset-'+index|string+'-visualization-' %}
+    {% endif %}
+
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dash_index = '' %}
+    {% set resource_id = '' %}
+{% endif %}
+
+<div id="{{ dataset_id }}resource-list-{{ type }}-div{{ underscore_index }}" class="distribution-list">
+
+    {% set index_offset = 0 %}
+    {% if type == 'distribution' %}
+        {% trans %}package.form_resource.other_distribution{% endtrans %} <br/>
+        {% set resources = h.get_non_viz_resources2(data) %}
+    {% elif type == 'documentation' %}
+        {% trans %}package.form_resource.other_documentation{% endtrans %} <br/>
+        {% set resources = h.get_doc_resources(data) %}
+    {% elif type == 'visualization' %}
+        {% trans %}package.form_resource.other_visualisation{% endtrans %} <br/>
+        {% set resources = h.get_viz_resources(data) %}
+    {% endif %}
+
+    <ul id="{{ dataset_id }}resource-list-{{ type }}{{ underscore_index }}"
+        class="resource-list resource-list-edit drag-drop-list ui-sortable">
+            {% for res in data.get('resources', []) %}
+                {% if res in resources %}
+                    <li class="ui-state-default resource-edit drag-bars resource-list-item"
+                        id="{{ resource_id }}resource-list_{{ type }}-item-{{ loop.index0 }}">
+                        <a class="resource-open-my-panel"
+                           data-resnumber="{{ loop.index0 }}" href="#">
+                            <span class="resource-reordering-icon">&#8597;</span>
+                            {{ h.icon(h.format_icon(res.format or '')) }}
+                            <span class="js-resource-edit-name">{{ res.get('title') or res.get('description') }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+    </ul>
+</div>

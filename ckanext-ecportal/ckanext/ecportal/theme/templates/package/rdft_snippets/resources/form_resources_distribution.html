@@ -1,0 +1,84 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales()%}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+    {% set resource_id = 'dataset-'+index|string+'-distribution' %}
+
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+    {% set resource_id = 'resource' %}
+{% endif %}
+<div id="tabs-distribution{{ underscore_index }}" class="resource-tab" data-type="distribution">
+    <div id="{{ dataset_id }}resources-list-anchor"></div>
+    <ul>
+        <li>
+            <a data-resource="distribution" href="#tabs-1{{ underscore_index }}">
+                {% trans %}package.form_resource.distribution{% endtrans %}
+                (
+                <div class="inline-display" id="distribution-resource-number{{ underscore_index }}"></div>
+                )
+            </a>
+        </li>
+    </ul>
+    <div>
+        {% snippet "package/rdft_snippets/resources/form_resources_list.html", type="distribution", data=data, index=index %}
+
+        <ul class="resource-list resource-list-add">
+            <li>
+                <a href="#" class="js-resource-add" data-type="distribution">
+                    {{ h.icon('page_white_add') }}
+                    {% trans %}package.form_resource.new_resource{% endtrans %}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="span8">
+        <div class="resource-panel" id="main-resource-panel_distribution{{ underscore_index }}">
+
+            {% for res in data.get('resources', []) %}
+                {% set resource_type = h.resources_type_name_from_resource_type(res.get('resource_type') or []) %}
+                {% if resource_type == "distribution" %}
+                    <div id="{{ dataset_id }}resource_details_distribution_{{ loop.index0 }}" data-resnumber="{{ loop.index0 }}"
+                         class="resource-details_distribution" {{ 'style=display:none' if not(loop.first) }}>
+                        <div class="flash-messages">
+    {#                                <div class="alert alert-error resource-errors">error</div>#}
+                        </div>
+
+                    {% snippet 'package/rdft_snippets/resources/form_resources_generic_distribution.html', type="distribution", loop=loop, res=res, ctrl=c, index=index %}
+
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+    <div id="list-resource-distribution{{ underscore_index }}" style="display: none">
+        {% for res_type in c.resources_types_distribution %}
+            <div>{{res_type[0]}}|{{res_type[1]}}</div>
+        {% endfor %}
+    </div>
+    {% snippet 'package/rdft_snippets/resources/form_resources_templates_distribution.html', resources_types=data.resources_types, index=index %}
+</div>

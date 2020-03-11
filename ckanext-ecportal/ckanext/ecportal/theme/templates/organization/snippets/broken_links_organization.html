@@ -1,0 +1,55 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block image %}
+    <div class="col-xs-2">
+        <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}"
+            alt="{{ organization.name }}" class="media-image">
+    </div>
+{% endblock %}
+
+{% block details %}
+    <div class="col-xs-10">
+        <div class="row">
+            {% block title %}
+                <h1><a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=organization['name']) }}"
+                   class="">
+                    {{ organization['display_name'] }}
+                </a></h1>
+            {% endblock %}
+        </div>
+
+        <div class="row">
+            {% block count %}
+                <p>{{ organization.display_name }} {{ _('ecodp.common.broken_links').format(count=organization['deadLinks']) }}:</p>
+            {% endblock %}
+        </div>
+
+        <div class="row">
+            {% block datasets %}
+                <ul>
+                    {% for dataset in organization['datasets'] %}
+                        <li><a href="{{ h.url_for(controller='package', action='read', id=dataset['name']) }}">{{ dataset['title'] }}</a> {{ _('ecodp.common.broken_links').format(count=dataset['deadLinks']) }}: </li>
+                        {% snippet "organization/snippets/broken_links_resource_list.html", dataset=dataset, position=loop.index %}
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+        </div>
+
+    </div>
+{% endblock %}

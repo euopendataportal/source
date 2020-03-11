@@ -1,0 +1,65 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block page_search %}
+    <div class="page-search"
+         {% if nosidebar %}style="margin-top: 0px"{% endif %}
+            >
+        {% block content_heading %}
+            {%- if content_heading -%}
+                <div class="content_heading">
+                    <h1 class="content_heading">{{ content_heading }}</h1>
+                    {%- set domain_id = h.get_domain_id(name or "") -%}
+                    {%- if domain_id -%}
+                        <img src="{{ h.url_for_static('images/eurovoc_domains/odp_domain' + domain_id + '.png') }}" class="media-image"/>
+                    {%- else -%}
+                        <img class="publisher_picture"
+                             src="{{ picture_url or h.url_for_static('/images/placeholder-organization.png') }}"
+                             alt="{{ name }}" class="media-image">
+                    {%- endif -%}
+                </div>
+
+            {%- endif -%}
+        {% endblock %}
+        <form>
+            <input type="text" name="q" value="{% if query %}{{ query }}{% endif %}"
+                   placeholder="
+				{%- if placeholder -%}
+					{{ placeholder }}
+				{%- else -%}
+					{{ _('snippets.search_form.search_dataset') }}
+				{%- endif -%}"
+                   {% if nosidebar %}style="width: 97.5%"{% endif %}
+                    />
+            <input type="submit" value="" style="right: 6px; top: 6px;"/>
+            {% if fields %}
+                <span>
+					{% for (key, value) in fields %}
+                        <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+                    {% endfor %}
+				</span>
+            {% endif %}
+            {% if not nosearchoption %}
+                <p style="padding-left: 10px; margin-top: 5px;">
+                    {% snippet "snippets/boolean_search_choice.html", search_choice = search_choice %}
+                </p>
+            {% endif %}
+            <input type="hidden" name="sort" value="{{ sort }}"/>
+        </form>
+    </div>
+{% endblock %}

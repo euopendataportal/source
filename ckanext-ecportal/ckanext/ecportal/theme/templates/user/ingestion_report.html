@@ -1,0 +1,69 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{# TODO page title #}
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/table_sorter' %}
+    {% resource 'ecportal/blockui' %}
+    {% resource 'ecportal/jquery_ui' %}
+    {% resource 'ecportal/ingestion_report' %}
+{% endblock %}
+
+{# Full-size page #}
+{% block primary_span %}span12{% endblock %}
+
+{% block subtitle %}{% trans %}rdftool.dashboard.ingestion_report{% endtrans %}{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    <span class="separator"></span>
+    <a>{% trans %}rdftool.dashboard.ingestion_report{% endtrans %}</a>
+{% endblock %}
+
+{% set action_url =  c.id_list %}
+
+{% block primary_content_inner %}
+    {% if  c.datasets.get('created',{}).get('data') %}
+        <h2>{% trans %}rdftool.dashboard.ingestion_report.add_message{% endtrans %}</h2>
+        {% snippet 'snippets/generic_table.html', table=c.datasets.get('created', {}), table_id = 'add-dataset-table' %}
+    {% endif %}
+    {% if  c.datasets.get('updates',{}).get('data')  %}
+        <h2>{% trans %}rdftool.dashboard.ingestion_report.update_message{% endtrans %}</h2>
+        {% snippet 'snippets/generic_table.html', table=c.datasets.get('updates', {}), table_id = 'update-dataset-table' %}
+    {% endif %}
+
+    {% if  c.datasets.get('deleted',{}).get('data')  %}
+        <h2>{% trans %}rdftool.dashboard.ingestion_report.delete_message{% endtrans %}</h2>
+        {% snippet 'snippets/generic_table.html', table=c.datasets.get('deleted', {}), table_id = 'delete-dataset-table' %}
+    {% endif %}
+
+    {% if  c.datasets.get('file_uploads',{}).get('data')  %}
+        <h2>{% trans %}rdftool.dashboard.ingestion_report.upload_message{% endtrans %}</h2>
+        {% snippet 'snippets/generic_table.html', table=c.datasets.get('file_uploads', {}), table_id = 'upload-table' %}
+    {% endif %}
+    <div style="text-align: right;">
+        <input id="confirm-ingestion-result" name="confirm-delete" type="button" class="btn btn-primary"
+               action="{{ action_url }}"
+               value="OK"/>
+    </div>
+
+    <input id="datasets_ids" style="display:none" value="{{ c.datasets_ids }}"/>
+{% endblock %}

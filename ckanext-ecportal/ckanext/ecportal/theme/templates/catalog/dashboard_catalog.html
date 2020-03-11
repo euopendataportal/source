@@ -1,0 +1,48 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if h.is_metadatatool_plugin_activated() %}
+    {% extends "user/rdft_dashboard.html" %}
+{% else %}
+    {% extends "user/dashboard.html" %}
+{% endif %}
+
+{% block dashboard_activity_stream_context %}{% endblock %}
+
+{% block minor_navigation %}
+<div id="minornavigation">
+    <minornavigation>
+        {% if h.check_access('catalog_create') %}
+            {% link_for _('group.new_catalog_form.add'), controller='ckanext.ecportal.controllers.catalog:ECPORTALCatalogController', action='new', class_="btn btn-primary", icon="plus-sign-alt" %}
+        {% endif %}
+    </minornavigation>
+</div>
+{% endblock %}
+
+{% block primary_content_inner %}
+    {% set catalogs = c.catalogs %}
+    {% if catalogs %}
+        <div class="domain">
+            {% snippet "catalog/snippets/catalog_list.html", catalogs=catalogs, ctx=c %}
+        </div>
+    {% else %}
+        <p class="empty">
+            {{ _('dashboard_cataloges.content.no_member') }}
+        </p>
+    {% endif %}
+{% endblock %}

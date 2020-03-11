@@ -1,0 +1,32 @@
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F6F6F6;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: #337CD7;
+    text-align: center;
+    /*border-left: 1px solid black;*/
+    /*border-right: 1px solid black;*/
+    background: transparent;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+
+
+#user-contact-info-form input:not(.btn) {
+    width: 60%;
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:schema="http://schema.org/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcatapop="http://data.europa.eu/88u/ontology/dcatapop#"
+  xmlns:cnt="http://www.w3.org/2011/content#"
+  xmlns:qb="http://purl.org/linked-data/cube#"
+  xmlns:stat="http://data.europa.eu/xyz/statdcat-ap/"
+  xmlns:dqv="http://www.w3.org/ns/dqv#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#"
+  xmlns:oa="http://www.w3.org/TR/2016/WD-annotation-vocab-20160331/#"
+  xmlns:eg="http://example.org/ns#">
+
+<rdf:Description rdf:about="http://data.europa.eu/88u/catalog/euodp">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+    <dct:title xml:lang="en">European Union Open Data Portal</dct:title>
+    <dct:description xml:lang="en">The European Union Open Data Portal (EU ODP) provides access to open data published by EU institutions, bodies or agencies. All the data you can find via this catalogue are free to use and reuse for commercial or non-commercial purposes.</dct:description>
+    <dcat:themeTaxonomy rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <dcat:dataset rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2"/>
+    <dct:publisher rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
+    <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-09-25</dct:issued>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/BUG"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/SPA"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/CES"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DAN"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/EST"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ELL"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/GLE"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/HRV"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/LAV"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/LIT"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/HUN"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/POL"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/POR"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/RON"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/SLK"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/FIN"/>
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/language/SWE"/>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-4T17:34:39.166616</dct:modified>
+    <foaf:homepage>http://data.europa.eu/euodp/en/data</foaf:homepage>
+    <dct:license rdf:resource="http://publications.europa.eu/resource/authority/licence/COM_REUSE"/>
+    <dct:spatial rdf:resource="http://publications.europa.eu/resource/authority/country/EUR"/>
+</rdf:Description>
+</rdf:RDF>
+

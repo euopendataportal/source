@@ -1,0 +1,225 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales() %}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+
+{% set group_names_list = h.names_from_tags(data.get('theme', [])) %}
+
+<fieldset id="{{ dataset_id }}mandatory-parameters">
+    {% if not  bulk_edition %}
+        {% include '/snippets/language_bar.html' %}
+
+        <input type="hidden" id="{{ dataset_id }}id" name="{{ dataset_name }}id" type="text"
+               value="{{ data.id or '' }}"/>
+
+        {#Title#}
+        <div class="control-group title-field">
+
+            <label class="control-label" for="{{ dataset_id }}title">
+                <span class="field_required">&#9733;</span>
+                {%- trans %}ecodp.common.title{%- endtrans %}
+            </label>
+
+            <div class="controls">
+                <input id="{{ dataset_id }}title" class="js-title translatable-field" name="{{ dataset_name }}title"
+                       type="text"
+                       value="{{ data.title }}"
+                       placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}"
+                       data-module="custom_slug-preview-target"/>
+
+                {% for locale in langs %}
+                    {% if data.get(['title-',locale]|join, []) %}
+                        <input id="{{ dataset_id }}title-{{ locale }}" class="js-title translatable-field"
+                               name="{{ dataset_name }}title-{{ locale }}" type="text"
+                               value="{{ data.get(['title-',locale]|join, '') }}"
+                               placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}"
+                               data-module="custom_slug-preview-target" style="display: none"/>
+                    {% endif %}
+                {% endfor %}
+
+
+
+                <span class="searchHelp-green gradient input-helper"
+                      title="{% trans %}ecodp.rdft.dataset_edit.tip.title{% endtrans %}">?</span>
+                {% if errors.title %}
+                    <p class="field_error">Error: {{ errors.title }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    {# Description #}
+    <div class="control-group description-field">
+
+        <label class="control-label" for="{{ dataset_id }}description"><span class="field_required">&#9733;</span>
+            {% trans %}ecodp.rdft.dataset_edit.description{% endtrans %}</label>
+
+        <div class="controls">
+            <span class="hints-right">{% trans %}ecodp.rdft.dataset_edit.usage{% endtrans %}<a
+                    href="http://daringfireball.net/projects/markdown/syntax"
+                    target="_blank">{% trans %}ecodp.rdft.dataset_edit.formatting{% endtrans %}</a>
+            </span>
+
+            <div class="markdown-editor" style="display: inline-block;">
+                <br/>
+
+
+                <textarea class="js-description markdown-input translatable-field" style="resize: vertical"
+                          name="{{ dataset_name }}description"
+                          id="{{ dataset_id }}description"
+                          placeholder="{% trans %}package.form_basic_information.description.placeholder{% endtrans %}">{{ data.description }}</textarea>
+
+
+
+                {% for locale in langs %}
+                    {% if not bulk_edition %}
+                        {% if data.get(['description-',locale]|join, []) %}
+                            <textarea class="js-description markdown-input translatable-field"
+                                      style="resize: vertical; display:none"
+                                      name="{{ dataset_name }}description-{{ locale }}"
+                                      id="{{ dataset_id }}description-{{ locale }}"
+                                      placeholder="{% trans %}package.form_basic_information.description.placeholder{% endtrans %}">{{ data.get(['description-',locale]|join, '') }}</textarea>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                {% for locale in langs %}
+                    {% if  bulk_edition %}
+                        {% if data.get(['description-',locale]|join, []) %}
+                            <textarea class="js-description markdown-input translatable-field"
+                                      style="resize: vertical; display:none"
+                                      name="{{ dataset_name }}description-{{ locale }}"
+                                      id="{{ dataset_id }}description-{{ locale }}"
+                                      placeholder="{% trans %}package.form_basic_information.description.placeholder{% endtrans %}">{{ data.get(['description-',locale]|join, '') }}</textarea>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+
+                <div class="markdow n-preview" style="display: none;"></div>
+
+
+            </div>
+
+            <span class="searchHelp-green gradient input-helper" style="top: 45px;"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.description{% endtrans %}">?
+                     </span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.description %}
+                <p class="field_error">Error: {{ errors.description }}</p>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+    {%  if c.action != 'manage_package' %}
+        {# Publisher #}
+        <div class="control-group publisher-field">
+            <label class="control-label" for="owner_org"><span class="field_required">&#9733;</span>{% trans %}ecodp.rdft.dataset_edit.publisher{% endtrans %}</label>
+            <div class="controls">
+                <select id="{{ dataset_id }}owner_org" name="{{ dataset_name }}owner_org" class="chzn-select">
+                    {% for publisher in c.publishers %}
+                        <option value="{{ publisher.id }}"
+                                {% if data['organization'] and data['organization']['name'] and
+                                publisher['name'] == data['organization']['name'] or
+                                publisher.name == c.new_group %}selected="selected"{% endif %}>{{ publisher.display_name }}</option>
+                    {% endfor %}
+                </select>
+                <span class="searchHelp-green gradient input-helper"
+                      title="{% trans %}ecodp.rdft.dataset_edit.tip.publisher{% endtrans %}">?
+                </span>
+                {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {# Theme #}
+    <div class="control-group">
+        <label class="control-label" for="theme"><span class="field_required">&#9733;</span>{% trans %}ecodp.rdft.dataset_edit.theme{% endtrans %}</label>
+        <div class="controls">
+            <select id="{{ dataset_id }}theme" class="chzn-select"
+                    name="{{ dataset_name }}theme"
+                    multiple="multiple">
+                <option selected disabled hidden style='display: none' value=''></option>
+
+                    {% for domain in c.domains_eurovoc %}
+                        {% set domain_uri = domain.get('uri') %}
+                        {% set domain_value = domain.get('label') %}
+                        {% if domain_uri in group_names_list or domain_uri in group_id_list %}
+                            <option selected="selected" value="{{ domain_uri }}">{{ domain_value }}</option>
+                        {% else %}
+                            <option value="{{ domain_uri }}">{{ domain_value }}</option>
+                        {% endif %}
+                    {% endfor %}
+
+                {% if not group_names_list and  bulk_edition %}
+                    <option selected="selected" value=""></option>
+                {% endif %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.theme{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.domains_eurovoc %}
+                <p class="field_error">{{ errors.domains_eurovoc }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+    {% if not  bulk_edition %}
+
+        {% if not data.name %}
+            {% set name =  _('ecodp.rdft.edit.automatic_value.placeholder')%}
+        {% else %}
+            {% set name = data.name %}
+        {% endif %}
+        {# URI #}
+        <div class="control-group homepage-field">
+            <label class="control-label" for="url">{% trans %}ecodp.rdft.dataset_edit.uri{% endtrans %}</label>
+
+            <div class="input-prepend">
+                {% if not data.uri %}
+                    <span class="add-on" >{{ name }}</span>
+                {% else %}
+                    <span class="add-on">{{ data.uri }}</span>
+                {% endif %}
+            </div>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.uri{% endtrans %}">?</span>
+            {% if errors.url %}
+                <p class="field_error">Error: {{ errors.url }}}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <input type="hidden" name="{{ dataset_name }}name" id="{{ dataset_id }}name" value={{ data.name }}>
+    <input type="hidden" id="{{ dataset_id }}uri" name="{{ dataset_name }}uri" value={{ data.uri }}>
+
+</fieldset>

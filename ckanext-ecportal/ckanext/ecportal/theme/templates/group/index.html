@@ -1,0 +1,116 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{% set locale = h.current_locale()|string %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/group_list' %}
+    {% resource 'ecportal/rdft_ecportal' %}
+{% endblock %}
+
+{% block bodytag %}
+    {{ super() }}
+    class="no-sidebar"
+{% endblock %}
+
+{% block subtitle %}{% trans %}ecodp.common.groups{% endtrans %}{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.groups'), h.url_for(controller='group', action='index', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+    <a href="{{h.url_for(controller='group', action='index')}}">{% trans %}ecodp.common.groups{% endtrans %}</a>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block page_search %}
+    {% snippet 'snippets/page_search.html', query='', fields=c.fields, controller='home', dataset_count=h.get_count_dataset() %}
+{% endblock %}
+
+{% block page_search_right %}
+    {% snippet "snippets/suggest_box.html" , controller='home'%}
+{% endblock %}
+
+{% block page_primary_action %}
+    {% if h.check_access('group_create') %}
+        {% link_for _('group.index.button.group.add'), controller='group', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+    {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+    <div class="ckan-group-content">
+        {% block groups_list %}
+            <div id="page_heading_div" >
+                <h1 class="page_heading">
+                    {% trans %}ecodp.common.facet.theme{% endtrans%}
+                    <span class="hidebutton glyphicon glyphicon-minus" data-selector="eurovoc_domains"></span>
+                    <span class="showbutton glyphicon glyphicon-plus" style="display:none" data-selector="eurovoc_domains"></span>
+                </h1>
+            </div>
+
+		<div class="domains common-domains" id="eurovoc_domains">
+			<ul>
+				{% set locale = h.current_locale()|string %}
+				{% for domain in c.themes %}
+					<li>
+					<a href = "{{h.url_for(controller='package', action='search', vocab_theme=domain.uri, sort='views_total desc')}}">
+                        <img src="{{ h.url_for_static('images/eurovoc_domains/odp_domain' + domain.icon_id + '.png') }}" class="media-image"/>
+					</a>
+					<p>{{domain.label}}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+            {% snippet "group/snippets/display_list.html" , controller='group', list = c.groups, title = _('ecodp.common.groups'), name='groups', selector_name ='groups_selector', show_less_display=c.amount_group_displayed %}
+        {% endblock %}
+
+        {% block catalog_list %}
+            {% snippet "group/snippets/display_list.html" , controller='ckanext.ecportal.controllers.catalog:ECPORTALCatalogController', list = c.catalogs, title = _('ecodp.common.catalogs'), name='vocab_catalog', selector_name ='catalogs_selector', show_less_display=c.amount_catalog_displayed %}
+        {% endblock %}
+        </div>
+{% endblock %}
+
+{% block secondary_content %}
+    <div class="facet-box ckan-face-box2">
+        <h2> {% trans %}ecodp.common.group.eurovoc.explained{% endtrans %} </h2>
+        <div class="inner">
+            <p>{% trans %}ecodp.group.index.eurovoc_explained{% endtrans %}
+            </p>
+
+        </div>
+    </div>
+
+    <div class="facet-box ckan-face-box2">
+        <h2>{% trans %}ecodp.common.group.search.group{% endtrans %}</h2>
+        <div class="inner">
+            <p>
+                {% trans %}ecodp.common.group.search.group_explained{% endtrans %}
+            </p>
+        </div>
+        <div id="group-index-search">{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, placeholder=_('group.index.search.placeholder'), controller='group', nosidebar=True, nosearchoption = True %}</div>
+    </div>
+{% endblock %}
+

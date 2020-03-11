@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{%- set pkg = c.pkg_dict %}
+{%- set owner = pkg.organization %}
+<ecodp:manifest xmlns:ecodp="http://data.europa.eu/88u/ontology/dcatapop#"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://data.europa.eu/euodp/ontologies/ec-odp# http://data.europa.eu/euodp/ontologies/protocol-v4.0/odp-protocol-v4.0.xsd"
+                ecodp:version="2.0"
+                ecodp:package-id="{{ pkg.manifest[0].get('package_id') }}"
+                ecodp:creation-date-time="{{ pkg.manifest[0].get('creation_date') }}"
+                ecodp:publisher="{{ pkg.manifest[0].get('publisher_uri') }}"
+                ecodp:priority="normal">
+
+    {%  for value in pkg.dataset %}
+        <ecodp:action ecodp:id="add{{ loop.index0 }}"
+                      ecodp:object-uri="{{ value.dataset_uri }}"
+                      ecodp:object-type="dataset"
+                      ecodp:object-ckan-name="{{ value.schema.ckanName_dcatapop['0'].value_or_uri }}">
+
+            {% set status = 'published' if value.privacy_state == 'public' else 'draft' %}
+
+            <ecodp:add-replace ecodp:object-status="{{ status }}" ecodp:package-path="/datasets/{{ value.schema.ckanName_dcatapop['0'].value_or_uri }}.rdf"/>
+        </ecodp:action>
+    {% endfor %}
+
+    {%  for value in pkg.delete %}
+        <ecodp:action ecodp:id="remove{{ loop.index0 }}"
+                      ecodp:object-uri="{{ value.dataset_uri }}"
+                      ecodp:object-type="dataset"
+                      ecodp:object-ckan-name="{{ value.schema.ckanName_dcatapop['0'].value_or_uri }}">
+            <ecodp:remove/>
+        </ecodp:action>
+    {% endfor %}
+
+    {%  for value in pkg.files %}
+        <ecodp:action ecodp:id="upload{{ loop.index0 }}" ecodp:object-type="upload" ecodp:object-uri="http://data.europa.eu/euodp/data/uploads/{{ owner.name }}/{{ value.name }}">
+            <ecodp:upload-distribution ecodp:package-path="{{ value.path }}" />
+        </ecodp:action>
+    {% endfor %}
+
+</ecodp:manifest>

@@ -1,0 +1,259 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "package/read_base.html" %}
+
+{% set pkg = c.pkg_dict or pkg_dict %}
+{% set eurostats_datasets = h.eurostats_compatible_datasets() %}
+{% set keywords = pkg.keywords or pkg.tags %}
+{% set keywords_filtered =  h.get_keywords_name(keywords) %}
+{% set description = pkg.get('description', pkg.get('notes', '')) %}
+
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/rdft_ecportal' %}
+    {% resource 'ecportal/dataset_tools' %}
+    {% resource 'ecportal/tracking' %}
+    {{ pkg.json_ld | safe }}
+{% endblock %}
+
+{% block menu %}
+    {% if h.is_metadatatool_plugin_activated() %}
+        {% block menu_snippet %}
+            {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home' %}
+        {% endblock %}
+    {% else %}
+        {% snippet "menu.html", user_log=c.user %}
+    {% endif %}
+{% endblock %}
+
+{% block overwrite_description %}
+    <meta name="description" content="{{ pkg.description }}"/>
+{% endblock %}
+
+{% block optional_meta %}
+    {% if keywords_filtered %}
+        <meta name="keywords" content="{{ keywords_filtered|join(', ') }}"/>
+    {% endif %}
+{% endblock %}
+
+{%- block title -%}
+    {%- block subtitle %}{% endblock -%}
+    {{ pkg.get('title', pkg.name) }} - Datasets
+{%- endblock -%}
+
+
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block page_search %}
+	{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, controller='home' %}
+
+
+
+{% endblock %}
+
+{% block page_search_right %}
+	{% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+{% block primary_content_inner %}
+{% block content_heading %}
+    <h1 class="pre_page_heading">
+        {{ pkg.title or pkg.name }}
+        <a href="{{ h.url(controller='package', action='history', id=c.pkg.name, format='atom', days=7) }}"><i class="rss_in_title"
+                                                                                                               style="display:inline-block;"></i></a>
+
+        <a download target="_blank" href="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='read', id=pkg.id, format='rdf') }}"
+           title="RDF"> <img class="rdf_link" border="0" src="{{ h.url_for_static('/images/rdf.gif') }}" alt="RDF"/></a>
+
+    </h1>
+{% endblock %}
+
+    <div id="dataset" class="dataset">
+        <div id="dataset-overview">
+
+            {% if pkg.state == 'deleted' %}
+                <div class="dataset-deleted-message">
+                    {% trans %}package.read.deleted_hint{% endtrans %}
+                </div>
+            {% endif %}
+
+            {% if pkg.organization %}
+                <div class="package-box publishers">
+                    <h2><i class="publisher"></i>{% trans %}ecodp.common.publisher{% endtrans %}</h2>
+                    <div class="inner">
+                        {% set organization = pkg.organization.title or pkg.organization.name %}
+                        <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=pkg.organization.name) }}">{{ organization }} &raquo;</a>
+                    </div>
+                </div>
+            {% endif %}
+
+            <!-- Description -->
+            {% if description|trim() %}
+                <div class="package-box">
+                    <h2><i class="note"></i>{% trans %}ecodp.common.description{% endtrans %}</h2>
+                    <div class="inner faded">
+                        {{ h.render_markdown(description) }}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% set groups = pkg.get('groups','') %}
+{#            {% set eurovoc_domains = h.filter_groups_by_type(all_groups, 'eurovoc_domain') %}#}
+            {% set eurovoc_domains = pkg.get('theme','') %}
+{#            {% set groups = h.filter_groups_by_type(all_groups, 'group') %}#}
+
+            {% if eurovoc_domains %}
+                <div class="package-box">
+                    <h2><i class="note"></i>{% trans %}ecodp.common.eurovoc_domains{% endtrans %}</h2>
+                    <div class="inner">
+                        {% for theme in eurovoc_domains %}
+                            <a href="{{h.url_for(controller='package', action='search', vocab_theme=theme.uri, sort='views_total desc')}}">{{theme.title}}</a>{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if groups %}
+                <div class="package-box">
+                    <h2><i class="note"></i>{% trans %}ecodp.common.groups{% endtrans %}</h2>
+                    <div class="inner">
+                        {% for group in groups %}
+                            {{ h.link_to(group.title, h.url_for(controller='group', action='read', id=group.name)) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% set viz_resources =  h.get_viz_resources(pkg) %}
+            {% set doc_resources = h.get_doc_resources(pkg) %}
+            {% set non_viz_resources = h.get_non_viz_resources2(pkg) %}
+
+            <!-- Resources -->
+            {% snippet "package/rdft_snippets/read_resources.html", pkg=pkg, non_viz_resources=non_viz_resources %}
+
+            <!-- Visualisations -->
+            {% snippet "package/rdft_snippets/read_visualisations.html", pkg=pkg, viz_resources=viz_resources %}
+
+            <!-- Documentation -->
+            {% snippet "package/rdft_snippets/read_documentation.html", pkg=pkg, doc_resources=doc_resources %}
+
+        </div>
+
+        <!-- Dataset Information Section -->
+        {% snippet "package/rdft_snippets/read_dataset_info.html", pkg=pkg, url_link=c.pkg_url_link, version=c.pkg.version, eu_country=c.eu_country, pkg_extras=c.pkg_extras %}
+
+        <!-- Contact -->
+        {% snippet "package/rdft_snippets/read_contact.html", pkg=pkg %}
+
+        <!-- Survey -->
+        {% snippet "snippets/survey.html" %}
+
+    </div>
+{% endblock %}
+
+{% block secondary_content_inner %}
+
+    {% if not pkg.private and pkg.doi %}
+        {% snippet "package/rdft_snippets/read_citation.html", pkg=pkg %}
+    {% endif %}
+
+    {% if  keywords %}
+        <li class="facet-box ckan-face-box2">
+            <h2>{% trans %}ecodp.common.facet.keywords{% endtrans %}</h2>
+            {% snippet "package/rdft_snippets/read_tags.html", tags=keywords %}
+        </li>
+    {% endif %}
+
+    {% set concepts_eurovoc = pkg.get('concepts_eurovoc','') %}
+    {% if concepts_eurovoc %}
+        <li class="facet-box ckan-face-box2">
+            <h2>{% trans %}ecodp.common.eurovoc_concepts{% endtrans %}</h2>
+            {% snippet "package/rdft_snippets/read_tags.html", tags=concepts_eurovoc, is_eurovoc_tag=true %}
+        </li>
+    {% endif %}
+
+    {% if c.package_relationships %}
+        <li class="facet-box ckan-face-box2">
+            <h2>{% trans %}package.read.dataset_relations{% endtrans %}</h2>
+            <ul class="related-datasets">
+                {% for pkg, relationship_str, comment in c.package_relationships %}
+                    <li>
+                        {{ h.literal(relationship_str % (h.link_to(pkg.name, h.url_for(controller="package", action="read", id=pkg.name)))) }}
+                        {% if comment != None and len(comment) %}
+                            <span class="relationship_comment">({{ comment }})</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+
+
+    {% set metadata_created = pkg.metadata_created %}
+    {% set metadata_modified = pkg.metadata_modified %}
+    {% if metadata_created or metadata_modified %}
+        <li class="facet-box ckan-face-box2">
+            <h2>{{ _('package.read.catalogue_record.title') }}</h2>
+
+            {% if metadata_created %}
+                <ul class="facet-options">
+                    <li>{% trans %}package.read.catalogue_record.added{% endtrans %}</li>
+                    <li><span>{{ h.render_datetime(metadata_created, '%Y-%m-%d') }}</span></li>
+                </ul>
+            {% endif %}
+
+            {% if metadata_modified %}
+                <ul class="facet-options">
+                    <li>{% trans %}package.read.catalogue_record.updated{% endtrans %}</li>
+                    <li><span>{{ h.render_datetime(metadata_modified, '%Y-%m-%d') }}</span></li>
+                </ul>
+            {% endif %}
+
+            {% set views_total = pkg.tracking_summary.total %}
+            {% set download_total = pkg.download_total %}
+
+            {% if views_total %}
+                <ul class="facet-options">
+                    <li>{% filter capitalize %}{% trans %}ecodp.common.lable.views{% endtrans %}{% endfilter %}: {{ views_total }}</li>
+                </ul>
+            {% endif %}
+
+            {% if download_total %}
+                <ul class="facet-options">
+                    <li>{% filter capitalize %}{% trans %}ecodp.common.label.downloads{% endtrans %}{% endfilter %}: {{ download_total }}</li>
+                </ul>
+            {% endif %}
+
+        </li>
+    {% endif %}
+
+    {% if '/eurostat/' in c.pkg_url_link and eurostats_datasets and pkg.identifier in eurostats_datasets.datasets %}
+        <li class="facet-box ckan-face-box2">
+            <h2>{% trans %}package.read.eurostat.title{% endtrans %}</h2>
+            <div id="widget_eurostat">
+                <script type="text/javascript"
+                        src="//ec.europa.eu/eurostat/wbs/rest/v1.1/online/figurechart/{{ pkg.identifier }}/EU28/080c99/null/null/none/en/auto/12/false/256/290/4c87bf/2px/Arial,Helvetica,sans-serif/0.8em/normal/ffffff/053f7f/white/Arial,Helvetica,sans-serif/0.8em/000000/ffffff/false/undefined"></script>
+                <noscript>Your browser does not support JavaScript!<br/>Please use one the latest Version of your Browser.</noscript>
+            </div>
+        </li>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block header_wrapper %}
+    {% block header_account %}{% endblock %}
+    <div class="op-header">
+        {% block header_debug %}
+            {% if g.debug and not g.debug_supress_header %}
+                <div class="debug">Controller : {{ controller }}<br/>Action : {{ action }}</div>
+            {% endif %}
+        {% endblock %}
+
+        {# The .header-image class hides the main text and uses image replacement for the title #}
+        {% block header_menu %}
+            <div id="header-menu" class="op-top-links">
+             <div class="region">
+                <ul class="menu" >
+                    <li class="first leaf"></li>
+                    <li class="leaf"></li>
+                    <li class="last leaf"></li>
+                </ul>
+            </div>
+            <div class="region">
+                <div id="language-selector">
+                    <select id="language-selector-box" class=""  name="language-selector-box" onchange="window.location = value;">
+                        {% for locale in h.get_available_locales() %}
+                            {% if locale == h.current_locale() %}
+                                <option selected="selected" value="{% url_for request.environ.CKAN_CURRENT_URL, locale=locale %}">{{locale.display_name}} ({{locale}})</option>
+                            {% else %}
+                                <option  value="{% url_for request.environ.CKAN_CURRENT_URL, locale=locale %}">{{locale.display_name}} ({{locale}})</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            </div>
+        {% endblock %}
+
+		{% block header_logo %}
+			<div class="logo-title">
+                <a href="{{ h.getExternalLinkURL() }}" class="op-logo"></a>
+            </div>
+		{% endblock %}
+	</div>
+
+{% endblock %}

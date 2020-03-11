@@ -1,0 +1,94 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+    {% set resource_id = 'dataset-'+index|string+'-distribution-' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+    {% set resource_id = 'resource' %}
+{% endif %}
+<div class="templates_distribution" style="display:none">
+    <div class="dynamic-extra-template">
+        <button class="btn btn-danger remove-resource-extra">X</button>
+        <input type="text" placeholder="Key" class="extra-key" value="">
+        <input type="text" placeholder="Value" class="extra-value" value="">
+    </div>
+</div>
+
+<div class="templates_distribution" style="display:none">
+    <li class="resource_list_distribution_item_template">
+        <a class="resource-open-my-panel" href="#">
+            <span class="resource-reordering-icon">&#8597;</span>
+            <img class="js-resource-icon inline-icon resource-icon"
+                 src="{{ h.url_for_static('images/icons/page_white.png') }}"/>
+            <span class="js-resource-edit-name"><em>[new resource]</em></span>
+        </a>
+    </li>
+</div>
+
+<div class="templates_distribution" style="display:none">
+    <span id="resource_dropdown_language_template">
+        {% for lang in h.get_all_languages() %}
+            <option value="{{ lang['uri'] }}">{{ lang['label'] }}</option>
+        {% endfor %}
+    </span>
+</div>
+
+<div class="templates_distribution" style="display:none">
+    <span id="resource_dropdown_licence_template">
+        <option value=""></option>
+        {% for license in h.get_all_licenses() %}
+            <option value="{{ license['uri'] }}">{{ license['label'] }}</option>
+        {% endfor %}
+    </span>
+</div>
+
+<div class="templates_distribution" style="display:none">
+    <span id="resource_dropdown_status_template">
+            <option value=""></option>
+            {% for vocab in h.get_all_status()%}
+                <option value="{{ vocab.get("uri")  }}">{{vocab.get("label")}}</option>
+            {% endfor %}
+    </span>
+</div>
+
+<div class="templates_distribution" style="display:none">
+    <span id="resource_dropdown_format_template">
+            <option value=""></option>
+            {% for format in h.get_all_formats()%}
+                <option value="{{ format.get("uri")  }}">{{format.get("label")}}</option>
+            {% endfor %}
+    </span>
+</div>
+
+
+<div class="templates_distribution" style="display:none">
+    <div id="resource_details_distribution_template" class="resource-details_distribution-template">
+        <div class="flash-messages">
+            <!--<div class="alert alert-error resource-errors"></div>-->
+            <div class=""></div>
+        </div>
+        {% snippet "package/rdft_snippets/resources/form_resources_templates_generic_distribution.html", type="distribution", index=index %}
+    </div>
+</div>

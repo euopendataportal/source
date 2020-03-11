@@ -1,0 +1,47 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div id="manage_package_add_content" class="div_toggle ui-layout-center" style="display: none">
+
+    <select id="action-selector">
+        <option value="default" selected>Choose content</option>
+        <option value="ingestion_add_rdf">Add/Replace Dataset</option>
+        <option value="ingestion_add_delete">Delete Dataset</option>
+        <option value="manage_file_upload">Add upload</option>
+    </select>
+
+    <button id="ingestion_add_rdf" type="submit" name="your_name" value="your_value" class="btn-link" style="display: none">Add/Replace Dataset</button>
+    <button id="ingestion_add_delete" type="submit" name="your_name" value="your_value" class="btn-link" style="display: none">Delete Dataset</button>
+
+
+    <div id="manage_file_upload" class="js-add-upload-form" style="display: none">
+        <div class="ingestion_fileupload">
+            <input id="select-file-resource-upload" type="file" name="resource-file-upload" >
+            <br>
+
+            <div class="fileinfo"></div>
+            <input id="add-resource-upload" name="add-resource-upload" type="submit" class="upload btn btn-primary"
+                   value="{% trans %}package.form_resource.upload_button{% endtrans %}" />
+
+            <div class="alert alert-block success alert-info" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="alert alert-block" style="display: none;"></div>
+
+
+</div>

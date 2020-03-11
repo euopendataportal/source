@@ -1,0 +1,305 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+<fieldset id="{{ dataset_id }}further-information">
+	<div class="control-group title-field">
+		<label class="control-label" for="identifier">Identifier</label>
+		<div class="controls">
+			<input id="{{ dataset_id }}identifier" name="{{ dataset_name }}identifier" type="text"
+			value="{{data.identifier}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="Literal identifiers.&#13;e.g. CELEX number, etc.">?</span>
+        {% if bulk_edition and data.get('identifier_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+			{% if errors.identifier %}
+				<p class="field_error">{{errors.identifier}}</p>
+			{% endif %}
+		</div>
+	</div>
+
+    <hr>
+
+    <div class="control-group">
+        <div class="grouped-labels">
+            <label class="control-label grouped-label" for="release_date">Release Date</label>
+            <label class="control-label grouped-label" for="modified_date">Modified Date</label>
+        </div>
+		<div class="controls">
+			<input id="{{ dataset_id }}release_date" class="half-input image-input image-calendar"
+			name="{{ dataset_name }}release_date" type="text"
+			value="{{data.release_date}}"
+			placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+			/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="Date of formal issuance (e.g., publication) of the dataset.&#13;Acceptable date formats: YYYY-MM-DD, YYYY-MM, YYYY.">?</span>
+        {% if bulk_edition and data.get('release_date_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            <input id="{{ dataset_id }}modified_date" class="half-input image-input image-calendar"
+			name="{{ dataset_name }}modified_date" type="text"
+			value="{{data.modified_date}}"
+			placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+			/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="Most recent date on which the dataset was changed, updated or modified.&#13;Acceptable date formats: YYYY-MM-DD, YYYY-MM, YYYY.">?</span>
+        {% if bulk_edition and data.get('modified_date_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+			{% if errors.modified_date %}
+				<p class="field_error">{{errors.modified_date}}</p>
+			{% endif %}
+
+			{% if errors.release_date %}
+				<p class="field_error">{{errors.release_date}}</p>
+			{% endif %}
+		</div>
+	</div>
+
+
+    <div class="control-group">
+		<label class="control-label" for="accrual_periodicity">Accrual Periodicity</label>
+		<div class="controls">
+			<input id="{{ dataset_id }}accrual_periodicity" maxlength="100" name="{{ dataset_name }}accrual_periodicity" type="text" value="{{data.accrual_periodicity}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="The frequency with which dataset is published.">?</span>
+        {% if bulk_edition and data.get('accrual_periodicity_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.accrual_periodicity %}
+                <p class="field_error">{{errors.accrual_periodicity}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+
+    <div class="control-group">
+		<label class="control-label" for="temporal_coverage">Temporal Coverage</label>
+		<div class="controls">
+			<input id="{{ dataset_id }}temporal_coverage_from" name="{{ dataset_name }}temporal_coverage_from"
+			class="half-input image-input image-calendar" type="text" value="{{ data.temporal_coverage_from }}"
+			placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+			/>
+             <span class="searchHelp-green gradient input-helper"
+                  title="The start and end of the temporal series used in this dataset.&#13;e.g. 2010-01-01 - 2012-01-01&#13;Acceptable date formats: YYYY-MM-DD, YYYY-MM, YYYY.">?</span>
+        {% if bulk_edition and data.get('temporal_coverage_from_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+			<input id="{{ dataset_id }}temporal_coverage_to" name="{{ dataset_name }}temporal_coverage_to" class="half-input image-input image-calendar"
+			type="text" value="{{ data.temporal_coverage_to }}"
+			placeholder="{{_('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+			/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The start and end of the temporal series used in this dataset.&#13;e.g. 2010-01-01 - 2012-01-01&#13;Acceptable date formats: YYYY-MM-DD, YYYY-MM, YYYY.">?</span>
+        {% if bulk_edition and data.get('temporal_coverage_to_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+			{% if errors.temporal_coverage_from %}
+				<p class="field_error"> {{errors.temporal_coverage_from}}</p>
+			{% endif %}
+			{% if errors.temporal_coverage_to %}
+				<p class="field_error"> {{errors.temporal_coverage_to}}</p>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="temporal_granularity">Temporal Granularity</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}temporal_granularity" name="{{ dataset_name }}temporal_granularity" class="chosen-select-deselect" style="width: 30em;">
+				{% for tag, translation in c.temporal_granularity %}
+					<option value="{{tag}}" {% if tag in data.get('temporal_granularity', []) %}selected="selected"{% endif %}>
+						{{translation}}
+					</option>
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="This should give the lowest level of temporal detail given in the dataset if it is aggregated, expressed as an interval of time.">?</span>
+        {% if bulk_edition and data.get('temporal_granularity_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.temporal_granularity %}
+                <p class="field_error">{{errors.temporal_granularity}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+    <div class="control-group">
+         <div class="grouped-labels">
+            <label class="control-label field_opt grouped-label" for="version">Version</label>
+            <label class="control-label field_opt grouped-label" for="version_description">Version Description</label>
+        </div>
+
+		<div class="controls">
+			<input id="{{ dataset_id }}version" maxlength="100" name="{{ dataset_name }}version" class="half-input" type="text" value="{{data.version}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="A number representing the version (if applicable)&#13;e.g. 1.2.0">?</span>
+            {% if bulk_edition and data.get('version_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            <input id="{{ dataset_id }}version_description" maxlength="100" class="half-input" name="{{ dataset_name }}version_description" type="text" value="{{data.version_description}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="Description of changes between this version and the previous version of the dataset.">?</span>
+        {% if bulk_edition and data.get('version_description_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+		</div>
+	</div>
+
+    <div class="control-group">
+        <label class="control-label" for="status"><span class="field_required">&#9733;</span>Status</label>
+
+        <div class="controls">
+            <select id="{{ dataset_id }}status" name="{{ dataset_name }}status" class="chzn-select">
+                {% for tag, translation in c.status %}
+                    <option value="{{ tag }}"
+                            {% if tag in data.get('status', []) %}selected="selected"{% endif %}>
+                        {{ translation }}
+                    </option>
+                {% endfor %}
+            </select>
+        {% if bulk_edition and data.get('status_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.status %}
+                <p class="field_error">Error: {{ errors.status }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="control-group">
+		<label class="control-label" for="geographical_coverage">Geographical Coverage</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}geographical_coverage" class="chzn-select" name="{{ dataset_name }}geographical_coverage"
+			multiple="multiple" style="width: 30em;">
+				{% for tag_name, tag_translation in c.geographical_coverage %}
+					{% if tag_name in data.get('geographical_coverage', []) %}
+						<option selected="selected" value="{{tag_name}}">{{tag_translation}}</option>
+					{% else %}
+						<option value="{{tag_name}}">{{tag_translation}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The geographical coverage of this dataset.">?</span>
+        {% if bulk_edition and data.get('geographical_coverage_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.geographical_coverage %}
+                <p class="field_error">{{errors.geographical_coverage}}</p>
+            {% endif %}
+
+            <input id="{{ dataset_id }}clear-geographical-coverage" class="btn btn-country" name="{{ dataset_name }}clear-geographical-coverage" type="button" value="{{ _('ecodp.common.clear') }}">
+            <input id="{{ dataset_id }}select-28-countries" class="btn btn-country" name="{{ dataset_name }}select-28-countries" type="button" value="{{ _('ecodp.common.28.countries') }}">
+            <input id="{{ dataset_id }}select-27-countries" class="btn btn btn-country" name="{{ dataset_name }}select-27-countries" type="button" value="{{ _('ecodp.common.27.countries') }}">
+		</div>
+	</div>
+
+    <div class="control-group">
+        <div class="grouped-labels">
+		    <label class="control-label grouped-label" for="language">Language</label>
+		    <label class="control-label grouped-label" for="metadata_language">Metadata Language</label>
+        </div>
+		<div class="controls">
+			<select id="{{ dataset_id }}language" class="chzn-select-half" name="{{ dataset_name }}language" multiple="multiple">
+				{% for tag_name, tag_translation in c.languages %}
+					{% if tag_name in data.get('language', []) %}
+						<option selected="selected" value="{{tag_name}}">{{tag_translation}}</option>
+					{% else %}
+						<option value="{{tag_name}}">{{tag_translation}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The language coverage of this dataset.">?</span>
+        {% if bulk_edition and data.get('language_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            <select id="{{ dataset_id }}metadata_language" name="{{ dataset_name }}metadata_language" class="chosen-select-half">
+				<option value=""></option>
+				{% for tag_name, tag_translation in c.languages %}
+					{% if tag_name == data.get('metadata_language', 'http://publications.europa.eu/resource/authority/language/ENG') %}
+						<option selected="selected" value="{{tag_name}}">{{tag_translation}}</option>
+					{% else %}
+						<option value="{{tag_name}}">{{tag_translation}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The language the metadata is in.">?</span>
+        {% if bulk_edition and data.get('metadata_language_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            {% if errors.language %}
+				<p class="field_error">{{errors.language}}}</p>
+			{% endif %}
+			{% if errors.metadata_language %}
+				<p class="field_error">{{errors.metadata_language}}</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+    <hr>
+
+    <div class="control-group">
+		<label class="control-label" for="type_of_dataset">Type of Dataset</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}type_of_dataset" class="chzn-select" name="{{ dataset_name }}type_of_dataset" multiple="multiple" style="width: 30em;">
+				{% for type_id, type_name in c.type_of_dataset %}
+					{% if type_id in data.get('type_of_dataset', []) %}
+						<option selected="selected" value="{{type_id}}">{{type_name}}</option>
+					{% else %}
+						<option value="{{type_id}}">{{type_name}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The type of dataset.">?</span>
+        {% if bulk_edition and data.get('type_of_dataset_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.type_of_dataset %}
+                <p class="field_error">{{errors.type_of_dataset}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="interoperability_level">Interoperability Level</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}interoperability_level" name="{{ dataset_name }}interoperability_level" class="chosen-select-deselect" style="width: 30em;" >
+				<option value=""></option>
+				{% for tag, translation in c.interoperability_levels %}
+					{% if tag in data.get('interoperability_level', [])%}
+						<option selected="selected" value="{{tag}}">{{translation}}</option>
+					{% else %}
+						<option value="{{tag}}">{{translation}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="Interoperability level for which the dataset is relevant.">?</span>
+        {% if bulk_edition and data.get('interoperability_level_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+			{% if errors.interoperability_level %}
+				<p class="field_error">{{errors.interoperability_level}}</p>
+			{% endif %}
+		</div>
+	</div>
+
+    <hr>
+
+
+</fieldset>

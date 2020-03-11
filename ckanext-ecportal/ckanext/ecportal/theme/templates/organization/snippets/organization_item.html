@@ -1,0 +1,61 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Renders a media item for a organization. This should be used in a list.
+
+organization - A organization dict.
+
+Example:
+
+    <ul class="media-grid">
+      {% for organization in organizations %}
+        {% snippet "organization/snippets/organization_item.html", organization=organization %}
+      {% endfor %}
+    </ul>
+#}
+{% set url = h.url_for(organization.type ~ '_read', action='read', id=organization.name) %}
+<div class="col-md-3 media-item">
+    {% block image %}
+        <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}"
+             alt="{{ organization.name }}" class="media-image">
+    {% endblock %}
+    {% block title %}
+        <h3 class="media-heading">{{ organization.display_name }}</h3>
+    {% endblock %}
+    {% block description %}
+        {% if organization.description %}
+            <p>{{ h.markdown_extract(organization.description, extract_length=80) }}</p>
+        {% endif %}
+    {% endblock %}
+    {% block datasets %}
+        {% if organization.packages %}
+            <strong class="count">{{ _(ungettext('group.group_item.dataset.singular', 'group.group_item.dataset.plural', organization.packages)).format(num=organization.packages) }}</strong>
+        {% else %}
+            <span class="count">{{ _('group.group_item.dataset.singular').format(num=0) }}</span>
+        {% endif %}
+    {% endblock %}
+    <a href="{{ url }}"
+       title="{{ _('View {organization_name}').format(organization_name=organization.display_name) }}"
+       class="media-view">
+        <span>{{ _('View {organization_name}').format(organization_name=organization.display_name) }}</span>
+    </a>
+</div>
+{% if position is divisibleby 3 %}
+    <li class="clearfix js-hide"></li>
+{% endif %}

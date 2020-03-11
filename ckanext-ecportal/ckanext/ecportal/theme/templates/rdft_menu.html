@@ -1,0 +1,72 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+@param user_log=c.user
+@param active_tab = 'home' or 'dataProvider'
+#}
+
+{% if controller=='ckanext.ecportal.controllers.package:ECPORTALPackageController' and action=='update' %}
+    {% set active_tab = 'dataProvider' %}
+{% endif %}
+{% block header_menu_tabs %}
+    <div class="op-h-nav">
+{#	<a class="mobile-menu" href="javascript:;"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Menu</a>#}
+        <div class="region region-menu">
+            <ul class="menu">
+{#            <li class="leaf"><a href="{{h.getExternalLinkURL()}}home">{% trans %}menu.tab.home{% endtrans %}</a></li>#}
+                <li class="first leaf"><a href="{{h.url('home')}}"
+                            {% if active_tab == 'home' or not user_log %}
+                                 class="active"
+                            {% endif %}
+                            >{% trans %}menu.tab.data{% endtrans %}</a></li>
+{#                <li class="leaf"><a href="{{h.getExternalLinkURL()}}apps">{% trans %}menu.tab.applications{% endtrans %}</a></li>#}
+{#                <li class="leaf"><a href="{{h.getExternalLinkURL()}}linked-data">{% trans %}menu.tab.linked_data{% endtrans %}</a></li>#}
+{#                <li class="leaf expandable" id="viz-menu"><a class="arrow-right" href="{{h.getExternalLinkURL()}}visualisation-home" >{% trans %}ckan.menu.visualisations{% endtrans %}</a></li>#}
+{#                <li class="leaf"><a href="{{h.getExternalLinkURL()}}developerscorner">{% trans %}menu.tab.developers_corner{% endtrans %}</a></li>#}
+{#                <li class="{% if not user_log or h.current_locale()!='en' %}last {% endif %}leaf"><a href="{{h.getExternalLinkURL()}}about">{% trans %}menu.tab.about{% endtrans %}</a></li>#}
+                {% if user_log and h.current_locale()=='en'%}
+                <li class="last leaf expandable" id="rdft-submenu"><a href="{{ h.url_for(controller='user',action='dashboard_datasets') }}"
+                            {% if active_tab == 'dataProvider' and user_log %}
+                               class="arrow-down active"
+                            {% else %}
+                               class="arrow-right"
+                            {% endif %}
+                            >{% trans %}ecodp.common.menue.dataprovider_tab{% endtrans %}</a></li>
+                {% endif %}
+            </ul>
+            {% if h.current_locale()=='en'%}
+                <div class="account">
+                    <span class="ckan-logged-in" {% if not user_log %}style="display:none;"{% endif %}>
+                        <a href="{{h.url_for(controller='user',action='read',id=user_log)}}">{{ user_log }}</a>
+                        <span style="color:#e4ebf0">&nbsp;|&nbsp;</span>
+                        <a href="{{h.url_for(controller='user',action='logout')}}">{% trans %}menu.link.logout{% endtrans %}</a>
+                    </span>
+                    <span class="ckan-logged-out" {% if user_log %}style="display:none;"{% endif %}>
+     <a href="{{h.url_for(controller='user',action='login')}}">{% trans %}menu.link.dataproviders_area{% endtrans %}</a>
+                    </span>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {% if user_log %}
+        {% include "snippets/rdft_submenu.html" %}
+    {% endif %}
+{% endblock %}

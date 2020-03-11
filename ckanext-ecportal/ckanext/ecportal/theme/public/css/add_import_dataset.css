@@ -1,0 +1,19 @@
+body.no-sidebar .content-outer {
+    width: 100%;
+    margin-left: 0;
+}
+
+.bootstrap-row {
+     margin-left: 0;
+}
+
+rdft_pre_page_heading, .rdft_page_heading {
+    color: #505d8c;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    padding: 0px 0 5px 0;
+    border-bottom: 1px solid #aaa;
+    word-break: break-all;
+    width: 100%;
+}

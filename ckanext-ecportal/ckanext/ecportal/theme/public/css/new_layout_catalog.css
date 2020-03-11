@@ -1,0 +1,115 @@
+/* The remove red button*/
+/*.icon-remove:before{
+    content:"";
+}*/
+div.controls a[class*="btn btn-danger btn-remove-url"] {
+    position: absolute;
+    right: 0px;
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: 26px;
+    padding: 0;
+    border-radius: 11px;
+    margin-top: 1.5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-left: 0em;
+    /*background-image: url('../images/icons/link1.png');*/
+
+}
+/** The hiden input button*/
+form div div div.controls a[class="btn"] , a[class="btn hover"]{
+    background-color: #EEEEEE;
+    border: 1px solid #BBBBBB;
+    margin-right: 0px;
+}
+
+#field-name{
+width: 100%;
+}
+
+.half-input {
+    width: 46.7% !important;
+}
+#field-description {
+    width: 100%;
+    resize: vertical;
+    border-radius: 5px 5px 0px 0px ;
+}
+/* link button*/
+/* remove the text*/
+.icon-globe:before{
+    /*content: "";*/
+}
+form div div div.controls a:last-child {
+    margin-left: 10px;
+    background-repeat: no-repeat;
+    background-position: 1px center;
+    padding-left: 1em;
+    /*background-image: url('../images/icons/link1.png');*/
+}
+/* The upload button*/
+form div div div.controls a:nth-child(2) {
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 0em;
+    /*background-image: url('../images/icons/link1.png');*/
+}
+
+#field-image-upload {
+    width: 100px!important;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    height: 40px!important;
+}
+
+.input-append .add-on, .input-prepend .add-on {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    min-width: 16px;
+    padding: 4px 5px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+    text-shadow: 0 1px 0 #ffffff;
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+}
+#field-url{
+    width: inherit;
+}
+
+#ckan-form-catalog input,
+#ckan-form-catalog .markdown-editor,
+#ckan-form-catalog select,
+#ckan-form-catalog .add-on {
+    margin-bottom: 0.5em;
+    width: 94%;
+    padding-right: 0;
+}
+
+
+.ckan-form-catalog .control-group {
+    padding-bottom: 1em;
+}
+
+.chosen-choices select{
+
+}
+.grouped-label {
+    width: 445px;
+}
+
+.controls > input:not(.half-input),.controls > select {
+    width: 94%;
+}
+
+div.controls #catalog_select-28-countries,
+div.controls #catalog_select-27-countries {
+    width: 30%;
+}
+

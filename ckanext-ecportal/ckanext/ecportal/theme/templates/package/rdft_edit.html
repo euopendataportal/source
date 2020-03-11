@@ -1,0 +1,119 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "package/rdft_read_base.html" %}
+
+{%- block styles %}
+    {{ super() }}
+    <link href="{{ h.url_for_static( 'vendor/jquery.chosen/1.8.3/chosen.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ h.url_for_static( 'vendor/jquery-ui/jquery-ui.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/chosen' %}
+    {% resource 'ecportal/rdft_ecportal_edit' %}
+    {% resource 'ecportal/ecportal_new_dataset' %}
+    {% resource 'ecportal/jquery_ui' %}
+    {% resource 'ecportal/table_sorter' %}
+    {% resource 'ecportal/jquery_form' %}
+{% endblock %}
+
+{% block breadcrumb_items %}
+            {{ super() }},
+            {{ h.load_breadcrumb_item_json_ld(5, _('ecodp.common.button.edit'), h.url_for(controller='package', action='edit', id=pkg.id, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    <a href="{{ h.url_for(controller='package', action='edit', id=pkg.id) }}">{% trans %}ecodp.common.button.edit{% endtrans %}</a>
+{% endblock %}
+
+{%- block subtitle -%}
+    {{ c.pkg_dict.title or c.pkg_dict.title }}{% trans %}package.edit.block{% endtrans %}
+{%- endblock -%}
+
+{% block minor_navigation %}
+{% endblock %}
+
+{% block page_heading %}
+    <h1 class="rdft_page_heading">{% trans %}ecodp.common.dataset_edit.heading{% endtrans %}{{ c.pkg_dict.title or c.pkg_dict.title }}</h1>
+{% endblock %}
+
+{% block bodytag %}
+    {{ super() }}
+    class="no-sidebar"
+{% endblock %}
+
+{% block head_extras %}
+    {{ super() }}
+    <script>
+        var form_errors = {{c.errors_json}};
+        var resources_json = {{h.literal(c.resources_json)}};
+        var resource_dropdown = {{h.literal(h.resource_dropdown())}};
+        var resource_mapping_json = {{h.literal(h.resource_mapping_json())}};
+    </script>
+{% endblock %}
+
+{% block search_header %}
+    {% if h.is_metadatatool_plugin_activated() %}
+
+    {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+
+    <div class="dataset-create-form" style="margin-left: 105px;">
+        {#		<div class="tabbable tabs-left dataset-edit-tabs">#}
+        {#			<ul class="nav nav-tabs">#}
+        {#				<li class="active"><a data-toggle="tab" href="#basic-information">Basic Information</a></li>#}
+        {#				<li><a data-toggle="tab" href="#further-information">Further Information</a></li>#}
+        {#				<li><a data-toggle="tab" href="#eurovoc">EuroVoc and Groups</a></li>#}
+        {#				<li><a data-toggle="tab" href="#keywords">Keywords</a></li>#}
+        {#				<li><a data-toggle="tab" href="#contact-information">Contact Information</a></li>#}
+        {#				<li><a data-toggle="tab" href="#extras">Extras</a></li>#}
+        {#				{% if c.is_sysadmin or c.auth_for_change_state %}#}
+        {#					<li><a data-toggle="tab" href="#delete">Delete</a></li>#}
+        {#				{% endif %}#}
+        {#			</ul>#}
+        {{ c.form | safe }}
+        {#		</div>#}
+    </div>
+    {#    <span id="dataset-info-panel">
+        <div id="dataset-info" class="dataset-info-element">
+            <div class="box-info-title">{% trans %}ecodp.edit.dataset_box.dataset{% endtrans %}</div>
+            <p id="dataset-info-body">
+                {% trans %}ecodp.common.created{% endtrans %}<br>
+                {{ c.pkg.metadata_created }}<br>
+                <br>
+                {% trans %}ecodp.edit.dataset_box.modified{% endtrans %}<br>
+                 {{ c.pkg.metadata_modified}}<br>
+                <br>
+                {% trans %}ecodp.edit.dataset_box.views{% endtrans %}<br>
+                {{ c.pkg_dict.tracking_summary.total }}
+            </p>
+        </div>
+        <div id="sticky-anchor"></div>
+        <div class="dataset-info-element" id="sticky">
+            <center>
+                <div id="published"></div>
+                {% if c.pkg.private %}{% trans %}ecodp.common.private{% endtrans %} {%  else %} {% trans %}ecodp.common.public{% endtrans %}{% endif %}
+            </center>
+        </div>
+    </span>#}
+{% endblock %}

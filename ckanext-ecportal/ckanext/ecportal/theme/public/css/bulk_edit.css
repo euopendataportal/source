@@ -1,0 +1,11 @@
+.chosen-container:not(.half-input):not(#language_chosen):not(#metadata_language_chosen){
+    position: relative !important;;
+    display: inline-block !important;;
+    vertical-align: middle !important;
+    font-size: 13px !important;
+    zoom: 1 !important;
+    width: 93.2% !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+

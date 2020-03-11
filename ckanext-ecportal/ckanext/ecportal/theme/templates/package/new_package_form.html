@@ -1,0 +1,125 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+{% set action = c.action %}
+{% set tab_mode = (c.action=='edit') %}
+
+<form class="{{ 'tab-content active' if tab_mode else ''}} {{'has-errors' if errors else ''}} form-horizontal overflow-visible" method="post" id="dataset-edit">
+
+	{% if error_summary %}
+		<div class="alert alert-error error-explanation" style="width: 680px;">
+			<h2>Errors in form</h2>
+			<p>The form contains invalid entries:</p>
+			<ul>
+				{% for key, error in error_summary.items() %}
+					<li>
+						{{"%s: %s" % (key if not key=='Name' else 'URL', error)}}
+						{% if key=='Resources' %}
+							<ul>
+								{% for idx, errordict in errors.get('resources', []) %}
+									{% if errordict %}
+										<li>
+											Resource {{idx}}:
+											<ul>
+												{% for thiskey, thiserror in errordict.items() %}
+												<li>
+													{{thiskey}}:
+													{% for errorinfo in thiserror %}
+														{{errorinfo}};
+													{% endfor %}
+												</li>
+												{% endfor %}
+											</ul>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
+				<script>var global_form_errors = {{h.dump_json(errors)}};</script>
+			</ul>
+		</div>
+	{% endif %}
+
+	{% include "package/snippets/form_basic_information.html" %}
+
+	{% include "package/snippets/form_further_information.html" %}
+
+    {% include "package/snippets/form_eurovoc.html" %}
+
+    {% include "package/snippets/form_keywords.html" %}
+
+	{% include "package/snippets/form_contact_information.html" %}
+
+	{% include "package/snippets/form_extra.html" %}
+
+
+	{% if c.is_sysadmin or c.auth_for_change_state %}
+		<fieldset id='delete' class="tab-pane fade">
+			<dl>
+				<dt>Delete</dt>
+				<dd>
+					<p>Do you really want to change the state of this dataset? &nbsp;&nbsp;<button class="dataset-delete btn">Yes!</button></p>
+					<span>
+						This dataset is&nbsp;&nbsp;
+						<select id="state" class="dataset-delete" name="state" style="display:inline;">
+							<option value="active" {% if data.state == 'active' %}selected="selected"{% endif %}>active</option>
+							<option value="deleted" {% if data.state == 'deleted' %}selected="selected"{% endif %}>deleted</option>
+						</select>
+					</span>
+				</dd>
+			</dl>
+		</fieldset>
+	{% endif %}
+
+    {% if h.is_metadatatool_plugin_activated() %}
+	{% include "package/rdft_snippets/resources/form_resources.html" %}
+    {% else %}
+    {% include "package/snippets/form_resources.html" %}
+    {% endif %}
+
+	{% if c.author %}
+		<div class="author-box ckan-logged-in" {# style="display: none;" #}>
+			<p>Author: {{c.author}}</p>
+		</div>
+	{% else %}
+		<div class="author-box ckan-logged-out">
+			<label>Author: {{c.author}}</label>
+			<p i18n:msg="" class="hints">
+				Since you have not signed in this will just be your IP address.
+				<a href="{{h.url_for(controller='user', action='login', id=None)}}" target="_blank">Click here to sign in</a> before saving (opens in new window).
+			</p>
+		</div>
+	{% endif %}
+
+
+	<div class="form-actions">
+		<input id="save" class="btn btn-primary" name="save" type="submit" value="
+            {%- block save_button_text -%}
+					{{ _('ecodp.common.save_changes') }}
+            {%- endblock -%}"
+                />
+		{% if c.pkg %}
+			<input id="cancel" class="btn href-action" name="cancel" type="reset" value="{% trans %}ecodp.common.cancel{% endtrans %}" action="{{h.url_for(controller='package', action='read', id=c.pkg.name)}}" />
+		{% endif %}
+	</div>
+
+</form>

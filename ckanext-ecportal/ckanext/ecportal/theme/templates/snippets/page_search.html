@@ -1,0 +1,62 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block page_search %}
+    <div class="page-search ckan-odp-box-area{% if  controller == 'home' %} intro-height-home{% else %} intro-height{% endif %}">
+        <form id="dataset-search-form" {% if controller =='home' %}action="{{ h.url_for(controller='package', action='search') }}" method="GET" {% endif %} >
+            <input id="edit-query" class="ckan-search-field" type="text" name="q" value="{% if query %}{{ query }}{% endif %}"
+                   placeholder="
+				{%- if placeholder -%}
+					{{ placeholder }}
+				{%- else -%}
+					{{ _('snippets.search_form.search_dataset') }}
+				{%- endif -%}"
+
+                    />
+            <input id="dataset-search" type="submit" value=""/>
+            {% if fields %}
+                <span>
+					{% for (key, value) in fields %}
+                        <input type="hidden" name="{{ key }}" value="{{ value }}"/>
+                    {% endfor %}
+				</span>
+            {% endif %}
+            {% if not nosearchoption %}
+                <div class="boolean-search">
+                    {% snippet "snippets/boolean_search_choice.html" %}
+                </div>
+            {% endif %}
+            <input type="hidden" name="sort" value="{{ sort }}"/>
+        </form>
+        {% if controller == 'home' %}
+            {% block filter_total %}
+                <div class="filter-total-home">
+                    {% if dataset_count %}
+                    <h4 id="total-datasets-text">{% trans %}ecodp.common.search_box.datasets_available{% endtrans %}&nbsp;</h4>
+                     <h4 id="count-datasets"><strong>{{ dataset_count }}</strong></h4>
+                        <p>&nbsp; </p>
+                        <a href="{{ h.url(controller='feed', action='custom') }}?sort=views_total+desc">
+                        <i class="rss"></i>
+                    </a>
+                    {% endif %}
+
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

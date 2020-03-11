@@ -1,0 +1,65 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Renders a media item for a catalog. This should be used in a list.
+
+
+
+Example:
+
+		<ul class="media-grid">
+			{% for group in groups %}
+				{% snippet "group/snippets/group_item.html", group=group %}
+			{% endfor %}
+		</ul>
+#}
+{% if h.is_sysadmin(ctx.user) %}
+    {% set url = h.url_for(controller='ckanext.ecportal.controllers.catalog:ECPORTALCatalogController', action='edit', id=catalog.get("name")) %}
+{% else %}
+    {% set url = h.url_for(controller='ckanext.ecportal.controllers.catalog:ECPORTALCatalogController', action='read', id=catalog.get("name")) %}
+{% endif %}
+<div class="col-md-3 media-item">
+	{% block image %}
+        <img src="{{ h.url_for_static('/images/placeholder-catalog.png') }}" alt="{{ catalog.name }}" class="media-image">
+        {% endblock %}
+	{% block title %}
+		<h3 class="media-heading">{{ catalog.get('display_name') }}</h3>
+	{% endblock %}
+	{% block description %}
+		{% if catalog.description %}
+			<p>{{ h.markdown_extract(catalog.description, extract_length=80) }}</p>
+		{% endif %}
+	{% endblock %}
+{#	{% block datasets %}#}
+{#        {% if catalog.packages %}#}
+{#			<strong class="count">{{ _(ungettext('catalog.catalog_item.dataset.singular', 'catalog.catalog_item.dataset.plural', catalog.packages)).format(num=catalog.packages) }}</strong>#}
+{#		{% elif catalog.packages == 0 %}#}
+{#			<span class="count">{{ _('group.group_item.dataset.plural').format(num=0) }}</span>#}
+{#		{% endif %}#}
+{#	{% endblock %}#}
+	<a href="{{ url }}" title="{{ _('catalog.catalog_item.name').format(name=catalog.display_name) }}" class="media-view">
+		<span>{{ _('catalog.catalog_item.name').format(name=catalog.display_name) }}</span>
+	</a>
+{#	{% if group.user_member %}#}
+{#		<input name="group_remove.{{ group.id }}" value="{{ _('group.group_item.remove.action') }}" type="submit" class="btn btn-danger btn-small media-edit" title="{{ _('group.group_item.remove.title') }}"/>#}
+{#	{% endif %}#}
+</div>
+{% if position is divisibleby 3 %}
+	<li class="clearfix js-hide"></li>
+{% endif %}

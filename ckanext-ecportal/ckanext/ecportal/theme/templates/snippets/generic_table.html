@@ -1,0 +1,68 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+ Parameters in a dict:
+ please use atto key as field identifier
+ {'header': ['field1', 'field2', ....],
+    'data'[{'field1': '...',
+            'fiels2': '...',
+            ...},
+            {'field1': '...',
+            'fiels2': '...',
+            ...},
+            ...]
+   }
+    example python code:
+    table = {'header': ['rdftool.ingestion.table.title', 'rdftool.ingestion.table.name', 'rdftool.ingestion.table.url', 'rdftool.ingestion.table.state']}
+    table['data'] = [{'rdftool.ingestion.table.title': value.get('title',''),
+                 'rdftool.ingestion.table.name': value.get('name', ''),
+                 'rdftool.ingestion.table.url': value.get('url', ''),
+                 'rdftool.ingestion.table.state': value.get('private', ''),} for value in result_dict.get('updated', [])]
+
+ #}
+
+<table id="{{ table_id }}" class="tablesorter" border="1">
+    <thead>
+    <tr class="headers-without-height">
+        {% for value in table.header %}
+            <th id={{ value }}>{{ _(value) }}</th>
+        {% endfor %}
+        {% if is_selectable %}
+            <th>{% trans %}ecodp.select.dataset.column.selected{% endtrans %}</th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in table.data %}
+        <tr>
+            {% for value in table.header %}
+                <td class="align-center" headers={{ value }}>{{ row.get(value,'') }}</td>
+            {% endfor %}
+
+            {% if is_selectable %}
+                <td class="align-center">
+                    <input class="checkbox_datasets" name="selected_dataset[]" value="{{ loop.index0 }}"
+                           type="checkbox">
+                </td>
+            {% endif %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

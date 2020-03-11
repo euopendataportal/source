@@ -1,0 +1,65 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{# Full-size page #}
+{% block primary_span %}span12{% endblock %}
+
+{% block subtitle %}{% trans %}organization.index.subtitle.publisher.broken_links{% endtrans %}{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    <span class="separator"></span>
+    <a>{% trans %}organization.index.subtitle.publisher.broken_links{% endtrans %}</a>
+{% endblock %}
+
+{% block primary_content_inner %}
+    {% block scripts %}
+        {{ super() }}
+        {% resource 'ecportal/broken_links' %}
+        {% resource 'ecportal/jquery_ui' %}
+    {% endblock %}
+
+
+    <h2>
+        {% if not c.display_all %}
+            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='broken_links', display_all=True) }}">
+                <i class="publisher"></i>
+                {% trans %}ecodp.common.broken_links.view_all{% endtrans %} &raquo;
+            </a>
+        {% endif %}
+        <h1 class="page_heading">{% trans %}organization.index.subtitle.publisher.broken_links{% endtrans %}</h1>
+    </h2>
+
+
+    <ul id="broken_links_container" class="datasets unstyled" style="margin-left: 20px">
+        <span id="broken_links_url" data-url="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='get_broken_links', display_all=c.display_all) }}"></span>
+        <div id="broken_links_list"></div>
+        {% if not c.display_all %}
+            <a id="broken_links_showmore" style="cursor: pointer;font-style: italic;">
+                <span class="more">
+                    {% trans %}ecodp.common.broken_links.showmore{% endtrans %}
+                    <img src="{{h.url_for_static('/images/domains/down-double-angle-bracket.png')}}"/>
+                </span>
+            </a>
+        {% endif %}
+        <div class="views_infinite_scroll-ajax-loader"><img src="{{ h.url_for_static('/images/ajax-loader.gif') }}" alt="loading..."></div>
+    </ul>
+{% endblock %}
+

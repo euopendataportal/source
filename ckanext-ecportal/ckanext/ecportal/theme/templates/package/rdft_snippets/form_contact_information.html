@@ -1,0 +1,113 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+
+<fieldset id="{{ dataset_name }}contact-information">
+
+	<div class="control-group title-field">
+		<label class="control-label" for="{{ dataset_id }}contact_name">
+            {% trans %}ecodp.rdft.dataset_edit.contact_name{% endtrans %}
+        </label>
+		<div class="controls">
+			<input id="{{ dataset_id }}contact_name" name="{{ dataset_name }}contact_name" type="text" value="{{data.contact_name}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.contact_name{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group title-field">
+		<label class="control-label" for="{{ dataset_id }}contact_email">
+            {% trans %}ecodp.rdft.dataset_edit.contact_email{% endtrans %}
+        </label>
+		<div class="controls">
+			<input id="{{ dataset_id }}contact_email" name="{{ dataset_name }}contact_email" type="text" class="with-image image-input image-email"
+			value="{{data.contact_email or data.contact_mailbox}}" />
+            <span class="searchHelp-green gradient input-helper"
+            title="{% trans %}ecodp.rdft.dataset_edit.tip.contact_email{% endtrans %}">?</span>
+         {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.contact_email %}
+                <p class="field_error">{{errors.contact_email}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group title-field">
+		<label class="control-label" for="contact_address">
+            {% trans %}ecodp.rdft.dataset_edit.contact_address{% endtrans %}
+        </label>
+		<div class="controls">
+			<input id="{{ dataset_id }}contact_address" name="{{ dataset_name }}contact_address" type="text" class="with-image image-input image-address"
+			value="{{data.contact_address}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.contact_address{% endtrans %}">?</span>
+         {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+			{% if errors.contact_address %}
+				<p class="field_error">{{errors.contact_address}}</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group title-field">
+		<label class="control-label" for="contact_telephone">
+           {% trans %}ecodp.rdft.dataset_edit.contact_telephone{% endtrans %}
+        </label>
+		<div class="controls">
+			<input id="{{ dataset_id }}contact_telephone" name="{{ dataset_name }}contact_telephone" type="text" class="with-image image-input image-phone"
+			value="{{data.contact_tel or data.contact_phone_number}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.contact_telephone{% endtrans %}">?</span>
+         {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+			{% if errors.contact_telephone %}
+				<p class="field_error">{{errors.contact_telephone}}</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group title-field">
+		<label class="control-label" for="contact_webpage">
+            {% trans %}ecodp.rdft.dataset_edit.contact_webpage{% endtrans %}
+        </label>
+		<div class="controls">
+			<input id="{{ dataset_id }}contact_webpage" name="{{ dataset_name }}contact_webpage" type="text" class="with-image image-input image-web-page"
+			value="{{data.contact_web or data.contact_page}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.contact_webpage{% endtrans %}">?</span>
+         {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+			{% if errors.contact_webpage %}
+				<p class="field_error">{{errors.contact_webpage}}</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+</fieldset>

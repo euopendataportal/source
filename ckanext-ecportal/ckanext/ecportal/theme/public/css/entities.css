@@ -1,0 +1,113 @@
+/* colors */
+.eur-lex-blue{color:#0099CC;}
+.bookshop-orange{color:#FF9933;}
+.ted-green{color:#339933;}
+.cordis-pink{color:#EE5088;}
+.opendata-grey{color:#7082B1;}
+.whoswho-red{color:#EE441E;}
+
+/* Europa */
+.europa #quick-search button,
+.europa .op-h-nav li a,
+.europa h1.page-title,
+.europa h2.op-panel-title{ background-color:#0063CA; }
+
+.europa #quick-search button:hover,
+.europa #quick-search button:focus,
+.europa .op-h-nav li a:hover,
+.europa .op-h-nav li a:focus{ background-color:#007CCF; }
+
+.europa .op-h-nav li a.selected{color:#0063CA;}
+.europa ul.left-menu li.selected a{color:#0063CA;}
+.europa #op-footer-full{border-top:4px solid #0063CA;}
+
+/* Eur-Lex */
+.eur-lex #quick-search button,
+.eur-lex .op-h-nav li a,
+.eur-lex h1.page-title,
+.eur-lex h2.op-panel-title{ background-color:#087FAA; }
+
+.eur-lex #quick-search button:hover,
+.eur-lex #quick-search button:focus,
+.eur-lex .op-h-nav li a:hover,
+.eur-lex .op-h-nav li a:focus{ background-color:#0099CC; }
+
+.eur-lex .op-h-nav li a.selected{color:#087FAA;}
+.eur-lex ul.left-menu li.selected a{color:#087FAA;}
+.eur-lex #op-footer-full{border-top:4px solid #087FAA;}
+/*#op-footer-full{background:#FFF url(../images/footer-squares-eur-lex.png) right bottom no-repeat;}*/
+
+/* TED */
+.ted #quick-search button,
+.ted .op-h-nav li a,
+.ted h1.page-title,
+.ted h2.op-panel-title{ background-color:#2C862D; }
+
+.ted #quick-search button:hover,
+.ted #quick-search button:focus,
+.ted .op-h-nav li a:hover,
+.ted .op-h-nav li a:focus{ background-color:#339933; }
+
+.ted .op-h-nav li a.selected{color:#2C862D;}
+.ted ul.left-menu li.selected a{color:#2C862D;}
+.ted #op-footer-full{border-top:4px solid #2C862D;}
+
+/* Bookshop */
+.bookshop #quick-search button,
+.bookshop .op-h-nav li a,
+.bookshop h1.page-title,
+.bookshop h2.op-panel-title{ background-color:#D87D27; }
+
+.bookshop #quick-search button:hover,
+.bookshop #quick-search button:focus,
+.bookshop .op-h-nav li a:hover,
+.bookshop .op-h-nav li a:focus{ background-color:#FF9933; }
+
+.bookshop .op-h-nav li a.selected{color:#D87D27;}
+.bookshop ul.left-menu li.selected a{color:#D87D27;}
+.bookshop #op-footer-full{border-top:4px solid #D87D27;}
+
+/* Open Data */
+.opendata #quick-search button,
+.opendata .op-h-nav li a,
+.opendata h1.page-title,
+.opendata h2.op-panel-title{ background-color:#C53864; }
+
+.opendata #quick-search button:hover,
+.opendata #quick-search button:focus,
+.opendata .op-h-nav li a:hover,
+.opendata .op-h-nav li a:focus{ background-color:#F38089; }
+
+.opendata .op-h-nav li a.selected{color:#C53864;}
+.opendata ul.left-menu li.selected a{color:#C53864;}
+.opendata #op-footer-full{border-top:6px solid #F38089;}
+
+/* Whoiswho */
+.whoiswho #quick-search button,
+.whoiswho .op-h-nav li a,
+.whoiswho h1.page-title,
+.whoiswho h2.op-panel-title{ background-color:#D83D1C; }
+
+.whoiswho #quick-search button:hover,
+.whoiswho #quick-search button:focus,
+.whoiswho .op-h-nav li a:hover,
+.whoiswho .op-h-nav li a:focus{ background-color:#EE441E; }
+
+.whoiswho .op-h-nav li a.selected{color:#D83D1C;}
+.whoiswho ul.left-menu li.selected a{color:#D83D1C;}
+.whoiswho #op-footer-full{border-top:4px solid #D83D1C;}
+
+/* CORDIS */
+.cordis #quick-search button,
+.cordis .op-h-nav li a,
+.cordis h1.page-title,
+.cordis h2.op-panel-title{ background-color:#CD4377; }
+
+.cordis #quick-search button:hover,
+.cordis #quick-search button:focus,
+.cordis .op-h-nav li a:hover,
+.cordis .op-h-nav li a:focus{ background-color:#EE5088; }
+
+.cordis .op-h-nav li a.selected{color:#CD4377;}
+.cordis ul.left-menu li.selected a{color:#CD4377;}
+.cordis #op-footer-full{border-top:4px solid #CD4377;}

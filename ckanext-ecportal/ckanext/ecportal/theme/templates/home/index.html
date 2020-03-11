@@ -1,0 +1,216 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{%- block header %}
+    {% snippet "header.html", controller=c.controller, action=c.action, isHomePage=True %}
+{% endblock -%}
+
+{% block menu %}
+    {% if h.is_metadatatool_plugin_activated() %}
+        {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home' %}
+    {% else %}
+        {% snippet "menu.html", user_log=c.user %}
+    {% endif %}
+{% endblock %}
+
+{% block subtitle %}{% trans %}ecodp.common.title.welcome{% endtrans %}{% endblock %}
+
+{% block bodytag %}
+    {{ super() }} class="index home no-sidebar"
+{% endblock %}
+
+{% set maintenance_message = h.maintenance_message(h.current_locale()|string) %}
+{% set homepage_content = h.homepage_content(h.current_locale()|string) %}
+{% set package_count = c.package_count %}
+{% set approved_search_terms = c.approved_search_terms %}
+{% set most_viewed_datasets = c.most_viewed_datasets %}
+{% set recent_updates = c.recent_updates%}
+{% set get_skos_hierarchy = c.get_skos_hierarchy %}
+{% set get_eurovoc_domains_by_packages_with_cache_most= c.most_common_themes %}
+{% set get_eurovoc_domains_by_packages_with_cache_less= c.less_common_themes %}
+
+
+
+{% block search_header %}
+        {% if maintenance_message %}
+            <div class="message">
+                <div class="{{ maintenance_message.get('class') }}">
+                    {{ maintenance_message.get('message') }}
+                </div>
+            </div>
+        {% endif %}
+{% endblock %}
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+
+{% block page_search %}
+   {% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, controller='home', dataset_count=package_count%}
+{% endblock %}
+
+{% block page_search_right %}
+        {% snippet "snippets/suggest_box.html" , controller='home'%}
+{% endblock %}
+
+
+
+{% block primary_content_inner %}
+    {% if most_viewed_datasets %}
+        <div class="box most-viewed">
+            <h2>
+                <a href="{{ h.url_for(controller='package', action='search', sort='views_total desc') }}">
+                    <i class="resource"></i>
+                    {% trans %}home.index.search.view_all{% endtrans %} &raquo;
+                </a>
+                {% trans %}home.index.search.most_viewed{% endtrans %}
+            </h2>
+            <div class="inner">
+                {{ h.snippet('snippets/most_viewed_datasets.html', datasets=most_viewed_datasets) }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="box">
+        <h2>
+            <a href="{{ h.url_for(controller='package', action='search', sort='modified_date desc') }}">
+                <i class="resource"></i>
+                {% trans %}home.index.search.view_all{% endtrans %} &raquo;
+            </a>
+            {% trans %}home.index.datasets.recently.updates{% endtrans %}
+        </h2>
+        <div class="inner">
+            {{ h.snippet('snippets/recent_updates_package_list.html', packages=recent_updates) }}
+        </div>
+    </div>
+
+{% endblock %}
+{% block secondary_content %}
+    {% if homepage_content %}
+        <div class="block-box">
+            <h2>
+                <a class="link_h2_homepage" href="{{ h.url_for(controller='group', action='index') }}">
+                    {% trans %}home.index.datasets.browse.subject{% endtrans %}
+                </a>
+            </h2>
+
+            <div class="domains common-domains">
+                <ul>
+                    {% set locale = h.current_locale()|string %}
+                    {% for domain in get_eurovoc_domains_by_packages_with_cache_most %}
+                        <li>
+                            <a href="{{ h.url_for(controller='package', action='search', vocab_theme=domain.uri, sort='views_total desc') }}">
+                                <img src="{{ h.url_for_static('images/eurovoc_domains/odp_domain' + domain.icon_id + '.png') }}" class="media-image"/>
+                            </a>
+                            <p>{{ domain.label }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="domains all-domains" style="display:none">
+                <ul>
+                    {% for domain in get_eurovoc_domains_by_packages_with_cache_less %}
+                        <li>
+                            <a href="{{ h.url_for(controller='package', action='search', vocab_theme=domain.uri, sort='views_total desc')  }}">
+                                <img src="{{ h.url_for_static('images/eurovoc_domains/odp_domain' + domain.icon_id + '.png') }}" class="media-image"/>
+                            </a>
+                            <p>{{ domain.label }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="toggler-div">
+                <a id="toggler">
+								<span class="more">
+									{% trans %}home.index.datasets.more.subjects{% endtrans %}
+                                    <img src="{{ h.url_for_static('images/domains/down-double-angle-bracket.png') }}"/>
+								</span>
+                    <span class="less" style="display:none">
+									{% trans %}home.index.datasets.fewer.subjects{% endtrans %}
+                        <img src="{{ h.url_for_static('images/domains/up-double-angle-bracket.png') }}"/>
+								</span>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="box">
+        <h2>
+            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index') }}">
+                <i class="publisher"></i>
+                {% trans %}home.index.search.view_all{% endtrans %} &raquo;
+            </a>
+            {% trans %}organization.index.subtitle.publisher{% endtrans %}
+        </h2>
+        <div class="inner">
+
+        <div class="container">
+        </div>
+
+            {% for top_level, group_dict in get_skos_hierarchy.iteritems() %}
+            {% set id_inc = loop.index %}
+                {% if group_dict['total']>=0 %}
+                    <div class="publisher-link-organization">
+                    <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=group_dict['name']) }}"
+                       class="">
+                        <i class="publisher"></i>
+                        <strong>{{ group_dict['label'] }}</strong>
+                        <span>({{ group_dict['total'] }} {% trans %}home.index.datasets.inner.lable{% endtrans %}) </span>
+                        {% if group_dict['children'] %}
+                            <a href="#cp_{{ id_inc }}" data-toggle="collapse" class="button_collapse_organization collapsed"></a>
+                        {% endif %}
+
+                    </a>
+
+                    </div>
+
+                    <span data-collapse="accordion">
+
+                                    {% if group_dict['children'] %}
+{#                                        <h3 class="button_collapse_position"></h3>#}
+                                        <div id="cp_{{ id_inc }}" class="collapse">
+                                            <ul>
+                                                {% for child in group_dict['children'] %}
+                                                    <li><a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=child[0]) }}"
+                                                           class="item_sub_link">{{ child[1]}} ({{ child[2] }})</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </span>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{%- block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/recportal_data' %}
+    {% if approved_search_terms %}
+        <script type="text/javascript">
+            var word_array = {{approved_search_terms | safe}}
+            var search_base_url = "{{h.url_for(controller='package', action='search')}}";
+        </script>
+    {% endif %}
+{%- endblock -%}
+
+

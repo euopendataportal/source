@@ -1,0 +1,113 @@
+{
+    "title": [
+        {
+            "id": 1,
+            "__type__": "requiredrule",
+            "message": "validation.ds.title.missing",
+            "title": "validation.ds.title.missing.title"
+        }
+    ],
+    "description": [
+        {
+            "id": 2,
+            "__type__": "requiredrule",
+            "message": "validation.ds.description.missing",
+            "title": "validation.ds.description.missing.title"
+        }
+    ],
+    "owner_org": [
+        {
+            "id": 3,
+            "__type__": "requiredrule",
+            "message": "validation.ds.publisher.missing",
+            "title": "validation.ds.publisher.missing.title"
+        }
+    ],
+    "license_id": [
+        {
+            "id": 4,
+            "__type__": "requiredrule",
+            "message": "validation.ds.license.missing",
+            "title": "validation.ds.license.missing.title"
+        }
+    ],
+    "name": [
+        {
+            "id": 5,
+            "__type__": "requiredrule",
+            "message": "validation.ds.ckanname.missing",
+            "title": "validation.ds.ckanname.missing.title"
+        },
+        {
+            "id": 6,
+            "__type__": "uniquevalue",
+            "table": "package",
+            "field": "name",
+            "message": "validation.ds.ambigous.ckanname",
+            "title": "validation.ds.ambigous.ckanname.title"
+        }
+    ],
+    "url": [
+        {
+            "id": 7,
+            "__type__": "requiredrule",
+            "message": "validation.ds.uri.missing",
+            "title": "validation.ds.uri.missing.title"
+        }
+    ],
+    "status": [
+        {
+            "id": 8,
+            "__type__": "requiredrule",
+            "message": "validation.ds.status.missing",
+            "title": "validation.ds.status.missing.title"
+        }
+    ],
+    "resources": [
+        {
+            "__type__": "subdatarule",
+            "rules": {
+                "name": [
+                    {
+                        "id": 9,
+                        "__type__": "requiredrule",
+                        "message": "validation.res.title.missing",
+                        "title": "validation.res.title.missing.title"
+                    }
+                ],
+                "description": [
+                    {
+                        "id": 10,
+                        "__type__": "requiredrule",
+                        "message": "validation.res.description.missing",
+                        "title": "validation.res.description.missing.title"
+                    }
+                ],
+                "url": [
+                    {
+                        "id": 11,
+                        "__type__": "requiredrule",
+                        "message": "validation.res.url.missing",
+                        "title": "validation.res.url.missing.title"
+                    }
+                ],
+                "resource_type": [
+                    {
+                        "id": 12,
+                        "__type__": "requiredrule",
+                        "message": "validation.res.type.missing",
+                        "title": "validation.res.type.missing.title"
+                    }
+                ],
+                "format": [
+                    {
+                        "id": 13,
+                        "__type__": "requiredrule",
+                        "message": "validation.res.format.missing",
+                        "title": "validation.res.format.missing.title"
+                    }
+                ]
+            }
+        }
+    ]
+}

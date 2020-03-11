@@ -1,0 +1,58 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{% set organization = c.group_dict %}
+
+{% block subtitle %}{{ c.group_dict.display_name }}{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.publisher'), h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index', qualified=True)) | safe }},
+            {{ h.load_breadcrumb_item_json_ld(3, c.group_dict.display_name, h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=c.group_dict.name, qualified=True)) | safe }},
+            {{ h.load_breadcrumb_item_json_ld(4, _('ecodp.common.button.edit'), h.url_for(controller='organization', action='edit', id=c.group_dict.name, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<a href="{{h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index')}}">{% trans %}ecodp.common.publisher{% endtrans %}</a>
+    <a href="{{h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=c.group_dict.name)}}">{{c.group_dict.display_name|truncate(32)}}</a>
+    <a href="{{h.url_for(controller='organization', action='edit', id=c.group_dict.name)}}">{% trans %}ecodp.common.button.edit{% endtrans %}</a>
+{% endblock %}
+
+{% block menu %}
+    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+{% endblock %}
+
+{#{% block minor_navigation %} block has changed and navigation is not needed in ODP
+  {{ h.build_nav_icon('organization_edit', _('ecodp.common.button.edit'), id=c.group_dict.name) }}
+  {{ h.build_nav_icon('organization_bulk_process', _('ecodp.common.datasets'), id=c.group_dict.name) }}
+  {{ h.build_nav_icon('organization_members', _('ecodp.common.members'), id=c.group_dict.name) }}
+{% endblock %}#}
+
+{% block secondary_content %}
+  {% if organization %}
+    {% snippet 'snippets/organization.html', organization=organization %}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block links %}
+  {{ super() }}
+  {% include "organization/snippets/feeds.html" %}
+{% endblock %}

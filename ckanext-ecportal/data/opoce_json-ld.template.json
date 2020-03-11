@@ -1,0 +1,28 @@
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "GovernmentOrganization",
+"name": "",
+"url": "",
+"logo": "",
+}
+</script>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "GovernmentOffice",
+"name": "",
+"image": "",
+"@id": "",
+"url": "",
+"telephone": "",
+"address":
+
+{ "@type": "PostalAddress", "streetAddress": "", "addressLocality": "", "postalCode": "", "addressCountry": "" }
+,
+"geo":
+
+{ "@type": "GeoCoordinates", "latitude": , "longitude":  }
+
+}
+</script>

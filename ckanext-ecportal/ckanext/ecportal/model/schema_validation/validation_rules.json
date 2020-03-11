@@ -1,0 +1,697 @@
+{
+  "http://www.w3.org/ns/dcat#Dataset": [
+    {
+      "rule_id": "card_description",
+      "property": "description_dcterms",
+      "constraint": "card_1..n_en",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.dataset.description.name",
+      "message": "ecodp.dcat.validation.dataset.description.message"
+    },
+    {
+      "rule_id": "card_title",
+      "property": "title_dcterms",
+      "constraint": "card_1..n_en",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.dataset.title_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.title_dcterms.message"
+    },
+
+    {
+      "rule_id": "card_publisher",
+      "property": "publisher_dcterms",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.dataset.publisher_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.publisher_dcterms.message"
+    },
+
+    {
+      "rule_id": "cv_publisher",
+      "property": "publisher_dcterms",
+      "constraint": "controlled_vocabulary",
+      "source":"db_publisher",
+      "name": "ecodp.dcat.validation.dataset.cv_publisher_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_publisher_dcterms.message"
+
+    },
+    {
+      "rule_id": "cv_group",
+      "property": "datasetGroup_dcatapop",
+      "constraint": "controlled_vocabulary",
+      "source":"db_group",
+      "name": "ecodp.dcat.validation.dataset.cv_datasetGroup_dcatapop.name",
+      "message": "ecodp.dcat.validation.dataset.cv_datasetGroup_dcatapop.message"
+
+    },
+    {
+      "rule_id": "card_theme",
+      "property": "theme_dcat",
+      "constraint": "card_1..n",
+      "mandatory":"yes",
+      "specific_rule":"ODPSR",
+      "name": "ecodp.dcat.validation.dataset.theme_dcat.name",
+      "message": "ecodp.dcat.validation.dataset.theme_dcat.message"
+    },
+    {
+      "rule_id": "cv_theme",
+      "property": "theme_dcat",
+      "constraint": "controlled_vocabulary",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.dataset.cv_theme_dcat.name",
+      "message": "ecodp.dcat.validation.dataset.cv_theme_dcat.message"
+    },
+    {
+      "rule_id": "card_accessRights",
+      "property": "accessRights_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.accessRights_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.accessRights_dcterms.message"
+    },
+
+    {
+      "rule_id": "cv_accessRights",
+      "property": "accessRights_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.cv_accessRights_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_accessRights_dcterms.message"
+
+    },
+
+    {
+      "rule_id": "card_accrualPeriodicity",
+      "property": "accrualPeriodicity_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.accrualPeriodicity_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.accrualPeriodicity_dcterms.message"
+    },
+    {
+      "rule_id": "cv_accrualPeriodicity",
+      "property": "accrualPeriodicity_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.cv_accrualPeriodicity_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_accrualPeriodicity_dcterms.message"
+    },
+
+    {
+      "rule_id": "cv_language",
+      "property": "language_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.cv_language_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_language_dcterms.message"
+    },
+    {
+      "rule_id": "cv_identifier",
+      "property": "identifier_adms",
+      "constraint": "controlled_vocabulary",
+      "source":"list",
+      "name": "ecodp.dcat.validation.dataset.cv_identifier_adms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_identifier_adms.message"
+    },
+    {
+      "rule_id": "card_issued",
+      "property": "issued_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.issued_dcterms.cardinality.name",
+      "message": "ecodp.dcat.validation.dataset.issued_dcterms.cardinality.message"
+    },
+    {
+      "rule_id": "type_issued",
+      "property": "issued_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.dataset.issued_dcterms.type.name",
+      "message": "ecodp.dcat.validation.dataset.issued_dcterms.type.message"
+    },
+    {
+      "rule_id": "date_later_issued",
+      "property": "issued_dcterms",
+      "property2": "modified_dcterms",
+      "constraint": "date_later",
+      "level_of_error":"warning",
+      "name": "ecodp.dcat.validation.dataset.issued_dcterms.date_later.name",
+      "message": "ecodp.dcat.validation.dataset.issued_dcterms.date_later.message"
+    },
+
+    {
+      "rule_id": "cv_spatial",
+      "property": "spatial_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.spatial_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.spatial_dcterms.message"
+    },
+
+    {
+      "rule_id": "card_type",
+      "property": "type_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.type_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.type_dcterms.message"
+    },
+    {
+      "rule_id": "cv_type",
+      "property": "type_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.cv_type_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_type_dcterms.message"
+    },
+    {
+      "rule_id": "card_modified",
+      "property": "modified_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.modified_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.modified_dcterms.message"
+    },
+    {
+      "rule_id": "type_modified",
+      "property": "modified_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.dataset.type_modified_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.type_modified_dcterms.message"
+    },
+    {
+      "rule_id": "versionInfo_owl",
+      "property": "versionInfo_owl",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.versionInfo_owl.name",
+      "message": "ecodp.dcat.validation.dataset.versionInfo_owl.message"
+    },
+
+    {
+      "rule_id": "cv_subject",
+      "property": "subject_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.subject_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.subject_dcterms.message"
+    },
+    {
+      "rule_id": "card_creator",
+      "property": "creator_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.creator_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.creator_dcterms.message"
+    },
+    {
+      "rule_id": "cv_creator",
+      "property": "creator_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.dataset.cv_creator_dcterms.name",
+      "message": "ecodp.dcat.validation.dataset.cv_creator_dcterms.message"
+    },
+    {
+      "rule_id": "isPartOfCatalog_dcatapop",
+      "property": "isPartOfCatalog_dcatapop",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.isPartOfCatalog_dcatapop.name",
+      "message": "ecodp.dcat.validation.dataset.isPartOfCatalog_dcatapop.message"
+    },
+   {
+      "rule_id": "card_ckanName",
+      "property": "ckanName_dcatapop",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.dataset.ckanName_dcatapop.name",
+      "message": "ecodp.dcat.validation.dataset.ckanName_dcatapop.message"
+    },
+    {
+      "rule_id": "url_source_dcterms",
+      "property": "source_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.source_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.source_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_provenance_dcterms",
+      "property": "provenance_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.provenance_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.provenance_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_conformsTo_dcterms",
+      "property": "conformsTo_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.conformsTo_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.conformsTo_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_sample_adms",
+      "property": "sample_adms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.sample_adms.url.name",
+      "message": "ecodp.dcat.validation.dataset.sample_adms.url.message"
+    },
+    {
+      "rule_id": "url_isVersionOf_dcterms",
+      "property": "isVersionOf_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.isVersionOf_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.isVersionOf_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_hasVersion_dcterms",
+      "property": "hasVersion_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.hasVersion_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.hasVersion_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_isPartOf_dcterms",
+      "property": "isPartOf_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.isPartOf_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.isPartOf_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_hasPart_dcterms",
+      "property": "hasPart_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.hasPart_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.hasPart_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_relation_dcterms",
+      "property": "relation_dcterms",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.relation_dcterms.url.name",
+      "message": "ecodp.dcat.validation.dataset.relation_dcterms.url.message"
+    },
+    {
+      "rule_id": "url_applicationUsingDataset_dcatapop",
+      "property": "applicationUsingDataset_dcatapop",
+      "constraint": "contain_url",
+      "name": "ecodp.dcat.validation.dataset.applicationUsingDataset_dcatapop.url.name",
+      "message": "ecodp.dcat.validation.dataset.applicationUsingDataset_dcatapop.url.message"
+    }
+
+  ],
+
+  "http://www.w3.org/ns/dcat#CatalogRecord":[
+    {
+      "rule_id": "card_primaryTopic",
+      "property": "primaryTopic_foaf",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.catalog.primaryTopic_foaf.name",
+      "message": "ecodp.dcat.validation.catalog.primaryTopic_foaf.message"
+    },
+
+    {
+      "rule_id": "card_modified",
+      "property": "modified_dcterms",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.catalog.modified_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.modified_dcterms.message"
+    },
+    {
+      "rule_id": "type_modified",
+      "property": "modified_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.catalog.type_modified_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.type_modified_dcterms.message"
+    },
+    {
+      "rule_id": "card_conformsTo",
+      "property": "conformsTo_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.catalog.conformsTo_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.conformsTo_dcterms.message"
+    },
+    {
+      "rule_id": "card_status",
+      "property": "status_adms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.catalog.status_adms.name",
+      "message": "ecodp.dcat.validation.catalog.status_adms.message"
+
+    },
+    {
+      "rule_id": "cv_status",
+      "property": "status_adms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.catalog.cv_status_adms.name",
+      "message": "ecodp.dcat.validation.catalog.cv_status_adms.message"
+    },
+    {
+      "rule_id": "card_issued",
+      "property": "issued_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.catalog.issued_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.issued_dcterms.message"
+    },
+    {
+      "rule_id": "type_issued",
+      "property": "issued_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.catalog.type_issued_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.type_issued_dcterms.message"
+    },
+    {
+      "rule_id": "date_later_issued",
+      "property": "issued_dcterms",
+      "property2": "modified_dcterms",
+      "constraint": "date_later",
+      "name": "ecodp.dcat.validation.catalog.later_issued_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.later_issued_dcterms.message"
+    },
+    {
+      "rule_id": "cv_language",
+      "property": "language_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.catalog.language_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.language_dcterms.message"
+    },
+    {
+      "rule_id": "card_source",
+      "property": "source_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.catalog.source_dcterms.name",
+      "message": "ecodp.dcat.validation.catalog.source_dcterms.message"
+    },
+    {
+      "rule_id": "card_numberOfViews",
+      "property": "numberOfViews_dcatapop",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.catalog.numberOfViews_dcatapop.name",
+      "message": "ecodp.dcat.validation.catalog.numberOfViews_dcatapop.message"
+    }
+
+
+
+
+  ],
+
+  "http://www.w3.org/ns/dcat#Distribution": [
+    {
+      "rule_id": "card_accessURL",
+      "property": "accessURL_dcat",
+      "constraint": "card_1..n",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.distribution.accessURL_dcat.name",
+      "message": "ecodp.dcat.validation.distribution.accessURL_dcat.message"
+    },
+    {
+      "rule_id": "ODPSR_card_format",
+      "property": "format_dcterms",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "specific_rule":"ODPSR",
+      "name": "ecodp.dcat.validation.distribution.format_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.format_dcterms.message"
+    },
+    {
+      "rule_id": "cv_format",
+      "property": "format_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.cv_format_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.cv_format_dcterms.message"
+    },
+
+    {
+      "rule_id": "ODPSR_card_license",
+      "property": "license_dcterms",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "specific_rule":"ODPSR",
+      "name": "ecodp.dcat.validation.distribution.license_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.license_dcterms.message"
+
+    },
+
+    {
+      "rule_id": "cv_license",
+      "property": "license_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.cv_license_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.cv_license_dcterms.message"
+    },
+    {
+      "rule_id": "card_byteSize",
+      "property": "byteSize_dcat",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.byteSize_dcat.name",
+      "message": "ecodp.dcat.validation.distribution.byteSize_dcat.message"
+    },
+    {
+      "rule_id": "type_byteSize",
+      "property": "byteSize_dcat",
+      "constraint": "restricted_type",
+      "type":"xsdDecimal",
+      "name": "ecodp.dcat.validation.distribution.type_byteSize_dcat.name",
+      "message": "ecodp.dcat.validation.distribution.type_byteSize_dcat.message"
+    },
+    {
+      "rule_id": "card_checksum",
+      "property": "checksum_spdx",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.checksum_spdx.name",
+      "message": "ecodp.dcat.validation.distribution.checksum_spdx.message"
+    },
+    {
+      "rule_id": "cv_language",
+      "property": "language_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.language_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.language_dcterms.message"
+    },
+    {
+      "rule_id": "cv_mediaType",
+      "property": "mediaType_dcat",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.cv_mediaType_dcat.name",
+      "message": "ecodp.dcat.validation.distribution.cv_mediaType_dcat.message"
+    },
+    {
+      "rule_id": "card_mediaType",
+      "property": "mediaType_dcat",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.mediaType_dcat.name",
+      "message": "ecodp.dcat.validation.distribution.mediaType_dcat.message"
+    },
+    {
+      "rule_id": "card_issued",
+      "property": "issued_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.issued_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.issued_dcterms.message"
+    },
+    {
+      "rule_id": "type_issued",
+      "property": "issued_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.distribution.type_issued_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.type_issued_dcterms.message"
+    },
+    {
+      "rule_id": "card_rights",
+      "property": "rights_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.rights_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.rights_dcterms.message"
+    },
+    {
+      "rule_id": "card_status",
+      "property": "status_adms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.status_adms.name",
+      "message": "ecodp.dcat.validation.distribution.status_adms.message"
+    },
+    {
+      "rule_id": "cv_status",
+      "property": "status_adms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.cv_status_adms.name",
+      "message": "ecodp.dcat.validation.distribution.cv_status_adms.message"
+    },
+
+    {
+      "rule_id": "ODPSR_card_title",
+      "property": "title_dcterms",
+      "constraint": "card_1..n_en",
+      "mandatory": "yes",
+      "specific_rule":"ODPSR",
+      "name": "ecodp.dcat.validation.distribution.title_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.title_dcterms.message"
+    },
+
+    {
+      "rule_id": "card_modified",
+      "property": "modified_dcterms",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.modified_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.modified_dcterms.message"
+    },
+    {
+      "rule_id": "type_modified",
+      "property": "modified_dcterms",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.distribution.type_modified_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.type_modified_dcterms.message"
+    },
+    {
+      "rule_id": "card_numberOfDownloads",
+      "property": "numberOfDownloads_dcatapop",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.numberOfDownloads_dcatapop.name",
+      "message": "ecodp.dcat.validation.distribution.numberOfDownloads_dcatapop.message"
+    },
+    {
+      "rule_id": "card_type",
+      "property": "type_dcterms",
+      "constraint": "card_1..1",
+      "name": "ecodp.dcat.validation.distribution.type_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.type_dcterms.message"
+    },
+    {
+      "rule_id": "cv_type",
+      "property": "type_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.distribution.cv_type_dcterms.name",
+      "message": "ecodp.dcat.validation.distribution.cv_type_dcterms.message"
+    },
+    {
+      "rule_id": "card_iframe",
+      "property": "iframe_dcatapop",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.distribution.iframe_dcatapop.name",
+      "message": "ecodp.dcat.validation.distribution.iframe_dcatapop.message"
+    }
+  ],
+
+  "http://xmlns.com/foaf/0.1/Document":[
+    {
+      "rule_id": "card_url",
+      "property": "url_schema",
+      "constraint": "card_1..n",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.document.url_schema.name",
+      "message": "ecodp.dcat.validation.document.url_schema.message"
+    },
+    {
+      "rule_id": "card_type",
+      "property": "type_dcterms",
+      "constraint": "card_1..1",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.document.type_dcterms.name",
+      "message": "ecodp.dcat.validation.document.type_dcterms.message"
+    },
+    {
+      "rule_id": "card_topic",
+      "property": "topic_foaf",
+      "constraint": "card_1..n",
+      "name": "ecodp.dcat.validation.document.topic_foaf.name",
+      "message": "ecodp.dcat.validation.document.topic_foaf.message"
+    },
+    {
+      "rule_id": "card_title",
+      "property": "title_dcterms",
+      "constraint": "card_1..n_en",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.document.title_dcterms.name",
+      "message": "ecodp.dcat.validation.document.title_dcterms.message"
+    },
+    {
+      "rule_id": "card_format",
+      "property": "format_dcterms",
+      "constraint": "card_0..1",
+      "mandatory":"yes",
+      "name": "ecodp.dcat.validation.document.format_dcterms.name",
+      "message": "ecodp.dcat.validation.document.format_dcterms.message"
+    },
+    {
+      "rule_id": "cv_format",
+      "property": "format_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.document.cv_format_dcterms.name",
+      "message": "ecodp.dcat.validation.document.cv_format_dcterms.message"
+    },
+    {
+      "rule_id": "cv_language",
+      "property": "language_dcterms",
+      "constraint": "controlled_vocabulary",
+      "name": "ecodp.dcat.validation.document.language_dcterms.name",
+      "message": "ecodp.dcat.validation.document.language_dcterms.message"
+    }
+  ],
+
+  "http://www.w3.org/2006/vcard/ns#Kind":[
+    {
+      "rule_id": "card_hasEmail",
+      "property": "hasEmail_vcard",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.contact.hasEmail_vcard.name",
+      "message": "ecodp.dcat.validation.contact.hasEmail_vcard.message"
+    },
+    {
+      "rule_id": "card_hasTelephone",
+      "property": "hasTelephone_vcard",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.contact.hasTelephone_vcard.name",
+      "message": "ecodp.dcat.validation.contact.hasTelephone_vcard.message"
+    },
+    {
+      "rule_id": "card_hasAddress",
+      "property": "hasAddress_vcard",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.contact.hasAddress_vcard.name",
+      "message": "ecodp.dcat.validation.contact.hasAddress_vcard.message"
+    },
+    {
+      "rule_id": "card_homePage",
+      "property": "homePage_foaf",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.contact.homePage_foaf.name",
+      "message": "ecodp.dcat.validation.contact.homePage_foaf.message"
+    }
+
+  ],
+
+  "http://purl.org/dc/terms/PeriodOfTime":[
+    {
+      "rule_id": "card_startDate",
+      "property": "startDate_schema",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.time_period.startDate_schema.name",
+      "message": "ecodp.dcat.validation.time_period.startDate_schema.message"
+    },
+    {
+      "rule_id": "card_endDate",
+      "property": "endDate_schema",
+      "constraint": "card_0..1",
+      "name": "ecodp.dcat.validation.time_period.endDate_schema.name",
+      "message": "ecodp.dcat.validation.time_period.endDate_schema.message"
+    },
+    {
+      "rule_id": "type_startDate",
+      "property": "startDate_schema",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.dataset.startDate_schema.type.name",
+      "message": "ecodp.dcat.validation.dataset.startDate_schema.type.message"
+    },
+    {
+      "rule_id": "type_endDate",
+      "property": "endDate_schema",
+      "constraint": "restricted_type",
+      "type":"xsdDate",
+      "name": "ecodp.dcat.validation.dataset.endDate_schema.type.name",
+      "message": "ecodp.dcat.validation.dataset.endDate_schema.type.message"
+    },
+    {
+      "rule_id": "date_later_period",
+      "property": "startDate_schema",
+      "property2": "endDate_schema",
+      "constraint": "date_later",
+      "level_of_error":"warning",
+      "name": "ecodp.dcat.validation.dataset.time_period.date_later.name",
+      "message": "ecodp.dcat.validation.dataset.time_period.date_later.message"
+    }
+  ]
+
+
+}

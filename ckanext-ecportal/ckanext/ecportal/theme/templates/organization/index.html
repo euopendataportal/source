@@ -1,0 +1,101 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{% set locale = h.current_locale()|string %}
+
+{%- block scripts %}
+	{{ super() }}
+{%- endblock -%}
+
+{% block bodytag %}
+	{{ super() }}
+	class="no-sidebar"
+{% endblock %}
+
+{% block subtitle %}{% trans %}organization.index.subtitle.publisher{% endtrans %}{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(4, _('organization.index.subtitle.publisher'), h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<a href="{{h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index')}}">{% trans %}organization.index.subtitle.publisher{% endtrans %}</a>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+
+{% block page_search %}
+   {% snippet 'snippets/page_search.html', query='', fields=c.fields, controller='home', dataset_count=h.get_count_dataset() %}
+{% endblock %}
+
+{% block page_search_right %}
+        {% snippet "snippets/suggest_box.html" , controller='home'%}
+{% endblock %}
+
+
+{% block primary_content_inner %}
+    <div class="ckan-publisher-content">
+        <div id="page_heading_div" >
+	        <h1 class="page_heading">{% trans %}organization.index.subtitle.publisher{% endtrans %}</h1>
+        </div>
+    {% for top_level, group_dict in c.items.items() %}
+
+                {% set id_inc = loop.index %}
+                {% if group_dict['total']>=0 %}
+                    <div class="publisher-link-organization">
+                    <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=group_dict.name) }}"
+                       class="">
+                        <i class="publisher"></i>
+                        <strong>{{ group_dict.label }}</strong>
+                        <span>({{ group_dict['total'] }} {% trans %}home.index.datasets.inner.lable{% endtrans %}) </span>
+                        {% if group_dict['children'] %}
+                            <a href="#cp_{{ id_inc }}" data-toggle="collapse" class="button_collapse_organization" aria-expanded="true"></a>
+                        {% endif %}
+
+                    </a>
+
+                    </div>
+
+                    <span data-collapse="accordion">
+
+                                    {% if group_dict['children'] %}
+{#                                        <h3 class="button_collapse_position"></h3>#}
+                                        <div id="cp_{{ id_inc }}" class="collapse in" aria-expanded="true">
+                                            <ul>
+                                                {% for child in group_dict['children'] %}
+                                                    <li><a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=child[0]) }}"
+                                                           class="item_sub_link">{{ child[1] }} ({{ child[2] }})</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </span>
+                {% endif %}
+
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+
+{% block secondary %}{% endblock %}

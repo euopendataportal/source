@@ -1,0 +1,13 @@
+# Translations template for ckan.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the ckan project.
+# 
+# Translators:
+# darwinp <darwinpeltan@gmail.com>, 2013
+# odptranslator <ecodptranslators@gmail.com>, 2013
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"

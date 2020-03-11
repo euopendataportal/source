@@ -1,0 +1,138 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Display all the attributes of a catalog.
+
+Example:
+    {% snippet "catalog/snippets/catalog_details.html", controller=c.controller, id=c.id, catalog=c.catalog_dict, num_has_part_catalog = c.NUM_HAS_PART_CATALOG %}
+#}
+<script type="text/javascript">
+    function vertical_line() {
+        var left_height = window.getComputedStyle(document.getElementById('leftdiv')).getPropertyValue('height');
+        var right_height = window.getComputedStyle(document.getElementById('rightdiv')).getPropertyValue('height');
+        if (parseFloat(left_height) > parseFloat(right_height)) {
+            document.getElementById('rightdiv').style.height = left_height;
+        }
+        else {
+            document.getElementById('leftdiv').style.height = right_height;
+        }
+    }
+    window.onload = vertical_line;
+</script>
+
+<style>
+    h5 {
+        font-weight:bold;
+    }
+</style>
+
+{% if catalog.title and catalog.organization.title %}
+    <h1 class="pre_page_heading">{{ catalog.title }}
+        {% trans %}catalog.read.by_the{% endtrans %} {{ catalog.organization.title }}
+    </h1>
+{% endif %}
+
+{% if catalog.description %}
+    <h5>{% trans %}catalog.catalog_form.description{% endtrans %}</h5>
+    <p>{{ catalog.description }}</p>
+{% endif %}
+
+<div class="row" style="padding-bottom:10px;">
+    <div id="leftdiv" style="border-right: solid 1px" class="col-xs-6">
+        {% if catalog.home_page %}
+            <h5>{% trans %}ecodp.rdft.catalog_edit.home_page{% endtrans %}</h5>
+            <a href="{{ catalog.home_page }}">{{ catalog.home_page }}</a>
+        {% endif %}
+
+        {% if catalog.display_languages %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.language{% endtrans %}</h5>
+            {{ catalog.display_languages|join(', ') }}
+        {% endif %}
+
+        {% if catalog.display_themes %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.theme{% endtrans %}</h5>
+                {% if 'http://publications.europa.eu/resource/authority/data-theme' in  catalog.display_themes%}
+                    Dataset themes Named Authority List
+            {% else %}
+                {{ catalog.display_themes|join(', ') }}
+            {% endif %}
+        {% endif %}
+
+        {% if catalog.is_part_of %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.is_part_of{% endtrans %}</h5>
+            <a href="{{ h.url_for(controller=controller, action='read', id=catalog.display_is_part_of.uri) }}?vocab_catalog={{ catalog.is_part_of }}">{{ catalog.display_is_part_of.name }}</a>
+        {% endif %}
+
+        {% if catalog.display_has_part %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.has_part{% endtrans %}</h5>
+            {% set name = 'has_part' %}
+            {% set limit = h.get_param_int('_%s_limit' % name, default=num_has_part_catalog) %}
+            {% if limit > 0 %}
+                {% set display_list = catalog.display_has_part[:limit] %}
+            {% else %}
+                {% set display_list = catalog.display_has_part %}
+            {% endif %}
+
+            <div>
+                {% for catalog_dict in display_list %}
+                    <a href="{{ h.url_for(controller=controller, action='read', id=catalog_dict.uri) }}?vocab_catalog={{ catalog_dict.vocab }}">{{ catalog_dict.name }}</a>
+                    {% if catalog_dict != display_list[-1]%},{% endif %}
+                {% endfor %}
+            </div>
+
+            {% snippet "snippets/show_more.html", group_read=True, controller=controller, domain=id, name=name, limit=limit, list_length=catalog.display_has_part|length, show_less_display=num_has_part_catalog %}
+        {% endif %}
+    </div>
+
+    <div id="rightdiv" class="col-xs-6">
+        {% if catalog.uri %}
+            <h5>{% trans %}catalog.catalog_form.uri{% endtrans %}</h5>
+            <a href="{{ catalog.uri }}">{{ catalog.uri }}</a>
+        {% endif %}
+
+        {% if catalog.doi %}
+            <h5>{% trans %}catalog.catalog_form.doi{% endtrans %}</h5>
+            {% if catalog.home_page %}
+                <a href="{{ catalog.home_page }}">{{ catalog.doi }}</a>
+            {% else %}
+                <a href="{{ catalog.uri }}">{{ catalog.doi }}</a>
+            {% endif %}
+        {% endif %}
+
+        {% if catalog.release_date %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.release_date{% endtrans %}</h5>
+            {{ catalog.release_date }}
+        {% endif %}
+
+        {% if catalog.modified_date %}
+            <h5>{% trans %}ecodp.rdft.dataset_edit.modified_date{% endtrans %}</h5>
+            {{ catalog.modified_date }}
+        {% endif %}
+
+        {% if catalog.rights %}
+            <h5>{% trans %}ecodp.common.rights{% endtrans %}</h5>
+            {{ catalog.rights }}
+        {% endif %}
+
+        {% if catalog.licence %}
+            <h5>{% trans %}ecodp.common.licence{% endtrans %}</h5>
+            {{ h.translate_controlled_vocabulary('licence', catalog.licence | first, 'license_dcterms', 'http://www.w3.org/ns/dcat#Catalog') }}
+        {% endif %}
+    </div>
+</div>

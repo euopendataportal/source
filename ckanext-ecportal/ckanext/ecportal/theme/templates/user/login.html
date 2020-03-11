@@ -1,0 +1,98 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{% block subtitle %}{{ _('user.login.subtitel.login') }}{% endblock %}
+
+{% block breadcrumb_items %},
+    {{ h.load_breadcrumb_item_json_ld(2, _('user.login.breadcrump.access'), h.url_for(controller='user', action='login', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<span class="separator"></span>
+	<a href="{{ h.url_for(controller='user', action='login') }}">{% trans %}user.login.breadcrump.access{% endtrans %}</a>
+	{# {{h.url_for(controller='group', action='index')}} #}
+{% endblock %}
+
+{% block page_title %}
+	{% trans %}user.login.breadcrump.access{% endtrans %}
+{% endblock %}
+
+
+{% block page_heading %}
+	<h1 class="page_heading">{% trans %}user.login.breadcrump.access{% endtrans %}</h1>
+{% endblock %}
+
+{#%- block scripts %}
+	{{ super() }}
+	{% resource 'openid-selector/openid-jquery.js' %}
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		  openid.init('openid_identifier');
+	  });
+	</script>
+{% endblock %#}
+
+{% import 'macros/form.html' as form %}
+
+{% block primary_content_inner %}
+
+	<form action="{{c.login_handler}}" method="post" class="simple-form" id="login">
+		<fieldset>
+			{{ form.errors(errors=error_summary) }}
+			{{ form.input('login', label=_("user.login.field.login_name"), id='field-login', value="", error=username_error) }}
+			{{ form.input('password', label=_("user.login.field.password"), id='password', type="password", value="", error=password_error) }}
+		</fieldset>
+		<button name="s" id="s" type="submit" class="btn primary"><span>{% trans %}user.login.content.sign_in{% endtrans %}</span></button>
+	</form>
+	<br/>
+
+	{#% if g.openid_enabled %}
+		<form action="{{ h.url_for('/login_openid') }}" method="post" class="simple-form" id="openid_form">
+
+			<input type="hidden" name="action" value="verify" />
+			<fieldset>
+				<legend i18n:msg="site_title">Login using Open ID</legend>
+				<p i18n:msg="site_title">NB: To set-up your OpenID for this site, you first need to <a href="{{h.url_for(controller='user', action='register')}}">Register</a> and then edit your Profile to provide your OpenID.</p>
+				<div id="openid_choice">
+					<p>Please click your account provider:</p>
+					<div id="openid_btns"></div>
+				</div>
+				<div id="openid_input_area">
+					<label for="openid_identifier">OpenID Identifier:</label>
+					<input id="openid_identifier" name="openid_identifier" type="text" value="http://" />
+				</div>
+				<div>
+					<h3>Don't have an OpenID?</h3>
+					<p i18n:msg="">
+						OpenID is service that allows you to log-on to many different websites using a single identity. Find out <a href="http://openid.net/what/">more about OpenID</a> and <a href="http://openid.net/get/">how to get an
+						OpenID enabled account</a>. Probably the simplest way is sign up with a free OpenID provider such as <a
+						href="https://www.myopenid.com/">https://www.myopenid.com/</a>.
+					</p>
+				</div>
+			</fieldset>
+
+			<input id="openid_submit" class="btn primary" type="submit" value="{% trans %}user.login.content.sign_in_open_id{% endtrans %}"/>
+		</form>
+	{% endif %#}
+
+
+
+	{#% snippet "user/snippets/login_form.html", action=c.login_handler, error_summary=error_summary %#}
+{% endblock %}

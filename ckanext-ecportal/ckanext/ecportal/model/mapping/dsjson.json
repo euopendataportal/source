@@ -1,0 +1,235 @@
+{
+  "publisher_dcterms": [
+	"http://publications.europa.eu/resource/authority/corporate-body/ACP_AMB"
+  ],
+  "alternative_dcterms": [
+	"Alt title Arhs test5"
+  ],
+  "contactPoint_dcat__telephone": "+352691717713",
+  "applicationUsingDataset_dcatapop": [
+	"http://related_application5_1.com",
+	"http://related_application5.com"
+  ],
+  "isPartOf_dcterms": [
+	"http://ispartof5.com",
+	"http://ispartof5_1.com"
+  ],
+  "temporal_coverage_to": "2017-10-25",
+  "source_dcterms": [
+	"http://source5.com"
+  ],
+  "statMeasure_stat": [
+	"http://quality.com"
+  ],
+  "spatial_dcterms": [
+	"http://publications.europa.eu/resource/authority/country/LUX",
+	"http://publications.europa.eu/resource/authority/country/EUR"
+  ],
+  "hasPart_dcterms": [
+	"http://www.hasPart5_1.com",
+	"http://www.hasPart5.com"
+  ],
+  "issued_dcterms": [
+	"2017-10-01"
+  ],
+  "contactPoint_dcat__address_postal": "",
+  "resources_distribution": [
+	{
+	  "numberOfDownloads_dcatapop": [
+		"0"
+	  ],
+	  "conformsTo_dcterms": [
+		"http://linked52.com"
+	  ],
+	  "accessURL_dcat": [
+		"http://www.accdist5_2.com"
+	  ],
+	  "format_dcterms": [
+		"http://publications.europa.eu/resource/authority/file-type/ARC"
+	  ],
+	  "type_dcterms": [
+		"http://publications.europa.eu/resource/authority/distribution-type/FEED_INFO"
+	  ],
+	  "rights_dcterms": [
+		{
+		  "label_rdfs": [
+			"right d2"
+		  ]
+		}
+	  ],
+	  "license_dcterms": [
+		"http://publications.europa.eu/resource/authority/licence/COM_REUSE"
+	  ],
+	  "byteSize_dcat": [
+		"5522"
+	  ],
+	  "checksumValue_spdx": "525252",
+	  "status_adms": [
+		"http://publications.europa.eu/resource/authority/dataset-status/DISCONT"
+	  ],
+	  "language_dcterms": [
+		"http://publications.europa.eu/resource/authority/language/LTZ"
+	  ],
+	  "issued_dcterms": [
+		"2017-10-20"
+	  ],
+	  "description_dcterms": [
+		"Distribution arhs5 D2 Description"
+	  ],
+	  "modified_dcterms": [
+		"2017-10-25"
+	  ],
+	  "downloadURL_dcat": [
+		"http://192.168.35.10:5000/storage/f/2017-10-24T144047/rdt-dataset-import-example_Excel-invalid.xlsx"
+	  ],
+	  "title_dcterms": [
+		"Distribution arhs5 D2"
+	  ]
+	},
+	{
+	  "numberOfDownloads_dcatapop": [
+		"0"
+	  ],
+	  "conformsTo_dcterms": [
+		"http://www.linked.com"
+	  ],
+	  "accessURL_dcat": [
+		"http://www.accdist5.com"
+	  ],
+	  "format_dcterms": [
+		"http://publications.europa.eu/resource/authority/file-type/ARC"
+	  ],
+	  "type_dcterms": [
+		"http://publications.europa.eu/resource/authority/distribution-type/FEED_INFO"
+	  ],
+	  "rights_dcterms": [
+		{
+		  "label_rdfs": [
+			"rigts4-1"
+		  ]
+		}
+	  ],
+	  "license_dcterms": [
+		"http://publications.europa.eu/resource/authority/licence/COM_REUSE"
+	  ],
+	  "byteSize_dcat": [
+		"555"
+	  ],
+	  "checksumValue_spdx": "55555",
+	  "status_adms": [
+		"http://publications.europa.eu/resource/authority/dataset-status/COMPLETED"
+	  ],
+	  "language_dcterms": [
+		"http://publications.europa.eu/resource/authority/language/FRA",
+		"http://publications.europa.eu/resource/authority/language/ENG"
+	  ],
+	  "issued_dcterms": [
+		"2017-10-25"
+	  ],
+	  "description_dcterms": [
+		"Distribution arhs5 D1 description"
+	  ],
+	  "modified_dcterms": [
+		"2018-01-15"
+	  ],
+	  "downloadURL_dcat": [
+		"http://192.168.35.10:5000/storage/f/2017-10-24T143842/rdt-empty.xlsx"
+	  ],
+	  "title_dcterms": [
+		"Distribution arhs5 D1"
+	  ]
+	}
+  ],
+  "datasetGroup_dcatapop": [
+	"c627f105-dc18-47ec-a07c-3b34491e3633"
+  ],
+  "relation_dcterms": [
+	"http://related_resource5.com",
+	"http://related_resource5_1.com"
+  ],
+  "landingPage_dcat": "http://landingpage_Arhs_Test5.com",
+  "contactPoint_dcat__email": "younes.djaghloul@gmail.com",
+  "identifier_dcterms": [
+	"Identifier5"
+  ],
+  "versionNotes_adms": [
+	"note5"
+  ],
+  "conformsTo_dcterms": [
+	"http://conforms5.com"
+  ],
+  "type_dcterms": [
+	{}
+  ],
+  "keyword_dcat": [
+	"key2",
+	"key1"
+  ],
+  "language_dcterms": [
+	"http://publications.europa.eu/resource/authority/language/FRA",
+	"http://publications.europa.eu/resource/authority/language/ENG"
+  ],
+  "theme_dcat": [
+	"http://eurovoc.europa.eu/100144",
+	"http://eurovoc.europa.eu/100142"
+  ],
+  "title_dcterms": [
+	"Arhs Test5"
+  ],
+  "contactPoint_dcat__webpage": "https://www.arhs-group.com/arhs-cube",
+  "hasQualityAnnotation_dqv": [
+	"http://quality.com"
+  ],
+  "sample_adms": [
+	{},
+	{}
+  ],
+  "resources_visualization": [],
+  "subject_dcterms": [
+	"http://eurovoc.europa.eu/1",
+	"http://eurovoc.europa.eu/1000"
+  ],
+  "hasVersion_dcterms": [
+	"http://hasversion5.com",
+	"http://www.hasversion5_1.com"
+  ],
+  "temporal_coverage_from": "2017-10-01",
+  "contactPoint_dcat__address_country": "",
+  "ckanName_dcatapop": [
+	"arhs-test5"
+  ],
+  "contactPoint_dcat__address_locality": "",
+  "numSeries_stat": [
+	"12"
+  ],
+  "accrualPeriodicity_dcterms": [
+	"http://publications.europa.eu/resource/authority/frequency/ANNUAL"
+  ],
+  "contactPoint_dcat__name": "younes",
+  "contactPoint_dcat__address": "address",
+  "modified_dcterms": [
+	"2017-10-01"
+  ],
+  "attribute_stat": [
+	"http://attribute2.com",
+	"http://attribute2_1.com"
+  ],
+  "isVersionOf_dcterms": [
+	"http://www.isversion5_1.com",
+	"http://isversion5.com"
+  ],
+  "versionInfo_owl": [
+	"5.0"
+  ],
+  "dimension_stat": [
+	"http://dimesion2.com",
+	"http://dimesion2_1.com"
+  ],
+  "identifier_adms": [
+	{}
+  ],
+  "description_dcterms": [
+	"Arhs Test5 Description"
+  ],
+  "contactPoint_dcat__address_street": "2 rue bov\u00e9 , Merl"
+}

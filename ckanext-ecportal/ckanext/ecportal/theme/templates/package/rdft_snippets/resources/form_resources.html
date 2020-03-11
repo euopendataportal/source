@@ -1,0 +1,36 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales()%}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+    {% set resource_id = 'resource' %}
+{% endif %}
+
+<fieldset class="tab-pane" id="{{ dataset_name }}resources">
+    <legend>{% trans %}package.read_resources.resource{% endtrans %}</legend>
+    {% include "package/rdft_snippets/resources/form_resources_distribution.html"%}
+    {% include "package/rdft_snippets/resources/form_resources_documentation.html"%}
+    {% include "package/rdft_snippets/resources/form_resources_visualization.html"%}
+</fieldset>

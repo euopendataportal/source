@@ -1,0 +1,313 @@
+{
+    "owner_org": [
+        {
+            "id": 14,
+            "__type__": "databaserule",
+            "table": "group",
+            "message": "validation.ds.invalid.publisher",
+            "title": "validation.ds.invalid.publisher.title"
+        }
+    ],
+    "license_id": [
+        {
+            "__type__": "smartiterator",
+            "rules": [
+                {
+                    "id": 15,
+                    "__type__": "licenserule",
+                    "message": "validation.ds.invalid.license",
+                    "title": "validation.ds.license.wrong.title"
+                }
+            ],
+            "message": "validation.ds.multiple.license",
+            "multiple": "Flase"
+        }
+    ],
+    "name": [
+        {
+            "id": 16,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.ckanname",
+            "title": "validation.ds.multiple.ckanname.title"
+        }
+    ],
+    "url": [
+        {
+            "id": 17,
+            "__type__": "uniquevalue",
+            "table": "package",
+            "field": "url",
+            "message": "validation.ds.ambigous.uri",
+            "title": "validation.ds.ambigous.uri.title"
+        },
+        {
+            "id": 18,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.uri",
+            "title": "validation.ds.multiple.uri.title"
+        }
+    ],
+    "interoperability_level": [
+        {
+            "__type__": "smartiterator",
+            "rules": [
+                {
+                    "id": 19,
+                    "__type__": "databaserule",
+                    "table": "tag",
+                    "message": "validation.ds.invalid.interoplevel",
+                    "title": "validation.ds.invalid.interoplevel.title"
+                }
+            ],
+            "message": "validation.ds.multiple.interoplevel",
+            "multiple": "False"
+        }
+    ],
+    "type_of_dataset": [
+        {
+            "__type__": "smartiterator",
+            "rules": [
+                {
+                    "id": 20,
+                    "__type__": "databaserule",
+                    "table": "tag",
+                    "message": "validation.ds.invalid.type",
+                    "title": "validation.ds.invalid.type.title"
+                }
+            ],
+            "multiple": "True"
+        }
+    ],
+    "status": [
+        {
+            "id": 21,
+            "__type__": "databaserule",
+            "table": "tag",
+            "message": "validation.ds.invalid.status",
+            "title": "validation.ds.invalid.status.title"
+        }
+    ],
+    "resources": [
+        {
+            "__type__": "subdatarule",
+            "rules": {
+                "name": [
+                    {
+                        "id": 22,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.title",
+                        "title": "validation.res.multiple.title.title"
+                    }
+                ],
+                "description": [
+                    {
+                        "id": 23,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.description",
+                        "title": "validation.res.multiple.description.title"
+                    }
+                ],
+                "url": [
+                    {
+                        "id": 24,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.url",
+                        "title": "validation.res.multiple.url.title"
+                    }
+                ],
+                "resource_type": [
+                    {
+                        "id": 25,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.type",
+                        "title": "validation.res.multiple.type.title"
+                    }
+                ],
+                "format": [
+                    {
+                        "id": 26,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.format",
+                        "title": "validation.res.multiple.format.title"
+                    }
+                ],
+                "last_modified": [
+                    {
+                        "id": 27,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.moddate",
+                        "title": "validation.res.multiple.moddate.title"
+                    }
+                ],
+                "release_date": [
+                    {
+                        "id": 28,
+                        "__type__": "duplicatedrule",
+                        "message": "validation.res.multiple.issuedate",
+                        "title": "validation.res.multiple.issuedate.title"
+                    }
+                ],
+                 "size": [
+                    {
+                        "id": 29,
+                        "__type__": "intadapterrule",
+                        "message": "validation.res.size.intval",
+                        "title": "validation.res.size.intval.title"
+                    }
+                ]
+            }
+        }
+    ],
+    "alternative_title": [
+        {
+            "id": 29,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.alttitle",
+            "title": "validation.ds.multiple.alttitle.title"
+        }
+    ],
+    "release_date": [
+        {
+            "id": 30,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.issuedate",
+            "title": "validation.ds.multiple.issuedate.title"
+        }
+    ],
+    "accrual_periodicity": [
+        {
+            "id": 31,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.accperiodicity",
+            "title": "validation.ds.multiple.accperiodicity.title"
+        }
+    ],
+    "temporal_coverage_from": [
+        {
+            "id": 32,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.tempcoverstart",
+            "title": "validation.ds.multiple.tempcoverstart.title"
+        }
+    ],
+    "temporal_coverage_to": [
+        {
+            "id": 33,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.tempcoverend",
+            "title": "validation.ds.multiple.tempcoverend.title"
+        }
+    ],
+    "contact_name": [
+        {
+            "id": 34,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.name",
+            "title": "validation.ds.multiple.contact.name.title"
+        }
+    ],
+    "contact_address": [
+        {
+            "id": 35,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.address",
+            "title": "validation.ds.multiple.contact.address.title"
+        }
+    ],
+    "contact_webpage": [
+        {
+            "id": 36,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.web",
+            "title": "validation.ds.multiple.contact.web.title"
+        }
+    ],
+    "contact_email": [
+        {
+            "id": 37,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.mail",
+            "title": "validation.ds.multiple.contact.mail.title"
+        }
+    ],
+    "contact_telephone": [
+        {
+            "id": 38,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.phone",
+            "title": "validation.ds.multiple.contact.phone.title"
+        }
+    ],
+    "modified_date": [
+        {
+            "id": 39,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.contact.moddate",
+            "title": "validation.ds.multiple.contact.moddate.title"
+        }
+    ],
+    "version": [
+        {
+            "id": 40,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.version",
+            "title": "validation.ds.multiple.version.title"
+        }
+    ],
+    "identifier": [
+        {
+            "id": 41,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.version.id",
+            "title": "validation.ds.multiple.version.id.title"
+        }
+    ],
+    "version_description": [
+        {
+            "id": 42,
+            "__type__": "duplicatedrule",
+            "message": "validation.ds.multiple.version.description",
+            "title": "validation.ds.multiple.version.description.title"
+        }
+    ],
+    "concepts_eurovoc": [
+        {
+            "__type__": "smartiterator",
+            "rules": [
+                {
+                    "id": 43,
+                    "__type__": "databaserule",
+                    "table": "tag",
+                    "message": "validation.ds.invalid.eurovocconcepts",
+                    "title": "validation.ds.invalid.eurovocconcepts.title"
+                }
+            ],
+            "multiple": "True"
+        }
+    ],
+    "groups": [
+        {
+            "__type__": "subdatarule",
+            "rules": {
+                "title": [
+                    {
+                        "id": 44,
+                        "__type__": "databaserule",
+                        "table": "group",
+                        "message": "validation.ds.invalid.eurovocdomains",
+                        "title": "validation.ds.invalid.eurovocdomains.title"
+                    }
+                ],
+                "name": [
+                    {
+                        "id": 45,
+                        "__type__": "databaserule",
+                        "table": "group",
+                        "message": "validation.ds.invalid.groups",
+                        "title": "validation.ds.invalid.groups.title"
+                    }
+                ]
+            }
+        }
+    ]
+}

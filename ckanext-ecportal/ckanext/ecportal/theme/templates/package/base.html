@@ -1,0 +1,100 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+
+{% set pkg = c.pkg_dict or pkg_dict %}
+{#{% set package_name = c.package.schema.ckanName_dcatapop.get('0').value_or_uri or '' %}#}
+{% set package_id = c.id %}
+
+
+{% block breadcrumb_content_selected %} class="active"{% endblock %}
+
+{% block subtitle %}{{ _('ecodp.common.datasets') }}{% endblock %}
+
+{% block minor_navigation %}
+
+
+
+
+
+{% if h.check_access('show_dataset_edit_button',{'id':package_id}) %}
+
+<div id="minornavigation">
+    <minornavigation>
+
+
+<ul class="nav nav-pills">
+
+{# Show an enabled edit button if package_update is available #}
+{% if not h.is_metadatatool_plugin_activated()%}
+    {% set function =  'package_update' %}
+    {% else %}
+    {% set function =  'rdft_dataset_update' %}
+{% endif %}
+
+    {% if h.check_access(function,{'id':package_id}) %}
+
+
+
+<li class="{{ 'active' if c.action=='edit' else '' }}">
+<a  class="btn lable-btn" href="{{ h.url_for(controller='package', action='edit', id=package_id) }}">{{  _('ecodp.common.button.edit') }}</a>
+</li>
+
+</ul>
+
+    </minornavigation>
+</div>
+
+{% else %}
+<li class="disabled">
+<a title="{% trans %}package.base.edit.hint{% endtrans %}">{{  _('ecodp.common.button.edit') }}</a>
+</li>
+
+</ul>
+
+    </minornavigation>
+</div>
+
+
+    {% endif %}
+
+
+{% endif %}
+
+{% if not h.is_metadatatool_plugin_activated() %}
+{% if h.check_access('package_update',{'id':c.pkg.id}) %}
+<li class="{{ 'active' if c.action=='editresources' else '' }}">
+<a class="btn lable-btn" href="{{ h.url_for( controller='ckanext.ecportal.controllers.resources:ECPortalEditResourceController', action='editresources', id=package_id) }}">{{ _('package.base.edit.button') }}</a>
+</li>
+
+</ul>
+
+    </minornavigation>
+</div>
+
+{% endif %}
+</ul>
+
+    </minornavigation>
+</div>
+
+{% endif %}
+
+{% endblock %}

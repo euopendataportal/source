@@ -1,0 +1,351 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block dataset_info %}
+    <div class="package-box">
+        <div id="dataset-information" class="inner">
+            <div class="quick-info">
+
+                {% if pkg.uri %}
+                    <dl>
+                        <dt>{% trans %}ecodp.common.uri{% endtrans %}</dt>
+                        <dd property="rdf:Description">
+                            <a href="{{h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='read', id=pkg.id)}}" rel="rdf:Description">
+                            {{ pkg.uri }}
+                            </a>
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.identifier %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.identifier{% endtrans %}</dt>
+                        <dd>{{ pkg.identifier|join(', ') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% set other_identifier =  pkg.other_identifier %}
+                {% if other_identifier %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.other_identifier{% endtrans %}</dt>
+                        <dd>{{ other_identifier|join(', ') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if not pkg.private and pkg.doi  %}
+                    <dl>
+                        <dt>{% trans %}ecodp.read_dataset_info.doi{% endtrans %}</dt>
+                        <dd><a href="{{ pkg.uri }}">{{ pkg.doi }}</a></dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.alternative_title %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.alternativ_title{% endtrans %}</dt>
+                        <dd>{{ pkg.alternative_title|join }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.landing_page %}
+                    <dl>
+                        <dt>{% trans %}ecodp.rdft.dataset_edit.landing_page{% endtrans %}</dt>
+                        <dd property="foaf:homepage">
+                            <a href="{{ pkg.landing_page}}" rel="foaf:homepage"
+                               target="_blank" {{ h.get_external_class(pkg.landing_page) }}>
+                                {{ pkg.landing_page }}
+                            </a>
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.type_of_dataset %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.dataset_type{% endtrans %}</dt>
+                        <dd>{{ pkg.type_of_dataset|join(', ') }}</dd>
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.release_date %}
+                    <dl>{{ h.render_datetime(metadata_modified, '%Y-%m-%d') }}
+                        <dt>{% trans %}package.read_dataset_info.release_date{% endtrans %}</dt>
+                        <dd>{{ h.render_datetime(pkg.release_date|join,'%Y-%m-%d') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.modified_date %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.modified_date{% endtrans %}</dt>
+                        <dd>{{ h.render_datetime(pkg.modified_date,'%Y-%m-%d') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.accrual_periodicity %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset_info.periodicity{% endtrans %}</dt>
+                        <dd>{{ pkg.accrual_periodicity|join (" , ") }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.temporal_coverage_from %}
+                    <dl>
+                        {% set temporal_coverage_from =  h.render_datetime(pkg.temporal_coverage_from, '%Y-%m-%d') %}
+                        <dt>{% trans %}package.read_dataset_temporal_coverage.from{% endtrans %}</dt>
+                        <dd>{{ temporal_coverage_from or pkg.temporal_coverage_from }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.temporal_coverage_to %}
+                    <dl>
+                        {% set temporal_coverage_to = h.render_datetime(pkg.temporal_coverage_to, '%Y-%m-%d') %}
+                        <dt>{% trans %}package.read_dataset_temporal_coverage.to{% endtrans %}</dt>
+                        <dd>{{ temporal_coverage_to or pkg.temporal_coverage_to }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.temporal_granularity %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.temporal_granularity{% endtrans %}</dt>
+{#                            <dl rel="dc:relation" resource="_:extra{{ loop.index }}">#}
+                    <dd property="rdf:value">{{ pkg.temporal_granularity|join (" , ") }}</dd>
+{#                            </dl>#}
+                    </dl>
+                {% endif %}
+
+                {% if pkg.geographical_coverage %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset.geographical_coverage{% endtrans %}</dt>
+                        <dd>{{ pkg.geographical_coverage|join(', ') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.language %}
+                    <dl>
+                        <dt>{% trans %}ecodp.common.language{% endtrans %}</dt>
+                        <dd>{{ pkg.language|join(', ') }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.metadata_language %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset.metadata_language{% endtrans %}</dt>
+                        <dd>{{ pkg.metadata_language|capitalize|join (" , ") }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if version %}
+                    <dl>
+                        <dt>{% trans %}ecodp.common.version{% endtrans %}</dt>
+                        <dd>{{ version }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.version_notes %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset.version_notes{% endtrans %}</dt>
+                        <dd>{{ pkg.version_notes }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if eu_country %}
+                    <dl>
+                        <dt>{% trans %}package.read_dataset.country{% endtrans %}</dt>
+                        <dd>{{ h.code_to_country(eu_country) }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if  pkg.extras %}
+
+                    {% for extra in pkg.extras %}
+                    <dl rel="dc:relation" resource="_:extra{{ loop.index }}">
+                        <dt property="rdfs:label">{{ extra.get('key','') }}</dt>
+                        <dd property="rdf:value">{{ extra.get('value','') }}</dd>
+                    </dl>
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+                {#            TODO: new fields#}
+
+                {% if pkg.catalogue %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.catalogue{% endtrans %}</dt>
+                        <dd property="rdf:value">{{ pkg.catalogue }}</dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.controlled_vocabulary %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.controlled_vocabulary{% endtrans %}</dt>
+                        {% for value in pkg.controlled_vocabulary() %}
+                            <dl rel="dc:relation" resource="_:extra{{ loop.index }}">
+                                <dd property="rdf:value">{{ value.get('uri') }}</dd>
+                            </dl>
+                        {% endfor %}
+                    </dl>
+                {% endif %}
+
+                {% if pkg.source %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.source{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.source %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.provenance %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.provenance{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.provenance %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.conforms_to %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.conforms_to{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.conforms_to %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.sample %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.sample{% endtrans %}</dt>
+                         <dd property="rdf:value">
+                        {% for uri in pkg.sample %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+
+                {% if pkg.is_version_of %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.is_version_of{% endtrans %}</dt>
+                         <dd property="rdf:value">
+                        {% for uri in pkg.is_version_of %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.has_version %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.has_version{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.has_version %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.is_part_of %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.is_part_of{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.is_part_of %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.has_part %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.has_part{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.has_part %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {% if pkg.related_resource %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.related_resource{% endtrans %}</dt>
+                        <dd property="rdf:value">
+                        {% for uri in pkg.related_resource %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+
+                {% if pkg.related_application %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.related_application{% endtrans %}</dt>
+                    <dd property="rdf:value">
+                        {% for uri in pkg.related_application %}
+                            <a href="{{ uri }}" rel="rdf:value">{{ uri }}</a>
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                {% endif %}
+
+                {# StatDcat-ap#}
+                {% if pkg.attribute %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.attribute{% endtrans %}</dt>
+                    <dd>{{ pkg.attribute|join(" , ") }}</dd>
+                    </dl>
+                {% endif %}
+                {% if pkg.dimension %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.dimension{% endtrans %}</dt>
+                    <dd>{{ pkg.dimension|join(" , ") }}</dd>
+                    </dl>
+                {% endif %}
+                {% if pkg.number_of_data_series %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.number_of_data_series{% endtrans %}</dt>
+                    <dd>{{ pkg.number_of_data_series|join(" , ") }}</dd>
+                    </dl>
+                {% endif %}
+                {% if pkg.quality_annotation %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.quality_annotation{% endtrans %}</dt>
+                    <dd>{{ pkg.quality_annotation|join(" , ") }}</dd>
+                    </dl>
+                {% endif %}
+                {% if pkg.unit_of_measurement %}
+                    <dl>
+                    <dt>{% trans %}package.read_dataset_info.unit_of_measurement{% endtrans %}</dt>
+                    <dd>{{ pkg.unit_of_measurement|join(" , ") }}</dd>
+                    </dl>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "openness/openness_base.html" %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/datatable' %}
+    {% resource 'ecportal/openness' %}
+{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block pre_page_heading %}
+    <h1 class="pre_page_heading">
+        {{ _('ecodp.common.openness.title') }}
+    </h1>
+{% endblock %}
+
+{% block page_heading %}
+    <div class="openness-text">
+    A list of all datasets in ODP, together with their 5 stars of openness rating.
+    <br>
+    The rating is calculated by looking at the reported mime-type of each of the datasets resources and calculating the
+    5 stars of openness score for each. The overall dataset score is taken to be the highest score of any of the
+    resources.
+    <br>
+    </div>
+{% endblock %}

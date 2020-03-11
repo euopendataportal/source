@@ -1,0 +1,110 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{% block subtitle %}{% trans %}package.new.title{% endtrans %}{% endblock %}
+{% set bulk_edition = (c.action=='bulk_update') %}
+
+{%- block styles %}
+    {{ super() }}
+    <link href="{{ h.url_for_static( 'vendor/jquery.chosen/1.8.3/chosen.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ h.url_for_static( 'vendor/jquery-ui/jquery-ui.css') }}" rel="stylesheet" type="text/css">
+    {% if bulk_edition %}
+        <link href="{{ h.url_for_static( 'css/custom_checkbox.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ h.url_for_static( 'css/bulk_edit.css') }}" rel="stylesheet" type="text/css">
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/chosen' %}
+    {% resource 'ecportal/select2' %}
+    {% resource 'ecportal/jquery_ui' %}
+    {% resource 'ecportal/ecportal_new_dataset' %}
+    {% resource 'ecportal/rdft_ecportal_edit' %}
+    {% resource 'ecportal/table_sorter' %}
+    {% if bulk_edition %}
+        {% resource 'ecportal/bulk_edit' %}
+    {% endif %}
+    {#
+    {% resource 'metadatatool/mdt_dataset_extra_fields' %}
+    {% resource 'metadatatool/mdt_dataset_slug' %}
+    {% resource 'metadatatool/mdt_chosen' %}
+    {% resource 'metadatatool/mdt_edit' %}
+     #}
+{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('package.new.breadcrumb'), h.url_for(controller=c.controller, action='new', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+    <span class="separator"></span>
+    <a href="{{ h.url_for(controller=c.controller, action='new') }}">{% trans %}package.new.breadcrumb{% endtrans %}</a>
+{% endblock %}
+
+{% block menu %}
+    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+{% endblock %}
+
+{% block head_extras %}
+    {{ super() }}
+    <script>
+        var resources_json = {{h.literal(c.resources_json)}};
+        var resource_dropdown = {{h.literal(h.resource_dropdown())}};
+        var resource_mapping_json = {{h.literal(h.resource_mapping_json())}};
+    </script>
+{% endblock %}
+
+{% block search_header %}
+
+{% endblock %}
+
+{% block page_heading %}
+    {% if 'bulk_update' == c.action %}
+        <h1 class="rdft_page_heading">{% trans %}ecodp.common.dataset_bulkupdate.heading{% endtrans %}</h1>
+    {% else %}
+        <h1 class="rdft_page_heading">{% trans %}ecodp.common.dataset_new.heading{% endtrans %}</h1>
+    {% endif %}
+{% endblock %}
+
+{% block bodytag %}
+    {{ super() }}
+    class="no-sidebar"
+{% endblock %}
+
+
+{% block primary_content_inner %}
+    {% if c.error %}
+        <h3 class="form-errors">
+            Error: {{ c.error }}
+        </h3>
+    {% endif %}
+    {% if c.action not in 'bulk_update' %}
+        <div id="package-new-tabs" class="module-content page-header hug">
+            <ul id="package-tab-nav" class="nav nav-tabs">
+                <li {% if c.action in 'new' %}class="active" {% endif %}><a href="{{h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='new')}}">{% trans %}ecodp.rdft.manual{% endtrans %}</a></li>
+                <li {% if c.action not in 'new' %}class="active" {% endif %}><a href="{{h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='package_import')}}">{% trans %}ecodp.common.import{% endtrans %}</a></li>
+            </ul>
+        </div>
+    {% endif %}
+    <div class="dataset-create-form" style="margin-left: 105px;">
+        {{ c.form | safe }}
+    </div>
+{% endblock %}

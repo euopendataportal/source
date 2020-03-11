@@ -1,0 +1,239 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:ecodp="http://data.europa.eu/euodp/ontologies/ec-odp#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dct="http://purl.org/dc/terms/"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:dcat="http://www.w3.org/ns/dcat#">
+
+	{%- set pkg = c.pkg_dict %}
+	{% set dataset_url = (pkg.url | trim) or h.get_dataset_url() %}
+
+	{% if c.action == "read" %}
+		{# This part must only be present in the .rdf page, not for the export or the ingestion packages #}
+		<dcat:Catalog rdf:about="{{h.get_catalog_url()}}">
+			<dcat:record>
+				<dcat:CatalogRecord rdf:about="{{dataset_url}}">
+					<dct:modified>{{pkg.get('metadata_modified', '')}}</dct:modified>
+					<dct:issued>{{pkg.get('metadata_created', '')}}</dct:issued>
+					<foaf:primaryTopic rdf:resource="{{dataset_url}}" />
+				</dcat:CatalogRecord>
+			</dcat:record>
+		</dcat:Catalog>
+	{% endif %}
+
+	<dcat:Dataset rdf:about="{{dataset_url}}">
+		<dct:title xml:lang="en">{{pkg.title}}</dct:title>
+		<dct:description xml:lang="en">{{pkg.get('description', '')}}</dct:description>
+
+		{% if pkg.alternative_title -%}
+			<dct:alternative xml:lang="en">{{pkg.alternative_title}}</dct:alternative>
+		{% endif -%}
+
+		{% if pkg.tags -%}
+			{% for tag_dict in pkg.tags -%}
+			<dcat:keyword xml:lang="en">{{tag_dict.name}}</dcat:keyword>
+			{% endfor -%}
+		{% endif -%}
+
+		{% if pkg.keywords -%}
+			{% for tag_dict in pkg.keywords -%}
+			    <ecodp:keyword xml:lang="en">{{tag_dict.name}}</ecodp:keyword>
+			{% endfor -%}
+		{% elif pkg.keyword_string %}
+			{% if pkg.keyword_string is iterable %}
+				{% set key_list = pkg.keyword_string %}
+			{% else %}
+		    	{% set key_list = pkg.keyword_string.split(',') %}
+			{% endif %}
+
+		    {% for tag_dict in key_list -%}
+			    <ecodp:keyword xml:lang="en">{{tag_dict}}</ecodp:keyword>
+			{% endfor -%}
+		{% endif -%}
+
+		{% if pkg.concepts_eurovoc -%}
+			{% for item in pkg.concepts_eurovoc -%}
+			<dcat:theme rdf:resource="{{item.name if item is mapping else item}}"/>
+			{% endfor -%}
+		{% endif -%}
+
+		{% if pkg.groups -%}
+			{% for item in pkg.groups -%}
+			<dct:subject rdf:resource="{{item.title}}"/>
+			{% endfor -%}
+		{% endif -%}
+
+		{% if pkg.license_url -%}
+			<dct:license>
+				<skos:Concept rdf:about="{{pkg.license_id}}">
+					<skos:definition xml:lang="en">&lt;a href="{{pkg.license_url}}"&gt;"{{pkg.license_title}}"&lt;/a&gt;</skos:definition>
+				</skos:Concept>
+			</dct:license>
+		{% endif -%}
+
+		{% if pkg.release_date -%}
+			<dct:issued>{{pkg.release_date}}</dct:issued>
+		{% endif -%}
+
+		{% if pkg.modified_date -%}
+			<dct:modified>{{pkg.modified_date}}</dct:modified>
+		{% endif -%}
+
+		{% if pkg.accrual_periodicity == 'other' and  pkg.accrual_periodicityother -%}
+			<ecodp:accrualPeriodicity xml:lang="en">
+				{{pkg.accrual_periodicityother}}
+			</ecodp:accrualPeriodicity>
+		{% endif -%}
+
+		{% if pkg.accrual_periodicity and pkg.accrual_periodicity != 'other' -%}
+			<ecodp:accrualPeriodicity xml:lang="en">
+				{{pkg.accrual_periodicity}}
+			</ecodp:accrualPeriodicity>
+		{% endif -%}
+
+		{% if pkg.temporal_coverage_from or pkg.temporal_coverage_to -%}
+			<dct:temporal>
+				<dct:PeriodOfTime>
+					{% if pkg.temporal_coverage_from -%}
+						<ecodp:periodStart>{{pkg.temporal_coverage_from}}</ecodp:periodStart>
+					{% endif -%}
+					{% if pkg.temporal_coverage_to -%}
+						<ecodp:periodEnd>{{pkg.temporal_coverage_to}}</ecodp:periodEnd>
+					{% endif -%}
+				</dct:PeriodOfTime>
+			</dct:temporal>
+		{% endif -%}
+
+		{% if pkg.geographical_coverage -%}
+			{% for item in pkg.geographical_coverage -%}
+			<dct:spatial rdf:resource="{{item}}"/>
+			{% endfor -%}
+		{% endif -%}
+
+		{% if pkg.contact_name -%}
+			<ecodp:contactPoint rdf:parseType="Resource">
+				{% set contact_tel = pkg.contact_telephone -%}
+				{% if contact_tel -%}
+					<foaf:phone>{% if h.starts_with_tel(contact_tel) -%}tel:{% endif -%}{{contact_tel}}</foaf:phone>
+				{% endif -%}
+
+				{% if pkg.contact_email -%}
+					<foaf:mbox>{{pkg.contact_email}}</foaf:mbox>
+				{% endif -%}
+
+				{% if pkg.contact_webpage -%}
+					<foaf:workplaceHomepage>{{pkg.contact_webpage}}</foaf:workplaceHomepage>
+				{% endif -%}
+
+				{% if pkg.contact_address -%}
+					<ecodp:contactAddress>{{pkg.contact_address}}</ecodp:contactAddress>
+				{% endif -%}
+
+				{% if pkg.contact_name -%}
+					<foaf:name xml:lang="en">{{pkg.contact_name}}</foaf:name>
+				{% endif -%}
+			</ecodp:contactPoint>
+		{% endif -%}
+
+		{% if pkg.name -%}
+			<ecodp:ckan-name>{{pkg.name}}</ecodp:ckan-name>
+		{% endif -%}
+
+		{% if pkg.identifier -%}
+			<dct:identifier>{{pkg.identifier}}</dct:identifier>
+		{% endif -%}
+
+		{% if pkg.interoperability_level -%}
+			<ecodp:interoperabilityLevel>
+				<skos:Concept rdf:about="{{h.unicode2string(pkg.interoperability_level)}}"/>
+			</ecodp:interoperabilityLevel>
+		{% endif -%}
+
+		{% if pkg.type_of_dataset -%}
+			{% for item in pkg.type_of_dataset -%}
+			<ecodp:datasetType>
+				<skos:Concept rdf:about="{{h.unicode2string(item)}}"/>
+			</ecodp:datasetType>
+			{% endfor -%}
+		{% endif -%}
+
+		{% for l in pkg.get('language', []) -%}
+			<dct:language>
+				<skos:Concept rdf:about="{{l}}"/>
+			</dct:language>
+		{% endfor -%}
+
+		{% if pkg.version_description -%}
+			<dct:hasVersion rdf:parseType="Resource">
+				<dct:identifier>{{pkg.version}}</dct:identifier>
+				<dct:description xml:lang="en">{{pkg.version_description}}</dct:description>
+			</dct:hasVersion>
+		{% endif -%}
+
+		{% if pkg.status -%}
+			<ecodp:datasetStatus>
+				<skos:Concept rdf:about="{{h.unicode2string(pkg.status)}}"/>
+			</ecodp:datasetStatus>
+		{% endif -%}
+
+		{% if pkg.organization %}
+		    <dct:publisher>
+                <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/corporate-body/{{pkg.organization.name | upper }}"/>
+            </dct:publisher>
+		{% endif -%}
+
+		{% for rsc_dict in pkg.get('resources', []) -%}
+
+			{% if rsc_dict.get('resource_type', '#').split('#')[1] in ['Feed','WebService', 'Download'] -%}
+				<dcat:distribution rdf:parseType="Resource">
+				    {% if rsc_dict.name -%}
+				     <dct:title xml:lang="en">{{rsc_dict.name}}</dct:title>
+				    {% endif -%}
+					{% if rsc_dict.url -%}
+						<dcat:accessURL  rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">{{rsc_dict.url}}</dcat:accessURL>
+					{% endif -%}
+
+					{% if rsc_dict.resource_type -%}
+						<rdf:type  rdf:resource="{{rsc_dict.resource_type}}"/>
+					{% endif -%}
+
+					{% if rsc_dict.format -%}
+						<ecodp:distributionFormat>{{rsc_dict.format}}</ecodp:distributionFormat>
+					{% endif -%}
+
+					{% if rsc_dict.description -%}
+						<dct:description xml:lang="en">{{rsc_dict.description}}</dct:description>
+					{% endif -%}
+
+					{% if rsc_dict.created -%}
+						<dct:issued>{{rsc_dict.created}}</dct:issued>
+					{% endif -%}
+
+					{% if rsc_dict.last_modified -%}
+						<dct:modified>{{rsc_dict.last_modified}}</dct:modified>
+					{% endif -%}
+
+				</dcat:distribution>
+			{% else -%}
+				<ecodp:isDocumentedBy rdf:parseType="Resource">
+				    {% if rsc_dict.name -%}
+				     <dct:title xml:lang="en">{{rsc_dict.name}}</dct:title>
+				    {% endif -%}
+					<ecodp:documentationType>
+						<skos:Concept rdf:about="{{rsc_dict.resource_type}}"/>
+					</ecodp:documentationType>
+					{% if rsc_dict.format -%}
+					    <ecodp:documentationFormat>{{rsc_dict.format}}</ecodp:documentationFormat>
+					{% endif -%}
+					{% if rsc_dict.url -%}
+					<ecodp:accessURL rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">{{rsc_dict.url}}</ecodp:accessURL>
+					{% endif -%}
+					{% if rsc_dict.description -%}
+					<dct:description xml:lang="en">{{rsc_dict.description}}</dct:description>
+					{% endif -%}
+				</ecodp:isDocumentedBy>
+			{% endif -%}
+		{% endfor -%}
+
+	</dcat:Dataset>
+</rdf:RDF>

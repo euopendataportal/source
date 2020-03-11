@@ -1,0 +1,261 @@
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/format> <https://www.iana.org/assignments/media-types/application/xml> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/LIT> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/title> "DGT-TM: A freely Available Translation Memory in 22 Languages"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#isPartOfCatalog> <http://data.europa.eu/999/catalog/european-union-open-data-portal> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/xyz/statdcat-ap/attribute> <http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure> .
+<http://publications.europa.eu/resource/authority/currency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/PDF> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-complete-dataset> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Dataset> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://xmlns.com/foaf/0.1/homepage> "http://data.europa.eu/euodp/en/data" .
+_:Nb4bb346619a54b81b0e54bfd4eac357d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/PeriodOfTime> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://purl.org/dc/terms/title> "Documentation of DGT-TM Translation Memory "@en .
+<http://publications.europa.eu/resource/authority/frequency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/distribution-type/VISUALIZATION> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/description> "Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC'2012), Istanbul, 21-27 May 2012."@en .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/ns/dcat#accessURL> <https://ec.europa.eu/jrc/en/language-technologies/dgt-translation-memory#Download%20the%20DGT%20Translation%20Memory> .
+_:Nad9c2f0cb6384986b15496a93289d1e4 <http://www.w3.org/ns/adms#schemeAgency> "DOI" .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://www.w3.org/ns/dcat#record> <http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://xmlns.com/foaf/0.1/page> <http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/xyz/statdcat-ap/numSeries> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:N17475343425341fd86f38cc7af34c280 <http://xmlns.com/foaf/0.1/homePage> _:N379838d4e06a4c4eb67b5d02e9f08454 .
+_:Ne5defe0ef19840eb9534548f6b49e2be <http://www.w3.org/2006/vcard/ns#locality> "Luxembourg" .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#extensionValue> _:N00c31f9a3cd74d2bbdc9bf319bc886fc .
+_:N851cc00195c14c3aacb8a8c7148cd05f <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/RightsStatement> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/title> "European Union Open Data Portal Dataset catalog"@en .
+_:N19d5cbebe8e04998ac8f83b62212dcce <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/RightsStatement> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#landingPage> <https://ec.europa.eu/jrc/en/language-technologies/dgt-translation-memory> .
+_:N379838d4e06a4c4eb67b5d02e9f08454 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Document> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/subject> <http://eurovoc.europa.eu/4478> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> .
+_:N22b5191dfff54615beb8b120580d6293 <http://www.w3.org/2000/01/rdf-schema#label> "copy right copyRights Publications Office"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://www.w3.org/ns/dcat#byteSize> "3453"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/HRV> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/title> "DGT-TM: A freely Available Translation Memory in 22 Languages"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://data.europa.eu/ontology/dcatapop#extensionValue> _:N23cc21f113724455aac0c7f41cad3dac .
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL> <http://www.w3.org/2004/02/skos/core#prefLabel> "annual"@en .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/issued> "2013-01-18T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Dataset> .
+_:Ne5defe0ef19840eb9534548f6b49e2be <http://www.w3.org/2006/vcard/ns#street-address> "Jean-Monnet Building A2/137" .
+<http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://www.w3.org/2004/02/skos/core#prefLabel> "EU Publications Office"@en .
+_:Ne5defe0ef19840eb9534548f6b49e2be <http://www.w3.org/2006/vcard/ns#postal-code> "L-2920" .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dqv#hasQualityAnnotation> <http://qualifications.org/QualityCertificate1> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#distribution> <http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/contributor> <http://publications.europa.eu/resource/authority/corporate-body/DEVCO> .
+_:Nad9c2f0cb6384986b15496a93289d1e4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/xml> .
+_:N62f26519f5ee4938b599ab1cb25dbadf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Work> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#keyword> "translation"@en .
+<http://publications.europa.eu/resource/authority/data-theme/TECH> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/data-theme> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://www.w3.org/2006/vcard/ns#hasURL> <http://www.lrec-conf.org/dataset/documentation/3434/index.html> .
+_:N851cc00195c14c3aacb8a8c7148cd05f <http://www.w3.org/2000/01/rdf-schema#label> "copyright Translation Directorate"@en .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://data.europa.eu/ontology/dcatapop#extensionLiteral> _:Nc4bd443812794369ae46ec5c9114b5b1 .
+<http://publications.europa.eu/resource/authority/timeperiod/YEAR> <http://www.w3.org/2004/02/skos/core#prefLabel> "year"@en .
+<http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/issued> "2013-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#keyword> "translation memory"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://xmlns.com/foaf/0.1/page> <http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> .
+<http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP> <http://www.w3.org/2004/02/skos/core#prefLabel> "Core component"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Document> .
+<http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/organization-type/OFFICE> .
+<http://xml.coverpages.org/tmxSpec971212.html> <http://www.w3.org/2004/02/skos/core#prefLabel> "TMX"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#temporalGranularity> <http://publications.europa.eu/resource/authority/timeperiod/YEAR> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/rights> _:N22b5191dfff54615beb8b120580d6293 .
+<http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN> <http://www.w3.org/2004/02/skos/core#prefLabel> "main documentation"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/source> <http://data.europa.eu/999/dataset/dgt-translation-memory-complete-dataset> .
+<http://publications.europa.eu/resource/authority/currency/EUR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> .
+<http://publications.europa.eu/resource/authority/corporate-body/DEVCO> <http://www.w3.org/2004/02/skos/core#prefLabel> "Directorate-General for Development and Cooperation \u2013 EuropeAid"@en .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/LAV> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://purl.org/dc/terms/format> <http://publications.europa.eu/resource/authority/file-type/PDF> .
+<http://publications.europa.eu/resource/authority/distribution-type/DOWNLOADABLE_FILE> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/distribution-type> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/modified> "2014-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://publications.europa.eu/resource/authority/licence/COM_REUSE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/LicenseDocument> .
+<http://publications.europa.eu/resource/authority/distribution-type/DOWNLOADABLE_FILE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://www.w3.org/2006/vcard/ns#hasURL> <http://www.lrec-conf.org/dataset/documentation/3445/index.html> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/ns/dcat#downloadURL> <http://optima.jrc.it/Resources/DGT-TM-2011/Vol_2004_1.zip> .
+_:Nb4bb346619a54b81b0e54bfd4eac357d <http://schema.org/endDate> "2016-12-31"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/modified> "2014-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://data.europa.eu/ontology/dcatapop#extensionValue> _:N23cc21f113724455aac0c7f41cad3dac .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/description> "Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC'2012), Istanbul, 21-27 May 2012."@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/conformsTo> <http://xml.coverpages.org/tmxSpec971212.html> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/relation> <http://www.lrec-conf.org/proceedings/lrec2012/pdf/814_Paper.pdf> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/adms#identifier> _:Nad9c2f0cb6384986b15496a93289d1e4 .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+_:N17475343425341fd86f38cc7af34c280 <http://www.w3.org/2006/vcard/ns#hasEmail> <mailto:info@nobelmedia.org> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/modified> "2014-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+_:N4f42b8cd4b5d43028f2cbc2dc823e04a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/ontology/dcatapop#DataExtension> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://xmlns.com/foaf/0.1/primaryTopic> <http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/SLK> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ITA> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/accessRights> <http://publications.europa.eu/resource/authority/access-right/PUBLIC> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#extensionLiteral> _:N4f42b8cd4b5d43028f2cbc2dc823e04a .
+<http://publications.europa.eu/resource/authority/distribution-type/DOWNLOADABLE_FILE> <http://www.w3.org/2004/02/skos/core#prefLabel> "Dowload file"@en .
+<http://publications.europa.eu/resource/authority/timeperiod/YEAR> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/timeperiod> .
+<hhttp://qualifications.org/QualityCertificate1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/TR/2016/WD-annotation-vocab-20160331/#annotation> .
+<http://eurovoc.europa.eu/100222> <http://purl.org/dc/terms/title> "3231 information and information processing"@en .
+_:N17475343425341fd86f38cc7af34c280 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Kind> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/issued> "2013-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://www.w3.org/ns/dcat#themeTaxonomy> <http://publications.europa.eu/resource/authority/data-theme> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Distribution> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/DAN> .
+_:N23cc21f113724455aac0c7f41cad3dac <http://www.w3.org/2000/01/rdf-schema#label> "meters"@en .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/description> "A range of datasets maintained by European Union Open Data Portal "@en .
+_:N379838d4e06a4c4eb67b5d02e9f08454 <http://www.w3.org/2006/vcard/ns#hasURL> <http://dgt-translation-memory.html> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/spatial> <http://publications.europa.eu/resource/authority/country/EUR> .
+<http://publications.europa.eu/resource/authority/corporate-body/DGT> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/organization-type/DIR> .
+<http://xml.coverpages.org/tmxSpec971212.html> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/Standard> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/ns/dcat#byteSize> "3453"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+_:Nd01199e22b004d66b7f45183b8df3b76 <http://www.w3.org/2000/01/rdf-schema#label> "The first description of this dataset was created by DGT-Translation in 2012"@en .
+_:N17475343425341fd86f38cc7af34c280 <http://www.w3.org/2006/vcard/ns#hasAddress> _:Ne5defe0ef19840eb9534548f6b49e2be .
+<http://eurovoc.europa.eu/4478> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/ontology/dcatapop#DatasetSubject> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/rights> _:N851cc00195c14c3aacb8a8c7148cd05f .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/description> "Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC'2012), Istanbul, 21-27 May 2012."@en .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/EST> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://data.europa.eu/ontology/dcatapop#extensionLiteral> _:Nc4bd443812794369ae46ec5c9114b5b1 .
+<http://publications.europa.eu/resource/authority/corporate-body/DEVCO> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/organization-type/DIR> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/publisher> <http://publications.europa.eu/resource/authority/corporate-body/DGT> .
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/RightsStatement> .
+<http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/dataset-type> .
+_:N00c31f9a3cd74d2bbdc9bf319bc886fc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/ontology/dcatapop#DataExtension> .
+<http://publications.europa.eu/resource/authority/access-right> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+_:Nedd03b0b607442d3b3d18d7f6508203d <http://spdx.org/rdf/terms#checksumValue> "112211"^^<http://www.w3.org/2001/XMLSchema#hexBinary> .
+<http://publications.europa.eu/resource/authority/currency/EUR> <http://www.w3.org/2004/02/skos/core#prefLabel> "Euro"@en .
+_:N17475343425341fd86f38cc7af34c280 <http://www.w3.org/2006/vcard/ns#organisation-name> "DGT-Translation"@en .
+_:Nb4bb346619a54b81b0e54bfd4eac357d <http://schema.org/startDate> "2014-01-01"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+_:Ne5defe0ef19840eb9534548f6b49e2be <http://www.w3.org/2006/vcard/ns#country-name> "Luxembourg" .
+<http://publications.europa.eu/resource/authority/corporate-body/DGT> <http://xmlns.com/foaf/0.1/name> "DG Traduction"@en .
+_:N17475343425341fd86f38cc7af34c280 <http://www.w3.org/2006/vcard/ns#hasTelephone> _:N62f26519f5ee4938b599ab1cb25dbadf .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/BUG> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/HUN> .
+_:Nad9c2f0cb6384986b15496a93289d1e4 <http://www.w3.org/2004/02/skos/core#notation> "10.1109/5.771073"^^<http://purl.org/spar/datacite/doi> .
+_:Nad9c2f0cb6384986b15496a93289d1e4 <http://purl.org/dc/terms/issued> "2013-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/modified> "2014-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/dataset-status> .
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> <http://www.w3.org/2004/02/skos/core#prefLabel> "public"@en .
+<http://publications.europa.eu/resource/authority/timeperiod> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/authority/dataset-group/323> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://publications.europa.eu/resource/authority/timeperiod/YEAR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ELL> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/DEU> .
+<http://publications.europa.eu/resource/authority/corporate-body/DGT> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Agent> .
+_:Nc4bd443812794369ae46ec5c9114b5b1 <http://data.europa.eu/ontology/dcatapop#dataExtensionLiteral> "publisher V23 application" .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#ckanName> "dgt-translation-memory-V1-2" .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/adms#versionNotes> "this version includes the complete bulgarian/english translation memory"@en .
+<http://publications.europa.eu/resource/authority/data-theme> <http://purl.org/dc/terms/title> "Data theme"@en .
+_:Nedd03b0b607442d3b3d18d7f6508203d <http://spdx.org/rdf/terms#algorithm> <http://spdx.org/rdf/terms#checksumAlgorithm_sha1> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/issued> "2014-09-25"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+_:N4f42b8cd4b5d43028f2cbc2dc823e04a <http://www.w3.org/2000/01/rdf-schema#label> "initial application"@en .
+_:N62f26519f5ee4938b599ab1cb25dbadf <http://www.w3.org/2006/vcard/ns#hasValue> <tel:086631722> .
+<http://eurovoc.europa.eu/4478> <http://www.w3.org/2004/02/skos/core#inScheme> <http://eurovoc.europa.eu/100222> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/NLD> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/hasPart> <http://data.europa.eu/999/catalog/european-union-open-data-portal-geo> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://data.europa.eu/ontology/dcatapop#iframe> "343233"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://eurovoc.europa.eu/100222> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/FRA> .
+<http://publications.europa.eu/resource/authority/country/EUR> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/Location> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://spdx.org/rdf/terms#checksum> _:Nedd03b0b607442d3b3d18d7f6508203d .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/GLE> .
+_:N23cc21f113724455aac0c7f41cad3dac <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/ontology/dcatapop#DataExtension> .
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/frequency> .
+<http://publications.europa.eu/resource/authority/dataset-type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#Catalog> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/alternative> "a translation memory in an open data status, reusable for legaltech application"@en .
+<http://publications.europa.eu/resource/authority/data-theme/TECH> <http://www.w3.org/2004/02/skos/core#prefLabel> "Science and technology"@en .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://data.europa.eu/ontology/dcatapop#numberOfDownloads> "345"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/modified> "2014-01-19T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/FIN> .
+<http://publications.europa.eu/resource/authority/data-theme/TECH> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://eurovoc.europa.eu/4478> <http://www.w3.org/2004/02/skos/core#prefLabel> "translation"@en .
+<http://publications.europa.eu/resource/authority/country/EUR> <http://www.w3.org/2000/01/rdf-schema#label> "European Union" .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/2002/07/owl#versionInfo> "version 1.2"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://xmlns.com/foaf/0.1/primaryTopic> <http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/dcat#CatalogRecord> .
+_:Ne5defe0ef19840eb9534548f6b49e2be <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Address> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/temporal> _:Nb4bb346619a54b81b0e54bfd4eac357d .
+<http://publications.europa.eu/resource/authority/corporate-body/DEVCO> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Agent> .
+<http://publications.europa.eu/resource/authority/frequency> <http://purl.org/dc/terms/title> "frequency"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#contactPoint> _:N17475343425341fd86f38cc7af34c280 .
+<http://eurovoc.europa.eu/4478> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://xmlns.com/foaf/0.1/primaryTopic> <http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> .
+_:N22b5191dfff54615beb8b120580d6293 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/RightsStatement> .
+<http://publications.europa.eu/resource/authority/timeperiod> <http://purl.org/dc/terms/title> "time periods"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://purl.org/dc/terms/description> "Detailed documentation of the dataset with examples and explanations about the format and changes since last version"@en .
+<http://publications.europa.eu/resource/authority/documentation-type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+_:N00c31f9a3cd74d2bbdc9bf319bc886fc <http://www.w3.org/2000/01/rdf-schema#label> "meters"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://xmlns.com/foaf/0.1/topic> <http://data.europa.eu/999/authority/dataset-group/323> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://www.w3.org/ns/dcat#mediaType> <https://www.iana.org/assignments/media-types/application/xml> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/hasPart> <http://data.europa.eu/999/dataset/dgt-translation-memory-eng/deu> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/RON> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/publisher> <http://publications.europa.eu/resource/authority/corporate-body/PUBL> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/issued> "2013-01-17T17:34:39.166616"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+_:N00c31f9a3cd74d2bbdc9bf319bc886fc <http://data.europa.eu/ontology/dcatapop#dataExtensionValue> "23434"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> <http://www.w3.org/2004/02/skos/core#prefLabel> "completed"@en .
+_:N19d5cbebe8e04998ac8f83b62212dcce <http://www.w3.org/2000/01/rdf-schema#label> "copyright Translation Directorate"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/xyz/statdcat-ap/dimension> <http://example.org/ns#refArea> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/POL> .
+_:N4f42b8cd4b5d43028f2cbc2dc823e04a <http://data.europa.eu/ontology/dcatapop#dataExtensionLiteral> "publisher V23 application" .
+<http://data.europa.eu/999/authority/dataset-group/323> <http://www.w3.org/2004/02/skos/core#inScheme> <http://data.europa.eu/999/authority/dataset-group/> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/license> <http://publications.europa.eu/resource/authority/licence/COM_REUSE> .
+_:N62f26519f5ee4938b599ab1cb25dbadf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2006/vcard/ns#Voice> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/title> "Documentation of the xml file for translation memory "@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/accrualPeriodicity> <http://publications.europa.eu/resource/authority/frequency/ANNUAL> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/license> <http://publications.europa.eu/resource/authority/licence/COM_REUSE> .
+<http://publications.europa.eu/resource/authority/currency> <http://purl.org/dc/terms/title> "Currency"@en .
+<http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/documentation-type> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/conformsTo> <http://xml.coverpages.org/tmxSpec971212.html> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/dcat#theme> <http://publications.europa.eu/resource/authority/data-theme/TECH> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/xyz/statdcat-ap/dimension> <http://example.org/ns#refPeriod%20> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/conformsTo> <http://xml.coverpages.org/tmxSpec971212.html> .
+<http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://xmlns.com/foaf/0.1/name> "EU Publications Office"@en .
+<http://publications.europa.eu/resource/authority/documentation-type> <http://purl.org/dc/terms/title> "documentation type"@en .
+<http://publications.europa.eu/resource/authority/corporate-body/DEVCO> <http://xmlns.com/foaf/0.1/name> "Directorate-General for Development and Cooperation \u2013 EuropeAid"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://www.w3.org/ns/adms#sample> <http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e674b> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/CES> .
+<http://data.europa.eu/999/authority/dataset-group/323> <http://www.w3.org/2004/02/skos/core#prefLabel> "group 1 defined by ODP"@en .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/xyz/statdcat-ap/statUnitMeasure> <http://dbpedia.org/resource/Year> .
+<http://data.europa.eu/999/authority/dataset-group/323> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/DatasetGroup> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/POR> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/identifier> "DGT 13433" .
+_:Nc4bd443812794369ae46ec5c9114b5b1 <http://www.w3.org/2000/01/rdf-schema#label> "initial application"@en .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/source> <http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2-source> .
+_:Nedd03b0b607442d3b3d18d7f6508203d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://spdx.org/rdf/terms#Checksum> .
+_:Nd01199e22b004d66b7f45183b8df3b76 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/ProvenanceStatement> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/isPart> <http://data.europa.eu/999/catalog/european-union-open-data-portal-geo-europe> .
+<http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://publications.europa.eu/resource/authority/corporate-body/DGT> <http://www.w3.org/2004/02/skos/core#prefLabel> "DG Traduction"@en .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Document> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/SPA> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://www.w3.org/ns/adms#status> <http://publications.europa.eu/resource/authority/dataset-status/COMPLETED> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/provenance> _:Nd01199e22b004d66b7f45183b8df3b76 .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/description> "Detailed documentation of the xml dataset file "@en .
+<http://publications.europa.eu/resource/authority/data-theme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://publications.europa.eu/resource/authority/currency/EUR> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/currency> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#applicationUsingDataset> <metacat.com> .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/title> "DGT-TM: A freely Available Translation Memory in 22 Languages"@en .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://www.w3.org/ns/dcat#dataset> <http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> .
+<http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/ENG> .
+_:N23cc21f113724455aac0c7f41cad3dac <http://data.europa.eu/ontology/dcatapop#dataExtensionValue> "23434"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://publications.europa.eu/resource/authority/dataset-status> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/spatial> <http://publications.europa.eu/resource/authority/country/EUR> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/isPartOf> <http://data.europa.eu/999/dataset/dgt-translation-memory-1> .
+<http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23> <http://purl.org/dc/terms/type> <http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN> .
+<http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2> <http://purl.org/dc/terms/isVersionOf> <http://data.europa.eu/999/dataset/dgt-translation-memory> .
+<http://publications.europa.eu/resource/authority/corporate-body/PUBL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Agent> .
+_:Nc4bd443812794369ae46ec5c9114b5b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/ontology/dcatapop#DataExtension> .
+<http://publications.europa.eu/resource/authority/dataset-type> <http://purl.org/dc/terms/title> "dataset type"@en .
+<http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2> <http://data.europa.eu/ontology/dcatapop#numberOfViews> "234"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/terms/Frequency> .
+<http://data.europa.eu/999/catalog/european-union-open-data-portal> <http://purl.org/dc/terms/language> <http://publications.europa.eu/resource/authority/language/SWE> .
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/access-right> .
+<http://publications.europa.eu/resource/authority/access-right> <http://purl.org/dc/terms/title> "access right"@en .
+<http://publications.europa.eu/resource/authority/dataset-status> <http://purl.org/dc/terms/title> "dataset status"@en .
+
+

@@ -1,0 +1,89 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+<form id="user-edit" action="" method="post"class="form-horizontal {{'has-errors' if errors else ''}}">
+	{% if error_summary %}
+		<div class="alert alert-error error-explanation">
+			<h2>Errors in form</h2>
+			<p>The form contains invalid entries:</p>
+			<ul>
+				{% for key, error in error_summary.items() %}
+					<li>{{"%s: %s" % (key, error)}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+	<fieldset>
+
+		<div class="control-group">
+			<label for="name" class="control-label">Username</label>
+			<div class="controls">
+				<input readonly="readonly" type="text" name="name" value="{{ data.name }}" />
+			</div>
+		</div>
+
+		{{ form.input('fullname', label=_('edit_user_form.lable.full_name'), id='fullname', value=data.fullname, error=errors.fullname) }}
+
+		{{ form.input('email', label=_('edit_user_form.lable.e_mail'), id='email', type='email', value=data.email, error=errors.email) }}
+
+		{% if g.openid_enabled %}
+			{{ form.input('openid', label=_('edit_user_form.lable.open_id'), id='openid', value=data.openid, error=errors.openid) }}
+		{% endif %}
+
+		<div class="control-group">
+			<label for="about" class="control-label">About</label>
+			<div class="controls">
+				<div class="markdown-editor">
+					<br />
+					{#<ul class="button-row">
+						<li>
+							<button class="btn js-markdown-edit depressed">{% trans %}ecodp.common.button.edit{% endtrans %}</button>
+						</li>
+						<li>
+							<button class="btn js-markdown-preview">{% trans %}ecodp.common.preview{% endtrans %}</button>
+						</li>
+					</ul>#}
+					<div>
+						<textarea class="markdown-input" name="about" id="about" placeholder="{% trans %}edit_user_form.about{% endtrans %}">{{data.about}}</textarea>
+					</div>
+					<div class="markdown-preview" style="display: none;"></div>
+					<span class="hints">You can use <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown formatting</a> here.</span>
+				</div>
+
+			</div>
+		</div>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>{% trans %}edit_user_form.change_paassword{% endtrans %}</legend>
+
+		{{ form.input('password1', type='password', label=_('edit_user_form.lable.password'), id='password1', value=data.password1, attrs={'autocomplete': 'off'}) }}
+
+		{{ form.input('password2', type='password', label='%s (repeat)' % _('edit_user_form.lable.password'), id='password2', value=data.password2, attrs={'autocomplete': 'off'}) }}
+	</fieldset>
+
+	<div class="form-actions">
+		<input id="save" class="btn btn-primary" name="save" type="submit" value="{% trans %}ecodp.common.save_changes{% endtrans %}" />
+		<input id="cancel" class="btn href-action" name="cancel" type="reset" value="{% trans %}ecodp.common.cancel{% endtrans %}" action="{{h.url_for(controller='user', action='me')}}" />
+	</div>
+
+</form>

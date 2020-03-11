@@ -1,0 +1,35 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+
+<strong>{% trans %}snippets.boolean_search.show_results{% endtrans %}</strong>:<br/>
+{% set test = session.get('ext_boolean', 'all') %}
+	<label class="inline">
+		<input type="radio" name="ext_boolean" value="all" {% if test == 'all' %}checked="checked"{% endif %}/>
+		{% trans %}snippets.boolean_search.all_words{% endtrans %} |
+	</label>
+	<label class="inline">
+		<input type="radio" name="ext_boolean" value="any" {% if test == 'any' %}checked="checked"{% endif %} />
+		{% trans %}snippets.boolean_search.any_words{% endtrans %} |
+	</label>
+	<label class="inline">
+		<input type="radio" name="ext_boolean" value="exact" {% if test == 'exact' %}checked="checked"{% endif %}/>
+		{% trans %}snippets.boolean_search.exact_phrase{% endtrans %}
+	</label>
+&nbsp; &nbsp;
+<a  class="searchHelp-blue gradient ckan-circle-text" title="{% trans %}snippets.boolean_search.how_search_work{% endtrans %}" href="{{h.getExternalLinkURL()}}search">?</a>

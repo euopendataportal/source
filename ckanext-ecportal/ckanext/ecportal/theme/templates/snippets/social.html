@@ -1,0 +1,27 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set current_url = h.full_current_url() %}
+<section class="module module-narrow social" style="margin-top:50px">
+<h2 class="module-heading"><i class="icon-medium icon-share"></i> {{ _('Social') }}</h2>
+  <ul class="nav nav-simple">
+    <li class="nav-item"><a href="https://plus.google.com/share?url={{ current_url }}" target="_blank"><i class="icon-google-plus-sign"></i> Google+</a></li>
+    <li class="nav-item"><a href="https://twitter.com/share?url={{ current_url }}" target="_blank"><i class="icon-twitter-sign"></i> Twitter</a></li>
+    <li class="nav-item"><a href="https://www.facebook.com/sharer.php?u={{ current_url }}" target="_blank"><i class="icon-facebook-sign"></i> Facebook</a></li>
+  </ul>
+</section>

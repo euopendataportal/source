@@ -1,0 +1,48 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div class="module context-info">
+  <section class="module-content">
+    <div class="image">
+      <a href="{{ catalog.url }}">
+        <img src="{{ catalog.image_display_url or h.url_for_static('/base/images/placeholder-catalog.png') }}" width="190" height="118" alt="{{ catalog.name }}" />
+      </a>
+    </div>
+    <h1 class="heading color_blue">{{ catalog.display_name }}</h1>
+    {% if catalog.description %}
+      <p>
+        {{ h.markdown_extract(catalog.description, 180) }}
+      </p>
+    {% endif %}
+    {% if show_nums %}
+      <div class="nums">
+        <dl>
+          <dt>{{ _('catalog.info.followers') }}</dt>
+          <dd>{{ h.SI_number_span(catalog.num_followers) }}</dd>
+        </dl>
+        <dl>
+          <dt>{{ _('ecodp.common.datasets') }}</dt>
+          <dd>{{ h.SI_number_span(catalog.packages|length) }}</dd>
+        </dl>
+      </div>
+      <div class="follow_button">
+        {{ h.follow_button('catalog', catalog.id) }}
+      </div>
+    {% endif %}
+  </section>
+</div>

@@ -1,0 +1,6 @@
+{
+              "@type": "ListItem",
+              "position": "{{ pos }}",
+              "name": "{{ name }}",
+              "item": "{{ url }}"
+            }

@@ -1,0 +1,68 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div id="upload2{{ dic_id }}" class="div_toggle ui-layout-center" style="display: none">
+    <div class="control-group title-field">
+
+        <label class="control-label" for="title">
+            <span class="field_required">&#9733;</span>
+            {%- trans %}ecodp.common.file.name{%- endtrans %}
+        </label>
+
+        <div class="controls">
+            <input id="file_title" class="js-title" name="files__{{index}}__name" type="text"
+                   value="{{ file.name }}"
+                   placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.common.ingestion.name.help{% endtrans %}">?</span>
+        </div>
+    </div>
+    <div class="control-group title-field">
+
+        <label class="control-label" for="title">
+            <span class="field_required">&#9733;</span>
+            {%- trans %}ecodp.common.path{%- endtrans %}
+        </label>
+
+        <div class="controls">
+            <input id="file_path" class="js-title" name="files__{{index}}__path" type="text"
+                   value="{{ file.path }}"
+                   placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.common.ingestion.path.help{% endtrans %}">?</span>
+        </div>
+
+    </div>
+ <div class="control-group title-field">
+
+        <label class="control-label" for="file_url">
+            <span class="field_required">&#9733;</span>
+            {%- trans %}ecodp.common.url{%- endtrans %}
+        </label>
+
+        <div class="controls">
+            <input id="file_url" class="js-title" name="files__{{index}}__url" type="text"
+                   value="http://data.europa.eu/euodp/uploads/{{ ctx.pkg_dict.organization.name }}/{{ file.name }}"
+                   placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.common.ingestion.url.help{% endtrans %}">?</span>
+        </div>
+
+    </div>
+    <input name="files__{{index}}__local_path" type="hidden" value="{{ file.get('local_path') }}"/>
+</div>

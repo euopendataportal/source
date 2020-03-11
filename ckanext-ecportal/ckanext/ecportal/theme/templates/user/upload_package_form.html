@@ -1,0 +1,62 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+{% set action = c.action %}
+{% set tab_mode = (c.action=='edit') %}
+
+{%- block styles %}
+    <link href="{{ h.url_for_static( 'vendor/jquery-layout/layout-default.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{%- block scripts %}
+    {% resource 'ecportal/ecportal_manage_package' %}
+    {% resource 'ecportal/ecportal_manage_upload' %}
+    {% resource 'ecportal/chosen' %}
+    {% resource 'ecportal/jquery_ui' %}
+{% endblock %}
+
+{% block primary_content_inner %}
+    <form class="{{' has-errors' if errors else ''}}" method="post" id="ingestion-package-upload" action="{{ h.url_for(controller='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController', action='manage_package') }}" >
+
+        <div class="controls">
+            <div class="tab-pane" id="upload-file">
+                <label class="control-label" for="package-upload">
+                    {% trans %}ecodp.common.ingestion_package{% endtrans %}
+                </label>
+                <div class="js-add-upload-form">
+                    <div class="fileupload">
+                        <div id="dataset-fileinfo"></div>
+                        <input accept=".ZIP" id="package-upload" type="file" name="file" class="package-upload" >
+                        <input type="hidden" id="package-upload-action" value="{{ h.url_for(controller='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController', action='upload_package') }}"/>
+                        <br>
+
+                        <div class="dataset-upload"></div>
+                        <input name="ingestion-upload" type="submit" class="btn btn-primary" id="ingestion-upload"
+                               value="{% trans %}ecodp.common.upload_button{% endtrans %}" style="visibility: hidden"/>
+                        <input type="hidden" id="uploaded-file-link" name="file_path"/>
+
+                        <div class="alert alert-block success alert-info" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="alert alert-block" style="display: none;"></div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

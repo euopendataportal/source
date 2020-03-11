@@ -1,0 +1,68 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "package/read_base.html" %}
+
+{%- block subtitle -%}
+    {{ c.pkg.title or c.pkg.name }}{% trans %}package.editresource.block{% endtrans %}
+{%- endblock -%}
+
+{% block breadcrumb_items %}{{ super() }},
+            {{ h.load_breadcrumb_item_json_ld(7, _('package.editresource.breadcrumb') + ' ' + c.user, h.url_for(controller='ckanext.ecportal.controllers.resources:ECPortalEditResourceController', action='editresources', id=pkg.name, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    <span class="separator"></span>
+    <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.resources:ECPortalEditResourceController', action='editresources', id=pkg.name) }}">
+        {% trans %}package.editresource.breadcrumb{% endtrans %}</a>
+{% endblock %}
+
+
+{% block page_heading %}
+    <h1 class="page_heading">Edit Resources: {{ c.pkg.title or c.pkg.name }}</h1>
+{% endblock %}
+
+{% block bodytag %}
+    {{ super() }}
+    class="no-sidebar"
+{% endblock %}
+
+{% block head_extras %}
+    {{ super() }}
+    <script>
+        var resources_json = {{h.literal(c.resources_json)}};
+        var resource_dropdown = {{h.literal(h.resource_dropdown())}};
+        var resource_mapping_json = {{h.literal(h.resource_mapping_json())}};
+    </script>
+{% endblock %}
+
+{% block primary_content_inner %}
+    <div class="dataset-editresources-form">
+        {{ c.form | safe }}
+    </div>
+{% endblock %}
+
+{%- block scripts %}
+    {{ super() }}
+    {% if h.is_metadatatool_plugin_activated() %}
+        {% resource 'ecportal/rdft_ecportal_edit' %}
+    {% else %}
+        {% resource 'ecportal/ecportal_edit' %}
+    {% endif %}
+{%- endblock -%}

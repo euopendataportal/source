@@ -1,0 +1,73 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div id="expanded-menu-rdft-submenu" class="expanded-menu {% if active_tab == 'dataProvider' %}active{% endif %}" data-mlid="rdft-submenu" style="background-color: #EEE;
+    border-bottom: 1px solid #E29BB1;
+    height: 2.2em;
+    padding-top: 0.2em;
+    position: absolute;
+    width: 988px;
+    {% if active_tab == 'dataProvider' %}z-index: 1;display: block; {% else %}z-index: 20;display: none;{% endif %}">
+    <span class="sub-menu">
+        <a {% if (controller == 'ckanext.ecportal.controllers.user:ECPortalUserController' and action == 'dashboard') %}class="active"{% endif %}
+                href="{{ h.url_for(controller='user',action='dashboard_datasets') }}">{% trans %}menu.link.user.manage_datasets{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a  {% if (controller == 'ckanext.ecportal.controllers.package:ECPORTALPackageController' and (action == 'new' or action=='package_import'))
+                     or (controller == 'ckanext.ecportal.controllers.package:ECPORTALPackageController' and action == 'update') %}class="active"{% endif %}
+                href="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='new') }}">
+            {% trans %}menu.link.dataset.create{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a {% if (controller == 'ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController' and action == 'upload_package')
+                   or (controller=='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController' and action == 'manage_package')%}class="active"{% endif %}
+                href="{{ h.url_for(controller='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController', action='upload_package') }}">
+            {% trans %}menu.link.package.manage{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a {% if (controller == 'user' and action == 'dashboard_organizations')
+        or (controller == 'organization' and action == 'edit')
+        or (controller == 'ckanext.ecportal.controllers.organization:ECODPOrganizationController' and (action == 'new' or action == 'edit')) %}class="active"{% endif %}
+                href="{{ h.url_for(controller='user', action='dashboard_organizations') }}">{% trans %}menu.link.user.organizations{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a {% if (controller == 'user' and action == 'dashboard_groups')
+                   or (controller == 'ckanext.ecportal.controllers.group:ECODPGroupController' and action == 'new')
+                   or (controller == 'group' and action == 'edit')%}class="active"{% endif %}
+                href="{{ h.url_for(controller='user', action='dashboard_groups') }}">{% trans %}menu.link.user.groups{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a {% if (controller == 'ckanext.ecportal.controllers.catalog:ECPORTALCatalogController' and action == 'dashboard_catalogs')
+                   or (controller == 'ckanext.ecportal.controllers.catalog:ECPORTALCatalogController' and (action == 'new' or action == "edit"))%}class="active"{% endif %}
+                href="{{ h.url_for(controller='ckanext.ecportal.controllers.catalog:ECPORTALCatalogController', action='dashboard_catalogs') }}">{% trans %}menu.link.catalogs.dashboard{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a {% if (controller == 'ckanext.ecportal.controllers.user:ECPortalUserController' and action == 'read')
+                   or (controller == 'ckanext.ecportal.controllers.user:ECPortalUserController' and action == 'read_contact_info')%}class="active"{% endif %}
+                href="{{h.url_for(controller='user',action='read',id=user_log)}}">{{ user_log}}</a>
+    </span>
+    <span class="sub-menu">
+       <a {% if controller == 'ckanext.ecportal.controllers.configuration:ECPORTALConfiguration' and (action == 'vocabularies' or action == "validationRules") %}class="active"{% endif %}
+               href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',
+                        action='vocabularies') }}">{% trans %}menu.link.user.configuration{% endtrans %}</a>
+    </span>
+    <span class="sub-menu">
+        <a href="{{h.url_for(controller='user',action='logout')}}">{% trans %}menu.link.logout{% endtrans %}</a>
+    </span>
+</div>
+

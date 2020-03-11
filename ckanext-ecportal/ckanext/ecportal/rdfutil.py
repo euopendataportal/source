@@ -1,0 +1,129 @@
+#    Copyright (C) <2018>  <Publications Office of the European Union>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#
+#    contact: <https://publications.europa.eu/en/web/about-us/contact>
+
+import logging
+import datetime
+import lxml.etree
+import pylons.config
+import ckan.lib.helpers as h
+import ckanext.ecportal.helpers as ecportal_helpers
+import ujson as json
+
+log = logging.getLogger(__name__)
+Element = lxml.etree.Element
+
+
+def update_rdf(source_rdf, name, context):
+    '''
+    Checks that the source_rdf is valid and whether it contains the local
+    triples we want, and if not adds them.  The adding of the triples will
+    depend on the namespaces already present.
+    '''
+    rdf = source_rdf.replace('\\"', '"').strip()  # cleanup json junk
+    rdf = rdf.replace(r'=&', r';')  # clean invalid characters (TODO: check why they are there)
+
+    try:
+        root = lxml.etree.fromstring(rdf.encode('utf-8'))
+    except UnicodeDecodeError:
+        root = lxml.etree.fromstring(rdf)
+    except lxml.etree.XMLSyntaxError, xmlerr:
+        log.error(xmlerr)
+        return '', ''
+
+    local_namespaces = {
+        'http://purl.org/dc/terms/#': 'dct',
+        'http://www.w3.org/1999/02/22-rdf-syntax-ns#': 'rdf',
+        'http://www.w3.org/ns/dcat#': 'dcat',
+        'http://data.europa.eu/euodp/ontologies/ec-odp#': 'ecodp',
+        'http://xmlns.com/foaf/0.1/#': 'foaf'
+    }
+
+    local_ns = dict((v, k) for k, v in local_namespaces.iteritems())
+    for k, v in root.nsmap.iteritems():
+        if v in local_namespaces:
+            local_namespaces[v] = k
+
+
+    origin_url = ''
+    new_root = None
+    node = root.xpath('//dcat:Dataset', namespaces=local_ns)
+    if len(node) == 1:
+        new_root = node[0]
+        origin_url = new_root.get(
+            '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about',
+            default=''
+        )
+    else:
+        node = root.xpath('/rdf:RDF/rdf:Description', namespaces=local_ns)
+        for n in node:
+            # Find rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"
+            test = n.xpath(
+                "rdf:type[@rdf:resource='http://www.w3.org/ns/dcat#Dataset']",
+                namespaces=local_ns
+            )
+            if len(test) > 0:
+                new_root = n
+                origin_url = new_root.get(
+                    '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about'
+                )
+                break
+
+    root_path = h.url_for('/', qualified=False)
+    site_url = pylons.config['ckan.site_url'].rstrip('/') + root_path
+    local_url = site_url.rstrip('/') + '/dataset/{0}'.format(name)
+
+    catalog = Element('{http://www.w3.org/ns/dcat#}Catalog',
+                       nsmap=local_ns)
+    catalog.set('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about', ecportal_helpers.get_catalog_url())
+    record = Element('{http://www.w3.org/ns/dcat#}record',
+                     nsmap=local_ns)
+    catalog_record = Element('{http://www.w3.org/ns/dcat#}CatalogRecord',
+                             nsmap=local_ns)
+    catalog_record.set('{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about', local_url)
+
+    primary_topic = Element(
+        '{http://xmlns.com/foaf/0.1/#}primaryTopic',
+        nsmap=local_ns
+    )
+    primary_topic.text = origin_url
+
+    created_text = datetime.datetime.now().isoformat()
+    modified_text = created_text
+
+    model = context['model']
+    package = model.Package.get(name)
+
+    if package:
+        created_text = package.metadata_created.isoformat()
+        modified_text = package.metadata_modified.isoformat()
+
+
+    modified = Element('{http://purl.org/dc/terms/#}modified',
+                       nsmap=local_ns)
+    modified.text = modified_text
+
+    issued = Element('{http://purl.org/dc/terms/#}issued',
+                     nsmap=local_ns)
+    issued.text = created_text
+
+    catalog_record.append(primary_topic)
+    catalog_record.append(modified)
+    catalog_record.append(issued)
+    record.append(catalog_record)
+    catalog.append(record)
+    root.append(catalog)
+    return origin_url, lxml.etree.tostring(root)

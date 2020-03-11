@@ -1,0 +1,129 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "base.html" %}
+
+{%- block page -%}
+	<div name="top" class="container">
+		{%- block header %}
+			{% snippet "header.html", controller=c.controller, action=c.action, isHomePage=False %}
+		{% endblock -%}
+
+		{% block header_breadcrum %}
+			<div class="breadcrumb-custom">
+				<a href="{{h.url('home')}}">{% trans %}menu.tab.data{% endtrans %}</a>{% block breadcrumb_content %}{% endblock %}
+			</div>
+		{% endblock %}
+
+		{%- block menu %}
+			{% if h.is_metadatatool_plugin_activated() %}
+                {% block menu_snippet %}
+                    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home' %}
+                {% endblock %}
+            {% else %}
+                {% snippet "menu.html", user_log=c.user %}
+            {% endif %}
+		{% endblock -%}
+
+		{% block search_header %}
+			<div id="search-header"></div>
+		{% endblock %}
+
+		{% block flash %}
+			{% set flash_messages = h.flash.pop_messages() | list %}
+			<div class="flash-messages">
+				{% for message in flash_messages %}
+					<div class="alert fade in {{ message.category }}">
+						{{ h.literal(message) }}
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}
+
+		{%- block content %}
+			<div id="wrapper">
+
+				{% block pre_primary %}{% endblock %}
+
+				<div id="ec-widget-share-button"></div>
+
+				<div class="row bootstrap-row">
+
+					{% block pre_page_heading %}
+						{#<h1 class="pre_page_heading"></h1>#}
+					{% endblock %}
+
+					{% block primary %}
+
+							{% block primary_content %}
+
+								{% block page_search %}{% endblock %}
+
+								{% block page_heading %}
+									{#<h1 class="page_heading"></h1>#}
+								{% endblock %}
+
+										{% block minor_navigation %}{% endblock %}
+
+								<div id="content">
+									{% block primary_content_inner %}
+										<content>
+											<p>Master content template placeholder &hellip; please replace me.</p>
+										</content>
+									{% endblock %}
+								</div>
+							{% endblock %}
+
+					{% endblock %}
+
+					{% block secondary %}
+
+
+							{% block secondary_content %}
+								<div id="sidebar">
+									<ul class="widget-list unstyled">
+										{% block primary_sidebar_extras %}{% endblock %}
+										{% block secondary_content_inner %}
+											{# was primarysidebar #}
+										{% endblock %}
+									</ul>
+								</div>
+							{% endblock %}
+
+					{% endblock %}
+				</div>
+			</div>
+		{% endblock -%}
+
+		{% block final_content %}{% endblock %}
+
+		{%- block footer %}
+			{% include "footer.html" %}
+		{% endblock -%}
+
+	</div>
+{% endblock -%}
+
+{%- block scripts %}
+	{% resource 'base/main' %}
+	{% resource 'base/ckan' %}
+	{% if g.tracking_enabled %}
+		{% resource 'base/tracking.js' %}
+	{% endif %}
+	{{ super() }}
+{%- endblock -%}

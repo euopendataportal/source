@@ -1,0 +1,62 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "package/rdft_base.html" %}
+
+{% set pkg = c.pkg_dict or pkg_dict %}
+
+{% block subtitle %}{{ pkg.title or pkg.name }} - {{ super() }}{% endblock %}
+
+{% block links -%}
+	{{ super() }}
+	<link rel="alternate" type="application/rdf+xml" href="{{ h.url_for(controller='package', action='read', id=pkg.id, format='rdf') }}"/>
+{% endblock -%}
+
+{% block head_extras -%}
+	{{ super() }}
+    {% if pkg.description %}
+	    {% set description = h.markdown_extract(pkg.notes or pkg.description, extract_length=200)|forceescape %}
+    {% endif %}
+	<meta property="og:title" content="{{ h.dataset_display_name(pkg) }} - {{ g.site_title }}">
+	<meta property="og:description" content="{{ description|forceescape }}">
+{% endblock -%}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.publisher'), h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index', qualified=True)) | safe }},
+            {% set organization = pkg.organization.title or pkg.organization.name %}
+            {{ h.load_breadcrumb_item_json_ld(3, organization, h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=pkg.organization.name, qualified=True)) | safe }},
+            {% set dataset = pkg.title or pkg.name %}
+            {{ h.load_breadcrumb_item_json_ld(4, dataset, h.url_for(controller='package', action='read', id=pkg.id, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	{% if pkg %}
+		<a href="{{h.url_for(controller='organization', action='index')}}">{% trans %}ecodp.common.publisher{% endtrans %}</a>
+
+		{% if pkg.organization %}
+			{% set organization = pkg.organization.title or pkg.organization.name %}
+			<span>
+			  <a href="{{h.url_for(controller='organization', action='read', id=pkg.organization.name)}}">{{organization|truncate(32, True)}}</a>
+			</span>
+		{% endif %}
+
+		{% set dataset = pkg.title or pkg.name %}
+		<a href="{{h.url_for(controller='package', action='read', id=pkg.id)}}">{{dataset|truncate(32, True)}}</a>
+	{% endif %}
+{% endblock %}
+

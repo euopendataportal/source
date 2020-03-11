@@ -1,0 +1,132 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+    <div class="control-group license-field">
+        <label class="control-label" for="license_id"><span class="field_required">&#9733;</span>Licence</label>
+
+        <div class="controls">
+            <span class="hints-right">{% trans %}ecodp.hint.licence{% endtrans %}</span>
+            <select id="{{ dataset_id }}license_id" name="{{ dataset_name }}license_id" class="chzn-select">
+                {% for licence_desc, licence_id in c.licences %}
+                    <option value="{{ licence_id }}"
+                            {% if data.license_id == licence_id %}selected="selected"{% endif %}>{{ licence_desc }}</option>
+                {% endfor %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The licence under which the dataset is released.">?
+            </span>
+{% if bulk_edition and data.get('license_id_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+        </div>
+    </div>
+
+    <div class="control-group publisher-field">
+        <label class="control-label" for="owner_org"><span class="field_required">&#9733;</span>Published By</label>
+        <div class="controls">
+            <select id="{{ dataset_id }}owner_org" name="{{ dataset_name }}owner_org" class="chzn-select">
+                {% for publisher in c.publishers %}
+                    <option value="{{ publisher.id }}"
+                            {% if publisher.id == data.owner_org or publisher.name == c.new_group %}selected="selected"{% endif %}>{{ publisher.display_name }}</option>
+                {% endfor %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The publisher of the dataset.">?
+            </span>
+        {% if bulk_edition and data.get('owner_org_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="control-group publisher-field" style="display: none">
+        <label class="control-label" for="owner_org"><span class="field_required">&#9733;</span>Access level</label>
+
+        <div class="controls">
+            <div class="subcontrols" style="margin: 0">
+                <input id='{{ dataset_id }}field-private-false' type='radio' name='{{ dataset_name }}private' value='False'
+                       {% if data.get('private', True) == False %}checked='checked'{% endif %}/>
+                <label for='field-private-false'>{% trans %}ecodp.common.published{% endtrans %}</label>
+            </div>
+            <div class="subcontrols">
+                <input id='{{ dataset_id }}field-private-true' type='radio' name='{{ dataset_name }}private' value='True'
+                       {% if data.get('private', True) == True %}checked='checked'{% endif %}/>
+                <label for='field-private-true'>{% trans %}ecodp.common.draft{% endtrans %}</label>
+            </div>
+        </div>
+    </div>
+{% if not  bulk_edition %}
+    <div class="control-group name-field">
+        <label class="control-label" for="name"><span class="field_required">&#9733;</span>Name</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on">{{ h.url(controller='package', action='search')+'/' }}</span>
+                <input style="font-size: 14px;" maxlength="100" name="{{ dataset_name }}name" id="{{ dataset_id }}name" type="text" class="js-url-input" value="{{ data.name }}"
+                       data-module-prefix="{{ h.url(controller='package', action='search') }}/"
+                       data-module="custom_slug-preview-slug" data-module-placeholder="<dataset>"/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="A unique identifier for the package.&#13;It should be broadly humanly readable, in the spirit of Semantic Web URIs.&#13;Only use an acronym if it is widely recognised. Renaming is possible but discouraged.&#13;+ characters, lowercase, using only 'a-z0-9' and '-_' include date (yyyy-mm-dd) if a static dataset.">?
+            </span>
+            </div>
+            {% if errors.name %}
+                <p class="field_error">Error: {{ errors.name }}</p>
+            {% endif %}
+            <p class="js-url-is-valid">&nbsp;</p>
+
+        </div>
+    </div>
+
+
+    <div class="control-group homepage-field">
+        <label class="control-label" for="url"><span class="field_required">&#9733;</span>URI</label>
+
+        <div class="controls">
+            <span class="hints-right">e.g. <a href="{% trans %}ecodp.hint.url{% endtrans %}">{% trans %}ecodp.hint.url{% endtrans %}</a></span>
+            <input id="{{ dataset_id }}url" name="{{ dataset_name }}url" type="text" value="{{ data.url }}"/>
+        <span class="searchHelp-green gradient input-helper"
+                  title="This identifier is the universal and main identification of the dataset maintained by the publisher,&#13;e.g. http://ec.europa.eu/id/uri-1">?</span>
+            {% if errors.url %}
+                <p class="field_error">Error: {{ errors.url }}}</p>
+            {% endif %}
+
+        </div>
+    </div>
+{% endif %}
+    <div class="control-group">
+        <label class="control-label" for="url"> DOI</label>
+
+        <div class="controls">
+            <input id="{{ dataset_id }}doi" style="width: 59%" name="{{ dataset_name }}doi" type="text" value="{{ data.doi }}"/>
+            <span class="searchHelp-green gradient input-helper" title="DOI">?</span>
+{% if bulk_edition and data.get('doi_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            <input type="button" value="Generate" class="btn doi-line-button" id="{{ dataset_id }}generate-doi" name="{{ dataset_name }}generate-doi">
+            <input type="button" id="{{ dataset_id }}register" name="{{ dataset_name }}register" value="Register" class="btn doi-line-button">
+            {% if errors.doi %}
+                <p class="field_error">Error: {{ errors.doi }}}</p>
+            {% endif %}
+        </div>
+    </div>

@@ -1,0 +1,92 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+{% import 'macros/form.html' as form %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/rdft_ecportal' %}
+{% endblock %}
+
+{% block subtitle %}{{ _("ecodp.common.datasets") }}{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.search'), h.url_for(controller='package', action='search', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	{{ h.nav_link(_('ecodp.common.search'), controller='package', action='search', highlight_actions = 'new index') }}
+{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block optional_feed %}
+	<link rel="alternate" type="application/atom+xml" title="{{g.site_title}} - Datasets found with custom search: '{{c.search_url_params}}'" href="{{h.url(controller='feed', action='custom')}}?{{c.search_url_params}}" />
+	<link rel="alternate" type="application/atom+xml" title="{{g.site_title}} - Recent Revision History" href="{{h.url_for(controller='revision', action='list', format='atom', days=1)}}" />
+{% endblock %}
+
+{% set sort = request.params.get('sort') or 'score desc' %}
+{% set locale = h.current_locale()|string %}
+
+
+{% block page_primary_action %}
+	{% if h.check_access('package_create') %}
+		<div class="page_primary_action">
+			{% link_for _('ecodp.common.datasets.add'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+		</div>
+	{% endif %}
+{% endblock %}
+
+
+{% block page_search %}
+	{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields %}
+{% endblock %}
+
+{% block primary_content_inner %}
+	{% block filter_box %}
+        {% snippet 'snippets/filter_box.html', fields=c.fields, facet_titles=c.facet_titles, label_source=c.search_facets, dataset_count=c.page.item_count, sort_by_selected=c.sort_by_selected, remove_field=c.remove_field, sorting=sorting %}
+	{% endblock %}
+
+	{% if c.query_error %}
+		<p i18n:msg="item_count"><strong>There was an error while searching.</strong> Please try again.</p>
+	{% endif %}
+
+	{% block package_search_results_list %}
+		{% snippet 'snippets/package_list.html', packages=c.page.items %}
+	{% endblock %}
+
+	{% block page_pagination %}
+		{{ c.page.pager(q=c.q) }}
+	{% endblock %}
+
+	{% snippet "snippets/survey.html" %}
+
+
+
+{% endblock %}
+
+{% block page_search_right %}
+	{% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+{% block secondary_content_inner %}
+	{% for facet in c.facet_titles %}
+		{{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+	{% endfor %}
+{% endblock %}

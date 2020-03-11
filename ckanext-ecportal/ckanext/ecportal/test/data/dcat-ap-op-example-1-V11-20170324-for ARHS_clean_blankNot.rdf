@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:dcat="http://www.w3.org/ns/dcat#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:vcard="http://www.w3.org/2006/vcard/ns#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:schema="http://schema.org/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcatapop="http://data.europa.eu/xxx/ontology/dcatapop#"
+  xmlns:cnt="http://www.w3.org/2011/content#"
+  xmlns:qb="http://purl.org/linked-data/cube#"
+  xmlns:stat="http://data.europa.eu/xyz/statdcat-ap/"
+  xmlns:dqv="http://www.w3.org/ns/dqv#" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:spdx="http://spdx.org/rdf/terms#"  
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sdmx-attribute="http://purl.org/linked-data/sdmx/2009/attribute#"
+  xmlns:oa="http://www.w3.org/TR/2016/WD-annotation-vocab-20160331/#"
+  xmlns:eg="http://example.org/ns#">
+  
+  <rdf:Description rdf:about="http://data.europa.eu/999/catalog/european-union-open-data-portal">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+    <dcterms:title xml:lang="en">European Union Open Data Portal Dataset catalog</dcterms:title>
+    <dcterms:description xml:lang="en">A range of datasets maintained by European Union Open Data Portal </dcterms:description>
+    <dcterms:rights rdf:resource="http://arhs.com/old_blanck/17"/>
+    <dcat:themeTaxonomy rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+    <dcat:record rdf:resource="http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2"/>
+    <dcat:dataset rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2"/>
+    <dcterms:publisher rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/PUBL"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-09-25</dcterms:issued>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/BUG"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/SPA"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/CES"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/DAN"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/DEU"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/EST"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ELL"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/FRA"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/GLE"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/HRV"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ITA"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/LAV"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/LIT"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/HUN"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/NLD"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/POL"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/POR"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/RON"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/SLK"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/FIN"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/SWE"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-17T17:34:39.166616</dcterms:modified>
+    <foaf:homepage>http://data.europa.eu/euodp/en/data</foaf:homepage>
+    <dcterms:license rdf:resource="http://publications.europa.eu/resource/authority/licence/COM_REUSE"/>
+    <dcterms:spatial rdf:resource="http://publications.europa.eu/resource/authority/country/EUR"/>
+    <dcterms:hasPart rdf:resource="http://data.europa.eu/999/catalog/european-union-open-data-portal-geo"/>
+    <dcterms:isPart rdf:resource="http://data.europa.eu/999/catalog/european-union-open-data-portal-geo-europe"/>
+  </rdf:Description>
+
+ <rdf:Description rdf:about="http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+    <foaf:primaryTopic rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2"/>
+    <dcterms:conformsTo rdf:resource="http://xml.coverpages.org/tmxSpec971212.html"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-01-18T17:34:39.166616</dcterms:issued>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-19T17:34:39.166616</dcterms:modified>
+    <dcterms:description xml:lang="en">Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC&#39;2012), Istanbul, 21-27 May 2012.</dcterms:description>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+    <dcterms:title xml:lang="en">DGT-TM: A freely Available Translation Memory in 22 Languages</dcterms:title>
+    <dcatapop:numberOfViews rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">234</dcatapop:numberOfViews>
+    <adms:status rdf:resource="http://publications.europa.eu/resource/authority/dataset-status/COMPLETED"/>
+    <dcterms:source rdf:resource="http://data.europa.eu/999/catalogrecord/dgt-translation-memory-V1-2-source"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <dcterms:title xml:lang="en">DGT-TM: A freely Available Translation Memory in 22 Languages</dcterms:title>
+    <dcterms:alternative xml:lang="en">a translation memory in an open data status, reusable for legaltech application</dcterms:alternative>
+    <dcterms:description xml:lang="en">Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC&#39;2012), Istanbul, 21-27 May 2012.</dcterms:description>
+    <dcat:contactPoint rdf:resource="http://arhs.com/old_blanck/1"/>
+    <dcat:keyword xml:lang="en">translation</dcat:keyword>
+    <dcat:keyword xml:lang="en">translation memory</dcat:keyword>
+    <dcatapop:isPartOfCatalog rdf:resource="http://data.europa.eu/999/catalog/european-union-open-data-portal"/>
+    <dcterms:publisher rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/DGT"/>
+    <dcterms:contributor rdf:resource="http://publications.europa.eu/resource/authority/corporate-body/DEVCO"/>
+    <dcterms:isVersionOf rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory"/>
+    <dcterms:hasPart rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-eng/deu"/>
+	<dcterms:isPartOf rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-1"/>
+    <dcat:theme rdf:resource="http://publications.europa.eu/resource/authority/data-theme/TECH"/>
+    <dcterms:accessRights rdf:resource="http://publications.europa.eu/resource/authority/access-right/PUBLIC"/>
+    <foaf:page rdf:resource="http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88"/>
+    <dcterms:conformsTo rdf:resource="http://xml.coverpages.org/tmxSpec971212.html"/>
+    <dcterms:identifier>DGT 13433</dcterms:identifier>
+    <adms:identifier rdf:resource="http://arhs.com/old_blanck/7"/>
+    <dcterms:provenance rdf:resource="http://arhs.com/old_blanck/10"/>
+    <dcterms:relation rdf:resource="http://www.lrec-conf.org/proceedings/lrec2012/pdf/814_Paper.pdf"/>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP"/>
+    <dcterms:source rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-complete-dataset"/>
+    <dcat:distribution rdf:resource="http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c"/>
+    <adms:sample rdf:resource="http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e674b"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-01-17T17:34:39.166616</dcterms:issued>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-17T17:34:39.166616</dcterms:modified>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+    <dcat:landingPage rdf:resource="https://ec.europa.eu/jrc/en/language-technologies/dgt-translation-memory"/>
+    <dcterms:temporal rdf:resource="http://arhs.com/old_blanck/3"/>
+    <foaf:topic rdf:resource="http://data.europa.eu/999/authority/dataset-group/323"/> 
+    <dcterms:spatial rdf:resource="http://publications.europa.eu/resource/authority/country/EUR"/>
+    <dcterms:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/ANNUAL"/>
+    <owl:versionInfo xml:lang="en">version 1.2</owl:versionInfo>
+    <adms:versionNotes xml:lang="en">this version includes the complete bulgarian/english translation memory</adms:versionNotes>
+    <dcterms:subject rdf:resource="http://eurovoc.europa.eu/4478"/>
+    <dcatapop:temporalGranularity rdf:resource="http://publications.europa.eu/resource/authority/timeperiod/YEAR"/>
+    <dcatapop:ckanName>dgt-translation-memory-V1-2</dcatapop:ckanName>
+    <dcatapop:applicationUsingDataset rdf:resource="metacat.com"/>
+    <dcatapop:extensionValue rdf:resource="http://arhs.com/old_blanck/8"/>
+    <dcatapop:extensionLiteral rdf:resource="http://arhs.com/old_blanck/9"/>
+    
+    <stat:dimension  rdf:resource="http://example.org/ns#refArea"/> 
+    <stat:dimension  rdf:resource="http://example.org/ns#refPeriod"/> 
+    <stat:attribute rdf:resource="http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"/> 
+    <stat:statUnitMeasure rdf:resource="http://dbpedia.org/resource/Year"/> 
+    <stat:numSeries rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</stat:numSeries>
+    <dqv:hasQualityAnnotation rdf:resource="http://qualifications.org/QualityCertificate1"/>
+
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <dcterms:title xml:lang="en">DGT-TM: A freely Available Translation Memory in 22 Languages</dcterms:title>
+    <dcterms:description xml:lang="en">Detailed description of the DGT-TM, including statistics on the resource. Proceedings of the 8th international conference on Language Resources and Evaluation (LREC&#39;2012), Istanbul, 21-27 May 2012.</dcterms:description>
+    <dcat:accessURL rdf:resource="https://ec.europa.eu/jrc/en/language-technologies/dgt-translation-memory#Download-the-DGT-Translation-Memory"/>
+    <dcat:downloadURL rdf:resource="http://optima.jrc.it/Resources/DGT-TM-2011/Vol_2004_1.zip"/>
+    <dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+    <dcterms:license rdf:resource="http://publications.europa.eu/resource/authority/licence/COM_REUSE"/>
+    <dcterms:rights rdf:resource="http://arhs.com/old_blanck/19"/>
+    <dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/xml"/>
+    <dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/xml"/>
+    <dcterms:conformsTo rdf:resource="http://xml.coverpages.org/tmxSpec971212.html"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-01-17T17:34:39.166616</dcterms:issued>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-17T17:34:39.166616</dcterms:modified>
+    <adms:status rdf:resource="http://publications.europa.eu/resource/authority/dataset-status/COMPLETED"/>
+    <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3453</dcat:byteSize>
+    <spdx:checksum rdf:resource="http://arhs.com/old_blanck/15"/>
+    <foaf:page rdf:resource="http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23"/>
+    <dcatapop:iframe rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">343233</dcatapop:iframe>
+    <dcatapop:numberOfDownloads rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">345</dcatapop:numberOfDownloads>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/distribution-type/VISUALIZATION"/>
+    <dcatapop:extensionValue rdf:resource="http://arhs.com/old_blanck/21"/>
+    <dcatapop:extensionLiteral rdf:resource="http://arhs.com/old_blanck/22"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/1">
+    <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Kind"/>
+    <vcard:organisation-name xml:lang="en">DGT-Translation</vcard:organisation-name>
+    <vcard:hasTelephone rdf:resource="http://arhs.com/old_blanck/4"/>
+    <vcard:hasAddress rdf:resource="http://arhs.com/old_blanck/5"/>
+    <vcard:hasEmail rdf:resource="mailto:info@nobelmedia.org"/>
+    <foaf:homePage rdf:resource="http://arhs.com/old_blanck/20"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/3">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/PeriodOfTime"/>
+    <schema:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-01</schema:startDate>
+    <schema:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-12-31</schema:endDate>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/4">
+    <vcard:hasValue rdf:resource="tel:086631722"/>
+    <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Voice"/>
+    <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Work"/>
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/5">
+    <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Address"/>
+    <vcard:street-address>Jean-Monnet Building A2/137</vcard:street-address>
+    <vcard:postal-code>L-2920</vcard:postal-code>
+    <vcard:locality>Luxembourg</vcard:locality>
+    <vcard:country-name>Luxembourg</vcard:country-name>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/7">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <skos:notation rdf:datatype="http://purl.org/spar/datacite/doi">10.1109/5.771073</skos:notation>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-01-17T17:34:39.166616</dcterms:issued>
+    <adms:schemeAgency>DOI</adms:schemeAgency>
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://arhs.com/old_blanck/8">
+    <rdf:type rdf:resource="http://data.europa.eu/xxx/ontology/dcatapop#DataExtension"/>
+    <rdfs:label xml:lang="en">meters</rdfs:label>
+	  <dcatapop:dataExtensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23434</dcatapop:dataExtensionValue>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/9">
+    <rdf:type rdf:resource="http://data.europa.eu/xxx/ontology/dcatapop#DataExtension"/>
+    <rdfs:label xml:lang="en">initial application</rdfs:label>
+    <dcatapop:dataExtensionLiteral>publisher V23 application</dcatapop:dataExtensionLiteral>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/10">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/ProvenanceStatement"/>
+    <rdfs:label xml:lang="en">The first description of this dataset was created by DGT-Translation in 2012</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/15">
+    <rdf:type rdf:resource="http://spdx.org/rdf/terms#Checksum"/>
+    <spdx:algorithm rdf:resource="http://spdx.org/rdf/terms#checksumAlgorithm_sha1"/>
+    <spdx:checksumValue rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">112211</spdx:checksumValue>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/17">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <rdfs:label xml:lang="en">copy right copyRights Publications Office</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/18">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <rdfs:label xml:lang="en">copyright Translation Directorate</rdfs:label>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/19">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <rdfs:label xml:lang="en">copyright Translation Directorate</rdfs:label>
+  </rdf:Description> 
+
+ <rdf:Description rdf:about="http://arhs.com/old_blanck/20">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <vcard:hasURL rdf:resource="http://dgt-translation-memory.html"/>
+ </rdf:Description>
+
+<rdf:Description rdf:about="http://arhs.com/old_blanck/21">
+    <rdf:type rdf:resource="http://data.europa.eu/xxx/ontology/dcatapop#DataExtension"/>
+    <rdfs:label xml:lang="en">meters</rdfs:label>
+    <dcatapop:dataExtensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23434</dcatapop:dataExtensionValue>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://arhs.com/old_blanck/22">
+    <rdf:type rdf:resource="http://data.europa.eu/xxx/ontology/dcatapop#DataExtension"/>
+    <rdfs:label xml:lang="en">initial application</rdfs:label>
+    <dcatapop:dataExtensionLiteral>publisher V23 application</dcatapop:dataExtensionLiteral>
+  </rdf:Description>
+
+ <rdf:Description rdf:about="http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d88">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <vcard:hasURL rdf:resource="http://www.lrec-conf.org/dataset/documentation/3434/index.html"/>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN"/>
+    <foaf:primaryTopic rdf:resource="http://data.europa.eu/999/dataset/dgt-translation-memory-V1-2"/>
+    <dcterms:title xml:lang="en">Documentation of DGT-TM Translation Memory </dcterms:title>
+    <dcterms:description xml:lang="en">Detailed documentation of the dataset with examples and explanations about the format and changes since last version</dcterms:description>
+    <dcterms:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+  </rdf:Description>
+
+   <rdf:Description rdf:about="http://data.europa.eu/999/document/d588a398-3776-43ba-8b0c-b84c424d3d23">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <vcard:hasURL rdf:resource="http://www.lrec-conf.org/dataset/documentation/3445/index.html"/>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN"/>
+    <foaf:primaryTopic rdf:resource="http://data.europa.eu/999/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c"/>
+    <dcterms:title xml:lang="en">Documentation of the xml file for translation memory </dcterms:title>
+    <dcterms:description xml:lang="en">Detailed documentation of the xml dataset file </dcterms:description>
+    <dcterms:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/PDF"/>
+	<dcat:mediaType rdf:resource="https://www.iana.org/assignments/media-types/application/xml"/>
+	<dcterms:language rdf:resource="http://publications.europa.eu/resource/authority/language/ENG"/>
+	<dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2013-01-17T17:34:39.166616</dcterms:issued>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-01-17T17:34:39.166616</dcterms:modified>
+	<adms:status rdf:resource="http://publications.europa.eu/resource/authority/dataset-status/COMPLETED"/>
+	 <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3453</dcat:byteSize>
+	<dcatapop:extensionValue rdf:resource="http://arhs.com/old_blanck/21"/>
+    <dcatapop:extensionLiteral rdf:resource="http://arhs.com/old_blanck/22"/>
+	
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://data.europa.eu/999/dataset/dgt-translation-memory-complete-dataset">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/country/EUR">
+    <rdfs:label>European Union</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/Location"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme/TECH">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Science and technology</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-type/DOWNLOADABLE_FILE">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Dowload file</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-type"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/data-theme">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">Data theme</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/currency/EUR">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Euro</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/currency"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/currency">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">Currency</dcterms:title>
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="http://eurovoc.europa.eu/4478">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdf:type rdf:resource="http://data.europa.eu/xxx/ontology/dcatapop#DatasetSubject"/>
+    <skos:prefLabel xml:lang="en">translation</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://eurovoc.europa.eu/100222"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://eurovoc.europa.eu/100222">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">3231 information and information processing</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://data.europa.eu/999/authority/dataset-group/323">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/DatasetGroup"/>
+    <skos:prefLabel xml:lang="en">group 1 defined by ODP</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://data.europa.eu/999/authority/dataset-group/"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/dataset-status/COMPLETED">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">completed</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/dataset-status"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/dataset-status">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">dataset status</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/frequency/ANNUAL">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/Frequency"/>
+    <skos:prefLabel xml:lang="en">annual</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/frequency"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/frequency">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">frequency</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">Core component</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/dataset-type"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/dataset-type">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">dataset type</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdf:type rdf:resource="http://purl.org/dc/terms/RightsStatement"/>
+    <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/access-right">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">access right</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/timeperiod/YEAR">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">year</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/timeperiod"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/timeperiod">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">time periods</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/documentation-type/DOCUMENTATION_MAIN">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <skos:prefLabel xml:lang="en">main documentation</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/documentation-type"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/documentation-type">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:title xml:lang="en">documentation type</dcterms:title>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/licence/COM_REUSE">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/LicenseDocument"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xml.coverpages.org/tmxSpec971212.html">
+    <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
+    <skos:prefLabel xml:lang="en">TMX</skos:prefLabel>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/corporate-body/DGT">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <skos:prefLabel xml:lang="en">DG Traduction</skos:prefLabel>
+    <foaf:name xml:lang="en">DG Traduction</foaf:name>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/organization-type/DIR"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/corporate-body/DEVCO">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <skos:prefLabel xml:lang="en">Directorate-General for Development and Cooperation – EuropeAid</skos:prefLabel>
+    <foaf:name xml:lang="en">Directorate-General for Development and Cooperation – EuropeAid</foaf:name>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/organization-type/DIR"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/corporate-body/PUBL">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <skos:prefLabel xml:lang="en">EU Publications Office</skos:prefLabel>
+    <foaf:name xml:lang="en">EU Publications Office</foaf:name>
+    <dcterms:type rdf:resource="http://publications.europa.eu/resource/authority/organization-type/OFFICE"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="hhttp://qualifications.org/QualityCertificate1">
+    <rdf:type rdf:resource="http://www.w3.org/TR/2016/WD-annotation-vocab-20160331/#annotation"/>
+  </rdf:Description>
+
+
+  </rdf:RDF>
+

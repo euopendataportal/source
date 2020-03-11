@@ -1,0 +1,5 @@
+{%- if c.pkg_dict.rdf -%}
+	{{ c.pkg_dict.rdf | trim | safe }}
+{%- else -%}
+	{%- include "package/custom_read.rdf" -%}
+{%- endif -%}

@@ -1,0 +1,84 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Displays a list of datasets.
+
+packages       - A list of packages to display.
+list_class     - The class name for the list item.
+item_class     - The class name to use on each item.
+hide_resources - If true hides the resources (default: false).
+banner         - If true displays a popular banner (default: false).
+truncate       - The length to trucate the description to (default: 180)
+truncate_title - The length to truncate the title to (default: 80).
+
+Example:
+
+  {% snippet 'snippets/package_list.html', packages=c.datasets %}
+
+#}
+{% if packages %}
+  <ul class="datasets unstyled">
+      {% for package in packages %}
+          <li class="search-result-item">
+              {% set viz_resources = package.viz_resources %}
+
+              <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link">
+                  <i class="resource"></i>
+                  <strong>{{package.title or package.name}}</strong></a><br/>
+              <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link" >
+                  <span class="additional">{{h.markdown_extract(package.get('notes', ''))}}</span></a><br/>
+              {% if package.resources %}
+                  <span class="resources" >
+						{% for format in h.dataset_resource_formats(package.get('resources')) %}
+                            <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link" >
+                            <span class="resource-tag">{{format}}</span></a>
+                        {% endfor %}
+					</span>
+              {% endif %}
+              {% if package.views_total %}
+                  <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link" >
+                      <span class="additional views">({{package.views_total}} {% trans %}ecodp.common.lable.views{% endtrans %})</span></a>
+              {% endif %}
+              {% if package.download_total %}
+                  <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link" >
+                      <span class="additional views">&nbsp;({{package.download_total}} {% trans %}ecodp.common.label.downloads{% endtrans %})</span></a>
+              {% endif %}
+              {% if package.views_total.total or package.resources or package.download_total and package.download_total > 0 %}
+                  <br style="clear:both"/>
+              {% endif %}
+
+              {% if viz_resources %}
+                  <p class="visualizations">
+                      {% trans %}ecodp.common.publishers.visualise.with{% endtrans %}
+                      {% for res in viz_resources[0:-1] %}
+                          <a target="_blank" href="{{ res['download_url']| first or res['access_url']| first }}" {% if res.iframe_code %} data-iframe="{{res['iframe_code']}}"  class="visu-link visualisation-button-dataset" {% else %}class="visu-link"{% endif %}>
+                              {{h.resource_display_name(res)}}
+                              <i class="external-grey"></i>
+                          </a>,
+                      {% endfor %}
+                      <a target="_blank"  href="{{viz_resources[-1]['download_url']| first or viz_resources[-1]['access_url']| first }}" {% if viz_resources[-1].iframe_code %} data-iframe="{{viz_resources[-1]['iframe_code']}}"  class="visu-link visualisation-button-dataset" {% else %}class="visu-link"{% endif %}>
+                          {{h.resource_display_name(viz_resources[-1])}}
+                          <i class="external-grey"></i>
+                      </a>
+                  </p>
+              {% endif %}
+          </li>
+      {% endfor %}
+  </ul>
+{% endif %}

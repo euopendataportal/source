@@ -1,0 +1,40 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set report_messages = h.format_error_message_for_ingestion_report(errors) %}
+
+{% for rule in report_messages.dataset %}
+    <label class="control-label" style="float: left; margin-top: 5px;">{% trans %}ecodp.configuration.validation.rules{% endtrans %} #{{ rule.id }}</label>
+    <label class="control-label" style="float: left; margin-left: 10px; margin-top: 5px;">{{ rule.short }}</label>
+    <span style="margin-left: 10px; margin-top: 5px;" class="searchHelp-green gradient input-helper"
+          title="{{ rule.long }}">?</span>
+    <br style="clear:both"/>
+
+{% endfor %}
+
+{% for res_key, resource in report_messages.get('resources') %}
+    <label class="control-label">{% trans %}ecodp.common.resource{% endtrans %}: {{ res_key }}</label>
+        {% for rule in resource %}
+                <label class="control-label" style="float: left; margin-left: 30px; margin-top: 5px;">{% trans %}ecodp.configuration.validation.rules{% endtrans %} #{{ rule.id }}</label>
+                <label class="control-label" style="float: left; margin-left: 10px; margin-top: 5px;">{{ rule.short }}</label>
+                <span style="margin-left: 10px; margin-top: 5px;" class="searchHelp-green gradient input-helper"
+                      title="{{ rule.long }}">?</span>
+            <br style="clear:both"/>
+        {% endfor %}
+
+{% endfor %}

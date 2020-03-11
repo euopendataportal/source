@@ -1,0 +1,65 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div id="manage_package_general_manifest" class="div_toggle ui-layout-center" style="display: none">
+    <fieldset id="manage_package_basic-information">
+
+        <div class="control-group publisher-field">
+            <label class="control-label" for="owner_org"><span class="field_required">&#9733;</span>{% trans %}ecodp.common.ingestion.data_provider{% endtrans %}</label>
+            <div class="controls">
+                <select id="manifest_owner_org" name="manifest__0__publisher" class="chzn-select">
+                    {% for publisher in ctx.publishers %}
+                        <option value="{{ publisher.id }}"
+                                {% if publisher.id == ctx.pkg_dict.manifest[0].get('publisher_uri') or publisher.name == ctx.new_group %}selected="selected"{% endif %}>{{ publisher.display_name }}</option>
+                    {% endfor %}
+                </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The publisher of the ingestion package.">?
+            </span>
+            </div>
+        </div>
+
+        <div class="control-group title-field">
+
+            <label class="control-label" for="title">
+                <span class="field_required">&#9733;</span>{%- trans %}ecodp.common.ingestion.packageid{%- endtrans %}</label>
+
+            <div class="controls">
+                <input id="manifest_title" class="js-title" name="manifest__0__package_id" type="text"
+                       value="{{ ctx.pkg_dict.manifest[0].get('package_id') }}"
+                       placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="The name of the ingestion package">?</span>
+                {% if errors%}
+                    <p class="field_error">Error: {{ errors.title }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="grouped-labels">
+            <label class="control-label" for="release_date">{% trans %}ecodp.common.ingestion.creation_date{%- endtrans %}</label>
+        </div>
+        <div class="controls">
+            <input id="manifest_release_date" class="half-input image-input image-calendar"
+                   name="manifest__0__creation_date" type="text"
+                   value="{{ctx.pkg_dict.manifest[0].get('creation_date')}}"
+                   placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+            />
+        <input name="manifest__0__publisher_uri" type="hidden" value="{{ ctx.pkg_dict.manifest[0].get('publisher_uri') }}"/>
+    </fieldset>
+
+</div>

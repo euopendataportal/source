@@ -1,0 +1,53 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends 'user/base.html' %}
+
+{%- block scripts %}
+    {% resource 'ecportal/user_mamangement' %}
+{% endblock %}
+
+{% block subtitle %}
+	{{c.user}} - Edit - User
+{% endblock %}
+
+{% block breadcrumb_items %}
+    {{ super() }},
+    {{ h.load_breadcrumb_item_json_ld(3, _('ecodp.common.button.edit'), h.url_for(controller='user', action='edit', id=c.user_name, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	{{ super() }}
+	<span class="separator"></span>
+	<a href="{{h.url_for(controller='user', action='edit', id=c.user_name)}}">{% trans %}ecodp.common.button.edit{% endtrans %}</a>
+{% endblock %}
+
+{% block menu %}
+    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+{% endblock %}
+
+{% block page_heading %}
+
+{% endblock %}
+
+{% block user_tab_content %}
+         <h1 class="page_heading">Edit User: {{c.user_name}}</h1>
+  {{ c.form | safe }}
+{% endblock %}
+
+{% block secondary_content %}{% endblock %}

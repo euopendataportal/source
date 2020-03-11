@@ -1,0 +1,61 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "page.html" %}
+
+{% block subtitle %}{% trans %}package.new.title{% endtrans %}{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/chosen' %}
+    {% resource 'ecportal/ecportal_edit' %}
+    {% resource 'ecportal/ecportal_new_dataset' %}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<span class="separator"></span>
+	<a href="{{h.url_for(controller='dataset', action='new')}}">{% trans %}package.new.breadcrumb{% endtrans %}</a>
+{% endblock %}
+
+{% block head_extras %}
+	{{ super() }}
+	<script>
+		var resources_json = {{h.literal(c.resources_json)}};
+		var resource_dropdown = {{h.literal(h.resource_dropdown())}};
+	</script>
+{% endblock %}
+
+{% block page_heading %}
+	<h1 class="page_heading">Add a Dataset</h1>
+{% endblock %}
+
+{% block bodytag %}
+	{{ super() }}
+	class="no-sidebar"
+{% endblock %}
+
+{% block primary_content_inner %}
+	{% if c.error %}
+		<h3 class="form-errors">
+			Error: {{c.error}}
+		</h3>
+	{% endif %}
+	<div class="dataset-create-form">
+		{{ c.form | safe }}
+	</div>
+{% endblock %}

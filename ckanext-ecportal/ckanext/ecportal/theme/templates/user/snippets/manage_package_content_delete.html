@@ -1,0 +1,52 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div id="remove2{{ dict.name }}" class="div_toggle ui-layout-center" style="display: none">
+
+    <fieldset id="manage_package_delete_{{ index }}">
+
+        <div class="control-group title-field">
+            <label class="control-label" for="title">
+                <span class="field_required">&#9733;</span>
+                {%- trans %}ecodp.common.ingestion.delete_uri{%- endtrans %}
+            </label>
+
+            <div class="controls">
+                <input id="delete-object-uri-{{ index }}" class="js-title" name="delete__{{ index }}__uri" type="text"
+                       value="{{ dict.uri }}"
+                       placeholder="{% trans %}ecodp.common.ingestion.delete_uri_placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.common.ingestion.delete_uri_help{% endtrans %}">?</span>
+            </div>
+        </div>
+        <div class="control-group title-field">
+            <label class="control-label" for="title">
+                <span class="field_required">&#9733;</span>
+                {%- trans %}ecodp.common.ingestion.delete_name{%- endtrans %}
+            </label>
+
+            <div class="controls">
+                <input id="delete-object-name-{{ index }}" class="js-title" name="delete__{{ index }}__name" type="text"
+                       value="{{ dict.name}}"
+                       placeholder="{% trans %}ecodp.common.ingestion.delete_name_placeholder{% endtrans %}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.common.ingestion.delete_name_help{% endtrans %}">?</span>
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -1,0 +1,33 @@
+import os
+
+instance_dir = '${CKAN_DIRECTORY}'
+config_dir = '${CKAN_DIRECTORY}/conf'
+config_file = 'ecportal.ini'
+
+pyenv_bin_dir = os.path.join(instance_dir, 'bin')
+activate_this = os.path.join(pyenv_bin_dir, 'activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+
+config_filepath = os.path.join(config_dir, config_file)
+if not os.path.exists(config_filepath):
+    raise Exception('No such file %r' % config_filepath)
+
+from paste.deploy import loadapp
+from paste.script.util.logging_config import fileConfig
+fileConfig(config_filepath)
+_application = loadapp('config:%s' % config_filepath)
+
+#No proxy config needed in our DEV env.
+#os.environ['http_proxy'] = 
+#os.environ['https_proxy'] = 
+#os.environ['no_proxy'] = 
+
+from apachemiddleware import MaintenanceResponse
+_application = MaintenanceResponse(_application)
+
+
+def application(environ, start_response):
+    environ['wsgi.url_scheme'] = environ.get('HTTP_X_SCHEME', 'http')
+    return _application(environ, start_response)
+
+

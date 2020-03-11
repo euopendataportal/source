@@ -1,0 +1,573 @@
+{
+  "http://www.w3.org/ns/dcat#CatalogRecord": [
+    {
+      "mandatory": "yes",
+      "name": "Catalogue Record primary topic cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the catalogue record's primary topic is not valid",
+      "property": "primaryTopic_foaf",
+      "rule_id": "card_primaryTopic"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Catalogue Record modified date cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the catalogue record's modified date is not valid",
+      "property": "modified_dcterms",
+      "rule_id": "card_modified"
+    },
+    {
+      "name": "Catalogue record modified date type",
+      "constraint": "restricted_type",
+      "message": "The type of the catalogue record's modified date is not valid",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_modified"
+    },
+    {
+      "message": "The cardinality of the catalogue record's conforms to is not valid",
+      "property": "conformsTo_dcterms",
+      "rule_id": "card_conformsTo",
+      "name": "Catalogue Record conforms to cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the catalogue record's status is not valid",
+      "property": "status_adms",
+      "rule_id": "card_status",
+      "name": "Catalogue Record status cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The status value of the Catalogue Record is not an element of the Metadata Registry",
+      "property": "status_adms",
+      "rule_id": "cv_status",
+      "name": "Catalogue record status controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the catalogue record's issued date is not valid",
+      "property": "issued_dcterms",
+      "rule_id": "card_issued",
+      "name": "Catalogue Record issued date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Catalogue record issued date type",
+      "constraint": "restricted_type",
+      "message": "The type of the catalogue record's issued date is not valid",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_issued"
+    },
+    {
+      "property2": "modified_dcterms",
+      "name": "Catalogue record issued/modified dates",
+      "constraint": "date_later",
+      "message": "Inconsistency between Catalogue record's issued date and modified date",
+      "property": "issued_dcterms",
+      "rule_id": "date_later_issued"
+    },
+    {
+      "message": "The language value of the Catalogue Record is not an element of the Metadata Registry",
+      "property": "language_dcterms",
+      "rule_id": "cv_language",
+      "name": "Catalogue record language controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the catalogue record's source is not valid",
+      "property": "source_dcterms",
+      "rule_id": "card_source",
+      "name": "Catalogue Record source cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the catalogue record's number of views is not valid",
+      "property": "numberOfViews_dcatapop",
+      "rule_id": "card_numberOfViews",
+      "name": "Catalogue Record number of views cardinality",
+      "constraint": "card_0..1"
+    }
+  ],
+  "http://purl.org/dc/terms/PeriodOfTime": [
+    {
+      "message": "The cardinality of the period of time's start date is not valid",
+      "property": "startDate_schema",
+      "rule_id": "card_startDate",
+      "name": "PeriodofTime of start date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the period of time's end date is not valid",
+      "property": "endDate_schema",
+      "rule_id": "card_endDate",
+      "name": "PeriodofTime of end date cardinality",
+      "constraint": "card_0..1"
+    }
+  ],
+  "http://www.w3.org/2006/vcard/ns#Kind": [
+    {
+      "message": "The cardinality of the kind's email is not valid",
+      "property": "hasEmail_vcard",
+      "rule_id": "card_hasEmail",
+      "name": "Kind of email cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the kind's telephone is not valid",
+      "property": "hasTelephone_vcard",
+      "rule_id": "card_hasTelephone",
+      "name": "Kind of telephone cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the kind's address is not valid",
+      "property": "hasAddress_vcard",
+      "rule_id": "card_hasAddress",
+      "name": "Kind of address cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the kind's home page is not valid",
+      "property": "homePage_foaf",
+      "rule_id": "card_homePage",
+      "name": "Kind of home page cardinality",
+      "constraint": "card_0..1"
+    }
+  ],
+  "http://xmlns.com/foaf/0.1/Document": [
+    {
+      "mandatory": "yes",
+      "name": "Document of url cardinality",
+      "constraint": "card_1..n",
+      "message": "The cardinality of the document's url is not valid",
+      "property": "url_schema",
+      "rule_id": "card_url"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Document of type cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the document's type is not valid",
+      "property": "type_dcterms",
+      "rule_id": "card_type"
+    },
+    {
+      "message": "The cardinality of the document's topic is not valid",
+      "property": "topic_foaf",
+      "rule_id": "card_topic",
+      "name": "Document of topic cardinality",
+      "constraint": "card_1..n"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Document of title cardinality",
+      "constraint": "card_1..n_en",
+      "message": "The cardinality of the document's title is not valid",
+      "property": "title_dcterms",
+      "rule_id": "card_title"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Document of format cardinality",
+      "constraint": "card_0..1",
+      "message": "The cardinality of the document's format is not valid",
+      "property": "format_dcterms",
+      "rule_id": "card_format"
+    },
+    {
+      "message": "The format value of the Document is not an element of the Metadata Registry",
+      "property": "format_dcterms",
+      "rule_id": "cv_format",
+      "name": "Document format controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The language value of the Document is not an element of the Metadata Registry",
+      "property": "language_dcterms",
+      "rule_id": "cv_language",
+      "name": "Document language controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    }
+  ],
+  "http://www.w3.org/ns/dcat#Dataset": [
+    {
+      "mandatory": "yes",
+      "name": "Dataset description cardinality",
+      "constraint": "card_1..n_en",
+      "message": "The cardinality of the dataset's description is not valid",
+      "property": "description_dcterms",
+      "rule_id": "card_description"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Dataset title cardinality",
+      "constraint": "card_1..n_en",
+      "message": "The cardinality of the dataset's title is not valid",
+      "property": "title_dcterms",
+      "rule_id": "card_title"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Dataset publisher cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the dataset's publisher is not valid",
+      "property": "publisher_dcterms",
+      "rule_id": "card_publisher"
+    },
+    {
+      "name": "Dataset publisher controlled vocabulary",
+      "constraint": "controlled_vocabulary",
+      "source": "db_publisher",
+      "mandatory":"yes",
+      "message": "The publisher value of the Dataset is not an element of the Metadata Registry",
+      "property": "publisher_dcterms",
+      "rule_id": "cv_publisher"
+    },
+    {
+      "rule_id": "cv_group",
+      "property": "datasetGroup_dcatapop",
+      "constraint": "controlled_vocabulary",
+      "source":"db_group",
+      "name": "The publisher value of the Dataset is not an element of the Metadata Registry",
+      "message": "The group value of the Dataset is not an element of the Metadata Registry"
+
+    },
+    {
+      "mandatory": "yes",
+      "name": "Dataset theme cardinality",
+      "constraint": "card_1..n",
+      "message": "The cardinality of the dataset's theme is not valid",
+      "property": "theme_dcat",
+      "specific_rule": "ODPSR",
+      "rule_id": "card_theme"
+    },
+    {
+      "message": "One of the theme value of the Dataset is not an element of the Metadata Registry",
+      "property": "theme_dcat",
+      "rule_id": "cv_theme",
+      "name": "Dataset theme controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's access rights is not valid",
+      "property": "accessRights_dcterms",
+      "rule_id": "card_accessRights",
+      "name": "Dataset access rights cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The access rights value of the Dataset is not an element of the Metadata Registry",
+      "property": "accessRights_dcterms",
+      "rule_id": "cv_accessRights",
+      "name": "Dataset access rights controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's accrual periodicity is not valid",
+      "property": "accrualPeriodicity_dcterms",
+      "rule_id": "card_accrualPeriodicity",
+      "name": "Dataset accrual periodicity cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The accrual periodicity value of the Dataset is not an element of the Metadata Registry",
+      "property": "accrualPeriodicity_dcterms",
+      "rule_id": "cv_accrualPeriodicity",
+      "name": "Dataset accrual periodicity controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The language value of the Dataset is not an element of the Metadata Registry",
+      "property": "language_dcterms",
+      "rule_id": "cv_language",
+      "name": "Dataset language controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "name": "Dataset identifier controlled vocabulary",
+      "constraint": "controlled_vocabulary",
+      "source": "list",
+      "message": "The identifier value of the Dataset is not an element of the Metadata Registry",
+      "property": "identifier_adms",
+      "rule_id": "cv_identifier"
+    },
+    {
+      "message": "The cardinality of the dataset's issued date is not valid",
+      "property": "issued_dcterms",
+      "rule_id": "card_issued",
+      "name": "Dataset issued date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Dataset issued date type",
+      "constraint": "restricted_type",
+      "message": "The type of the dataset's issued date is not valid",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_issued"
+    },
+    {
+      "property2": "modified_dcterms",
+      "name": "Dataset issued/modified dates",
+      "constraint": "date_later",
+      "level_of_error": "warning",
+      "message": "Inconsistency between Dataset's issued date and modified date",
+      "property": "issued_dcterms",
+      "rule_id": "date_later_issued"
+    },
+    {
+      "message": "The spatial value of the Dataset is not an element of the Metadata Registry",
+      "property": "spatial_dcterms",
+      "rule_id": "cv_spatial",
+      "name": "Dataset spatial controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's type is not valid",
+      "property": "type_dcterms",
+      "rule_id": "card_type",
+      "name": "Dataset type cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The type value of the Dataset is not an element of the Metadata Registry",
+      "property": "type_dcterms",
+      "rule_id": "cv_type",
+      "name": "Dataset type controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's modified date is not valid",
+      "property": "modified_dcterms",
+      "rule_id": "card_modified",
+      "name": "Dataset modified date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Dataset modified date type",
+      "constraint": "restricted_type",
+      "message": "The type of the dataset's modified date is not valid",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_modified"
+    },
+    {
+      "message": "The cardinality of the dataset's version info is not valid",
+      "property": "versionInfo_owl",
+      "rule_id": "versionInfo_owl",
+      "name": "Dataset version info cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The subject value of the Dataset is not an element of the Metadata Registry",
+      "property": "subject_dcterms",
+      "rule_id": "cv_subject",
+      "name": "Dataset subject controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's creator is not valid",
+      "property": "creator_dcterms",
+      "rule_id": "card_creator",
+      "name": "Dataset creator cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The creator value of the Dataset is not an element of the Metadata Registry",
+      "property": "creator_dcterms",
+      "rule_id": "cv_creator",
+      "name": "Dataset creator controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the dataset's isPartOf is not valid",
+      "property": "isPartOfCatalog_dcatapop",
+      "rule_id": "isPartOfCatalog_dcatapop",
+      "name": "Dataset isPartOf cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Dataset ckan name cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the dataset's ckan name is not valid",
+      "property": "ckanName_dcatapop",
+      "rule_id": "card_ckanName"
+    }
+  ],
+  "http://www.w3.org/ns/dcat#Distribution": [
+    {
+      "mandatory": "yes",
+      "name": "Distribution of access url cardinality",
+      "constraint": "card_1..n",
+      "message": "The cardinality of the distribution's access url is not valid",
+      "property": "accessURL_dcat",
+      "rule_id": "card_accessURL"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Distribution of format cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the distribution's format is not valid",
+      "property": "format_dcterms",
+      "specific_rule": "ODPSR",
+      "rule_id": "ODPSR_card_format"
+    },
+    {
+      "message": "The format value of the Distribution is not an element of the Metadata Registry",
+      "property": "format_dcterms",
+      "rule_id": "cv_format",
+      "name": "Distribution format controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Distribution of license cardinality",
+      "constraint": "card_1..1",
+      "message": "The cardinality of the distribution's license is not valid",
+      "property": "license_dcterms",
+      "specific_rule": "ODPSR",
+      "rule_id": "ODPSR_card_license"
+    },
+    {
+      "message": "The license value of the Distribution is not an element of the Metadata Registry",
+      "property": "license_dcterms",
+      "rule_id": "cv_license",
+      "name": "Distribution license controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the distribution's byte size is not valid",
+      "property": "byteSize_dcat",
+      "rule_id": "card_byteSize",
+      "name": "Distribution of byte size cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Distribution byte size type",
+      "constraint": "restricted_type",
+      "message": "The type of the distribution's byte size is not valid",
+      "property": "byteSize_dcat",
+      "type": "xsdDecimal",
+      "rule_id": "type_byteSize"
+    },
+    {
+      "message": "The cardinality of the distribution's checksum is not valid",
+      "property": "checksum_spdx",
+      "rule_id": "card_checksum",
+      "name": "Distribution of checksum cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The language value of the Distribution is not an element of the Metadata Registry",
+      "property": "language_dcterms",
+      "rule_id": "cv_language",
+      "name": "Distribution language controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The media type value of the Distribution is not an element of the Metadata Registry",
+      "property": "mediaType_dcat",
+      "rule_id": "cv_mediaType",
+      "name": "Distribution media type controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the distribution's media type is not valid",
+      "property": "mediaType_dcat",
+      "rule_id": "card_mediaType",
+      "name": "Distribution of media_type cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the distribution's issued date is not valid",
+      "property": "issued_dcterms",
+      "rule_id": "card_issued",
+      "name": "Distribution of issued date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Distribution issued date type",
+      "constraint": "restricted_type",
+      "message": "The type of the distribution's issued date is not valid",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_issued"
+    },
+    {
+      "message": "The cardinality of the distribution's rights is not valid",
+      "property": "rights_dcterms",
+      "rule_id": "card_rights",
+      "name": "Distribution of rights cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the distribution's status is not valid",
+      "property": "status_adms",
+      "rule_id": "card_status",
+      "name": "Distribution of status cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The status value of the Distribution is not an element of the Metadata Registry",
+      "property": "status_adms",
+      "rule_id": "cv_status",
+      "name": "Distribution status controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "mandatory": "yes",
+      "name": "Distribution of title cardinality",
+      "constraint": "card_1..n_en",
+      "message": "The cardinality of the distribution's title is not valid",
+      "property": "title_dcterms",
+      "specific_rule": "ODPSR",
+      "rule_id": "ODPSR_card_title"
+    },
+    {
+      "message": "The cardinality of the distribution's modified date is not valid",
+      "property": "modified_dcterms",
+      "rule_id": "card_modified",
+      "name": "Distribution of modified date cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "name": "Distribution modified date type",
+      "constraint": "restricted_type",
+      "message": "The type of the distribution's modified date is not valid",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "rule_id": "type_modified"
+    },
+    {
+      "message": "The cardinality of the distribution's number of downloads is not valid",
+      "property": "numberOfDownloads_dcatapop",
+      "rule_id": "card_numberOfDownloads",
+      "name": "Distribution of number of downloads cardinality",
+      "constraint": "card_0..1"
+    },
+    {
+      "message": "The cardinality of the distribution's type is not valid",
+      "property": "type_dcterms",
+      "rule_id": "card_type",
+      "name": "Distribution of type cardinality",
+      "constraint": "card_1..1"
+    },
+    {
+      "message": "The type value of the Distribution is not an element of the Metadata Registry",
+      "property": "type_dcterms",
+      "rule_id": "cv_type",
+      "name": "Distribution type controlled vocabulary",
+      "constraint": "controlled_vocabulary"
+    },
+    {
+      "message": "The cardinality of the distribution's iframe is not valid",
+      "property": "iframe_dcatapop",
+      "rule_id": "card_iframe",
+      "name": "Distribution of iframe cardinality",
+      "constraint": "card_0..1"
+    }
+  ]
+}

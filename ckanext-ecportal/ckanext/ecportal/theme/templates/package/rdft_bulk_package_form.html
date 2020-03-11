@@ -1,0 +1,135 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+    {% import 'macros/form.html' as form %}
+
+
+{% set action = c.action %}
+{% set add_import = (c.action=='new') %}
+{% set bulk_edition = (c.action=='bulk_update') %}
+
+<div id="tabs-creation">
+
+    <ul {% if not add_import %}style="display: none"{% endif %}>
+        <li><a href="#tab-creation-manual">{% trans %}ecodp.rdft.manual{% endtrans %}</a></li>
+        <li><a href="#tab-creation-import">{% trans %}ecodp.common.import{% endtrans %}</a></li>
+    </ul>
+
+
+    <div id="tab-creation-manual">
+        <form class="form-horizontal overflow-visible{{ ' has-errors' if errors else '' }}"
+              method="post" id="dataset-bulk-edit" action="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='bulk_update') }}">
+
+            <input type="hidden" id="ids" name="ids" value="{{ data.ids }}"/>
+            <input type="hidden" id="empty_fields" name="empty_fields" value="{{ data.empty_fields }}"/>
+
+            {% snippet "package/rdft_snippets/form_errors.html", errors=errors %}
+            {% snippet "package/rdft_snippets/form_warnings.html", errors=errors %}
+
+            <div id="creation-dataset-form">
+                <ul>
+                    <li><a href="#mandatory-parameters">{% trans %}ecodp.rdft.dataset_edit.mandatory{% endtrans %}</a></li>
+                    <li><a href="#recommended-parameters">{% trans %}ecodp.rdft.dataset_edit.recommended{% endtrans %}</a></li>
+                    <li><a href="#optional-parameters">{% trans %}ecodp.rdft.dataset_edit.optional{% endtrans %}</a></li>
+                </ul>
+
+                    {% with field_counter=[1] %}
+                      <div id="mandatory-parameters">
+                          {% include "package/rdft_snippets/form_mandatory_fields.html" %}
+                      </div>
+                      <div id="recommended-parameters">
+                        {% include "package/rdft_snippets/form_recommended_fields.html" %}
+                      </div>
+                      <div id="optional-parameters">
+                        {% include "package/rdft_snippets/form_optional_fields.html" %}
+                      </div>
+                    {% endwith %}
+                {% if not  bulk_edition %}
+                      <div id="resources-parameters">
+                        {% include "package/rdft_snippets/resources/form_resources.html" %}
+                      </div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <input id="bulk_save_published" class="btn btn-primary" style="width:140px" name="save"
+                       type="submit" value="
+                    {%- block save_button_text -%}
+                        {% trans %}ecodp.common.save_as_published{% endtrans %}
+                    {%- endblock -%}"
+                        />
+                <input id="bulk_save_draft" class="btn" name="save" type="submit"
+                       value="{% trans %}ecodp.common.save_as_draft{% endtrans %}"/>
+                {% if data %}
+                    <input id="bulk_cancel" class="btn href-action" name="cancel" type="reset"
+                           value="{% trans %}ecodp.common.cancel{% endtrans %}"
+                           action="{{ h.url_for(controller='ckanext.ecportal.controllers.user:ECPortalUserController', action='dashboard') }}"/>
+                {% endif %}
+            </div>
+
+        </form>
+    </div>
+
+    {% if add_import %}
+        <div id="tab-creation-import">
+            <div id="upload-file-container">
+
+                <div class="controls">
+                    <div class="tab-pane" id="upload-file">
+                        <label class="control-label" for="dataset-upload">
+                            {% trans %}ecodp.common.file{% endtrans %}
+                        </label>
+
+                        <div class="js-add-upload-form">
+                            <div class="fileupload">
+                                <div id="dataset-fileinfo"></div>
+                                <input accept=".json, .xlsx, .rdf, .zip, .JSON, .RDF, .XLSX, .ZIP"
+                                       id="dataset-upload" type="file" name="file" class="file-upload">
+                                <input type="hidden" id="dataset-upload-action"
+                                       value="{{ h.url_for(controller='ckan.controllers.storage:StorageController', action='upload_handle') }}"/>
+                                <br>
+
+                                <div class="dataset-upload"></div>
+                                <input name="add-dataset-upload" type="button" class="btn btn-primary"
+                                       id="add-dataset-upload"
+                                       action="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='validate_import_dataset') }}"
+                                       value="{% trans %}ecodp.common.import_button{% endtrans %}"/>
+
+
+                                <input type="hidden" id="uploaded-file-link"/>
+
+                                <div class="alert alert-block success alert-info"
+                                     style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="alert alert-block" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {% include "package/rdft_snippets/read_zip_datasets_upload.html" %}
+        </div>
+    {% endif %}
+
+    <div id="dialog-form-error" title="{% trans %}ecodp.common.dialog.error{% endtrans %}">
+        <div id="dialog-error-content">
+
+        </div>
+    </div>
+
+</div>

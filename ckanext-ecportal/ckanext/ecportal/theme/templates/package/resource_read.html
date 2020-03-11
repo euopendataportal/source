@@ -1,0 +1,323 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "package/base.html" %}
+
+{% set res = c.resource %}
+
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/dataset_tools' %}
+    {% resource 'ecportal/rdft_ecportal' %}
+    {% resource 'ecportal/tracking' %}
+    {{ c.resource.json_ld | safe }}
+{% endblock %}
+
+{% block head_extras -%}
+    {{ super() }}
+    {% set description = h.markdown_extract(res.description, extract_length=200) if res.description else h.markdown_extract(c.pkg_dict.notes or c.pkg_dict.description, extract_length=200) %}
+    <meta property="og:title"
+          content="{{ h.dataset_display_name(c.pkg_dict) }} - {{ h.resource_display_name(res) }} - {{ g.site_title }}">
+    <meta property="og:description" content="{{ description|forceescape }}">
+{% endblock %}
+
+{%- block subtitle -%}
+    {{ h.dataset_display_name(c.pkg_dict) }} - {{ h.resource_display_name(res) }}
+{%- endblock -%}
+
+{% block breadcrumb_content_selected %}{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.publisher'), h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index', qualified=True)) | safe }},
+			{% set organization = pkg.organization.title or pkg.organization.name %}
+            {{ h.load_breadcrumb_item_json_ld(3, organization, h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=pkg.organization.name, qualified=True)) | safe }},
+		    {% set dataset = pkg.title or pkg.name %}
+            {{ h.load_breadcrumb_item_json_ld(4, dataset, h.url_for(controller='package', action='read', id=pkg.name, qualified=True)) | safe }},
+            {{ h.load_breadcrumb_item_json_ld(5, h.resource_display_name(res), h.full_current_url()) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+    {% if pkg %}
+        <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='index') }}">{% trans %}ecodp.common.publisher{% endtrans %}</a>
+
+        {% if pkg.organization %}
+            {% set organization = pkg.organization.title %}
+            <span>
+			  <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.organization:ECODPOrganizationController', action='read', id=pkg.organization.name) }}">{{ organization|truncate(32, True) }}</a>
+			  <span class="separator"></span>
+			</span>
+        {% endif %}
+
+        {% set dataset = pkg.title or pkg.name %}
+        <a href="{{ h.url_for(controller='package', action='read', id=pkg.name) }}">{{ dataset|truncate(32, True) }}</a>
+    {% endif %}
+    <a href="">{{ h.resource_display_name(res)|truncate(32) }}</a>
+{% endblock %}
+
+{% block menu %}
+    {% if h.is_metadatatool_plugin_activated() %}
+        {% block menu_snippet %}
+            {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home' %}
+        {% endblock %}
+    {% else %}
+        {% snippet "menu.html", user_log=c.user %}
+    {% endif %}
+{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block page_search %}
+	{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, controller='home' %}
+{% endblock %}
+
+{% block page_search_right %}
+	{% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+{% block primary_content_inner %}
+    {% block content_heading %}
+    <h1 class="ckan-content-heading">
+        {{ h.dataset_display_name(c.pkg_dict) }}
+    </h1>
+{% endblock %}
+
+    <div class="package-box">
+        <h3 class="alt"><i class="resource"></i>{{ h.resource_display_name(res) }}</h3>
+
+        {% set rs = h.resources_type_name_from_resource_type(res.get("resource_type"))  %}
+        {% set url = res.get("download_url") %}
+        {% if rs == "documentation" %}
+            {% set url = res.get("access_url") %}
+        {% endif %}
+        {% if url %}
+            <div class="inner faded resource-actions">
+
+                {% set resource_lang =  h.get_langs_for_resource(res)%}
+                        {% if h.is_multi_languaged_resource(res)%}
+                        <select class="download-resource-lang">
+                            <option {% if h.current_locale() ==  h.fallback_locale()%} selected="selected" {% endif %} value="{{ h.get_english_resource_url(res) }}">{{ h.fallback_locale().language }}</option>
+                            {% for lang in resource_lang %}
+                                <option {% if lang ==  h.current_locale().language%} selected="selected" {% endif %}
+                                value="{{ h.get_translated_field(res, lang, 'download_url') }}">{{ lang }}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                {% endif %}
+
+                {% if h.is_viz_resource(res) %}
+
+                    {% if res.iframe_code %}
+                        <a resource-id="{{ res['id'] }}" href="{{ url }}"
+                           data-iframe="{{ res['iframe_code'] }}"
+                           class="button-box visualisation-button-resource">
+
+                    {% else %}
+                        {% for links in url %}
+                            <a href="{{ links }}"
+                               class="button-box resource-url-analytics resource-type-{{ rs }}">
+                        {% endfor %}
+                    {% endif %}
+                <i class="icon graph"></i> {% trans %}package.read_visualisations.button{% endtrans %}
+                </a>
+
+                {% elif h.is_web_page_resource(res) %}
+                    {% for links in url %}
+                        <a href="{{ links }}"
+                           class="button-box resource-url-analytics resource-type-{{ rs }}">
+                            <i class="icon visit"></i> {% trans %}ecodp.common.visit_page{% endtrans %}
+                        </a>
+                    {% endfor %}
+
+                {% else %}
+                        <a href="{{h.get_translated_field(res, h.current_locale().language, 'download_url')}}"
+                           class="button-box resource-url-analytics resource-type-{{ rs }}"
+                           data-dlc="{{ h.url_for(controller='ckanext.ecportal.controllers.resources:ECPortalEditResourceController', action='download_ressource')}}', '{{ res.uri }}', '{{ pkg.uri }}'"
+                           {% if h.is_non_doc_resource(res) %} onclick="downloadResourceCount('{{ h.url_for(controller='ckanext.ecportal.controllers.resources:ECPortalEditResourceController', action='download_ressource')}}', '{{ res.uri }}', '{{ pkg.uri }}')" {% endif %}>
+                            <i class="icon download"></i> {% trans %}ecodp.common.download{% endtrans %}
+                        </a>
+
+
+
+                {% endif %}
+
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="package-box" property="rdfs:label">
+        <h3><i class="note"></i>{% trans %}ecodp.common.description{% endtrans %}</h3>
+
+        <div class="inner faded">
+            {{ res.description or _('ecodp.common.no_description') }}
+        </div>
+    </div>
+
+    <div class="package-box">
+        <h3><i class="format"></i> {% trans %}ecodp.common.format{% endtrans %}</h3>
+
+        <div class="inner faded">
+            {{ res.format or _('package.resource_read.unknown') }}
+        </div>
+    </div>
+    {% if byte_size %}
+        <div class="package-box">
+            <h3><i class="byte-size"></i> {% trans %}ecodp.common.byte_size{% endtrans %}</h3>
+
+            <div class="inner faded">
+                {{ res.byte_size or _('package.resource_read.unknown') }}
+            </div>
+        </div>
+    {% endif %}
+    {% if res.languages %}
+        <div class="package-box">
+            <h3><i class="languages"></i> {% trans %}ecodp.common.languages{% endtrans %}</h3>
+
+            <div class="inner faded">
+                {{ res.languages|join(", ") }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not res.description and c.pkg_dict.notes %}
+        <div id="dataset-description">
+            <div>
+                <strong>
+                    {% trans %}ecodp.common.form{% endtrans %}:
+                    <a href="{{ h.url_for(controller='package', action='read', id=c.pkg_dict['name']) }}">{{ c.pkg_dict.title or c.pkg_dict.name }}</a>:
+                </strong>
+            </div>
+            <div>{{ h.markdown_extract(c.pkg_dict.notes, 300) }}</div>
+        </div>
+    {% endif %}
+
+    {% block resource_additional_information %}
+        {% set rs = h.resources_type_name_from_resource_type(res.get("resource_type"))  %}
+        <div class="package-box resource-information">
+            <h3><i class="info"></i>{% trans %}package.resource_read.additional_info{% endtrans %}</h3>
+            <div class="inner">
+                <div id="less-meta" class="quick-info">
+                    {% if res.get('access_url') %}
+                        <dl>
+                            <dt property="rdfs:label">{% trans %}ecodp.common.access_url{% endtrans %}</dt>
+                            {% for url in res.get('access_url') %}
+                                <dd property="rdf:value">
+                                    <a  {{ h.get_external_class(url) }} href="{{ url }}" style="word-break: break-all">{{ url }}</a>
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    {% endif %}
+                    {% if res.get('status') %}
+					<dl>
+                        <dt>{% trans %}package.read_dataset_info.status{% endtrans %}<dt>
+                        <dd>{{res.get('status')|join}}</dd>
+                        </dl>
+                    {% endif %}
+                    {% if res.get('release_date') %}
+                        <dl>
+                            <dt>{% trans %}package.read_dataset_info.release_date{% endtrans %}</dt>
+                            <dd>{{ h.render_datetime(res.get('release_date'), '%Y-%m-%d') }}</dd>
+                        </dl>
+                    {% endif %}
+                    {% if res.get('last_modified') or res.get('revision_timestamp') %}
+                        <dl>
+                            <dt>{% trans %}package.read_dataset_info.modified_date{% endtrans %}</dt>
+                            {% if res.get('last_modified') %}
+                                <dd>
+                                    {{ h.render_datetime(res.get('last_modified'), '%Y-%m-%d') }}
+                                </dd>
+                            {% else %}
+                                <dd>
+                                    {{ h.render_datetime(res.get('revision_timestamp'), '%Y-%m-%d') }}
+                                </dd>
+                            {% endif %}
+                        </dl>
+                    {% endif %}
+                    {% if res.get('resource_type') %}
+                        <dl>
+                            <dt>{% trans %}package.form_resource.resource_type{% endtrans %}</dt>
+                            <dd>{{ res.get('resource_type_label')|join('\n') }}</dd>
+                        </dd>
+                        </dl>
+                    {% endif %}
+                    {% if res.get('checksum') %}
+                        <dl>
+                            <dt>{% trans %}ecodp.common.checksum{% endtrans %}</dt>
+                            <dd>{{ res.get('checksum') }}</dd>
+                        </dd>
+                        </dl>
+                    {% endif %}
+                    {% if res.get('topic') %}
+					<dl>
+                        <dt>{% trans %}ecodp.common.topic{% endtrans %}<dt>
+                        {% for topic in res.get('topic') %}
+                            <dd><a href="{{topic}}">{{topic}}</a></dd>
+                        {% endfor %}
+                        </dl>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+    <div class="package-box">
+        <div class="inner">
+            <a href="{{ h.url_for(controller='package', action='read', id=c.pkg_dict.id) }}">
+                <i class="icon-back"></i>{% trans %}package.resource_read.back2datasets{% endtrans %}
+            </a>
+        </div>
+    </div>
+
+    <span class="insert-comment-thread"></span>
+
+{% endblock %}
+
+{% block secondary_content_inner %}
+    {% set download_total_resource = res.download_total_resource %}
+
+    {%  if res.license_title %}
+        {% snippet "snippets/sidebar_license.html", resource=c.resource %}
+    {% endif %}
+
+    {% if res.download_total_resource or res.download_total_resource == ''%}
+        <li id="dataset-download" class="facet-box ckan-face-box2">
+            {% if res_display_format in ('HTML','Web Page') %}
+                <h2>{% trans %}package.read_visualisations.title{% endtrans %}:</h2>
+            {% else %}
+                <h2>{% trans %}ecodp.common.label.downloads{% endtrans %}:</h2>
+            {% endif %}
+            <ul class="facet-options">
+                <li>
+                    {{ download_total_resource or '0'}}
+                </li>
+            </ul>
+        </li>
+    {% endif %}
+
+{% endblock %}
+
+{% block final_content %}
+
+    <h3 style="padding-left: 50px; font-size: 14px; line-height: 16.8px;"><i class="info"></i>{% trans %}package.resource_read.datapreview{% endtrans %}</h3>
+
+    {% block data_preview %}
+        {{ h.resource_preview(c.prev_res, c.pkg_dict) }}
+    {% endblock %}
+{% endblock %}

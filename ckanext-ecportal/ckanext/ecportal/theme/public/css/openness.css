@@ -1,0 +1,18 @@
+.table-container{
+    margin-bottom: 20px;
+}
+
+
+.bootstrap-row {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.openness-text{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-field, .publisher-field {
+    padding-top: 2em;
+}

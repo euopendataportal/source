@@ -1,0 +1,107 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block primary_content_inner %}
+
+    {% set user = c.user_dict %}
+
+    {% if error_summary %}
+        <div class="alert alert-error error-explanation">
+            <h2>Errors in form</h2>
+            <p>The form contains invalid entries:</p>
+            <ul>
+                {% for key, error in error_summary.items() %}
+                    <li>{{ "%s: %s" % (key, error) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="span7">
+        <form id="user-contact-info-form" action="" method="post" class="form-horizontal {{ 'has-errors' if errors else '' }}">
+
+
+            <fieldset>
+
+                <div class="control-group">
+                    <label for="contact_name" class="control-label">{% trans %}ecodp.common.contact_name.lable{% endtrans %}</label>
+                    <div class="controls">
+                        <input type="text" name="contact_name" value="{{ user.contact_name }}"/>
+                        <span class="searchHelp-green gradient input-helper"
+                              title="{% trans %}ecodp.common.contact_name.help{% endtrans %}">?</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="contact_mailbox" class="control-label">{% trans %}ecodp.common.contact_mailbox.lable{% endtrans %}</label>
+                    <div class="controls">
+                        <input type="text" name="contact_mailbox" value="{{ user.contact_mailbox }}"/>
+                        <span class="searchHelp-green gradient input-helper"
+                              title="{% trans %}ecodp.common.contact_mailbox.help{% endtrans %}">?</span>
+                        {% if c.errors.contact_mailbox %}
+                            <p class="field_error">Error: {{ c.errors.contact_mailbox|join(', ') }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="contact_phone_number" class="control-label">{% trans %}ecodp.common.contact_phone_number.lable{% endtrans %}</label>
+                    <div class="controls">
+                        <input type="text" name="contact_phone_number" value="{{ user.contact_phone_number }}"/>
+                        <span class="searchHelp-green gradient input-helper"
+                              title="{% trans %}ecodp.common.contact_phone_number.help{% endtrans %}">?</span>
+                        {% if c.errors.contact_phone_number %}
+                            <p class="field_error">Error: {{ c.errors.contact_phone_number|join(', ')  }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="contact_page" class="control-label">{% trans %}ecodp.common.contact_page.lable{% endtrans %}</label>
+                    <div class="controls">
+                        <input type="text" name="contact_page" value="{{ user.contact_page }}"/>
+                        <span class="searchHelp-green gradient input-helper"
+                              title="{% trans %}ecodp.common.contact_page.help{% endtrans %}">?</span>
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <label for="contact_address" class="control-label">{% trans %}ecodp.common.contact_address.lable{% endtrans %}</label>
+                    <div class="controls">
+                        <div>
+                            <input type="text" name="contact_address" id="contact_address" value="{{ user.contact_address }}"/>
+                            <span class="searchHelp-green gradient input-helper"
+                                  title="{% trans %}ecodp.common.contact_address.help{% endtrans %}">?</span>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <div class="form-actions">
+                <input id="save" class="btn btn-primary" name="save" type="submit" value="{% trans %}ecodp.common.save_changes{% endtrans %}"/>
+
+            </div>
+
+        </form>
+    </div>
+{#    <div class="span4 contact-info-literal">#}
+{#        {% trans %}ecodp.contact_info.literal{% endtrans %}#}
+{#    </div>#}
+
+{% endblock %}

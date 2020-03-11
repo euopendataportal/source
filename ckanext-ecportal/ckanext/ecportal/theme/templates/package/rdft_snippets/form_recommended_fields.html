@@ -1,0 +1,377 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales() %}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+{% set concept_names_list = h.names_from_tags(data.get('concepts_eurovoc', [])) %}
+
+<fieldset id="{{ dataset_id }}mandatory-parameters">
+
+    {# Eurovoc Concepts Controlled Keyword #}
+    <div class="control-group">
+        <label class="control-label" for="{{ dataset_id }}controlled_keyword">
+            {% trans %}ecodp.rdft.dataset_edit.controlled_keyword{% endtrans %}
+        </label>
+        <div class="controls">
+            <select id="{{ dataset_id }}controlled_keyword" class="chzn-select"
+                    name="{{ dataset_name }}controlled_keyword"
+                    multiple="multiple">
+                {% for c_keyword in c.controlled_keyword %}
+                    {% set ck_uri = c_keyword[0] %}
+                    {% set ck_label = c_keyword[1] %}
+
+                    {% if ck_uri in concept_names_list or ck_uri in concept_id_list %}
+                        <option selected="selected" value="{{ ck_uri }}">{{ ck_label }}</option>
+                    {% else %}
+                        <option value="{{ ck_uri }}">{{ ck_label }}</option>
+                    {% endif %}
+                {% endfor %}
+                {% if not concept_id_list and  bulk_edition %}
+                    <option selected="selected" value=""></option>
+                {% endif %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.controlled_keyword{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.concepts_eurovoc %}
+                <p class="field_error">{{ errors.concepts_eurovoc }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {# Keywords #}
+    <div class="control-group">
+        <label class="control-label field_opt" for="keywords">{% trans %}ecodp.rdft.dataset_edit.keyword{% endtrans %}</label>
+        <div class="controls">
+            {% set tmp_array = h.get_keywords_name(data.keywords or []) %}
+            {% set keyword_string = tmp_array|join(', ') or '' %}
+
+            <input class="long autocomplete-tag" id="{{ dataset_id }}keyword_string"
+                   name="{{ dataset_name }}keyword_string" size="60" type="text" value="{{ keyword_string }}"/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.keyword{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.keyword_string %}
+                <p class="field_error">{{ errors.keyword_string }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Identifier #}
+    {% if data.identifier is string %}
+        {% set identifier = data.identifier %}
+    {% else %}
+        {%  set identifier = data.identifier|join(" ") %}
+    {% endif %}
+    <div class="control-group title-field">
+        <label class="control-label" for="identifier">{% trans %}ecodp.rdft.dataset_edit.identifier{% endtrans %}</label>
+        <div class="controls">
+            <input id="{{ dataset_id }}identifier" name="{{ dataset_name }}identifier" type="text"
+                   value="{{ identifier }}"/>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.identifier{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            {% if errors.identifier %}
+                <p class="field_error">{{ errors.identifier }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Other Identifier #}
+    <div class="control-group">
+        <label class="control-label" for="url">{% trans %}ecodp.rdft.dataset_edit.other_identifier{% endtrans %}</label>
+
+        <div class="controls">
+        {# h.get_other_identifier_types() #}
+        {% set other_identifier_types = c.notation_skos %}
+        {% set identifier =  data.get('other_identifier') %}
+            <input id="{{ dataset_id }}other_identifier" name="{{ dataset_name }}other_identifier"
+                   type="text" value="{{ identifier.value_or_uri }}" class="half-input-resource" style="width: 24.2em !important;"/>
+
+            {# Other Identifier type #}
+            <select id="{{ dataset_id }}other_identifier_type" name="{{ dataset_name }}other_identifier_type"
+                    class="chosen-select-half short half-input-resource-right"
+                    style="width: 52% !important; margin-left: 55px;">
+                <option value=""></option>
+
+                {% for item in other_identifier_types %}
+                    <option value="{{item.uri}}" {{'selected="selected"' if (identifier.datatype == item.uri)}}>{{item.label}}</option>
+                {% endfor %}
+            </select>
+
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.other_identifier{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            {% if errors.other_identifier %}
+                <p class="field_error">Error: {{ errors.other_identifier }}}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if not  bulk_edition %}
+
+        {# DOI #}
+        <div class="control-group">
+            <label class="control-label" for="{{ dataset_id }}doi">{% trans %}ecodp.rdft.dataset_edit.doi{% endtrans %}</label>
+
+            <div class="controls">
+                  <input id="{{ dataset_id }}doi" name="{{ dataset_name }}doi" readonly class="disabled" style="width:62%;text-align: center;font-weight: bold;"
+                       type="text" value="{% if data.doi %}{{ data.doi.value_or_uri }}{% endif %}"/>
+                <div id="div-doi-saved" style="display:none"></div>
+                {% if c.action != 'manage_package' %}
+                     <input type="button" value="{% trans %}ecodp.rdft.dataset_edit.button.assign_doi{% endtrans %}"
+                           class="btn btn-primary assign-doi-line-button" id="{{ dataset_id }}assign-doi" style="width:31%"
+                           name="{{ dataset_name }}assign-doi"
+                            {% if not data.doi %}
+                            data-action="{{ h.url_for(controller="ckanext.ecportal.controllers.package:ECPORTALPackageController", action='generate_doi' ) }}"
+                            data-uri="{{ data.uri }}"
+                            {% else %}
+                            disabled="disabled"
+                            {% endif %}>
+                 {% endif %}
+                <span class="searchHelp-green gradient input-helper"
+                      title="{% trans %}ecodp.rdft.dataset_edit.tip.doi{% endtrans %}">?</span>
+                {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+
+                {% if errors.doi %}
+                    <p class="field_error">Error: {{ errors.doi }}}</p>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+
+    {# Landing page #}
+    <div class="control-group homepage-field">
+        <label class="control-label" for="url">{% trans %}ecodp.rdft.dataset_edit.landing_page{% endtrans %}</label>
+        {% set landing_page =  data.get('landing_page', '') %}
+
+        <div class="controls">
+            <span class="hints-right">e.g. <a href="{% trans %}ecodp.hint.url{% endtrans %}">{% trans %}
+                ecodp.hint.url{% endtrans %}</a></span>
+            <input id="{{ dataset_id }}landing_page" name="{{ dataset_name }}landing_page" type="text"
+                   value="{{ landing_page }}"/>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.landing_page{% endtrans %}">?</span>
+            {% if errors.url %}
+                <p class="field_error">Error: {{ errors.landing_page }}}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {# Release/Modified date #}
+    <div class="control-group">
+        <div class="grouped-labels">
+            <label class="control-label grouped-label" for="{{ dataset_id }}release_date">
+                {% trans %}ecodp.rdft.dataset_edit.release_date{% endtrans %}
+            </label>
+            <label class="control-label grouped-label" for="{{ dataset_id }}modified_date">
+                {% trans %}ecodp.rdft.dataset_edit.modified_date{% endtrans %}
+            </label>
+        </div>
+        <div class="controls">
+            <input id="{{ dataset_id }}release_date" class="half-input image-input image-calendar"
+                   name="{{ dataset_name }}release_date" type="text"
+                   value="{{ data.release_date }}"
+                   placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+            />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.release_date{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            <input id="{{ dataset_id }}modified_date" class="half-input image-input image-calendar"
+                   name="{{ dataset_name }}modified_date" type="text"
+                   value="{{ data.modified_date }}"
+                   placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+            />
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.modified_date{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+            {% if errors.modified_date %}
+                <p class="field_error">{{ errors.modified_date }}</p>
+            {% endif %}
+
+            {% if errors.release_date %}
+                <p class="field_error">{{ errors.release_date }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {# Frequency #}
+    <div class="control-group">
+        <label class="control-label" for="frequency">
+            {% trans %}ecodp.rdft.dataset_edit.frequency{% endtrans %}
+        </label>
+        <div class="controls">
+            <select id="{{ dataset_id }}frequency" class="chosen-select-deselect" name="{{ dataset_name }}frequency">
+                <option value=""></option>
+                {% for frequency in c.frequency %}
+                    {% set frequency_uri = frequency.get('uri') %}
+                    {% set frequency_value = frequency.get('label') %}
+                    <option {% if frequency_uri == data.get('accrual_periodicity') %}selected="selected" {% endif %}
+                            value="{{ frequency_uri }}">{{ frequency_value }}</option>
+                {% endfor %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.frequency{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.frequency %}
+                <p class="field_error">{{ errors.frequency }}}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {# Languages #}
+    <div class="control-group">
+        <label class="control-label" for="{{ dataset_id }}language">
+            {% trans %}ecodp.rdft.dataset_edit.language{% endtrans %}
+        </label>
+        <div class="controls">
+            <select id="{{ dataset_id }}language" class="chzn-select" name="{{ dataset_name }}language"
+                    multiple="multiple">
+                {% for tag_name in c.languages %}
+                    {% if tag_name.get('uri') in data.get('language', []) %}
+                        <option selected="selected"
+                                value="{{ tag_name.get('uri') }}">{{ tag_name.get('label') }}</option>
+                    {% else %}
+                        <option value="{{ tag_name.get('uri') }}">{{ tag_name.get('label') }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="{% trans %}ecodp.rdft.dataset_edit.tip.language{% endtrans %}">?</span>
+            {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.language %}
+                <p class="field_error">{{ errors.language }}}</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+    {# Temporal coverage #}
+    <div class="control-group">
+        <div>
+            <label class="control-label" for="temporal_coverage">
+                {% trans %}ecodp.rdft.dataset_edit.temporal_coverage{% endtrans %}
+                <span class="searchHelp-green gradient input-helper"
+                      title="{% trans %}ecodp.rdft.dataset_edit.tip.temporal_coverage{% endtrans %}">?</span>
+            </label>
+            {# start date/end date #}
+            <div class="control-group">
+                <div class="grouped-labels">
+                    <label class="control-label grouped-label" for="start_date">
+                        {% trans %}ecodp.rdft.dataset_edit.start_date{% endtrans %}
+                    </label>
+                    <label class="control-label grouped-label" for="end_date">
+                        {% trans %}ecodp.rdft.dataset_edit.end_date{% endtrans %}
+                    </label>
+                </div>
+                <div class="controls">
+                    <input id="{{ dataset_id }}temporal_coverage_from" class="half-input image-input image-calendar"
+                           name="{{ dataset_name }}temporal_coverage_from" type="text"
+                           value="{{ data.temporal_coverage_from }}"
+                           placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+                    />
+                    <span class="searchHelp-green gradient input-helper"
+                          title="{% trans %}ecodp.rdft.dataset_edit.tip.temporal_coverage_from{% endtrans %}">?</span>
+                    {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+                    <input id="{{ dataset_id }}temporal_coverage_to" class="half-input image-input image-calendar"
+                           name="{{ dataset_name }}temporal_coverage_to" type="text"
+                           value="{{ data.temporal_coverage_to }}"
+                           placeholder="{{ _('YYYY-MM-DD, YYYY-MM or YYYY') }}"
+                    />
+                    <span class="searchHelp-green gradient input-helper"
+                          title="{% trans %}ecodp.rdft.dataset_edit.tip.temporal_coverage_to{% endtrans %}">?</span>
+                    {% if bulk_edition %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+
+                    {% if errors.temporal_coverage_to %}
+                        <p class="field_error">{{ errors.temporal_coverage_to }}</p>
+                    {% endif %}
+
+                    {% if errors.temporal_coverage_from %}
+                        <p class="field_error">{{ errors.temporal_coverage_from }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {# Geographical coverage #}
+        <div class="control-group">
+            <label class="control-label" for="{{ dataset_id }}geographical_coverage">
+                {% trans %}ecodp.rdft.dataset_edit.geographical_coverage{% endtrans %}
+            </label>
+            <div class="controls">
+                <select id="{{ dataset_id }}geographical_coverage" class="chzn-select2"
+                        name="{{ dataset_name }}geographical_coverage"
+                        multiple="multiple" style="width: 30em;">
+                    {% for geographical_coverage in c.geographical_coverage %}
+                        {% set geographical_coverage_uri = geographical_coverage.get('uri') %}
+                        {% set geographical_coverage_value = geographical_coverage.get('label') %}
+                        {% set geografical_coverage_list =  data.get('geographical_coverage', []) or [] %}
+                        {% if geographical_coverage_uri in geografical_coverage_list %}
+                            <option selected="selected"
+                                    value="{{ geographical_coverage_uri }}">{{ geographical_coverage_value }}</option>
+                        {% else %}
+                            <option value="{{ geographical_coverage_uri }}">{{ geographical_coverage_value }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <span class="searchHelp-green gradient input-helper"
+                      title=" {% trans %}ecodp.rdft.dataset_edit.tip.geographical_coverage{% endtrans %}">?</span>
+                {% if bulk_edition %}
+                    {% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+                {% if errors.geographical_coverage %}
+                    <p class="field_error">{{ errors.geographical_coverage }}</p>
+                {% endif %}
+
+                <input id="{{ dataset_id }}clear-geographical-coverage" class="btn btn-country"
+                       name="{{ dataset_name }}clear-geographical-coverage" type="button"
+                       value="{{ _('ecodp.common.clear') }}">
+                <input id="{{ dataset_id }}select-28-countries" class="btn btn-country"
+                       name="{{ dataset_name }}select-28-countries" type="button"
+                       value="{{ _('ecodp.common.28.countries') }}">
+                <input id="{{ dataset_id }}select-27-countries" class="btn btn btn-country"
+                       name="{{ dataset_name }}select-27-countries" type="button"
+                       value="{{ _('ecodp.common.27.countries') }}">
+            </div>
+        </div>
+
+        {# Contact information #}
+        {% include "package/rdft_snippets/form_contact_information.html" %}
+
+</fieldset>

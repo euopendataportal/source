@@ -1,0 +1,183 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+{% set action = c.action %}
+{% set tab_mode = (c.action=='edit') %}
+
+{%- block scripts %}
+    {% resource 'ecportal/jquery_ui' %}
+    {% resource 'ecportal/ecportal_manage_package' %}
+    {% resource 'ecportal/rdft_ecportal_new_dataset' %}
+    {% resource 'ecportal/chosen' %}
+{% endblock %}
+
+
+    <form class="{{ ' has-errors' if errors else '' }}" method="post" id="ingestion-package-edit"
+          enctype="multipart/form-data">
+        <div id="main_tabs" class="col-md-3 collapse-container">
+            <h3>
+                {% trans %}ecodp.rdft.edit_package.general_menu{% endtrans %}
+            </h3>
+            <div class="ecodp_tabs ">
+                <ul>
+                    <li>
+                        <a href="#manage_package_general_manifest" class="toggelable">Edit Manifest</a>
+                    </li>
+                </ul>
+
+            </div>
+            <h3>
+                <a class="h3 toggelable" href="#content_header" style="color: #444444; text-decoration: none;">
+                    {% trans %}ecodp.rdft.edit_package.content_menu{% endtrans %}</a>
+            </h3>
+            <div class="ecodp_tabs">
+                <ul>
+                    <li>
+                        <a href="#manage_package_add_content" class="toggelable">Add new Content</a>
+                    </li>
+
+                    {% for content in c.pkg_dict.dataset %}
+
+                        <li>
+                            <a href="{{ "#link2"+content.get('id') }}" class="toggelable">{{ content.get('id') }}</a>
+                        </li>
+
+                    {% endfor %}
+
+                    {% for content in c.pkg_dict.delete %}
+
+                        <li>
+                            <a href="{{ "#remove2"+content.get('name') }}"
+                               class="toggelable">{{ content.get('name') }}</a>
+                        </li>
+
+                    {% endfor %}
+
+                    {% for content in c.pkg_dict.files %}
+
+                        <li>
+                            <a href="{{ "#upload2"+content.get('name').replace('.','_') }}"
+                               class="toggelable">{{ content.get('name') }}</a>
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+
+            </div>
+            {% if c.pkg_dict.errors %}
+                <h3>
+                    {% trans %}ecodp.rdft.edit_package.validation_report_menu{% endtrans %}
+                </h3>
+                <div class="ecodp_tabs">
+                    <ul>
+                        {% for content in c.pkg_dict.dataset %}
+                             {% if content.errors.get('error') or content.errors.get('fatal') or content.errors.get('warning')%}
+                                <li>
+                                    <a href="{{ "#report2"+content.get('id') }}"
+                                       class="toggelable"><i class="nok-icon"></i> {{ content.get('id') }}</a>
+
+                                </li>
+                            {% else %}
+                                <li>
+                                    <i class="ok-icon"></i> {{ content.get('id') }}
+
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="content-outer col-md-8">
+            {% snippet "user/snippets/manage_package_general.html", ctx=c %}
+            {% snippet "user/snippets/manage_package_add_content.html", ctx=c %}
+
+            {% for content in c.pkg_dict.dataset %}
+
+                {% snippet "user/snippets/manage_package_content_add_update.html", dic_id=content.get('id'), data=content, errors=errors, rdf=data, ctx=c , index=loop.index0 %}
+
+            {% endfor %}
+
+            {% for content in c.pkg_dict.delete %}
+
+                {% snippet "user/snippets/manage_package_content_delete.html", dict=content,  errors=errors, data=data, ctx=c , index=loop.index0 %}
+
+            {% endfor %}
+
+
+            {% for content in c.pkg_dict.files %}
+
+                {% snippet "user/snippets/manage_package_resource_upload.html", dic_id=content.get('name').replace('.','_'), file=content, errors=errors,  ctx=c, index=loop.index0 %}
+
+            {% endfor %}
+
+            {% if c.pkg_dict.errors %}
+                {% for content in c.pkg_dict.dataset %}
+                    {% snippet "user/snippets/ingestion_form_validation_report.html", dic_id=content.get('id'), data=content, errors=content.errors, rdf=data, ctx=c , index=loop.index0 %}
+                {% endfor %}
+            {% endif %}
+            <div id="content_header" class="div_toggle ui-layout-center" style="display: none">
+
+                <label>{% trans %}ecodp.common.ingestion.content.add_replace{% endtrans %}</label>
+                <ul>
+                    {% for content in c.pkg_dict.dataset %}
+                        <li>{{ content.get('id') }}</li>
+
+                    {% endfor %}
+                </ul>
+                {% if c.pkg_dict.delete %}
+                    <label>{% trans %}ecodp.common.ingestion.content.delete{% endtrans %}</label>
+                    <ul>
+                        {% for content in c.pkg_dict.delete %}
+                            <li>{{ content.get('name') }}</li>
+
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if c.pkg_dict.files %}
+                    <label>{% trans %}ecodp.common.ingestion.content.upload{% endtrans %}</label>
+                    <ul>
+                        {% for content in c.pkg_dict.files %}
+                            <li>{{ content.get('name') }}</li>
+
+                        {% endfor %}
+
+                    </ul>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            {#            <input id="cancel" class="btn btn-primary" name="cancel" type="submit" value="{% trans %}ecodp.common.cancel{% endtrans %}"/>#}
+            <input id="start_ingestion" class="btn btn-primary" name="start_ingestion" type="submit"
+                   value="{% trans %}ecodp.manage_ingestion.start{% endtrans %}"/>
+            <input id="save_locally" class="btn btn-primary" name="save_locally" type="submit"
+                   value="{% trans %}ecodp.manage_ingestion.save_locally{% endtrans %}"/>
+            <input id="validate" class="btn btn-primary" name="validate" type="submit"
+                   value="{% trans %}ecodp.common.validate{% endtrans %}"/>
+            {#            <input id="save_package" class="btn btn-primary" name="save_package" type="submit" value="{% trans %}ecodp.common.save_package{% endtrans %}"/>#}
+
+        </div>
+    </form>

@@ -1,0 +1,1353 @@
+{
+  "FATAL": [
+    {
+      "mandatory": "yes",
+      "constraint": "card_0..1",
+      "rule_id": "card_theme",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "theme_dcat",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_theme",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "theme_dcat",
+      "specific_rule": "ODPSR",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_url",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "url_schema",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_url",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "url_schema",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_type",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_url",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "url_schema",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    }
+  ],
+  "WARNING": [],
+  "SUCCESS": [
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_description",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "description_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_publisher",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "publisher_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_publisher",
+      "source": "database",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "WARNING",
+      "property": "publisher_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_theme",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "theme_dcat",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_accessRights",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "accessRights_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_accessRights",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "accessRights_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_accrualPeriodicity",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "accrualPeriodicity_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_accrualPeriodicity",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "accrualPeriodicity_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_issued",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_issued",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "property2": "modified_dcterms",
+      "constraint": "date_later",
+      "rule_id": "date_later_issued",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "WARNING",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_spatial",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "spatial_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_type",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_type",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_modified",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_modified",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "versionInfo_owl",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "versionInfo_owl",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_creator",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "creator_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_creator",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "creator_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "isPartOfCatalog_dcatapop",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "isPartOfCatalog_dcatapop",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_ckanName",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "ckanName_dcatapop",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_prefLabel",
+      "uri_resource": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+      "level_of_error": "ERROR",
+      "property": "prefLabel_skos",
+      "class": "http://www.w3.org/2004/02/skos/core#Concept",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_dataset",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "dataset_dcat",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_description",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "description_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_publisher",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "publisher_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_publisher",
+      "source": "database",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "publisher_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_homepage",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "homepage_foaf",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_license",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "license_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_issued",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_issued",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_isPartOf",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "isPartOf_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_startDate",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1dbe67c4c18c4336bce21d16482e9569",
+      "level_of_error": "ERROR",
+      "property": "startDate_schema",
+      "class": "http://purl.org/dc/terms/PeriodOfTime",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_endDate",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1dbe67c4c18c4336bce21d16482e9569",
+      "level_of_error": "ERROR",
+      "property": "endDate_schema",
+      "class": "http://purl.org/dc/terms/PeriodOfTime",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_accessURL",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "accessURL_dcat",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_format",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "ODPSR_card_format",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "specific_rule": "ODPSR",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_format",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_license",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "license_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "ODPSR_card_license",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "license_dcterms",
+      "specific_rule": "ODPSR",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_license",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "license_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_byteSize",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "byteSize_dcat",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_checksum",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "checksum_spdx",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_mediaType",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "mediaType_dcat",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_mediaType",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "mediaType_dcat",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_issued",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_issued",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_rights",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "rights_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_status",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "status_adms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "ODPSR_card_title",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "specific_rule": "ODPSR",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_modified",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_modified",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_numberOfDownloads",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "numberOfDownloads_dcatapop",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..1",
+      "rule_id": "card_type",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_type",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_iframe",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "iframe_dcatapop",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_algorithm",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N0df1c8bacc0648018186744820d97536",
+      "level_of_error": "ERROR",
+      "property": "algorithm_spdx",
+      "class": "http://spdx.org/rdf/terms#Checksum",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_checksumValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N0df1c8bacc0648018186744820d97536",
+      "level_of_error": "ERROR",
+      "property": "checksumValue_spdx",
+      "class": "http://spdx.org/rdf/terms#Checksum",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_type",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_0..1",
+      "rule_id": "card_format",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_format",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N8e9b6cabfafd44e28a2d461b888933e1",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N8e9b6cabfafd44e28a2d461b888933e1",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1fb4fc24965f4930a87d612cfc54db32",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1fb4fc24965f4930a87d612cfc54db32",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_prefLabel",
+      "uri_resource": "http://publications.europa.eu/resource/authority/dataset-type/CORE_COMP",
+      "level_of_error": "ERROR",
+      "property": "prefLabel_skos",
+      "class": "http://www.w3.org/2004/02/skos/core#Concept",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n",
+      "rule_id": "card_name",
+      "uri_resource": "http://publications.europa.eu/resource/authority/corporate-body/DEVCO",
+      "level_of_error": "ERROR",
+      "property": "name_foaf",
+      "class": "http://xmlns.com/foaf/0.1/Agent",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..n",
+      "rule_id": "card_type",
+      "uri_resource": "http://publications.europa.eu/resource/authority/corporate-body/DEVCO",
+      "level_of_error": "ERROR",
+      "property": "name_foaf",
+      "class": "http://xmlns.com/foaf/0.1/Agent",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "cv_type",
+      "uri_resource": "http://publications.europa.eu/resource/authority/corporate-body/DEVCO",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Agent",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_hasEmail",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Ncbe774b3b73448bf9b06d99d277b6e33",
+      "level_of_error": "ERROR",
+      "property": "hasEmail_vcard",
+      "class": "http://www.w3.org/2006/vcard/ns#Kind",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_hasTelephone",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Ncbe774b3b73448bf9b06d99d277b6e33",
+      "level_of_error": "ERROR",
+      "property": "hasTelephone_vcard",
+      "class": "http://www.w3.org/2006/vcard/ns#Kind",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_hasAddress",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Ncbe774b3b73448bf9b06d99d277b6e33",
+      "level_of_error": "ERROR",
+      "property": "hasAddress_vcard",
+      "class": "http://www.w3.org/2006/vcard/ns#Kind",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_hasAddress",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Ncbe774b3b73448bf9b06d99d277b6e33",
+      "level_of_error": "ERROR",
+      "property": "hasAddress_vcard",
+      "class": "http://www.w3.org/2006/vcard/ns#Kind",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_homePage",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Ncbe774b3b73448bf9b06d99d277b6e33",
+      "level_of_error": "ERROR",
+      "property": "homePage_foaf",
+      "class": "http://www.w3.org/2006/vcard/ns#Kind",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_0..1",
+      "rule_id": "card_format",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_format",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_type",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "type_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_0..1",
+      "rule_id": "card_format",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_format",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "format_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nd546fa3b4acb4382adccf5e6b73c7c81",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nd546fa3b4acb4382adccf5e6b73c7c81",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionLiteral",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nc0edb8ac28774cfa91b721e0dddcfbc7",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionLiteral_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_dataExtensionValue",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nc0edb8ac28774cfa91b721e0dddcfbc7",
+      "level_of_error": "ERROR",
+      "property": "dataExtensionValue_dcatapop",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_1..1",
+      "rule_id": "card_notation",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N12e32169ec554190a018fdfc34821bf4",
+      "level_of_error": "ERROR",
+      "property": "notation_skos",
+      "class": "http://www.w3.org/ns/adms#Identifier",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_schemeAgency",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N12e32169ec554190a018fdfc34821bf4",
+      "level_of_error": "ERROR",
+      "property": "schemeAgency_adms",
+      "class": "http://www.w3.org/ns/adms#Identifier",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_issued",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N12e32169ec554190a018fdfc34821bf4",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/adms#Identifier",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_issued",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N12e32169ec554190a018fdfc34821bf4",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/adms#Identifier",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_primaryTopic",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "primaryTopic_foaf",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "mandatory": "yes",
+      "constraint": "card_1..1",
+      "rule_id": "card_modified",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_modified",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_conformsTo",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "conformsTo_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_status",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "status_adms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_issued",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_issued",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "property2": "modified_dcterms",
+      "constraint": "date_later",
+      "rule_id": "date_later_issued",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "issued_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_source",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "source_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_numberOfViews",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "numberOfViews_dcatapop",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "SUCCESS"
+    }
+  ],
+  "ERROR": [
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_identifier",
+      "source": "list",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "identifier_adms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_keyword",
+      "uri_resource": "http://data.europa.eu/88u/dataset/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "subject_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Dataset",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_license",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "license_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_themeTaxonomy",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "themeTaxonomy_dcat",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_modified",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "restricted_type",
+      "rule_id": "type_modified",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "modified_dcterms",
+      "type": "xsdDate",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_0..1",
+      "rule_id": "card_rights",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "rights_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_spatial",
+      "uri_resource": "http://data.europa.eu/88u/catalog/european-union-open-data-portal",
+      "level_of_error": "ERROR",
+      "property": "spatial_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Catalog",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_status",
+      "uri_resource": "http://data.europa.eu/88u/distribution/20807eb0-f8bf-49aa-ba9a-6558992e528c",
+      "level_of_error": "ERROR",
+      "property": "status_adms",
+      "class": "http://www.w3.org/ns/dcat#Distribution",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n",
+      "rule_id": "card_topic",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "topic_foaf",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d23",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N8e9b6cabfafd44e28a2d461b888933e1",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1fb4fc24965f4930a87d612cfc54db32",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nb1d0e25cf8b444f687581e559e8ec1bb",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N1c5b614757e34b04a56c280b0f4be353",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n",
+      "rule_id": "card_topic",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N139690f3dfd44af79bfbfe9ca7f2da50",
+      "level_of_error": "ERROR",
+      "property": "topic_foaf",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n",
+      "rule_id": "card_topic",
+      "uri_resource": "http://data.europa.eu/88u/document/d588a398-3776-43ba-8b0c-b84c424d3d88",
+      "level_of_error": "ERROR",
+      "property": "topic_foaf",
+      "class": "http://xmlns.com/foaf/0.1/Document",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nd546fa3b4acb4382adccf5e6b73c7c81",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "card_1..n_en",
+      "rule_id": "card_title",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__Nc0edb8ac28774cfa91b721e0dddcfbc7",
+      "level_of_error": "ERROR",
+      "property": "title_dcterms",
+      "class": "http://data.europa.eu/88u/ontology/dcatapop#DataExtension",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_notation",
+      "uri_resource": "http://data.europa.eu/88u/blanknode#__N12e32169ec554190a018fdfc34821bf4",
+      "level_of_error": "ERROR",
+      "property": "notation_skos",
+      "class": "http://www.w3.org/ns/adms#Identifier",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_status",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "status_adms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "ERROR"
+    },
+    {
+      "constraint": "controlled_vocabulary",
+      "rule_id": "cv_language",
+      "uri_resource": "http://data.europa.eu/88u/catalogrecord/dgt-translation-memory-V1-2",
+      "level_of_error": "ERROR",
+      "property": "language_dcterms",
+      "class": "http://www.w3.org/ns/dcat#CatalogRecord",
+      "result": "ERROR"
+    }
+  ]
+}

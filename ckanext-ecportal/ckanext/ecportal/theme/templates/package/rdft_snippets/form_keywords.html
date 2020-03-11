@@ -1,0 +1,44 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+<fieldset id="{{ dataset_id }}keywords">
+	<div class="control-group">
+		<label class="control-label field_opt" for="keywords">Keywords</label>
+		<div class="controls">
+        {% set tmp_array = h.get_keywords_name(data.keywords or [])%}
+        {% set keyword_string = data.tag_string or data.keyword_string or tmp_array|join(', ') or '' %}
+			<input class="long autocomplete-tag" id="{{ dataset_id }}keyword_string" name="{{ dataset_name }}keyword_string" size="60" type="text" value="{{keyword_string}}" />
+            <span class="searchHelp-green gradient input-helper"
+                  title="Comma-separated terms that may link this dataset to similar ones.&#13;Keywords must be lowercase alphanumeric characters or symbols: -_.&#13;Words in phrases should be connected with a hyphen.&#13;e.g. pollution, rivers, water-quality">?</span>
+{% if bulk_edition and data.get('tag_string_box', False) or data.get('keyword_string_box', False) or data.get('keywords_box', False)%}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+			{% if errors.keyword_string %}
+				<p class="field_error">{{errors.keyword_string}}</p>
+			{% endif %}
+		</div>
+	</div>
+</fieldset>

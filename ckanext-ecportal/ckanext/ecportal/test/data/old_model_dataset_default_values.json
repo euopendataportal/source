@@ -1,0 +1,54 @@
+{
+  "resources": [
+	
+	{
+	  "last_modified": "1978-02-23",
+	  "created": "1978-02-23",
+	  "description": "Resource without format and type",
+	  "url": "http://not-needed.odp-562-ingested.url"
+	},
+	{
+	  "last_modified": "1978-02-23",
+	  "created": "1978-02-23",
+	  "description": "Download of European Union Activity File XML format",
+	  "resource_type": "I am not a type",
+	  "format": "I am not a format",
+	  "url": "http://not-needed.odp-562-ingested.url"
+	}
+	
+	
+  ],
+  "temporal_coverage_to": "2020-12-31",
+  "alternative_title": "odp-562-ingested_pack_new",
+  "modified_date": "2015-01-03",
+  "concepts_eurovoc": ["I am not eurovoc", "http://eurovoc.europa.eu/100146"],
+  "contact_webpage": "http://ec.europa.eu/europeaid/index_en.htm",
+  "keyword_string": [
+	"ODP-562"
+  ],
+  "temporal_coverage_from": "2010-01-01",
+  "owner_org": "devco",
+  "type_of_dataset": [],
+  "title": "odp-562-ingested_pack_new",
+  "interoperability_level": [
+	"http://data.europa.eu/euodp/kos/interoperability-level/Political"
+  ],
+  "description": "ODP-562",
+  "name": "odp-562-ingested_pack_new",
+  "contact_name": "European Commission, Development and Cooperation-EuropeAid",
+  "license_id": [
+	"http://data.europa.eu/euodp/kos/licence/EuropeanCommission"
+  ],
+  "contact_address": "B-1049 Brussels, Belgium",
+  "geographical_coverage": [
+	"http://publications.europa.eu/resource/authority/country/AFG"
+  ],
+  "status": "http://data.europa.eu/euodp/kos/dataset-status/UnderDevelopment",
+  "url": "http://not-needed.odp-562-ingested.url",
+  "accrual_periodicity": "Daily",
+  "release_date": "2015-01-02",
+  "language": [
+	"http://publications.europa.eu/resource/authority/language/ENG"
+  ],
+  "contact_telephone": "+32022991111"
+}

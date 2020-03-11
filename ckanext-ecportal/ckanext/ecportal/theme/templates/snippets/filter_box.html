@@ -1,0 +1,86 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set locale = h.current_locale()|string %}
+{% set sorting = [
+        (_('ecodp.common.relevance'), 'score desc'),
+        (_('ecodp.common.most_viewed'), 'views_total desc', ),
+        (_('ecodp.common.most_downloaded'), 'resources_accessed_total desc', ),
+        (_('ecodp.common.titel.a_z'), 'title_string_'+locale+' asc'),
+        (_('ecodp.common.titel.z_a'), 'title_string_'+locale+' desc'),
+        (_('ecodp.common.date.update'), 'modified_date desc') ] %}
+{% block filter_box %}
+    <div class="filter-box">
+
+
+        <h1 class="content_heading"> {{ organization_name }} </h1>
+
+        {% block filter_list %}
+            {% if fields %}
+                <div class="filter-list">
+                    {% set grouped_facets = h.group_facets_by_field(fields) %}
+                    {% for field, values in h.get_selected_facets_translation(grouped_facets, label_source) %}
+                        <div class="filter-entry">
+                            <span class="name">{{ _(facet_titles[field]) }}:</span>
+                            {% for value in values %}
+                                <span class="value">
+									<a href="{{ remove_field(field, value.name) }}">
+										<span>
+											{{ value.display_name }}
+										</span>
+                                        <strong>&times;</strong>
+                                    </a>
+								</span>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block filter_total %}
+            <div class="filter-total">
+                {# FIXME find a way to match with msgid "[1:%(item_count)s] datasets found" in the ckan.po#}
+                {% if locale == 'en' %}
+                    {% set dataset_found_str = '<strong>{item_count}</strong> datasets found'.format(item_count=dataset_count) %}
+                {% else %}
+                    {% set dataset_found_str = _('count_datasets_found').format(item_count=dataset_count) %}
+                {% endif %}
+                <h4>{{ dataset_found_str | safe }}</h4>
+                <a href="{{ h.url(controller='feed', action='custom') }}?{{ h.search_url_params() }}">
+                    <i class="rss"></i>
+                </a>
+            </div>
+        {% endblock %}
+
+        {% block filter_sort %}
+            <div class="filter-sort">
+                <span>{% trans %}snippets.filter_box.sort_by{% endtrans %}</span>
+                <select name="sort">
+                    {% for label, value in sorting %}
+                        {% if label and value %}
+                            <option value="{{ value }}"{% if sort_by_selected == value %}
+                                    selected="selected"{% endif %}>{{ label }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        {% endblock %}
+
+    </div>
+{% endblock %}

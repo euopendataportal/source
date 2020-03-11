@@ -1,0 +1,42 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block recent_updates_package_list %}
+
+	<ul class="datasets unstyled">
+		{% for package in packages %}
+			<li class="search-result-item">
+				<a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link">
+					<i class="resource"></i>
+					<strong>{{package.title or package.name}}</strong></a><br/>
+                <a href="{{h.url_for(controller='package', action='read', id=package.id)}}" class="item_link">
+					<span class="additional">{% trans %}snippets.recent_updates_package_list.lable{% endtrans%}
+						{% if package.modified_date %}
+							<span>{{h.ecportal_render_datetime(package.modified_date.strip('"'), '%d/%m/%y')}}</span>
+						{% endif %}
+
+						{% if not package.modified_date %}
+							<span>{{h.render_datetime(package.metadata_modified, '%d/%m/%y')}}.</span>
+						{% endif %}
+					</span>
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

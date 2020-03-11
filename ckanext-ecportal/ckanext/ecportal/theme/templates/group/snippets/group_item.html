@@ -1,0 +1,62 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Renders a media item for a group. This should be used in a list.
+
+group - A group dict.
+
+Example:
+
+		<ul class="media-grid">
+			{% for group in groups %}
+				{% snippet "group/snippets/group_item.html", group=group %}
+			{% endfor %}
+		</ul>
+#}
+{% set type = group.type or 'group' %}
+{% set url = h.url_for(controller='group', action='read', id=group.name) %}
+<div class="col-md-3 media-item">
+	{% block image %}
+        <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" class="media-image">
+        {% endblock %}
+	{% block title %}
+		<h3 class="media-heading">{{ group.display_name }}</h3>
+	{% endblock %}
+	{% block description %}
+		{% if group.description %}
+			<p>{{ h.markdown_extract(group.description, extract_length=80) }}</p>
+		{% endif %}
+	{% endblock %}
+	{% block datasets %}
+        {% if group.packages %}
+			<strong class="count">{{ _(ungettext('group.group_item.dataset.singular', 'group.group_item.dataset.plural', group.packages)).format(num=group.packages) }}</strong>
+		{% elif group.packages == 0 %}
+			<span class="count">{{ _('group.group_item.dataset.plural').format(num=0) }}</span>
+		{% endif %}
+	{% endblock %}
+	<a href="{{ url}}?groups={{group.name}}" title="{{ _('group.group_item.name').format(name=group.display_name) }}" class="media-view">
+		<span>{{ _('group.group_item.name').format(name=group.display_name) }}</span>
+	</a>
+	{% if group.user_member %}
+		<input name="group_remove.{{ group.id }}" value="{{ _('group.group_item.remove.action') }}" type="submit" class="btn btn-danger btn-small media-edit" title="{{ _('group.group_item.remove.title') }}"/>
+	{% endif %}
+</div>
+{% if position is divisibleby 3 %}
+	<li class="clearfix js-hide"></li>
+{% endif %}

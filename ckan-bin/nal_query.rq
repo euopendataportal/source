@@ -1,0 +1,8 @@
+select ?term ?label where {
+    ?term a <http://www.w3.org/2004/02/skos/core#Concept>.
+    ?term <http://www.w3.org/2004/02/skos/core#prefLabel> ?label.
+    ?term <http://lemon-model.net/lemon#context> <http://publications.europa.eu/resource/authority/use-context/ODP>.
+    OPTIONAL {?term <http://publications.europa.eu/ontology/authority/deprecated> ?deprecated}
+    FILTER ((str(?deprecated)!="true") || (!bound(?deprecated)))
+}
+ORDER BY ?term

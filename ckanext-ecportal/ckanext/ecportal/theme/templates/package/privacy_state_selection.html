@@ -1,0 +1,77 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/rdftool_privacy_state' %}
+    {% resource 'ecportal/blockui' %}
+{% endblock %}
+
+{# Full-size page #}
+{% block primary_span %}span12{% endblock %}
+
+{% block subtitle %}{% trans %}rdftool.dashboard.privacy_state.breadcrumb{% endtrans %}{% endblock %}
+
+{% block breadcrumb_content %}
+    {{ super() }}
+    <span class="separator"></span>
+    <a>{% trans %}rdftool.dashboard.privacy_state.breadcrumb{% endtrans %}</a>
+{% endblock %}
+
+{% set action_url = h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='change_privacy_state') %}
+
+{% block primary_content_inner %}
+
+    <div id="notification" style="display: none;">
+        <span class="dismiss"><a title="dismiss this notification">x</a></span>
+    </div>
+
+    <label class="control-label" for="owner_org" style="margin-left: 25%; float: left;">{% trans %}rdftool.dashboard.privacy_state.label{% endtrans %}</label>
+
+    <div class="controls" style="margin-bottom: 20px; margin-left: 45%;">
+        <div class="subcontrols">
+            <input id='field-privacy-state-true' type='radio' name='privacy-state' value='True'
+                   {% if c.datasets_published_state == 'draft' %}
+                    checked="checked"
+                   {% endif %}
+                   style="position: inherit"/>
+            <label for='field-private-true'>{% trans %}ecodp.common.draft{% endtrans %}</label>
+        </div>
+        <div class="subcontrols">
+            <input id='field-privacy-state-false' type='radio' name='privacy-state' value='False'
+                   {% if c.datasets_published_state == 'published' %}
+                    checked="checked"
+                   {% endif %}
+                   style="position: inherit"/>
+            <label for='field-private-false'>{% trans %}ecodp.common.published{% endtrans %}</label>
+        </div>
+    </div>
+
+    <div class="margin-bottom-buttons" style="text-align: center">
+        <input id="cancel-privacy-state" name="cancel-privacy-state" type="button" class="btn btn-primary"
+               value="{% trans %}ecodp.common.cancel{% endtrans %}"/>
+
+        <input id="save-privacy-state" name="save-privacy-state" type="button" class="btn btn-primary"
+               action="{{ action_url }}"
+               value="OK"/>
+    </div>
+
+    <input id="datasets_ids" style="display:none" value="{{ c.datasets_ids }}"/>
+{% endblock %}

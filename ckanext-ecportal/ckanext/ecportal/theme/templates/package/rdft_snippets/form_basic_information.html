@@ -1,0 +1,153 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales()%}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+
+<fieldset id="{{ dataset_id }}basic-information">
+    {% if not  bulk_edition %}
+        <span style="margin-left: 50px">Literals' Language</span>
+        <div id="{{ dataset_id }}dataset-languages" class="dataset-language-bar">
+            {% for locale in h.get_available_locales() %}
+                {% if locale != h.get_available_locales()[-1] %}
+                    <a id="{{ dataset_id }}dataset-lang-{{ locale }}" class="{{ dataset_id }}dataset-lang" href="javascript:void(0);">{{ locale }}</a> |
+                {% else %}
+                    <a id="{{ dataset_id }}dataset-lang-{{ locale }}" class="{{ dataset_id }}dataset-lang" href="javascript:void(0);">{{ locale }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <input type="hidden" id="{{ dataset_id }}id"  name="{{ dataset_name }}id" type="text" value="{{ data.id or ''}}" />
+
+        <div class="control-group title-field">
+
+            <label class="control-label" for="{{ dataset_id }}title">
+                <span class="field_required">&#9733;</span>
+                {%- trans %}ecodp.common.title{%- endtrans %}
+            </label>
+
+            <div class="controls">
+                <input id="{{ dataset_id }}title" class="js-title translatable-field" name="{{ dataset_name }}title" type="text"
+                       value="{{ data.title }}"
+                       placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}"
+                       data-module="custom_slug-preview-target"/>
+
+                {% for locale in langs %}
+                    {% if data.get(['title-',locale]|join, []) %}
+                        <input id="{{ dataset_id }}title-{{ locale }}" class="js-title translatable-field" name="{{ dataset_name }}title-{{ locale }}" type="text"
+                        value="{{ data.get(['title-',locale]|join, '') }}"
+                       placeholder="{% trans %}package.form_basic_information.title.placeholder{% endtrans %}"
+                       data-module="custom_slug-preview-target" style="display: none"/>
+                    {% endif %}
+                {% endfor %}
+
+
+
+            <span class="searchHelp-green gradient input-helper"
+                  title="A short descriptive title for the data set.&#13;It should not be a description though - save that for the Description field.&#13;Do not give a trailing full stop. Do not use allcaps.">?</span>
+                {% if errors.title %}
+                    <p class="field_error">Error: {{ errors.title }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="control-group title-field">
+        <label class="control-label" for="{{ dataset_id }}alternative_title">{% trans %}ecodp.common.alternative.title{% endtrans %}</label>
+
+        <div class="controls">
+            <input id="{{ dataset_id }}alternative_title" class="js-alt-title translatable-field" name="{{ dataset_name }}alternative_title" type="text"
+                   value="{{ data.alternative_title }}"
+                   placeholder="{% trans %}package.form_basic_information.title.alternative.placeholder{% endtrans %}"/>
+
+            {% for locale in langs %}
+                {% if data.get(['alternative_title-',locale]|join, []) %}
+                    <input id="{{ dataset_id }}alternative_title-{{ locale }}" class="js-alt-title translatable-field" name="{{ dataset_name }}alternative_title-{{ locale }}" type="text"
+                   value="{{ data.get(['alternative_title-',locale]|join, '') }}" style="display: none"/>
+                {% endif %}
+            {% endfor %}
+
+
+            <span class="searchHelp-green gradient input-helper"
+                  title="A short descriptive title for the data set.&#13;It should not be a description though - save that for the Description field.&#13;Do not give a trailing full stop. Do not use allcaps.">?</span>
+            {% if bulk_edition and data.get('alternative_title_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.alternative_title %}
+                <p class="field_error">Error: {{ errors.alternative_title }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="control-group description-field">
+
+        <label class="control-label" for="{{ dataset_id }}description"><span class="field_required">&#9733;</span>Description</label>
+
+        <div class="controls">
+            <span class="hints-right">You can use <a href="http://daringfireball.net/projects/markdown/syntax"
+                                                     target="_blank">Markdown formatting</a> here.
+            </span>
+
+            <div class="markdown-editor" style="display: inline-block;">
+                <br/>
+
+
+            <textarea class="js-description markdown-input translatable-field" style="resize: vertical" name="{{ dataset_name }}description"
+                      id="{{ dataset_id }}description"
+                      placeholder="{% trans %}package.form_basic_information.description.placeholder{% endtrans %}">{{ data.description }}</textarea>
+
+
+
+            {% for locale in langs %}
+                {% if data.get(['description-',locale]|join, []) %}
+                    <textarea class="js-description markdown-input translatable-field" style="resize: vertical; display:none" name="{{ dataset_name }}description-{{ locale }}"
+                      id="{{ dataset_id }}description-{{ locale }}"
+                      placeholder="{% trans %}package.form_basic_information.description.placeholder{% endtrans %}">{{ data.get(['description-',locale]|join, '') }}</textarea>
+
+                {% endif %}
+            {% endfor %}
+
+
+                <div class="markdow n-preview" style="display: none;"></div>
+
+
+            </div>
+
+            <span class="searchHelp-green gradient input-helper" style="top: 45px;"
+                  title="The main description of the dataset. It is often displayed with the package title.&#13;In particular, it should start with a short sentence that describes the data set succinctly,&#13;because the first few words alone may be used in some views of the data sets.">?
+                     </span>
+            {% if bulk_edition and data.get('description_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.description %}
+                <p class="field_error">Error: {{ errors.description }}</p>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+</fieldset>

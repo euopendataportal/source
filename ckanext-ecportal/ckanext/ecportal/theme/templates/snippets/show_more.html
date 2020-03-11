@@ -1,0 +1,51 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+Show more / Show less mechanism
+
+Examples:
+    {% snippet "snippets/show_more.html", name=name, limit=limit, list_length=list|length, show_less_display=show_less_display %}
+
+    {% snippet "snippets/show_more.html", group_read=True, controller=controller, domain=id, name=name, limit=limit, list_length=catalog.display_has_part|length, show_less_display=num_has_part_catalog %}
+#}
+{% if group_read %}
+    {% set href_more = h.remove_url_param_for_group_read('_%s_limit' % name, domain, controller=controller, replace=0) %}
+    {% set href_less = h.remove_url_param_for_group_read('_%s_limit' % name, domain, controller=controller) %}
+{% else %}
+    {% set href_more = h.remove_url_param('_%s_limit' % name, replace=0) %}
+    {% set href_less = h.remove_url_param('_%s_limit' % name) %}
+{% endif %}
+
+{% if h.get_param_int('_%s_limit' % name) %}
+    {% if list_length > show_less_display%}
+        <p class="module-footer" style="text-align: right">
+            <a id="toggler" href="{{ href_more }}">
+                <span class="more">{{ _('ecodp.common.button.show.more') }}</span>
+                <img src="{{h.url_for_static('/images/domains/down-double-angle-bracket.png')}}"/>
+            </a>
+        </p>
+    {% endif %}
+{% else %}
+    <p class="module-footer" style="text-align: right">
+        <a id="toggler" href="{{ href_less }}">
+            <span class="less">{{ _('ecodp.common.button.show.less') }}</span>
+            <img src="{{h.url_for_static('/images/domains/up-double-angle-bracket.png')}}"/>
+        </a>
+    </p>
+{% endif %}

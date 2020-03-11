@@ -1,0 +1,189 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "user/rdft_dashboard_base.html" %}
+
+{% set package_controller = 'ckanext.ecportal.controllers.package:ECPORTALPackageController' %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="{{ h.url_for_static( 'css/custom_checkbox.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ h.url_for_static( 'css/jquery-confirm.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/ecportal_manage_dashboard' %}
+    {% resource 'ecportal/jquery_ui' %}
+    {% resource 'ecportal/rdftool_privacy_state' %}
+{% endblock %}
+
+{% block dashboard_activity_stream_context %}{% endblock %}
+
+{% block page_search %}
+	{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields %}
+{% endblock %}
+
+{% block page_search_right %}
+	{% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+{% set locale = h.current_locale()|string %}
+
+{% block primary_content_inner %}
+    {% block content_heading %}
+        <h1 class="ckan-content-heading">{% trans %}rdftool.dashboard.datasets.hiddentitle{% endtrans %}</h1>
+    {% endblock %}
+    {% block filter_box %}
+        {% snippet 'snippets/filter_box.html', fields=c.fields, facet_titles=c.facet_titles, label_source=c.search_facets, dataset_count=c.page.item_count, sort_by_selected=c.sort_by_selected, remove_field=c.remove_field, sorting=sorting %}
+	{% endblock %}
+
+    {% if c.page.items %}
+        {% snippet 'user/snippets/dashboard_package_list.html', packages=c.page.items, selection=selected_datasets%}
+
+        <div class="dashboard_selected_count" >
+            <label id="dashboard_selected" style="float: left; margin-left: 20px;" data-limit="{{ _('ecodp.common.dashboard.selection_limit')}}">{% trans %}ecodp.common.selected_count{% endtrans %}: </label>
+            <label id="dashboard_selected_count" style="float: left; margin-left: 5px;">{{ selected_datasets|length }}</label>
+            <button class="btn btn-danger remove-selected">X</button>
+        </div>
+
+        {% block page_pagination %}
+            {{ c.page.pager(q=c.q) }}
+        {% endblock %}
+
+        {% block commands %}
+            <div class="dashboard-actions-wraper">
+                <div class="dataset-list-action ">
+                    <a id="delete-datasets" class="btn btn-dataset-action">
+                        {% trans %}ecodp.common.button.delete{% endtrans %}
+                    </a>
+                    <a id="change-privacy-state" class="btn btn-dataset-action">
+                        {% trans %}rdftool.dashboard.datasets.button.privacy_state{% endtrans %}
+                    </a>
+                    <a id="edit-dataset" class="btn btn-dataset-action" data-bulk_action="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='bulk_update' ) }}">
+                        {% trans %}ecodp.common.button.edit{% endtrans %}
+                    </a>
+                    <a id="export-datasets" class="btn btn-dataset-action">
+                        {% trans %}ecodp.common.button.export{% endtrans %}
+                    </a>
+                    <a id="create-ingestion"
+                       action="{{ h.url_for(controller='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController', action='get_dataset_information' ) }}"
+                       class="btn btn-dataset-action">{% trans %}ecodp.common.button.ingestion_package{% endtrans %}
+                    </a>
+                    <a id="assign-doi-datasets" class="btn btn-dataset-action">
+                        {% trans %}ecodp.common.button.assign.doi{% endtrans %}
+                    </a>
+                </div>
+            </div>
+        {% endblock %}
+
+        <form id="form-delete" style="display: none"
+              action="{{ h.url_for(controller=package_controller, action='delete' ) }}"
+              method="POST">
+            <input type="hidden" id="delete-selected-datasets" name="selected_datasets"/>
+            <input type="hidden" id="delete-action" name="action" value="confirmation"/>
+
+        </form>
+
+        <form id="form-privacy-state" style="display: none"
+              action="{{ h.url_for(controller=package_controller, action='change_privacy_state' ) }}"
+              method="POST">
+            <input type="hidden" id="privacy-state-selected-datasets" name="selected_datasets"/>
+            <input type="hidden" id="privacy-state-action" name="action" value="selection"/>
+        </form>
+
+        <form id="form-bulk-edit" style="display: none"
+              action="{{ h.url_for(controller=package_controller, action='bulk_update' ) }}"
+              method="POST">
+            <input type="hidden" id="privacy-state-selected-datasets" name="selected_datasets"/>
+            <input type="hidden" id="privacy-state-action" name="action" value="selection"/>
+        </form>
+
+        <form id="form-assign-doi" style="display: none"
+              action="{{ h.url_for(controller=package_controller, action='assign_doi' ) }}"
+              method="POST">
+            <input type="hidden" id="assign-doi-selected-datasets" name="selected_datasets"/>
+            <input type="hidden" id="assign-doi-action" name="action" value="confirmation"/>
+
+        </form>
+
+        <div id="create-ingestion-dialog" title="{% trans %}ecodp.common.crate_ingestion_package_dialog.title{% endtrans %}">
+            <form id="form-create-ingestion-package" style="display: none"
+                  action="{{ h.url_for(controller='ckanext.ecportal.controllers.ingestion_package:ECPortalIngestion_PackageController', action='create_ingestion_package' ) }}"
+                  method="POST">
+                <fieldset>
+                    <div id="dynamictable"></div>
+
+                    <label for="ingestion_name">{% trans %}ecodp.common.name{% endtrans %}</label>
+                    <input id="ingestion_name" class="dialog-form-input" name="ingestion_name" type="text"
+                           placeholder="{% trans %}ecodp.common.crate_ingestion_package_dialog.placeholder{% endtrans %}"/>
+                    <input type="submit" id="incliude_selected_datasets" name="selected_datasets" class="btn btn-primary"
+                            value="{% trans %}ecodp.common.download{% endtrans %}"/>
+                </fieldset>
+            </form>
+        </div>
+        <div id="dialog-form" title="{% trans %}ecodp.common.format{% endtrans %}" style="display: none;">
+            <form id="form-export"
+                  action="{{ h.url_for(controller=package_controller, action='export' ) }}"
+                  method="POST">
+                <label for="format">{% trans %}ecodp.common.format{% endtrans %}</label>
+                <select id="format" class="chzn-select" name="format">
+                    {% for format in c.formats %}
+                        <option value="{{ format.get('format_id', '') }}">{{ format.get('format_desc', '') }}</option>
+                    {% endfor %}
+                </select>
+                <div id="format_message">{% trans %}ecodp.format.message.ckan_core{% endtrans %}</div>
+                <input type="hidden" id="export_selected_datasets" name="selected_datasets"/>
+            </form>
+        </div>
+
+    {% else %}
+        <br>
+        <p class="empty">
+            {{ _("Your organization membership/s does/do not allow you to access any dataset!") }}
+        </p>
+    {% endif %}
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title alert alert-warning">{% trans %}selected.datasets.warning.title{% endtrans %}</h4>
+      </div>
+      <div class="modal-body">
+        <p>{% trans %}selected.datasets.warning.message{% endtrans %}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dataset-action" data-dismiss="modal">{% trans %}ecodp.common.button.close{% endtrans %}</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+    <!-- Button trigger modal -->
+<button type="button"  style="display: none;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="modal-trigger">
+  Launch demo modal
+</button>
+{% endblock %}
+
+
+{% block secondary_content_inner %}
+    {% for facet in c.facet_titles %}
+        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+    {% endfor %}
+{% endblock %}

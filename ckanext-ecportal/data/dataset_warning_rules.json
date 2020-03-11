@@ -1,0 +1,33 @@
+{
+    "temporal_coverage_from": [
+        {
+            "id": 46,
+            "__type__": "temporalcoveragerule",
+            "message": "validation.ds.tempcoverage.invalid",
+            "title": "validation.ds.tempcoverage.invalid.title"
+        }
+    ],
+    "release_date": [
+        {
+            "id": 47,
+            "__type__": "issuedgerule",
+            "message": "validation.ds.nonstring.issuedate",
+            "title": "validation.ds.nonstring.issuedate.title"
+        }
+    ],
+     "resources": [
+        {
+            "__type__": "subdatarule",
+            "rules": {
+            "iframe_code": [
+                {
+                    "id": 48,
+                    "__type__": "iframerule",
+                    "message": "validation.res.vis.invalid.iframe",
+                    "title": "validation.res.vis.invalid.iframe.title"
+                }
+            ]
+           }
+         }
+     ]
+}

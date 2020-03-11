@@ -1,0 +1,16 @@
+table.tablesorter {
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+table.tablesorter, th, td {
+    border: 1px solid black;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: left;
+}

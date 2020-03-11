@@ -1,0 +1,47 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "user/manage_base.html" %}
+
+{% block subtitle %}{{ gettext('Error %(error_code)s', error_code=c.code[0]) }}{% endblock %}
+
+{% block primary_content_inner %}
+    <div class="alert alert-warning error-explanation" style="width: 92%; padding-bottom: 2em">
+        <h2>{{ c.content }}</h2>
+    </div>
+{% endblock %}
+
+{% block menu %}
+    {% if h.is_metadatatool_plugin_activated() %}
+        {% block menu_snippet %}
+            {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home' %}
+        {% endblock %}
+    {% else %}
+        {% snippet "menu.html", user_log=c.user %}
+    {% endif %}
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block flash %}
+    {# eat the flash messages caused by the 404 #}
+    {% set flash_messages = h.flash.pop_messages() %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}

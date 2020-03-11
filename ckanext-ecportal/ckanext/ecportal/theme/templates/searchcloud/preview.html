@@ -1,0 +1,59 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{% block bodytag %}
+	{{ super() }}
+	class="no-sidebar"
+{% endblock %}
+
+{%- block title -%}
+	{%- block subtitle %}{% endblock -%}
+	{% trans %}ecodp.common.searchcloud.title{% endtrans %}
+{%- endblock -%}
+
+{% block page_header %}{% trans %}ecodp.common.searchcloud.title{% endtrans %}{% endblock %}
+
+{% block page_heading %}
+	<h1 class="page_heading">{% trans %}ecodp.common.searchcloud.preview{% endtrans %}</h1>
+{% endblock %}
+
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block primary_content_inner %}
+   <div>
+   	<p>{% trans %}ecodp.common.searchcloud.preview_text1{% endtrans %} <tt>{% trans %}ecodp.common.save_package{% endtrans %}</tt> {% trans %}ecodp.common.searchcloud.preview_text2{% endtrans %} <a href="{{h.url_for(controller='ckanext.ecportal.controllers.searchcloud:ECPortalSearchCloudAdminController', action='upload')}}">{% trans %}ecodp.common.searchcloud.preview_text3{% endtrans %}</a>.</p>
+    <div id="searchcloud" style="width: 420px; height: 300px; border: 1px solid #000;"></div>
+    <br />
+    <form action="{{h.url_for(controller='ckanext.ecportal.controllers.searchcloud:ECPortalSearchCloudAdminController', action='save')}}" method="post">
+      <input type="hidden" name="searchcloud" value="{{c.data}}"/>
+      <input type="submit" name="submit" value="Save" />
+    </form>
+  </div>
+{% endblock %}
+
+{%- block scripts %}
+	{{ super() }}
+	{% if c.json %}
+		<script type="text/javascript">
+	      var word_array = {{c.json | safe}}
+	      var search_base_url = "{{h.url_for(controller='package', action='search')}}";
+	     </script>
+	{% endif %}
+{%- endblock -%}

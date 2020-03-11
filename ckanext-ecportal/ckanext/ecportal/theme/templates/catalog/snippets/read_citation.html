@@ -1,0 +1,45 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block catalog_citation_popup %}
+
+    {% set lang_bcp47 = h.current_locale_bcp47() %}
+
+    <div style="padding-bottom: 20px">
+        <button class="btn btn-primary data-citation button" style="width: 100%">{% trans %}ecodp.catalog.citation.button{% endtrans %}</button>
+    </div>
+    <div class="data-citation popup-container disabled">
+        <div class="data-citation overlay"></div>
+        <div class="data-citation modal-dialog">
+            <div class="data-citation modal-content">
+                <div class="data-citation modal-body">
+                    <img title="close" alt="close" class="data-citation pull-right close-button" data-dismiss="modal" src="{{ h.url_for_static('/images/btn-close.gif') }}">
+                    <h3 style="margin-top: 0px;">{% trans %}ecodp.common.citation.title{% endtrans %}</h3>
+                    <p>{{ catalog.citation }}</p>
+                    {% trans %}ecodp.common.citation.export{% endtrans %}
+
+                    {% for key, format in catalog.citation_styles.iteritems()|sort %}
+                        <a href="{{ h.url_for(controller="ckanext.ecportal.controllers.catalog:ECPORTALCatalogController", action='get_citation',  id=id, style=key, language=lang_bcp47) }}">{{ format.name }}</a>{% if not loop.last %},{% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

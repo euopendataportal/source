@@ -1,0 +1,80 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+{% set action = c.action %}
+{% set add_import = (c.action=='new') %}
+
+
+{% block scripts %}
+    {% resource 'ecportal/ecportal_manage_upload' %}
+{% endblock %}
+
+
+<form class="form-horizontal overflow-visible{{ ' has-errors' if errors else '' }}"
+      method="post" id="dataset-import"
+      action=" {{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='package_import') }}">
+    <div id="tabs-creation">
+
+        <div id="tab-creation-import">
+            <div id="upload-file-container">
+
+                <div class="controls">
+                    <div class="tab-pane" id="upload-file">
+                        <label class="control-label" for="dataset-upload">
+                            {% trans %}ecodp.common.file{% endtrans %}
+                        </label>
+
+                        <div class="js-add-upload-form">
+                            <div class="fileupload">
+                                <div id="dataset-fileinfo"></div>
+                                <input accept=".json, .xlsx, .rdf, .zip, .JSON, .RDF, .XLSX, .ZIP"
+                                       id="dataset-upload" type="file" name="file" class="file-upload">
+                                <input type="hidden" id="dataset-upload-action"
+                                       value="{{ h.url_for(controller='ckan.controllers.storage:StorageController', action='upload_handle') }}"/>
+                                <br>
+
+                                <div class="dataset-upload"></div>
+                                <input name="add-dataset-upload" type="button" class="btn btn-primary" style="display: none"
+                                       id="add-dataset-upload"
+                                       action="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='validate_import_dataset') }}"
+                                       value="{% trans %}ecodp.common.import_button{% endtrans %}"/>
+
+
+                                <input type="hidden" id="uploaded-file-link"/>
+
+                                <div class="alert alert-block success alert-info"
+                                     style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="alert alert-block" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {% include "package/rdft_snippets/read_zip_datasets_upload.html" %}
+        </div>
+
+    </div>
+</form>
+<div id="dialog-form-error" title="{% trans %}ecodp.common.dialog.error{% endtrans %}">
+    <div id="dialog-error-content">
+
+    </div>
+</div>

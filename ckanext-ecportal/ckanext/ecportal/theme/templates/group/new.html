@@ -1,0 +1,72 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{% block subtitle %}{{ _('group.new.subtitle') }}{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="{{ h.url_for_static( 'css/new_layout_usergroup.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{%- block scripts %}
+    {% resource 'base/ckan' %}
+    {{ super() }}
+{% endblock %}
+
+{% block bodytag %}
+	{{ super() }}
+	class="no-sidebar"
+{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.group'), h.url_for(controller=c.controller, action='index', qualified=True)) | safe }},
+            {{ h.load_breadcrumb_item_json_ld(3, _('group.new.subtitle'), h.url_for(controller=c.controller, action='new', qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<a href="{{h.url_for(controller='group', action='index')}}">{% trans %}ecodp.common.group{% endtrans %}</a>
+	<a href="{{h.url_for(controller='group', action='new')}}">{% trans %}group.new.subtitle{% endtrans %}</a>
+{% endblock %}
+
+{% block menu %}
+    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+{% endblock %}
+
+{% block pre_page_heading %}
+
+{% endblock %}
+
+{% block page_heading %}
+
+    <div id="page_heading_div" class="ckan-page-heading">
+	<h1 class="page_heading">{% trans %}group.new.subtitle{% endtrans %}</h1>
+    </div>
+{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+
+{% block primary_content_inner %}
+    <div id="spann_div" >
+  {% block form %}
+{{ c.form | safe }}
+  {% endblock %}
+    </div>
+{% endblock %}

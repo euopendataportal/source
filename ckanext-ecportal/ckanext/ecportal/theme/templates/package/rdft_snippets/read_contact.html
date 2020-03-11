@@ -1,0 +1,53 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block contact %}
+	{% if pkg.contact_points %}
+		{% for cp in pkg.contact_points %}
+			<div id="dataset-contact" class="package-box">
+				<h2>{% trans %}package.read_contact.contact{% endtrans %}</h2>
+				{% if cp.contact_name %}
+					<h3>
+						{{cp.contact_name}}
+					</h3>
+				{% endif %}
+				{% if cp.contact_address %}
+					<p>
+						{{cp.contact_address}}
+					</p>
+				{% endif %}
+				{% if cp.contact_telephone %}
+					<p>
+						<span>{% trans %}Tel:{% endtrans %}</span>
+						{{cp.contact_telephone}}
+					</p>
+				{% endif %}
+				{% if cp.contact_email %}
+					<p>
+						<a href="mailto:{{cp.contact_email}}">{{cp.contact_email}}</a>
+					</p>
+				{% endif %}
+				{% if cp.contact_webpage %}
+					<p>
+						<a href="{{cp.contact_webpage}}">{{cp.contact_webpage}}</a>
+					</p>
+				{% endif %}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

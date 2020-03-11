@@ -1,0 +1,138 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+{%  set group_names_list = h.names_from_tags(data.get('groups', [])) %}
+{%  set concept_names_list = h.names_from_tags(data.get('concepts_eurovoc', [])) %}
+
+{# Workaround : data.groups and data.concept_eurovoc just have IDs instead of the full data in case an error in the data occurs in the save and
+    ckan goes back to the edit page. Looking for the ID list instead of the name list works, but it would be cleaner to get the full data of groups and concepts
+    Example :
+        'groups': [{u'description': u'first group updated',
+             'display_name': u'group1',
+             u'id': u'a7d5cc91-8360-4df3-b338-5c38e6394eb3',
+             'image_display_url': u'http://www.bariatriccookery.com/wp-content/uploads/2010/09/support_groups.jpg',
+             u'name': u'group1',
+             u'title': u'group1',
+             u'type': u'group'}, ... ]
+     becomes :
+        'groups': [{'id': u'a7d5cc91-8360-4df3-b338-5c38e6394eb3'}, ... ]
+
+    #}
+{%  set group_id_list = h.id_from_tags(data.get('groups', [])) %}
+{%  set concept_id_list = h.id_from_tags(data.get('concepts_eurovoc', [])) %}
+
+<fieldset id="{{ dataset_id }}eurovoc">
+	<div class="control-group">
+		<label class="control-label" for="domains_eurovoc">EuroVoc Domains</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}domains_eurovoc" class="chzn-select" {% if group_input_disabled %}disabled{% endif %} name="{{ dataset_name }}domains_eurovoc"
+			multiple="multiple" >
+                {% if not group_input_disabled %}
+                    {% for domain in c.domains_eurovoc %}
+                        {% if domain.name in group_names_list %}
+                            <option selected="selected" value="{{domain.id}}">{{domain.display_name}}</option>
+                        {% elif domain.id in group_id_list %}
+                            <option selected="selected" value="{{domain.id}}">{{domain.display_name}}</option>
+                        {% else %}
+                            <option value="{{domain.id}}">{{domain.display_name}}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if not group_names_list and  bulk_edition%}
+                    <option selected="selected" value=""></option>
+                {% endif%}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The EuroVoc Domains for this dataset.">?</span>
+        {% if bulk_edition and data.get('groups_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+			{% if errors.domains_eurovoc %}
+				<p class="field_error">{{errors.domains_eurovoc}}</p>
+			{% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="concepts_eurovoc">EuroVoc Concepts</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}concepts_eurovoc" class="chzn-select" name="{{ dataset_name }}concepts_eurovoc"
+			multiple="multiple" >
+				{% for tag_name, tag_translation in c.concepts_eurovoc %}
+					{% if tag_name in concept_names_list %}
+						<option selected="selected" value="{{tag_name}}">{{tag_translation}}</option>
+					{% elif tag_name in concept_id_list %}
+						<option selected="selected" value="{{tag_name}}">{{tag_translation}}</option>
+					{% else %}
+						<option value="{{tag_name}}">{{tag_translation}}</option>
+					{% endif %}
+				{% endfor %}
+                 {% if not concept_id_list and  bulk_edition%}
+                    <option selected="selected" value=""></option>
+                {% endif%}
+			</select>
+                <span class="searchHelp-green gradient input-helper"
+                      title="The EuroVoc Concepts for this dataset.">?</span>
+        {% if bulk_edition and data.get('concepts_eurovoc_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.concepts_eurovoc %}
+                <p class="field_error">{{errors.concepts_eurovoc}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="groups">Groups</label>
+		<div class="controls">
+			<select id="{{ dataset_id }}groups" class="chzn-select" {% if group_input_disabled %}disabled{% endif %} name="{{ dataset_name }}groups"
+			multiple="multiple" >
+                {% if not group_input_disabled %}
+                    {% for group in h.get_athorized_groups(False) %}
+                        {% if group.name in group_names_list %}
+                            <option selected="selected" value="{{group.id}}">{{group.display_name}}</option>
+                        {% elif group.id in group_id_list %}
+                            <option selected="selected" value="{{group.id}}">{{group.display_name}}</option>
+                        {% else %}
+                            <option value="{{group.id}}">{{group.display_name}}</option>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if not group_names_list and  bulk_edition%}
+                    <option selected="selected" value=""></option>
+                {% endif%}
+			</select>
+            <span class="searchHelp-green gradient input-helper"
+                  title="The Groups for this dataset.">?</span>
+        {% if bulk_edition and data.get('groups_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+            {% if errors.groups %}
+                <p class="field_error">{{errors.groups}}</p>
+            {% endif %}
+
+		</div>
+	</div>
+
+</fieldset>

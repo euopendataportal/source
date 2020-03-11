@@ -1,0 +1,97 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "openness/openness.html" %}
+{% block primary_content_inner %}
+    <div class="control-group publisher-field">
+        <label class="control-label" for="owner_org">{{ _('ecodp.common.openness.publisher') }}</label>
+        <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.openness:ECPORTALOpennessController', action='publisher_list') }}">--{{ _('ecodp.common.openness.index') }}--</a>
+        <div class="controls">
+            <select id="openness-select-publisher" name="owner_org" class="chzn-select" style="width: 30em;">
+                {% for publisher in c.publishers %}
+                    <option value="{{ h.url_for(controller='ckanext.ecportal.controllers.openness:ECPORTALOpennessController', action='publisher_list')+'/'+ publisher.name }}"
+                            {% if publisher.id == c.pkg_dict.owner_org or publisher.name == c.new_group %}selected="selected" {% endif %}>{{ publisher.display_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+            <form id="publisher_report_form"
+              action="{{ h.url_for(controller='ckanext.ecportal.controllers.openness:ECPORTALOpennessController', action='publisher_export') }}"
+              method="post">
+            <input type="hidden" name="publisher" value="{{ c.pkg_dict.owner_org_name }}"/>
+            <input id="publisher_report_json" style="float: right; margin-left: 5px" class="btn btn-primary" name="json"
+                   type="submit" value="{% trans %}JSON{% endtrans %}"/>
+            <input id="publisher_report_csv" style="float: right;" class="btn btn-primary" name="csv" type="submit"
+                   value="{% trans %}CSV{% endtrans %}"/>
+        </form>
+    </div>
+    <div class="control-group publisher-field">
+        <label class="control-label" for="openness-totals-table">{{ _('ecodp.common.openness.total') }}</label>
+
+
+        <div class="table-container">
+            <table id="publisher-totals-table" class="table table-striped table-bordered simple-table"
+                   name="publisher-totals-table"
+                   width="100%">
+                <thead>
+                <tr>
+                    <th>Score 0</th>
+                    <th>Score 1</th>
+                    <th>Score 2</th>
+                    <th>Score 3</th>
+                    <th>Score 4</th>
+                    <th>Score 5</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ c.pkg_dict.totals.zero }}</td>
+                    <td>{{ c.pkg_dict.totals.one }}</td>
+                    <td>{{ c.pkg_dict.totals.two }}</td>
+                    <td>{{ c.pkg_dict.totals.three }}</td>
+                    <td>{{ c.pkg_dict.totals.four }}</td>
+                    <td>{{ c.pkg_dict.totals.five }}</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <table id="openness-dataset-table" class="table table-striped table-bordered openness-table" cellspacing="0"
+           width="100%">
+        <thead>
+        <tr>
+            <th>Dataset</th>
+            <th>Score</th>
+            <th>Score Reason</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for row in c.pkg_dict.table %}
+            <tr>
+                <td data-search="{{ row.package_name }}"><a
+                        href="{{ h.url_for(controller='package', action='read', id=row.package_name) }}">{{ row.package_title }}</a>
+                </td>
+                <td>{{ row.score }}</td>
+                <td>{{ row.reason }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,269 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales()%}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+    {% set resource_id = 'dataset-'+index|string+'-'+type %}
+
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+    {% set resource_id = 'resource' %}
+{% endif %}
+
+{# ID #} {# Resource type #}
+<div class="control-group">
+    <div class="grouped-labels">
+        <label for="" class="control-label grouped-label" property="rdfs:label">{% trans %}ecodp.common.id{% endtrans %}</label>
+        <label for="" class="control-label grouped-label right-label-resource" property="rdfs:label"><span class="field_required">&#9733;</span>{% trans %}package.form_resource.resource_type{% endtrans %}</label>
+    </div>
+    <div class="controls">
+        <input type="text" disabled="disabled" value="" class="disabled half-input-resource"/>
+        <input name="resources_{{ type }}__template__id" type="hidden" value=""/>
+        <select name="resources_{{ type }}__template__resource_type" class="short half-input-resource-right"
+                style="width: 260px !important; margin-left: 55px;">
+        </select>
+    </div>
+</div>
+<div class="resource-frame">
+    <div style="display:none" class="res-number"></div>
+    <div id="{{ dataset_id }}resource-languages" class="resource-languages-bar">
+        {% for locale in h.get_available_locales() %}
+            {% if locale != h.get_available_locales()[-1] %}
+                <a id="{{ dataset_id }}resource-lang-{{ locale }}_{{ type }}__template__" class="{{ dataset_id }}resource-lang">{{ locale }}</a> |
+            {% else %}
+                <a id="{{ dataset_id }}resource-lang-{{ locale }}_{{ type }}__template__" class="{{ dataset_id }}resource-lang">{{ locale }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <input type="hidden" value="0" name="resources_{{ type }}__template__downloads"/>
+
+    {# Title #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label"><span class="field_required">&#9733;</span>{% trans %}ecodp.common.title{% endtrans %}</label>
+
+        <div class="controls" property="rdf:value">
+            <input id="resources_{{ type }}__template__title" class="js-resource-edit-title-field translatable-resource-field"
+                   name="resources_{{ type }}__template__title" type="text" value="" class="long"/>
+        </div>
+    </div>
+    {# Description #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.description{% endtrans %}</label>
+
+        <div class="controls">
+            <div class="markdown-editor">
+                <div>
+                    <br/><textarea id="resources_{{ type }}__template__description"
+                                   class="js-resource-edit-description markdown-input translatable-resource-field"
+                                   name="resources_{{ type }}__template__description"></textarea>
+                </div>
+                <span class="hints">You can use <a
+                        href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown
+                    formatting</a> here.</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {# Access URL #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label"><span class="field_required">&#9733;</span>{% trans %}ecodp.common.access_url{% endtrans %}</label>
+
+        <div class="controls">
+            <input name="resources_{{ type }}__template__access_url" type="text" value="" id="resources_{{ type }}__template__access_url" class="js-resource-edit-access_url long translatable-resource-field" title=""/>
+        </div>
+    </div>
+    {# Format #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label"><span class="field_required">&#9733;</span>{% trans %}ecodp.common.format{% endtrans %}&nbsp;&nbsp;
+            <img class="js-resource-icon inline-icon resource-icon"
+                 src="{{ h.url_for_static('images/icons/page_white.png') }}"/>
+        </label>
+
+        <div class="controls">
+            <select id="resources_{{ type }}__template__format"
+                    name="resources_{{ type }}__template__format"
+                    class="long js-resource-edit-format"
+                    placeholder="{% trans %}e.g. csv, html, xls, rdf, ...{% endtrans %}">
+            </select>
+        </div>
+    </div>
+
+    {# Licence #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label"><span
+                class="field_required">&#9733;</span>{% trans %}ecodp.common.licence{% endtrans %}</label>
+        <div class="controls">
+            <select id="resources_{{ type }}__template__licence" name="resources_{{ type }}__template__licence" class="long js-resource-edit-licence">
+            </select>
+        </div>
+    </div>
+
+
+    {# Download URL #}
+    {% if index is not defined %}
+        <div class="tab-pane" id="upload-file">
+            <div class="js-add-upload-form">
+                <div class="fileupload">
+                    <input id="file_{{ type }}__template__" type="file" name="file_{{ type }}__template__" class="file-upload">
+                    <br>
+
+                    <div class="fileinfo"></div>
+                    <input name="add-resource-upload" type="button" class="upload btn btn-primary"
+                           value="{% trans %}package.form_resource.upload_button{% endtrans %}"
+                           action="{{ h.url_for(controller='ckan.controllers.storage:StorageController', action='upload_handle') }}">
+
+                    <div class="alert alert-block success alert-info" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="alert alert-block" style="display: none;"></div>
+        </div>
+    {% endif %}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.download_url{% endtrans %}</label>
+
+        <div class="controls">
+            <input name="resources_{{ type }}__template__download_url" type="text" value="" id="resources_{{ type }}__template__download_url" class="js-resource-edit-download_url long translatable-resource-field" title=""/>
+        </div>
+    </div>
+
+
+    {# Language#}
+    <div class="control-group">
+		<label class="control-label" for="resources_{{ type }}__template__language">
+            {% trans %}ecodp.rdft.dataset_edit.language{% endtrans %}
+        </label>
+		<div class="controls">
+			<select id="resources_{{ type }}__template__language" name="resources_{{ type }}__template__language"
+			multiple="multiple" style="display:none">
+			</select>
+		</div>
+	</div>
+
+
+    {# Release Date modified Date #}
+     <div class="control-group">
+        <div class="grouped-labels">
+            <label for="" class="control-label grouped-label" property="rdfs:label">{% trans %}package.form_resource.release_date{% endtrans %}</label>
+            <label for="" class="control-label grouped-label right-label-resource" property="rdfs:label">{% trans %}package.form_resource.modification_date{% endtrans %}</label>
+        </div>
+
+        <div class="controls">
+            <input class="input-small half-input-resource image-calendar image-input js-resource-edit-release_date translatable-resource-field"
+                   id="resources_{{ type }}__template__release_date"
+                   name="resources_{{ type }}__template__release_date"
+                   type="text" value=""/>
+
+           <input class="input-small half-input-resource image-calendar image-input js-resource-edit-modification_date translatable-resource-field"
+               id="resources_{{ type }}__template__modification_date"
+               name="resources_{{ type }}__template__modification_date"
+               type="text" value=""/>
+            <!-- <div class="hint">{% trans %}
+                package.form_resource.last_modified.hint{% endtrans %}<a href="http://en.wikipedia.org/wiki/ISO_8601#Calendar_dates" target="_blank">ISO Format</a> — eg. <strong>2012-12-25</strong> or %c2010-05-31T14:30%d.</div> -->
+        </div>
+    </div>
+
+     {# Status #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.status{% endtrans %}</label>
+        <div class="controls">
+            <select name="resources_{{ type }}__template__status" id="resources_{{ type }}__template__status"
+                    class="long js-resource-edit-status">
+{#                    <option value=""></option>#}
+{#                    {% set status_vocab = c.status %}#}
+{#                    {% for vocab in status_vocab%}#}
+{#                        {% set vocab_uri = vocab[0] %}#}
+{#                        {% set vocab_label = vocab[1] %}#}
+{#                        <option value="{{ vocab_uri }}">#}
+{#                            {{vocab_label}}</option>#}
+{#                    {% endfor %}#}
+            </select>
+        </div>
+    </div>
+
+    {# Rights #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.rights{% endtrans %}</label>
+
+        <div class="controls">
+            <input id="resources_{{ type }}__template__rights" name="resources_{{ type }}__template__rights" type="text" value="" class="long js-resource-edit-rights"
+                   title=""/>
+        </div>
+    </div>
+
+
+    {# Byte Size #}
+    <div class="control-group">
+        <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.byte_size{% endtrans %}</label>
+
+        <div class="controls">
+            <input id="resources_{{ type }}__template__byte_size" name="resources_{{ type }}__template__byte_size" type="text" value="" class="long js-resource-edit-byte_size translatable-resource-field"
+                   title=""/>
+        </div>
+    </div>
+
+
+    {# Linked schema #}
+    <div class="control-group">
+        <label for="resources_{{ type }}__template__linked_schema" class="control-label" property="rdfs:label">{% trans %}ecodp.common.linked_schema{% endtrans %}</label>
+
+        <div class="controls">
+            <input id="resources_{{ type }}__template__linked_schema" name="resources_{{ type }}__template__linked_schema" type="text" value="" class="long js-resource-edit-linked_schema translatable-resource-field"
+                   title=""/>
+        </div>
+    </div>
+
+    {# Checksum #}
+    <div class="control-group">
+        <label for="resources_{{ type }}__template__checksum" class="control-label" property="rdfs:label">{% trans %}package.form_resource.checksum{% endtrans %}</label>
+        <div class="controls">
+            <input name="resources_{{ type }}__template__checksum" type="text" value=""/>
+        </div>
+    </div>
+
+    {% if type=="visualization" %}
+        <div class="control-group">
+            <label for="" class="control-label" property="rdfs:label">{% trans %}package.form_resource_templates.iframe_code{% endtrans %}</label>
+
+            <div class="controls">
+                <textarea name="{{ dataset_name }}resources_{{ type }}__template__iframe_code"
+                       id="{{ dataset_name }}resources_{{ type }}__template__iframe_code"
+                       class="js-resource-iframe-code markdown-input translatable-resource-field"></textarea>
+            </div>
+        </div>
+    {% endif %}
+
+     {# ODP Extension #}
+    <div class="control-group">
+        <label class="control-label">{% trans %}package.form_resource.extra_fields{% endtrans %}
+            <button class="btn btn-small add-resource-extra" type="button">{% trans %}package.form_resource.add_extra_fields{% endtrans %}</button>
+        </label>
+
+        <div class="controls">
+            <div class="dynamic-extras">
+            </div>
+        </div>
+        <button class="btn btn-danger resource-edit-delete js-resource-edit-delete">{% trans %}package.form_resource.delete_resource{% endtrans %}</button>
+    </div>
+</div>

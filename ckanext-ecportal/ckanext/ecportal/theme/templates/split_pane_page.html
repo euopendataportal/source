@@ -1,0 +1,158 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "base.html" %}
+
+{% block links -%}
+    {{ super() }}
+    <link rel="canonical" href="{{ h.url_for(h.current_url(), qualified=True, locale="en") }}"/>
+    <link rel="alternate" hreflang="{{ h.lang() }}" href="{{ h.full_current_url() }}"/>
+{% endblock -%}
+
+{%- block page -%}
+    <div name="top" class="opendata pageResizer" xmlns="http://www.w3.org/1999/html">
+        {%- block header %}
+            {% snippet "header.html", controller=c.controller, action=c.action, isHomePage=False %}
+        {% endblock -%}
+
+        {% block header_breadcrum %}
+            <div class="op-breadcrumb">
+                <a href="{{ h.url('home') }}">{% trans %}menu.tab.data{% endtrans %}</a>{% block breadcrumb_content %}{% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block menu %}
+            {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'home', action=c.action, controller=c.controller %}
+        {% endblock %}
+
+        {% block search_header %}
+            <div id="search-header"></div>
+        {% endblock %}
+
+        {% block flash %}
+			{% set flash_messages = h.flash.pop_messages() | list %}
+			<div class="flash-messages">
+				{% for message in flash_messages %}
+                    {% if h.literal(message) != _("Upload successful") %}
+                        {% set correct_message = h.correct_ATTO_message (h.literal(message)) %}
+                            <div class="alert fade in {{ message.category }}">
+                            <p> {{ correct_message }}</p>
+
+                            </div>
+
+                    {% endif %}
+
+				{% endfor %}
+			</div>
+		{% endblock %}
+
+        {%- block content %}
+            <div id="wrapper" class="ckan-content-wraper"
+                    {% if ('read' == c.action and 'package' == c.controller) or ('resource_read' == c.action and 'package' == c.controller) %} {% endif %}>
+                {% block pre_primary %}{% endblock %}
+
+                <div class="fluid-container ckan-content {% block share_button_padding %}{% endblock %}">
+                    <!-- page search-->
+                    {% block pre_page_heading %}
+                        {#<h1 class="pre_page_heading"></h1>#}
+                    {% endblock %}
+
+
+                    {% block intro %}
+                        <div class="row intro">
+                            <div class="col-xs-8 intro-left" >
+                                <!-- page search-->
+                                {% block page_search %}{% endblock %}
+                            </div>
+                            <div class="col-xs-4 intro-right">
+                                {% block page_search_right %}{% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                    {% block primary %}
+                        {% block content_action %}{% endblock %}
+                        {% if c.controller in'user, ckanext.ecportal.controllers.user:ECPortalUserController' and  c.action in 'read, edit' %}
+                            {% set user_read = True %}
+                            <article class="module" style="margin-top: 0px;">
+                            {% block page_header %}
+
+                            {% endblock %}
+                            <div id="manage_base_container" >
+                        {% else %}
+                            <div class="row">
+                        {% endif %}
+                    {% block primary_content %}
+
+
+
+                        {% block page_heading %}
+                            {#<h1 class="page_heading"></h1>#}
+                        {% endblock %}
+                        <!-- minor navigation ss-->
+                                {% block minor_navigation %}{% endblock %}
+                        <!-- content-->
+                        <div id="content" class="col-xs-8 content-left" >
+                            {% block primary_content_inner %}
+                                {% block content_heading %}{% endblock %}
+                                {% block filter_box %}{% endblock %}
+                                <content>
+                                    <p>Master content template placeholder &hellip; please replace me.</p>
+                                </content>
+                            {% endblock %}
+                        </div>
+
+                    {% endblock %}
+                        <div class="col-xs-4 content-right">
+
+                            {% block secondary_content %}
+                                <div id="sidebar">
+                                    <ul class="widget-list unstyled">
+                                        {% block primary_sidebar_extras %}{% endblock %}
+                                        {% block secondary_content_inner %}
+                                            {# was primarysidebar #}
+                                        {% endblock %}
+                                    </ul>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    </div>
+                    {% if user_read %}
+                        </article>
+                    {% endif %}
+                    {% endblock %}
+
+                {% block final_content %}{% endblock %}
+                </div>
+            </div>
+        {% endblock -%}
+
+
+
+        {%- block footer %}
+            {% include "footer.html" %}
+        {% endblock -%}
+
+    </div>
+{% endblock -%}
+
+{%- block scripts %}
+    {% if g.tracking_enabled %}
+        {% resource 'base/tracking.js' %}
+    {% endif %}
+    {{ super() }}
+{%- endblock -%}

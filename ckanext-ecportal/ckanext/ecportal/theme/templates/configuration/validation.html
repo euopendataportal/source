@@ -1,0 +1,128 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{%- block page -%}
+    <div name="top" class="opendata pageResizer">
+        {%- block header %}
+            {% snippet "header.html", controller=c.controller, action=c.action, isHomePage=False %}
+        {% endblock -%}
+
+        {% block breadcrumb_base %}
+         <script type="application/ld+json">
+         {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {{ h.load_breadcrumb_item_json_ld(1, _('ecodp.configuration.validation.title'), h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration', action='validationRules', qualified=True)) | safe }}
+            ]
+        }
+        </script>
+        {% endblock %}
+
+        {% block breadcrumb_content %}
+            <div class="op-breadcrumb">
+
+                <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',  action='validationRules') }}">{% trans %}ecodp.configuration.validation.title{% endtrans %}</a>
+
+            </div>
+        {% endblock %}
+
+        {% block menu %}
+            {% if h.is_metadatatool_plugin_activated() %}
+                {% block menu_snippet %}
+                    {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+                {% endblock %}
+            {% else %}
+                {% snippet "menu.html", user_log=c.user %}
+            {% endif %}
+        {% endblock %}
+
+        {% block search_header %}
+            {% if h.is_metadatatool_plugin_activated() %}
+
+            {% endif %}
+        {% endblock %}
+
+        {%- block content %}
+            <div id="wrapper" class="ckan-content-wraper">
+                <header class="fluid-container ckan-content {% block share_button_padding %}share_button_padding{% endblock %}">
+                    <ul class="nav nav-tabs" style="margin-top:16px">
+                        <li class="">
+                            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',
+                                        action='vocabularies') }}">{% trans %}ecodp.configuration.vocabularies.title{% endtrans %}</a>
+                        </li>
+                        <li class="active">
+                            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',
+                                        action='validationRules') }}">{% trans %}ecodp.configuration.validation.title{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </header>
+
+                <div>
+                    {% for group in c.groups %}
+                        <div class="ckan-vr-group">
+                            <div class="ckan-vr-title">
+                                <span>{% trans %}ecodp.configuration.validation.group{% endtrans %}</span>
+                                <span>{{ loop.index }}</span>
+                            </div>
+                            {% for id in group.keys() | sort %}
+                                {% set rule = group[id] %}
+                                <div class="ckan-vr-rule">
+                                    <div class="ckan-vr-title">
+                                        <span>{% trans %}ecodp.configuration.validation.rules{% endtrans %}</span>
+                                        <span>
+                                    #{{ rule.id }}
+                                    -
+                                    {{ _(rule.message) }}
+                                </span>
+                                    </div>
+                                    <div class="ckan-vr-description">
+                                        <span>{{ _(rule.title) }}</span>
+                                    </div>
+                                    <div class="ckan-vr-description">
+                                        <span>{% trans %}ecodp.configuration.validation.lastUpdated{% endtrans %}</span>
+                                        <span>{{ rule.lastUpdate.strftime('%d/%m/%Y %H:%M') }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endblock -%}
+
+        {% block final_content %}{% endblock %}
+
+        {%- block footer %}
+            {% include "footer.html" %}
+        {% endblock -%}
+
+    </div>
+{% endblock -%}
+
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+
+    {% if g.tracking_enabled %}
+        {% resource 'base/tracking.js' %}
+    {% endif %}
+    {{ super() }}
+{%- endblock -%}

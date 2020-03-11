@@ -1,0 +1,124 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "full_width_page.html" %}
+
+{%- block page -%}
+    <div name="top" class="opendata pageResizer">
+        {%- block header %}
+            {% snippet "header.html", controller=c.controller, action=c.action, isHomePage=False %}
+        {% endblock -%}
+
+        {% block breadcrumb_base %}
+         <script type="application/ld+json">
+         {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {{ h.load_breadcrumb_item_json_ld(1, _('ecodp.configuration.vocabularies.title'), h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration', action='vocabularies', qualified=True)) | safe }}
+            ]
+        }
+        </script>
+        {% endblock %}
+
+        {% block breadcrumb_content %}
+        {% endblock %}
+
+    {% block menu %}
+            {% snippet "rdft_menu.html", user_log=c.user, active_tab = 'dataProvider', action=c.action, controller=c.controller %}
+        {% endblock %}
+
+        {% block search_header %}
+            {% if h.is_metadatatool_plugin_activated() %}
+
+            {% endif %}
+        {% endblock %}
+
+        {%- block content %}
+
+            <div id="wrapper" class="ckan-content-wraper">
+                <div class="fluid-container ckan-content  {% block share_button_padding %}share_button_padding{% endblock %}">
+                    <ul class="nav nav-tabs" style="margin-top:16px">
+                        <li class="active">
+                            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',
+                                        action='vocabularies') }}">{% trans %}ecodp.configuration.vocabularies.title{% endtrans %}</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ h.url_for(controller='ckanext.ecportal.controllers.configuration:ECPORTALConfiguration',
+                                        action='validationRules') }}">{% trans %}ecodp.configuration.validation.title{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="ckan-content">
+                    <div>
+                        <table class="table table-striped table-bordered table-auto">
+                            <thead>
+                            <tr>
+                                <th>{% trans %}ecodp.configuration.vocabularies.nalName{% endtrans %}</th>
+                                <th>{% trans %}ecodp.configuration.vocabularies.nalURI{% endtrans %}</th>
+                                <th>{% trans %}ecodp.configuration.vocabularies.representation{% endtrans %}</th>
+                                <th>{% trans %}ecodp.configuration.vocabularies.lastUpdated{% endtrans %}</th>
+                            </tr>
+                            </thead>
+                            {% for nal in c.nals %}
+                                <tr>
+                                    <td>{{ nal.name }}</td>
+                                    <td>{{ nal.uri }}</td>
+                                    <td>{{ nal.representation }}</td>
+                                    <td>{{ nal.lastUpdated }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div style="display: none">
+                        <div>
+                            <span>{% trans %}ecodp.configuration.vocabularies.lastUpdate{% endtrans %}</span>
+                            <span>{{ c.lastUpdate }}</span>
+                        </div>
+                        <div>
+                            <span>{% trans %}ecodp.configuration.vocabularies.currentVersion{% endtrans %}</span>
+                            <span>{{ c.currentVersion }}</span>
+                        </div>
+                        <div>
+                            <span>{% trans %}ecodp.configuration.vocabularies.lastModified{% endtrans %}</span>
+                            <span>{{ c.lastModified }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock -%}
+
+        {% block final_content %}{% endblock %}
+
+        {%- block footer %}
+            {% include "footer.html" %}
+        {% endblock -%}
+
+    </div>
+{% endblock -%}
+
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+
+    {% if g.tracking_enabled %}
+        {% resource 'base/tracking.js' %}
+    {% endif %}
+    {{ super() }}
+{%- endblock -%}

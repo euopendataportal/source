@@ -1,0 +1,58 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if errors.get('warning') %}
+    <div class="alert alert-warning error-explanation" style="width: 92%;">
+        <h2>Warnings in Dataset</h2>
+
+        <p>The Dataset contains invalid entries:</p>
+        <ul>
+            {% for key, error in errors.get('warning').items() %}
+
+                <li>
+                    {% if key !='resources' %}
+                        {% set error = h.format_error_message(error) %}
+                        {{ "%s: %s" % (key if not key=='Name' else 'URL', error|join(", ")) }}
+                    {% else %}
+                        <ul>
+                            {% for name, errordict in errors.get('resources', []) %}
+                                {% if errordict %}
+                                    <li>
+                                        Resource {{ name }}:
+                                        <ul>
+                                            {% for thiskey, thiserror in errordict.items() %}
+                                                <li>
+                                                    {{ thiskey }}:
+                                                    {% for errorinfo in thiserror %}
+                                                        {% set errorinfo = h.format_error_message(errorinfo) %}
+                                                        {{ errorinfo }};
+                                                    {% endfor %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <script>var global_form_errors = {{h.dump_json(errors)}};</script>
+        </ul>
+    </div>
+{% endif %}

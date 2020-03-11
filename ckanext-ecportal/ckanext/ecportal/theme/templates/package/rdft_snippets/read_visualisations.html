@@ -1,0 +1,64 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block package_visualisations %}
+	{% if viz_resources %}
+		<div id="dataset-visualisations" class="table-box package-box resources">
+			<h2>
+				{% trans %}package.read_visualisations.title{% endtrans %}
+				{% if h.check_access('package_update', {'id':pkg.id }) %}
+					&nbsp;
+					<a href="{{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='update', id=pkg.name)}}">
+						{{ _('(edit)') }}
+					</a>
+				{% endif %}
+			</h2>
+			<div class="inner">
+				{% for res in viz_resources %}
+					<ul class="resource-list unstyled">
+						<li>
+                            {% set resource_lang =  h.get_langs_for_resource(res)%}
+                            {% if h.is_multi_languaged_resource(res)%}
+                            <select class="download-resource-lang">
+                                <option {% if h.current_locale() ==  h.fallback_locale()%} selected="selected" {% endif %} value="{{ h.get_english_resource_url(res) }}">{{ h.fallback_locale().language }}</option>
+                                {% for lang in resource_lang %}
+                                    <option {% if lang[0] ==  h.current_locale().language%} selected="selected" {% endif %} value="{{ h.get_translated_field(res, lang[0], 'url')[0] }}">{{ lang[0] }}</option>
+                                {% endfor %}
+                            </select>
+                            {% endif %}
+                            {% for url in res.get('download_url') %}
+                                <span class="buttons">
+                                    <a resource-id="{{res['id']}}" href="{{url}}" {% if res.iframe_code %} data-iframe="{{res['iframe_code']}}"  class="button-box visualisation-button-dataset" {% else %} class="button-box" {% endif %} >
+                                        <i class="icon graph"></i>
+                                        {% trans %}package.read_visualisations.button{% endtrans %}
+                                    </a>
+                                </span>
+                            {% endfor %}
+							<span class="context">
+								<a href="{{h.url_for(controller='package', action='resource_read', id=pkg.id, resource_id=res['id'])}}" class="name">
+									{{h.resource_display_name(res)}}
+								</a>
+							</span>
+						</li>
+					</ul>
+					<!-- "Virtual" entry point for the visualisation iframes -->
+				{% endfor %}
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}

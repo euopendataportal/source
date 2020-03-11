@@ -1,0 +1,513 @@
+
+msgid "ecodp.common.title"
+msgstr "Tile"
+
+
+
+
+
+msgid "ecodp.common.datasets.add"
+msgstr "Add Dataset"
+
+
+
+msgid "ecodp.common.button.delete"
+msgstr "Delete"
+
+msgid "ecodp.common.group"
+msgstr "Group"
+
+msgid "ecodp.common.groups"
+msgstr "Groups"
+
+msgid "ecodp.common.button.edit"
+msgstr "Edit"
+
+
+
+
+
+msgid "ecodp.common.tile.lable.name"
+msgstr "Name"
+
+
+
+
+
+
+
+msgid "ecodp.common.no_description"
+msgstr "No description"
+
+msgid "ecodp.common.custom_field"
+msgstr "Custom Field"
+
+
+msgid "ecodp.common.members"
+msgstr "Members"
+
+msgid "ecodp.common.button.view"
+msgstr "View"
+
+
+
+
+
+
+
+
+
+
+
+
+msgid "ecodp.common.manage"
+msgstr "Manage"
+
+msgid "ecodp.common.preview"
+msgstr "Preview"
+
+
+
+msgid "ecodp.common.id"
+msgstr "ID"
+
+msgid "ecodp.common.created"
+msgstr "Created"
+
+
+
+
+
+
+
+
+
+msgid "ecodp.common.cancel"
+msgstr "Cancel"
+
+msgid "ecodp.common.authorization"
+msgstr "Authorization"
+
+msgid "ecodp.common.save_changes"
+msgstr "Save Changes"
+
+
+
+
+
+
+
+
+# Duplicated EN translation
+msgid "ecodp.common.facet.eurovoc_domain"
+msgstr "EuroVoc domains"
+
+msgid "ecodp.common.facet.groups"
+msgstr "Groups"
+
+
+# Duplicated EN translation
+msgid "ecodp.common.facet.eurovoc_concepts"
+msgstr "EuroVoc concepts"
+
+
+
+
+
+
+# Duplicated EN translation
+msgid "ecodp.common.facet.language"
+msgstr "Language"
+
+
+
+msgid "group.group_form.name.placeholder"
+msgstr "My Group"
+
+msgid "group.group_form.url.placeholder"
+msgstr "my-group"
+
+msgid "group.group_form.description.placeholder"
+msgstr "A little information about the group..."
+
+msgid "group.group_form.custom_field"
+msgstr "Custom Field"
+
+msgid "group.group_form.delete.confirmation"
+msgstr "Are you sure you want to delete this Group?"
+
+msgid "group.group_form.button.save"
+msgstr "Save Group"
+
+msgid "group.group_item.dataset.singular"
+msgstr "{num} Dataset"
+
+msgid "group.group_item.dataset.plural"
+msgstr "{num} Datasets"
+
+msgid "group.group_item.name"
+msgstr "View {name}"
+
+msgid "group.group_item.remove.title"
+msgstr "Remove dataset from this group"
+
+msgid "group.group_item.remove.action"
+msgstr "Remove"
+
+msgid "group.info.followers"
+msgstr "Followers"
+
+msgid "group.edit.page_heading"
+msgstr "Edit Group"
+
+msgid "group.edit_base.button.view"
+msgstr "View"
+
+msgid "group.edit_base.icon.edit"
+msgstr "Edit"
+
+msgid "group.index.eurovoc.domains"
+msgstr "Eurovoc Domains"
+
+msgid "group.index.eurovoc.datasets"
+msgstr "datasets"
+
+msgid "group.index.empty.groups"
+msgstr "There are currently no groups"
+
+msgid "group.index.button.group.add"
+msgstr "Add Group"
+
+msgid "group.index.search.placeholder"
+msgstr "Search groups..."
+
+msgid "group.new.subtitle"
+msgstr "Add a group"
+
+msgid "group.new_group_form.update"
+msgstr "Update Group"
+
+msgid "group.new_group_form.add"
+msgstr "Add Group"
+
+msgid "group.read.base.activity_stream"
+msgstr "Activity Stream"
+
+msgid "home.index.subtitle"
+msgstr "Welcome"
+
+msgid "home.index.search.placeholder"
+msgstr "Find datasets..."
+
+msgid "home.index.search.view_all"
+msgstr "view all"
+
+msgid "home.index.search.most_viewed"
+msgstr "Most viewed datasets"
+
+msgid "home.index.datasets.available"
+msgstr "Total datasets available:"
+
+msgid "home.index.datasets.recently.updates"
+msgstr "Recently updated datasets"
+
+msgid "home.index.datasets.browse.subject"
+msgstr "Browse datasets by subject or groups"
+
+msgid "home.index.datasets.more.subjects"
+msgstr "more subjects"
+
+msgid "home.index.datasets.fewer.subjects"
+msgstr "fewer subjects"
+
+msgid "home.index.datasets.popular_terms"
+msgstr "Popular terms"
+
+msgid "home.index.datasets.top_publishers"
+msgstr "Top Publishers"
+
+msgid "home.index.datasets.inner.lable"
+msgstr "datasets"
+
+msgid "organization.organization_form.title.placeholder"
+msgstr "My Publisher"
+
+msgid "organization.organization_form.url.placeholder"
+msgstr "my-publisher"
+
+msgid "organization.organization_form.description.placeholder"
+msgstr "A little information about the publisher..."
+
+msgid "organization.organization_form.delete.question"
+msgstr "Are you sure you want to delete this Publisher? This will delete all the public and private datasets belonging to this publisher."
+
+msgid "organization.organization_form.button.safe"
+msgstr "Save Publisher"
+
+msgid "organization.edit.page_heading"
+msgstr "Edit Publisher"
+
+msgid "organization.index.subtitle.publisher"
+msgstr "Publishers"
+
+msgid "organization.new.title.publisher"
+msgstr "Add a Publisher"
+
+msgid "organization.new_organization_form.update_publisher"
+msgstr "Update Publisher"
+
+msgid "organization.new_organization_form.add_publisher"
+msgstr "Add Publisher"
+
+msgid "organization.read.search.placeholder"
+msgstr "Search for datasets within"
+
+msgid "package.form_basic_information.title.placeholder"
+msgstr "A short descriptive title for the dataset"
+
+msgid "package.form_basic_information.description.placeholder"
+msgstr "The main description of the dataset ..."
+
+msgid "package.form_resource.format.placeholder"
+msgstr "e.g. csv, html, xls, rdf, ..."
+
+msgid "package.form_resource.mimetype"
+msgstr "Mimetype"
+
+msgid "package.form_resource.mimetype.placeholder"
+msgstr "Mimetype"
+
+msgid "package.form_resource.resource_type"
+msgstr "Resource Type"
+
+msgid "package.form_resource.file_upload.success"
+msgstr "Data File (Uploaded)"
+
+msgid "package.form_resource.last_modified"
+msgstr "Last Modified"
+
+msgid "package.form_resource.last_modified.hint"
+msgstr "Dates are in "
+
+msgid "package.form_resource.size"
+msgstr "Size (Bytes)"
+
+msgid "package.form_resource.hash"
+msgstr "Hash"
+
+msgid "package.form_resource.extra_fields"
+msgstr "Extra Fields"
+
+msgid "package.form_resource.add_extra_fields"
+msgstr "Add Extra Field"
+
+msgid "package.form_resource.delete_resource"
+msgstr "Delete Resource"
+
+msgid "package.form_resource_templates.created"
+msgstr "Created"
+
+msgid "package.read_contact.contact"
+msgstr "Contact"
+
+
+
+msgid "package.read_dataset_info.status"
+msgstr "Status"
+
+msgid "package.read_dataset_info.identifier"
+msgstr "Identifier"
+
+msgid "package.read_dataset_info.interoperability"
+msgstr "Interoperability Level"
+
+msgid "package.read_dataset_info.dataset_type"
+msgstr "Type of Dataset"
+
+msgid "package.read_dataset_info.release_date"
+msgstr "Release Date"
+
+msgid "package.read_dataset_info.modified_date"
+msgstr "Modified Date"
+
+
+
+msgid "package.read_dataset_temporal_coverage.from"
+msgstr "Temporal Coverage From"
+
+msgid "package.read_dataset_temporal_coverage.to"
+msgstr "Temporal Coverage To"
+
+msgid "package.read_dataset_temporal_granularity"
+msgstr "Temporal Granularity"
+
+msgid "package.read_dataset.geographical_coverage"
+msgstr "Geographical Coverage"
+
+msgid "package.read_dataset.metadata_language"
+msgstr "Metadata language"
+
+msgid "package.read_dataset.version_description"
+msgstr "Version Description"
+
+msgid "package.read_dataset.country"
+msgstr "Country"
+
+msgid "package.read_documentation.documentation"
+msgstr "Documentation"
+
+msgid "package.read_resources.resource"
+msgstr "Resources"
+
+msgid "package.read_visualisations.title"
+msgstr "Visualisations"
+
+msgid "package.read_visualisations.button"
+msgstr "Visualise"
+
+msgid "package.base.edit.hint"
+msgstr "Online editing is disabled for imported datasets."
+
+msgid "package.base.edit.button"
+msgstr "Add / Edit resources"
+
+msgid "package.edit.block"
+msgstr "- Edit - Datasets"
+
+msgid "package.editresource.block"
+msgstr "- Edit Resources - Datasets"
+
+msgid "package.editresource.breadcrumb"
+msgstr "Edit resources"
+
+msgid "package.new.title"
+msgstr "Add - Dataset"
+
+msgid "package.new.breadcrumb"
+msgstr "Add a dataset"
+
+msgid "package.read.deleted_hint"
+msgstr "This dataset has been marked as deleted."
+
+msgid "package.read.keywords"
+msgstr "Keywords"
+
+msgid "package.read.dataset_relations"
+msgstr "Related Datasets"
+
+msgid "package.read.catalogue_record.title"
+msgstr "Catalogue  record"
+
+
+
+msgid "package.read.catalogue_record.updated"
+msgstr "Updated on open-data.europa.eu"
+
+msgid "package.read.eurostat.title"
+msgstr "Widget Eurostat"
+
+
+
+msgid "package.resource_read.back2datasets"
+msgstr "Back to dataset"
+
+msgid "package.resource_read.datapreview"
+msgstr "Data preview"
+
+msgid "package.resource_read.unknown"
+msgstr "Unknown"
+
+msgid "revision.diff.title"
+msgstr "Differences"
+
+msgid "revision.diff.rev_diff"
+msgstr "Revision Differences"
+
+msgid "revision.diff.no_diff"
+msgstr "No Differences"
+
+msgid "revision.list.title"
+msgstr "Revision History"
+
+msgid "revision.list.revisions"
+msgstr "Revisions"
+
+msgid "revision.read.revision"
+msgstr "Revision"
+
+msgid "revision.read.undelete"
+msgstr "Undelete"
+
+msgid "revision.read.author"
+msgstr "Author"
+
+msgid "revision.read.timestamp"
+msgstr "Timestamp"
+
+msgid "revision.read.log_message"
+msgstr "Log Message"
+
+msgid "revision.read.changes"
+msgstr "Changes"
+
+msgid "revision.read.datasets_tags"
+msgstr "Datasets/ Tags"
+
+msgid "survey.link.label"
+msgstr "Did you find what you where looking for?"
+
+msgid "ecodp.common.data_preview"
+msgstr "Your browser does not support iframes."
+
+
+msgid "snippets.boolean_search.show_results"
+msgstr "Show results with"
+
+
+
+
+
+msgid "snippets.boolean_search.exact_phrase"
+msgstr "the exact phrase"
+
+msgid "snippets.boolean_search.how_search_work"
+msgstr "How does the search functionality work?"
+
+msgid "snippets.search_form.search_dataset"
+msgstr "Search datasets..."
+
+msgid "snippets.filter_box.sort_by"
+msgstr "Sort by:"
+
+msgid "snippets.suggest_box.title"
+msgstr "Suggest a dataset"
+
+msgid "snippets.suggest_box.question"
+msgstr "Is there a dataset from the EU that you could not find in this portal?"
+
+msgid "snippets.suggest_box.task"
+msgstr "Please request the dataset"
+
+msgid "package.form_resource.new_resource"
+msgstr "New resource..."
+
+msgid "package.form_resource.link2file"
+msgstr "Link to a file"
+
+msgid "package.form_resource.link2api"
+msgstr "Link to an API"
+
+msgid "package.form_resource.upload_file"
+msgstr "Upload a file"
+
+msgid "package.form_resource.upload_button"
+msgstr "Upload"
+
+msgid "package.form_resource.file_url"
+msgstr "File URL"
+
+msgid "package.form_resource.api_url"
+msgstr "API URL"
+
+msgid "package.form_resource.add"
+msgstr "Add"

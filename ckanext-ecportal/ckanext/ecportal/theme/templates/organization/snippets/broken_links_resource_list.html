@@ -1,0 +1,7 @@
+{% block resources %}
+    <ul>
+        {% for link in dataset['links'] %}
+            <li><a href="{{ link[0] }}">{{ link[1] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

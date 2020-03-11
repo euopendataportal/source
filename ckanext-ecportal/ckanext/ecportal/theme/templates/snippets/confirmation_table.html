@@ -1,0 +1,58 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{#
+ Parameters:
+    datasets
+    table_id
+    is_selectable
+
+ #}
+
+<table id="{{ table_id }}" class="tablesorter">
+    <thead>
+    <tr class="headers-without-height">
+        <th>{% trans %}ecodp.select.dataset.column.title{% endtrans %}</th>
+        <th>{% trans %}ecodp.select.dataset.column.uri{% endtrans %}</th>
+        <th>{% trans %}ecodp.select.dataset.column.published{% endtrans %}</th>
+        {% if is_selectable %}
+            <th>{% trans %}ecodp.select.dataset.column.selected{% endtrans %}</th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for dataset in datasets %}
+        <tr>
+            <td>{{ dataset.title }}</td>
+            <td>
+                <a href="{{ dataset.url }}">{{ dataset.url }}</a>
+            </td>
+            {# This value is not in the package_show or in the json files.
+             It must be constructed with the label from the owner_org in the controller #}
+            <td>{{ dataset.publisher }}</td>
+            {% if is_selectable %}
+                <td class="align-center">
+                    <input class="checkbox_datasets" name="selected_dataset[]" value="{{ loop.index0 }}"
+                           type="checkbox">
+                </td>
+            {% endif %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

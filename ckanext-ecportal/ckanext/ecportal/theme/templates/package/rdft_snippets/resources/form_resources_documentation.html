@@ -1,0 +1,266 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set langs =  h.get_available_locales()%}
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+    {% set resource_id = 'dataset-'+index|string+'-documentation' %}
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+    {% set resource_id = 'resource' %}
+{% endif %}
+<div id="tabs-documentation{{ underscore_index }}" class="resource-tab" data-type="documentation">
+    <div id="{{ dataset_id }}resources-list-anchor"></div>
+    <ul>
+           <li><a data-resource="documentation" href="#tabs-1{{ underscore_index }}">{% trans %}package.form_resource.documentation{% endtrans %} (
+        <div class="inline-display" id="documentation-resource-number{{ underscore_index }}"></div>
+        )</a></li>
+    </ul>
+    <div>
+        {% snippet "package/rdft_snippets/resources/form_resources_list.html", type="documentation", data=data, index=index %}
+
+        <ul class="resource-list resource-list-add">
+            <li>
+                <a href="#" class="js-resource-add" data-type="documentation">
+                    {{ h.icon('page_white_add') }}
+                    {% trans %}package.form_resource.new_resource{% endtrans %}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="span8">
+        <div class="resource-panel" id="main-resource-panel_documentation{{ underscore_index }}">
+            {% for res in data.get('resources', []) %}
+                {% set resource_type = h.resources_type_name_from_resource_type(res.resource_type or []) %}
+                {% if resource_type == "documentation" %}
+                    {% set res_loop = loop %}
+                    <div id="{{ dataset_id }}resource_details_documentation_{{ loop.index0 }}" data-resnumber="{{ loop.index0 }}"
+                         class="resource-details_documentation" {{ 'style=display:none' if not(loop.first) }}>
+                        <div class="flash-messages">
+    {#                                <div class="alert alert-error resource-errors">error</div>#}
+                        </div>
+                        {# ID #} {# Resource type #}
+                        <div class="control-group">
+                            <div class="grouped-labels">
+                                <label for="" class="control-label grouped-label" property="rdfs:label">{% trans %}ecodp.common.id{% endtrans %}</label>
+                                <label for="" class="control-label grouped-label right-label-resource" property="rdfs:label">
+                                    <span
+                                        class="field_required grouped-label">&#9733;</span>{% trans %}package.form_resource.resource_type{% endtrans %}</label>
+                            </div>
+                            <div class="controls">
+                                {# 'readonly' because disabled would exclude it from the form #}
+                                <input type="text" name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__id" readonly value="{{ res.id }}"
+                                       class="disabled half-input-resource"/>
+
+                                {# Resource type #}
+                                <select name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__resource_type"
+                                        class="short half-input-resource-right"
+                                        style="width: 260px !important; margin-left: 55px;">
+
+
+                                    {% set resource_type = h.resources_type_list_from_resource_type(res.resource_type or []) %}
+
+                                    {% for res_type in resource_type %}
+                                        <option value="{{res_type[0]}}" {{'selected="selected"' if res.resource_type == res_type[0]}}>{{res_type[1]}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="resource-frame">
+                            <div style="display:none" class="res-number"></div>
+                            {% if loop.index0 %}
+                                {% set underscore_loop0 = '_'+loop.index0|string %}
+                            {% endif %}
+                            <div id="{{ dataset_id }}resource-languages" class="resource-languages-bar">
+                                {% for locale in langs %}
+                                    {% if locale != langs[-1] %}
+                                        <a id="{{ dataset_id }}resource-lang-{{ locale }}_documentation-{{ res_loop.index0 }}"
+                                           class="{{ dataset_id }}resource-lang">{{ locale }}</a> |
+                                    {% else %}
+                                        <a id="{{ dataset_id }}resource-lang-{{ locale }}_documentation-{{ res_loop.index0 }}"
+                                           class="{{ dataset_id }}resource-lang">{{ locale }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+
+                            {# Title #}
+                            <div class="control-group">
+                                <label for="" class="control-label" property="rdfs:label"><span
+                                        class="field_required">&#9733;</span>{% trans %}ecodp.common.title{% endtrans %}</label>
+
+                                <div class="controls" property="rdf:value">
+                                    <input id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__title" class="js-resource-edit-title-field translatable-resource-field"
+                                           name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__title" type="text" value="{{ res.title }}" class="long"/>
+                                    {% for locale in langs %}
+                                        {% if res.get(['title-',locale]|join, []) %}
+                                            <input id="{{ dataset_id }}resources_documentation__{{ res_loop.index0 }}__title-{{ locale }}" class="js-resource-edit-title-field translatable-resource-field"
+                                           name="{{ dataset_name }}resources_documentation__{{ res_loop.index0 }}__title-{{ locale }}" type="text" value="{{ res.get(['title-',locale]|join, '') }}" class="long" style="display: none"/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            {# Description #}
+                            <div class="control-group">
+                                <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.common.description{% endtrans %}</label>
+
+                                <div class="controls">
+                                    <div class="markdown-editor">
+                                        <div>
+                                            <br/><textarea id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__description"
+                                                           class="js-resource-edit-description markdown-input translatable-resource-field"
+                                                           name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__description">{{ res.description }}</textarea>
+                                                {% for locale in langs %}
+                                                {% if res.get(['description-',locale]|join, []) %}
+                                                    <textarea id="{{ dataset_id }}resources_documentation__{{ res_loop.index0 }}__description-{{ locale }}" style="display: none"
+                                                           class="js-resource-edit-description markdown-input translatable-resource-field"
+                                                           name="{{ dataset_name }}resources_documentation__{{ res_loop.index0 }}__description-{{ locale }}">{{ res.get(['description-',locale]|join, '') }}</textarea>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    <span class="hints">You can use <a
+                                            href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown
+                                        formatting</a> here.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# File upload #}
+                            {% if  index is not defined%}
+                            <div class="tab-pane" id="upload-file">
+                                <div class="js-add-upload-form">
+                                    <div class="fileupload">
+                                        <input id="{{ dataset_id }}file_documentation__{{ loop.index0 }}__" type="file" name="{{ dataset_name }}file_documentation__{{ loop.index0 }}__"
+                                               class="file-upload">
+                                        <br>
+
+                                        <div class="fileinfo"></div>
+                                        <input name="{{ dataset_name }}add-resource-upload" type="button"
+                                               class="upload btn btn-primary"
+                                               value="{% trans %}package.form_resource.upload_button{% endtrans %}"
+                                               action="{{ h.url_for(controller='ckan.controllers.storage:StorageController', action='upload_handle') }}">
+
+                                        <div class="alert alert-block success alert-info"
+                                             style="display: none;"></div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-block" style="display: none;"></div>
+                            </div>
+                            {% endif %}
+                             {# URL #}
+                            <div class="control-group">
+                                <label for="" class="control-label" property="rdfs:label"><span
+                                        class="field_required">&#9733;</span>{% trans %}ecodp.common.url{% endtrans %}</label>
+
+                                <div class="controls">
+                                    <input id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__url" name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__url" type="text" value="{{ res.access_url|join(", ") }}" class="long js-resource-edit-url translatable-resource-field"
+                                           title=""/>
+
+                                    {% for locale in langs %}
+                                        {% if res.get(['url-',locale]|join, []) %}
+                                            <input id="{{ dataset_id }}resources_documentation__{{ res_loop.index0 }}__url-{{ locale }}" name="{{ dataset_name }}resources_documentation__{{ res_loop.index0 }}__url-{{ locale }}" type="text" value="{{ res.get(['url-',locale]|join, '') }}" class="long js-resource-edit-url translatable-resource-field"
+                                           title="" style="display: none"/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            {# topic #}
+                            <div class="control-group">
+                                <label for="" class="control-label" property="rdfs:label">{% trans %}ecodp.document.topic{% endtrans %}</label>
+
+                                <div class="controls">
+                                    <input id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__topic"
+                                           name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__topic" type="text" value="{% for topic in res.topic %}{{ topic }}{% if not loop.last%} {% endif %}{% endfor %}" class="long js-resource-edit-topic"
+                                           title="" readonly="readonly"/>
+                                </div>
+                            </div>
+
+                            {# Format #}
+                            <div class="control-group">
+                                <label for="" class="control-label" property="rdfs:label"><span
+                                        class="field_required">&#9733;</span>{% trans %}ecodp.common.format{% endtrans %}&nbsp;&nbsp;
+                                    <img class="js-resource-icon inline-icon resource-icon"
+                                         src="{{ h.url_for_static('images/icons/page_white.png') }}"/>
+                                </label>
+
+                                <div class="controls">
+                                    <select id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__format"
+                                            style="width:22.4em" name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__format"
+                                            class="long js-resource-edit-format"
+                                            placeholder="{% trans %}e.g. csv, html, xls, rdf, ...{% endtrans %}">
+                                        {% for format in h.get_all_formats() %}
+                                            {% if res.format == format.get("uri") %}
+                                                <option value="{{format.get("uri")}}" selected="selected">{{format.get("label")}}</option>
+                                            {% else %}
+                                                <option value="{{format.get("uri")}}">{{format.get("label")}}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            {# Language#}
+                            <div class="control-group">
+                                <label class="control-label" for="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__language">
+                                    {% trans %}ecodp.rdft.dataset_edit.language{% endtrans %}
+                                </label>
+                                <div class="controls">
+                                    <select id="{{ dataset_id }}resources_documentation__{{ loop.index0 }}__language" class="chzn-select"
+                                        name="{{ dataset_name }}resources_documentation__{{ loop.index0 }}__language"
+                                        class="long js-resource-edit-language"
+                                        multiple="multiple" style="width: 30em;">
+                                        {% for language in c.languages %}
+                                            {% if language['uri'] in res.get('languages', []) %}
+                                                <option selected="selected" value="{{language['uri']}}">{{language['label']}}</option>
+                                            {% else %}
+                                                <option value="{{language['uri']}}">{{language['label']}}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <div class="dynamic-extras">
+                                </div>
+                            </div>
+                            <button class="btn btn-danger resource-edit-delete js-resource-edit-delete">{% trans %}package.form_resource.delete_documentation{% endtrans %}</button>
+                        </div>
+
+
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="list-resource-documentation{{ underscore_index }}" style="display: none">
+        {% for res_type in c.resources_types_documentation %}
+            <div>{{res_type[0]}}|{{res_type[1]}}</div>
+        {% endfor %}
+    </div>
+    {% snippet 'package/rdft_snippets/resources/form_resources_templates_documentation.html', resources_types=data.resources_types, index=index %}
+</div>

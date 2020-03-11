@@ -1,0 +1,52 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% set action_url = h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='import_selected_dataset_in_zip') %}
+
+<div id="zip-datasets-upload" style="display: none">
+
+    {% trans %}ecodp.select.dataset.import{% endtrans %}
+
+    {# {% snippet "snippets/confirmation_table.html", datasets=datasets, table_id='import-dataset-table', is_selectable=true %}  #}
+    <div id="container-table-import">
+
+    </div>
+{#    <table id="import-dataset-table" class="tablesorter">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.title{% endtrans %}</th>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.name{% endtrans %}</th>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.uri{% endtrans %}</th>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.published{% endtrans %}</th>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.status{% endtrans %}</th>#}
+{#            <th>{% trans %}ecodp.select.dataset.column.selected{% endtrans %}</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        </tbody>#}
+{#    </table>#}
+
+    <input name="cancel-dataset-upload" type="button" class="btn btn-primary" id="cancel-dataset-upload"
+           value="{% trans %}ecodp.common.cancel{% endtrans %}"/>
+
+
+    <input name="validate-dataset-upload" type="button" class="btn btn-primary" id="validate-dataset-upload"
+           action="{{ action_url }}"
+           value="{% trans %}ecodp.common.import{% endtrans %}"/>
+
+</div>

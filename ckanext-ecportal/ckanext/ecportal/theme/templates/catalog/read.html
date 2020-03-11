@@ -1,0 +1,78 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "split_pane_page.html" %}
+
+{% block scripts %}
+    {{ super() }}
+    {% resource 'ecportal/rdft_ecportal' %}
+{% endblock %}
+
+{% block breadcrumb_items %},
+            {{ h.load_breadcrumb_item_json_ld(2, _('ecodp.common.catalog'), h.url_for(controller=c.controller, action='dashboard_catalogs', qualified=True)) | safe }},
+            {{ h.load_breadcrumb_item_json_ld(3, c.catalog_dict.title, h.url_for(controller=c.controller, action='read', id=c.id, qualified=True)) | safe }}
+{% endblock %}
+
+{% block breadcrumb_content %}
+	<a href="{{h.url_for(controller=c.controller, action='dashboard_catalogs')}}">{% trans %}ecodp.common.catalog{% endtrans %}</a>
+	<a href="{{h.url_for(controller=c.controller, action='read', id=c.id )}}">{{ c.catalog_dict.title }}</a>
+{% endblock %}
+
+<!-- Subtitle in thumbnail -->
+{% block subtitle %}{{ c.catalog_dict.title }}{% endblock %}
+
+<!-- Share button - Search box - Suggestion box -->
+{% block share_button_padding %}share_button_padding{% endblock %}
+
+{% block page_search %}
+	{% snippet 'snippets/page_search.html', query=c.q, fields=c.fields, controller=c.controller %}
+{% endblock %}
+
+{% block page_search_right %}
+	{% snippet "snippets/suggest_box.html" %}
+{% endblock %}
+
+<!-- Content -->
+{% block primary_content_inner %}
+    {% block split_catalog_details %}
+        {% snippet "catalog/snippets/catalog_details.html", controller=c.controller, id=c.id, catalog=c.catalog_dict, num_has_part_catalog = c.NUM_HAS_PART_CATALOG %}
+    {% endblock %}
+
+    {% block filter_box %}
+        {% snippet 'snippets/filter_box.html', fields=c.fields, facet_titles=c.facet_titles, label_source=c.search_facets, dataset_count=c.page.item_count, sort_by_selected=c.sort_by_selected, remove_field=c.remove_field, sorting=sorting %}
+	{% endblock %}
+
+    {% block package_search_results_list %}
+        {% snippet 'snippets/package_list.html', packages=c.page.items %}
+    {% endblock %}
+
+    {% block page_pagination %}
+        {{ c.page.pager(q=c.q) }}
+    {% endblock %}
+{% endblock %}
+
+<!-- Facets -->
+{% block secondary_content_inner %}
+    {% if c.catalog_dict.doi %}
+        {% snippet "catalog/snippets/read_citation.html", catalog=c.catalog_dict, id=c.id %}
+    {% endif %}
+
+    {% for facet in c.facet_titles %}
+        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, group_read=True, controller=c.controller, domain=c.id) }}
+    {% endfor %}
+{% endblock %}

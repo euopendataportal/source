@@ -1,0 +1,70 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if errors.get('error') or  errors.get('fatal')%}
+    <div class="alert alert-error error-explanation" style="width: 92%;">
+        <h2>Errors in Dataset</h2>
+
+        <p>The Dataset contains invalid entries:</p>
+        {% set result = h.merge_error_dicts(errors.get('error',{}),errors.get('fatal', {}) ) or {} %}
+
+        <ul>
+            {% for key, error in result.items() %}
+                <li>
+                    {% if key !='resources' %}
+                        {% set error = h.format_error_message(error) %}
+                        {{ "%s: %s" % (key if not key=='Name' else 'URL', error|join(", ")) }}
+                    {% else %}
+                        <ul>
+                            {% for errordict in error %}
+
+                                <li>
+                                    Resource "{{errordict.uri }}":
+                                {% for prop,  prop_list in errordict.items() %}
+                                    <ul>
+
+                                        {% if prop != 'uri' %}
+                                            {% for thiserror in prop_list %}
+                                                <li>
+                                                    {{ prop }}:
+
+                                                        {% set errorinfo = h.format_error_message(thiserror) %}
+                                                        {{ errorinfo }};
+
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                    {% endfor %}
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <script>var global_form_errors = {{h.dump_json(errors)}};</script>
+        </ul>
+    </div>
+{% endif %}
+
+{% if errors and not errors.get('error') and not errors.get('fatal') and not errors.get('warning') %}
+    <div class="alert alert-success" style="width: 92%;">
+        <h2>{% trans %}validation.ds.valid{% endtrans %}</h2>
+    </div>
+{% endif %}

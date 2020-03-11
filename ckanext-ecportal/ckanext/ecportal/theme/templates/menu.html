@@ -1,0 +1,45 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block header_menu_tabs %}
+	<div class="menu">
+		<div class="region region-menu">
+			<ul class="menu">
+				<li class="first leaf"><a href="{{h.url('home')}}" class="active">{% trans %}menu.tab.data{% endtrans %}</a></li>
+				<li class="leaf"><a href="{{h.getExternalLinkURL()}}apps">{% trans %}menu.tab.applications{% endtrans %}</a></li>
+				<li class="leaf"><a href="{{h.getExternalLinkURL()}}linked-data">{% trans %}menu.tab.linked_data{% endtrans %}</a></li>
+				<li class="leaf"><a href="{{h.getExternalLinkURL()}}developerscorner">{% trans %}menu.tab.developers_corner{% endtrans %}</a></li>
+				<li class="last leaf"><a href="{{h.getExternalLinkURL()}}about">{% trans %}menu.tab.about{% endtrans %}</a></li>
+			</ul>
+			{% if h.current_locale()=='en' %}
+				<div class="account">
+					<span class="ckan-logged-in" {% if not user_log %}style="display:none;"{% endif %}>
+                        <a href="{{h.url_for(controller='user',action='dashboard_datasets')}}">{% trans %}menu.link.dashboard{% endtrans %}</a>
+						<span style="color:#e4ebf0">&nbsp;|&nbsp;</span>
+						<a href="{{h.url_for(controller='user',action='read',id=user_log)}}">{% trans %}menu.link.profile{% endtrans %}</a>
+						<span style="color:#e4ebf0">&nbsp;|&nbsp;</span>
+						<a href="{{h.url_for(controller='user',action='logout')}}">{% trans %}menu.link.logout{% endtrans %}</a>
+					</span>
+					<span class="ckan-logged-out" {% if user_log %}style="display:none;"{% endif %}>
+						<a href="{{h.url_for(controller='user',action='login')}}">{% trans %}menu.link.dataproviders_area{% endtrans %}</a>
+					</span>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

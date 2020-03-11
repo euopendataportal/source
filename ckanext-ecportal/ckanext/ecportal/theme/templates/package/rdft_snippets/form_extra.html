@@ -1,0 +1,95 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% if index is defined %}
+    {% set underscore_index = '_'+index|string %}
+    {% set dataset_id = 'dataset_'+index|string+'-' %}
+    {% set dataset_name = 'dataset__'+index|string+'__' %}
+
+{% else %}
+    {% set underscore_index = '' %}
+    {% set dataset_id = '' %}
+    {% set dataset_name = '' %}
+{% endif %}
+<fieldset id="{{ dataset_id }}extras">
+
+    <div id="{{ dataset_id }}extra_fields_all_groups">
+        <legend>Extra metadata</legend>
+{#        {% set extras = c.additional_extras %}#}
+        {% for extra in extras %}
+            {% set num = loop.index0 %}
+            <div class="control-group extra_fields_group" data-num="{{ num }}">
+
+                <div class="extra-group" id="{{ dataset_id }}extra-group-key-{{ num }}">
+                    <label class="control-label extra"
+                           for="extras__{{ num }}__key">{% trans %}common.dataset_edit.extra_key{% endtrans %}</label>
+
+                    <div class="controls extra">
+                        <input class="extra" id="{{ dataset_id }}extras__{{ num }}__key"
+                               name="{{ dataset_name }}extras__{{ num }}__key"
+                               type="text" value="{{ extra.key }}"/>
+                    </div>
+                </div>
+                <div class="extra-group" id="{{ dataset_id }}extra-group-value-{{ num }}">
+                    <label class="control-label extra"
+                           for="extras__{{ num }}__value">{% trans %}common.dataset_edit.extra_value{% endtrans %}</label>
+
+                    <div class="controls extra">
+                        <input class="extra" id="{{ dataset_id }}extras__{{ num }}__value"
+                               name="{{ dataset_name }}extras__{{ num }}__value"
+                               type="text" value="{{ extra.value }}"/>
+                    </div>
+                </div>
+                {% if bulk_edition and data.get('extras_box', False) %}
+                    {% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+                <button class="btn btn-danger remove-extra">X</button>
+            </div>
+        {% endfor %}
+
+        {% if not extras %}
+            <div class="control-group extra_fields_group" data-num="0">
+
+                <div class="extra-group" id="{{ dataset_id }}extra-group-key-0">
+                    <label class="control-label extra" for="extras__0__key">{% trans %}common.dataset_edit.extra_key{% endtrans %}</label>
+                    <div class="controls extra">
+                        <input class="extra" id="{{ dataset_id }}extras__0__key" name="{{ dataset_name }}extras__0__key"
+                               type="text"/>
+                    </div>
+                </div>
+
+                <div class="extra-group" id="{{ dataset_id }}extra-group-value-0">
+                    <label class="control-label extra" for="extras__0__value">{% trans %}common.dataset_edit.extra_value{% endtrans %}</label>
+                    <div class="controls extra">
+                        <input class="extra" id="{{ dataset_id }}extras__0__value"
+                               name="{{ dataset_name }}extras__0__value" type="text"/>
+                    </div>
+                </div>
+                {% if bulk_edition and data.get('extras_box', False) %}
+                    {% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+                <button class="btn btn-danger remove-extra">X</button>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="add_extra_fields">
+        <input class="btn btn-primary" type="button" id="{{ dataset_id }}extra-add" value="Add extra field"/><br/>
+    </div>
+
+    {% snippet 'package/rdft_snippets/form_extra_templates.html' %}
+
+</fieldset>

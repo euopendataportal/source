@@ -1,0 +1,113 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% import 'macros/form.html' as form %}
+
+{% set action = c.action %}
+{% set add_import = (c.action=='new') %}
+
+{% if add_import %}
+    {% block scripts %}
+        {% resource 'ecportal/ecportal_manage_upload' %}
+    {% endblock %}
+{% endif %}
+
+<div id="tabs-creation">
+
+
+    <div id="tab-creation-manual">
+        <form class="form-horizontal overflow-visible{{ ' has-errors' if errors else '' }}"
+              method="post" id="dataset-edit"
+              action="{% if add_import %}
+                {{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='new')}}
+              {% else %}
+                {{ h.url_for(controller='ckanext.ecportal.controllers.package:ECPORTALPackageController', action='update', id=c.pkg_dict.id) }}
+              {% endif %}">
+
+            {% snippet "package/rdft_snippets/form_errors.html", errors=errors %}
+            {% snippet "package/rdft_snippets/form_warnings.html", errors=errors %}
+
+{#            {% include "package/rdft_snippets/form_basic_information.html" %}#}
+{##}
+{#            {% include "package/rdft_snippets/form_eurovoc.html" %}#}
+{##}
+{#            {% include "package/rdft_snippets/form_keywords.html" %}#}
+{##}
+{#            {% include "package/rdft_snippets/form_informations.html" %}#}
+{##}
+{#            {% include "package/rdft_snippets/form_further_information.html" %}#}
+{##}
+{#            {% include "package/rdft_snippets/form_contact_information.html" %}#}
+{##}
+{#            <hr style="border-bottom: 1px solid #aaa;"/>#}
+{##}
+{#            {% include "package/rdft_snippets/form_extra.html" %}#}
+{##}
+{#            <hr style="border-bottom: 1px solid #aaa;"/>#}
+{#            {% include "package/rdft_snippets/resources/form_resources.html" %}#}
+
+
+            <div id="creation-dataset-form">
+              <ul>
+                <li><a href="#mandatory-parameters">{% trans %}ecodp.rdft.dataset_edit.mandatory{% endtrans %}</a></li>
+                <li><a href="#recommended-parameters">{% trans %}ecodp.rdft.dataset_edit.recommended{% endtrans %}</a></li>
+                <li><a href="#optional-parameters">{% trans %}ecodp.rdft.dataset_edit.optional{% endtrans %}</a></li>
+                <li><a href="#resources-parameters">{% trans %}ecodp.rdft.dataset_edit.resources{% endtrans %}</a></li>
+              </ul>
+
+
+                      <div id="mandatory-parameters">
+                          {% include "package/rdft_snippets/form_mandatory_fields.html" %}
+                      </div>
+                      <div id="recommended-parameters">
+                        {% include "package/rdft_snippets/form_recommended_fields.html" %}
+                      </div>
+                      <div id="optional-parameters">
+                        {% include "package/rdft_snippets/form_optional_fields.html" %}
+                      </div>
+
+                      <div id="resources-parameters">
+                        {% include "package/rdft_snippets/resources/form_resources.html" %}
+                      </div>
+            </div>
+
+
+            <div class="form-actions">
+                <input id="validate" class="btn btn-primary" name="validate" type="submit"
+                       value="{% trans %}ecodp.common.validate{% endtrans %}"/>
+                <input id="save_published" class="btn btn-primary" style="width:140px" name="save"
+                       type="submit" value="
+                    {%- block save_button_text -%}
+                        {% trans %}ecodp.common.save_as_published{% endtrans %}
+                    {%- endblock -%}"
+                />
+                <input id="save_draft" class="btn" name="save" type="submit"
+                       value="{% trans %}ecodp.common.save_as_draft{% endtrans %}"/>
+
+                <input id="cancel" class="btn href-action" name="cancel" type="submit"
+                       value="{% trans %}ecodp.common.cancel{% endtrans %}"
+                       action="{{ h.url_for(controller='user', action='dashboard') }}"/>
+
+            </div>
+
+        </form>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,32 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<fieldset id="rdf">
+    <div class="control-group description-field">
+        <label class="control-label" for="rdf">RDF</label>
+
+        <div class="controls">
+            <textarea class="rdf-input" id="rdf" name="rdf" placeholder="{% trans %}RDF of the dataset...{% endtrans %}">{{ data.rdf }}</textarea>
+            <span class="searchHelp gradient input-helper" title="RDF representation of the dataset. This content must match the fields values. If erased, it will be automatically generated when required.">?</span>
+
+            {% if errors.rdf %}
+                <p class="field_error">Error: {{ errors.rdf }}</p>
+            {% endif %}
+        </div>
+    </div>
+</fieldset>

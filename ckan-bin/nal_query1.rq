@@ -1,0 +1,7 @@
+select ?term ?label ?lang where {
+    ?term a <http://www.w3.org/2004/02/skos/core#Concept>. 
+    ?term <http://www.w3.org/2004/02/skos/core#prefLabel> ?label@?lang. 
+    OPTIONAL {?term <http://publications.europa.eu/ontology/authority/deprecated> ?deprecated}
+    FILTER ((str(?deprecated)!="true") || (!bound(?deprecated)))
+}
+ORDER BY ?term

@@ -1,0 +1,38 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+<div class="templates" style="display:none">
+    <div class="control-group extra_fields_group">
+
+        <div class="extra-group " id="key">
+            <label class="control-label extra">{% trans %}common.dataset_edit.extra_key{% endtrans %}</label>
+            <div class="controls extra">
+                <input class="extra" type="text"/>
+            </div>
+        </div>
+
+        <div class="extra-group" id="value">
+            <label class="control-label extra">{% trans %}common.dataset_edit.extra_value{% endtrans %}</label>
+            <div class="controls extra">
+                <input class="extra" type="text"/>
+            </div>
+        </div>
+{% if bulk_edition and data.get('extras_box', False) %}{% include "package/rdft_snippets/bulk_edit_select.html" %}{% endif %}
+        <button class="btn btn-danger remove-extra">X</button>
+    </div>
+</div>

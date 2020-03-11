@@ -1,0 +1,40 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block sidebar_license %}
+	{% set license_title = resource.license_title[0]%}
+	{% set license_id = resource.license_id %}
+	{% set license_url = 'https://ec.europa.eu/info/legal-notice_'+h.current_locale().language %}
+
+	<li id="dataset-license" class="facet-box ckan-face-box2">
+	  <h2>{% trans %}ecodp.common.licence{% endtrans %}:</h2>
+        <ul class="facet-options">
+            <li>
+                {% if license_title and license_url %}
+                    <a class="external-link" href="{{license_url}}" rel="dc:rights">{{license_title}}</a>
+                {% elif license_title %}
+                    <span property="dc:rights">{{license_title}}</span>
+                {% elif license_id %}
+                    <span property="dc:rights">{{license_id}}</span>
+                {% else %}
+                    {% trans %}License unknown{% endtrans %}
+                {% endif %}
+            </li>
+        </ul>
+	</li>
+{% endblock %}

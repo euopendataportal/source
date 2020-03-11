@@ -1,0 +1,58 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% block display_list %}
+    <div id="page_heading_div" >
+        <h1 class="page_heading">
+            {{ title }}
+            <span class="hidebutton glyphicon glyphicon-minus" data-selector="{{ selector_name }}"></span>
+            <span class="showbutton glyphicon glyphicon-plus" style="display:none" data-selector="{{ selector_name }}"></span>
+        </h1>
+    </div>
+
+    {% set limit = h.get_param_int('_%s_limit' % name, default=show_less_display) %}
+    {% if limit > 0 %}
+        {% set display_list = list[:limit] %}
+    {% else %}
+        {% set display_list = list %}
+    {% endif %}
+
+    {% if display_list %}
+        <div id="{{ selector_name }}">
+            <div class="domains_group">
+                <ul>
+                    {% for elem in display_list %}
+                        <li>
+                            {% set base_url = h.url_for(controller=controller, action='read', id=elem.name) %}
+                            <a href="{{ base_url }}?{{ name }}={{ elem.uri or elem.name }}" class="item_link">
+                                <img src="{{ elem.image_display_url or h.url_for_static('/images/placeholder-groupy.png') }}" alt="{{ elem.display_name }}" class="media-image">
+                            </a>
+                            <p>{{elem.display_name}}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% snippet "snippets/show_more.html", name=name, limit=limit, list_length=list|length, show_less_display=show_less_display %}
+        </div>
+    {% else %}
+        <p class="empty">
+            {{ _('group.index.display.list.no_element') }}
+        </p>
+    {% endif %}
+{% endblock %}

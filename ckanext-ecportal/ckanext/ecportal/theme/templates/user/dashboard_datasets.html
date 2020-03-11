@@ -1,0 +1,43 @@
+{#    Copyright (C) <2018>  <Publications Office of the European Union>#}
+{##}
+{#    This program is free software: you can redistribute it and/or modify#}
+{#    it under the terms of the GNU Affero General Public License as#}
+{#    published by the Free Software Foundation, either version 3 of the#}
+{#    License, or (at your option) any later version.#}
+{##}
+{#    This program is distributed in the hope that it will be useful,#}
+{#    but WITHOUT ANY WARRANTY; without even the implied warranty of#}
+{#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the#}
+{#    GNU Affero General Public License for more details.#}
+{##}
+{#    You should have received a copy of the GNU Affero General Public License#}
+{#    along with this program.  If not, see <https://www.gnu.org/licenses/>.#}
+{##}
+{#    contact: <https://publications.europa.eu/en/web/about-us/contact>#}
+{##}
+
+{% extends "user/dashboard.html" %}
+
+
+
+{% block dashboard_activity_stream_context %}{% endblock %}
+
+{% block page_primary_action %}
+  {% if h.check_access('package_create') %}
+    {% link_for _('ecodp.common.datasets.add'), controller='package', action='new', class_="btn btn-primary", icon="plus-sign-alt" %}
+  {% endif %}
+{% endblock %}
+
+{% block primary_content_inner %}
+  <h2 class="hide-heading">{{ _('user.mdt_dashboard_datasets.inner.datasets') }}</h2>
+  {% if c.user_dict.datasets %}
+    {% snippet 'snippets/package_list.html', packages=c.user_dict.datasets %}
+    {% else %}
+    <p class="empty">
+      {{ _('user.read.no_datasets') }}
+      {% if h.check_access('package_create') %}
+        {% link_for _('dashboard_datasets.content.create'), controller='package', action='new' %}
+      {% endif %}
+    </p>
+  {% endif %}
+{% endblock %}
