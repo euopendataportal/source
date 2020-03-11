@@ -43,7 +43,7 @@ repoze.who==2.1
 repoze.who-friendlyform==1.0.8
 repoze.who-use-beaker==0.3
 repoze.who.plugins.openid==0.5.3
-requests==2.1.0
+requests==2.20.0
 simplejson==3.3.1
 six==1.9.0
 solrpy==0.9.5
