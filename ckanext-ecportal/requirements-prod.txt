@@ -1,4 +1,4 @@
-Babel==0.9.6
+Babel==2.9.1
 Beaker==1.6.4
 FormAlchemy==1.4.3
 FormEncode==1.2.6
