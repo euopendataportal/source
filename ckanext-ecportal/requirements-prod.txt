@@ -53,7 +53,7 @@ vdm==0.14
 wsgiref==0.1.2
 progressbar==2.3
 kombu==2.5
-celery==2.4.2
+celery==5.2.2
 zope.interface==4.0.1
 wheezy.validation==0.1.135
 xmltodict==0.10.1
