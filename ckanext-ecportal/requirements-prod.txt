@@ -57,7 +57,7 @@ celery==2.4.2
 zope.interface==4.0.1
 wheezy.validation==0.1.135
 xmltodict==0.10.1
-openpyxl==2.3.5
+openpyxl==2.4.2
 redis==2.10.5
 ujson==1.35
 datadiff==2.0.0
